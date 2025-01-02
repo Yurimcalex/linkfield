@@ -8,6 +8,15 @@ https://www.joshwcomeau.com/css/transforms/
 CSS Transform Handbook – Complete Guide to CSS Transform Functions and Properties
 https://www.freecodecamp.org/news/complete-guide-to-css-transform-functions-and-properties/
 
+Can I use
+https://caniuse.com/?search=css-transformations
+
+cubic-bezier
+https://cubic-bezier.com
+
+Manual and Automated Cross Browser testing
+https://www.lambdatest.com/
+
 Bedimcode. Responsive Website Using HTML CSS & JavaScript | Fruit Website
 https://www.youtube.com/watch?v=7n7ofxoCAxo
 
@@ -54,8 +63,23 @@ https://deliciousbrains.com/npm-build-script/
 How can I use 'watch' in my npm scripts?
 https://stackoverflow.com/questions/36245415/how-can-i-use-watch-in-my-npm-scripts
 
+Is it possible to write data to file using only JavaScript?
+https://stackoverflow.com/questions/21012580/is-it-possible-to-write-data-to-file-using-only-javascript
+
 nodemon
 https://www.npmjs.com/package/nodemon
+
+nodejs
+https://unofficial-builds.nodejs.org/download/release/
+
+How to install node.tar.xz file in linux
+https://stackoverflow.com/questions/63312642/how-to-install-node-tar-xz-file-in-linux
+
+Install Node.js Locally with Node Version Manager (nvm)
+https://heynode.com/tutorial/install-nodejs-locally-nvm/
+
+Управление версиями Node.js и NPM с помощью NVM
+https://habr.com/ru/companies/timeweb/articles/541452/
 
 live-server
 https://www.npmjs.com/package/live-server
@@ -72,6 +96,18 @@ https://github.com/markerikson/react-redux-links
 
 redux-ecosystem-links
 https://github.com/markerikson/redux-ecosystem-links
+
+React30-Project23: Setting Up a React Project Using Webpack and Babel
+https://saurabhnativeblog.medium.com/react30-project23-setting-up-a-react-project-using-webpack-and-babel-f4ca5554dfec
+
+The best webpack configurations for React applications
+https://blog.logrocket.com/versatile-webpack-configurations-react-application/
+
+How to setup a React Project with Vite
+https://medium.com/@pascalokereke18/how-to-setup-a-react-project-with-vite-6c2130d3bce
+
+A modern animation library for JavaScript and React
+https://www.framer.com/motion/
 
 Code Alchemy. React Portfolio Website Tutorial - Portfolio Website Using React - React JS Portfolio Website
 https://www.youtube.com/watch?v=3aCoZudPEKE
