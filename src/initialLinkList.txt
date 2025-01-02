@@ -1,0 +1,68 @@
+---------------------------------------------------------
+
+# HTML & CSS
+
+Bedimcode. Responsive Website Using HTML CSS & JavaScript | Fruit Website
+https://www.youtube.com/watch?v=7n7ofxoCAxo
+
+
+EGATOR. Responsive Social Media Website With Theme Customization Using HTML CSS & JavaScript
+https://www.youtube.com/watch?v=AiFfDjmd0jU
+
+---------------------------------------------------------
+
+# JavaScript
+
+НИКТО НЕ ЗНАЕТ JAVASCRIPT / ХАКЕР СО СТАЖЕМ — Demi Murych
+https://www.youtube.com/watch?v=hHdNfPOQjrg
+
+---------------------------------------------------------
+
+# React
+
+Code Alchemy. React Portfolio Website Tutorial - Portfolio Website Using React - React JS Portfolio Website
+https://www.youtube.com/watch?v=3aCoZudPEKE
+
+
+webdecoded. React Project Tutorial: Build a Responsive Portfolio Website w/ Advanced Animations
+https://www.youtube.com/watch?v=hYv6BM2fWd8
+
+---------------------------------------------------------
+
+# Fullstack
+
+EdRoh. Build a COMPLETE Fullstack Responsive MERN App with Auth, Likes, Dark Mode | React, MongoDB, MUI
+https://www.youtube.com/watch?v=K8YELRmUb5o
+
+---------------------------------------------------------
+
+# Typescript
+
+loftblog. React + Typescript + Mobx: создаем карточную игру «Дурак»
+https://www.youtube.com/watch?v=oODzkPYIoSQ
+
+---------------------------------------------------------
+
+# Linux
+
+Linux® commands Notes for Professionals book
+https://goalkicker.com/LinuxBook/
+
+---------------------------------------------------------
+
+# Games
+
+List of All Weapon Runewords
+https://d2runewizard.com/runewords/gear-type/weap
+
+---------------------------------------------------------
+
+# miscellaneous
+
+Как живёт Глава Даркнета. Как стать умным - Метод Мориарти.
+https://www.youtube.com/watch?v=wbItXmjm7tY
+
+Хранители Миров. Подведение итогов по всем знания и что будет дальше.
+https://www.youtube.com/watch?v=v62k3q3Ndvs
+
+---------------------------------------------------------
