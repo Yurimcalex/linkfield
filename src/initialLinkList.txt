@@ -2,30 +2,85 @@
 
 # HTML & CSS
 
+The World of CSS Transforms
+https://www.joshwcomeau.com/css/transforms/
+
+CSS Transform Handbook – Complete Guide to CSS Transform Functions and Properties
+https://www.freecodecamp.org/news/complete-guide-to-css-transform-functions-and-properties/
+
 Bedimcode. Responsive Website Using HTML CSS & JavaScript | Fruit Website
 https://www.youtube.com/watch?v=7n7ofxoCAxo
-
 
 EGATOR. Responsive Social Media Website With Theme Customization Using HTML CSS & JavaScript
 https://www.youtube.com/watch?v=AiFfDjmd0jU
 
+Slaying The Dragon. Build Your Portfolio Website - HTML CSS JS - Dark Mode - Lazy Loading
+https://www.youtube.com/watch?v=dLDn_k8GmaU
+
+Codehal. 3D Portfolio Website | HTML CSS & Javascript
+https://www.youtube.com/watch?v=zrBVFGlnyA8
+
+CodeBucks. How to Create a Stunning Portfolio Website with Nextjs, Tailwind CSS and Framer-motion🌟
+https://www.youtube.com/watch?v=Yw7yWHigGKI
+
+Envato Tuts+. Motion Design for the Web | FREE COURSE
+https://www.youtube.com/watch?v=vqXLGX0szIQ
+
+EGATOR. Build & Deploy a Complete Responsive Personal Portfolio Website using HTML CSS JavaScript
+https://www.youtube.com/watch?v=EAC5hdmW1go
+
 ---------------------------------------------------------
 
 # JavaScript
+
+A simple swipe detection on vanilla js
+https://gist.github.com/SleepWalker/da5636b1abcbaff48c4d
+
+Adding a simple left/right swipe gesture
+https://stackoverflow.com/questions/62823062/adding-a-simple-left-right-swipe-gesture
+
+How to detect swipe in JavaScript? [duplicate]
+https://stackoverflow.com/questions/53192433/how-to-detect-swipe-in-javascript
+
+Simple Swipe with Vanilla JavaScript
+https://css-tricks.com/simple-swipe-with-vanilla-javascript/#top-of-site
+
+A throttle not calling the last throttled argument
+https://stackoverflow.com/questions/52576307/a-throttle-not-calling-the-last-throttled-argument
+
+Using Npm Scripts as a Build Tool
+https://deliciousbrains.com/npm-build-script/
+
+How can I use 'watch' in my npm scripts?
+https://stackoverflow.com/questions/36245415/how-can-i-use-watch-in-my-npm-scripts
+
+nodemon
+https://www.npmjs.com/package/nodemon
+
+live-server
+https://www.npmjs.com/package/live-server
 
 НИКТО НЕ ЗНАЕТ JAVASCRIPT / ХАКЕР СО СТАЖЕМ — Demi Murych
 https://www.youtube.com/watch?v=hHdNfPOQjrg
 
 ---------------------------------------------------------
 
-# React
+# React, Redux
+
+react-redux-links
+https://github.com/markerikson/react-redux-links
+
+redux-ecosystem-links
+https://github.com/markerikson/redux-ecosystem-links
 
 Code Alchemy. React Portfolio Website Tutorial - Portfolio Website Using React - React JS Portfolio Website
 https://www.youtube.com/watch?v=3aCoZudPEKE
 
-
 webdecoded. React Project Tutorial: Build a Responsive Portfolio Website w/ Advanced Animations
 https://www.youtube.com/watch?v=hYv6BM2fWd8
+
+Code It Down. React Music App | React & Tailwind Css music Application
+https://www.youtube.com/watch?v=FNNceKjri24
 
 ---------------------------------------------------------
 
@@ -33,6 +88,15 @@ https://www.youtube.com/watch?v=hYv6BM2fWd8
 
 EdRoh. Build a COMPLETE Fullstack Responsive MERN App with Auth, Likes, Dark Mode | React, MongoDB, MUI
 https://www.youtube.com/watch?v=K8YELRmUb5o
+
+Coding With Dawid. Build a Fullstack Food Ordering App with Next.js 14 (react.js, mongo, tailwind)
+https://www.youtube.com/watch?v=nGoSP3MBV2E
+
+TubeGuruji. Build & Deploy Full Stack Next.Js Online Grocery React App Store | React, Strapi, Tailwindcss
+https://www.youtube.com/watch?v=7NN56jsaj6w
+
+Dynamic Coding With Amit. Full Stack E-Commerce Responsive MERN App with Auth, Search, Filter, Upload Product | React, MongoDB
+https://www.youtube.com/watch?v=SUeVdpV768o
 
 ---------------------------------------------------------
 
@@ -43,10 +107,53 @@ https://www.youtube.com/watch?v=oODzkPYIoSQ
 
 ---------------------------------------------------------
 
+# Git
+
+How do I undo the most recent local commits in Git?
+https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git
+
+---------------------------------------------------------
+
 # Linux
 
 Linux® commands Notes for Professionals book
 https://goalkicker.com/LinuxBook/
+
+Internet drops every few minutes on wired and wireless connection
+https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1666432
+
+My docker container has no internet
+https://stackoverflow.com/questions/20430371/my-docker-container-has-no-internet
+
+---------------------------------------------------------
+
+# Wordpress
+
+[Udemy, Pat Selby] How to Create Internet Stores the EASY WAY Using Wordpress [2016, ENG]
+https://rutracker.org/forum/viewtopic.php?t=5260184
+
+---------------------------------------------------------
+
+# Markdown
+
+Markdown Guide
+https://www.markdownguide.org/basic-syntax/#headings
+
+---------------------------------------------------------
+
+# Figma
+
+https://www.figma.com/file/Ex1me550Oqp83srrKkqyKL/Free-Online-Education-Website-Template-(Community)?type=design&node-id=0-1&mode=design&t=5EMxnth85upPcA10-0
+
+---------------------------------------------------------
+
+# English
+
+Arnel's Everyday English. 30 SUPER COMMON phrasal verbs | You can use them every day!
+https://www.youtube.com/watch?v=MHKa48BWbPw
+
+Simple Teaching English. Lesson 104: List of 60 Opposite Phrasal Verbs | Pictionary
+https://www.youtube.com/watch?v=CI68qFZf9gQ
 
 ---------------------------------------------------------
 
@@ -57,6 +164,20 @@ https://d2runewizard.com/runewords/gear-type/weap
 
 ---------------------------------------------------------
 
+# Soft
+
+How to install, uninstall and update Firefox on Ubuntu
+https://linuxconfig.org/how-to-install-uninstall-and-update-firefox-on-ubuntu-20-04-focal-fossa-linux
+
+---------------------------------------------------------
+
+# Books
+
+professional-programming
+https://github.com/charlax/professional-programming
+
+---------------------------------------------------------
+
 # miscellaneous
 
 Как живёт Глава Даркнета. Как стать умным - Метод Мориарти.
@@ -64,5 +185,20 @@ https://www.youtube.com/watch?v=wbItXmjm7tY
 
 Хранители Миров. Подведение итогов по всем знания и что будет дальше.
 https://www.youtube.com/watch?v=v62k3q3Ndvs
+
+Антон Мажирин. 100% способ исполнения желаний. Наконец-то понял как это делать!
+https://www.youtube.com/watch?v=ApaNJUU5wQY
+
+Отчеw наш на арамейском
+https://www.youtube.com/shorts/4tseh81xjf4
+
+В ПОИСКАХ СВОБОДЫ. Перископ трансляция с Иваном Лимаревым и Арсеном Маркаряном
+https://www.youtube.com/watch?v=RntMODQdZcA&list=PLT95Z_I5wZkfAQmyl9VHNyW8k4gFwTcb6
+
+---------------------------------------------------------
+
+# Radio
+
+https://onlineradiobox.com/es/nature/?cs=es.nature&played=1
 
 ---------------------------------------------------------
