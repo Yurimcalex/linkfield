@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "vite": "^6.0.5"
+  },
+  "overrides": {
+    "rollup": "npm:@rollup/wasm-node"
   }
 }
