@@ -38,6 +38,9 @@ https://www.youtube.com/watch?v=vqXLGX0szIQ
 EGATOR. Build & Deploy a Complete Responsive Personal Portfolio Website using HTML CSS JavaScript
 https://www.youtube.com/watch?v=EAC5hdmW1go
 
+css arrow
+https://cssarrowplease.com/
+
 ---------------------------------------------------------
 
 # JavaScript
@@ -86,6 +89,12 @@ https://www.npmjs.com/package/live-server
 
 НИКТО НЕ ЗНАЕТ JAVASCRIPT / ХАКЕР СО СТАЖЕМ — Demi Murych
 https://www.youtube.com/watch?v=hHdNfPOQjrg
+
+Best Free JavaScript Books
+https://cssauthor.com/free-javascript-books/
+
+23 Free JavaScript Books
+https://gist.github.com/WebRTCGame/9fa80ed32a7413bd0f8d71304d6335eb
 
 ---------------------------------------------------------
 
@@ -150,6 +159,13 @@ https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-c
 
 ---------------------------------------------------------
 
+# Data Structure & Algorithms
+
+Data Structure Visualizations
+https://www.cs.usfca.edu/~galles/visualization/Algorithms.html
+
+---------------------------------------------------------
+
 # Linux
 
 Linux® commands Notes for Professionals book
@@ -160,6 +176,21 @@ https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1666432
 
 My docker container has no internet
 https://stackoverflow.com/questions/20430371/my-docker-container-has-no-internet
+
+Monitor CPU Temperature in Ubuntu
+https://www.redswitches.com/blog/linux-cpu-temperature/
+
+18 Methods to Make Ubuntu Faster
+https://operavps.com/docs/make-ubuntu-faster/
+
+How can I scan for possible viruses on my Ubuntu system? [duplicate]
+https://askubuntu.com/questions/417429/how-can-i-scan-for-possible-viruses-on-my-ubuntu-system
+
+20 Best Linux Books You Can Download For Free Legally
+https://itsfoss.com/learn-linux-for-free/
+
+Taking Firefox memory usage under control on Linux
+https://dev.to/msugakov/taking-firefox-memory-usage-under-control-on-linux-4b02
 
 ---------------------------------------------------------
 
@@ -211,6 +242,15 @@ https://linuxconfig.org/how-to-install-uninstall-and-update-firefox-on-ubuntu-20
 
 professional-programming
 https://github.com/charlax/professional-programming
+
+Programming Notes for Professionals books
+https://books.goalkicker.com/
+
+The Ultimate List of Free SQL Resources
+https://github.com/amartinson193/The-Ultimate-List-of-Free-SQL-Resources
+
+free-programming-books
+https://github.com/EbookFoundation/free-programming-books/tree/main
 
 ---------------------------------------------------------
 
