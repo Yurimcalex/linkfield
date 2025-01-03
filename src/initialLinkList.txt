@@ -127,6 +127,12 @@ https://www.youtube.com/watch?v=hYv6BM2fWd8
 Code It Down. React Music App | React & Tailwind Css music Application
 https://www.youtube.com/watch?v=FNNceKjri24
 
+Most Popular React Tech Stack in 2023
+https://profy.dev/article/react-tech-stack
+
+Making setInterval Declarative with React Hooks
+https://overreacted.io/making-setinterval-declarative-with-react-hooks/
+
 ---------------------------------------------------------
 
 # Fullstack
@@ -234,6 +240,12 @@ https://www.youtube.com/watch?v=09CZKgFVEPA
 LinguaTrip TV. Грамматика английского языка, которую вы обязательно должны знать
 https://www.youtube.com/watch?v=CFE_XzOCsu4
 
+Kool English Words. 200+ Action Verbs In English |⭐Common Word In English |Action Verbs
+https://www.youtube.com/watch?v=43apxjq0IUs
+
+Club James Studios - English Speaking Videos. Learn 290 USEFUL COLLOCATIONS in English To Enhance Your English Speaking Skills in Conversations
+https://www.youtube.com/watch?v=4hlv9HNKui4
+
 ---------------------------------------------------------
 
 # Games
@@ -247,6 +259,9 @@ https://d2runewizard.com/runewords/gear-type/weap
 
 How to install, uninstall and update Firefox on Ubuntu
 https://linuxconfig.org/how-to-install-uninstall-and-update-firefox-on-ubuntu-20-04-focal-fossa-linux
+
+firefox
+https://www.mozilla.org/ru/firefox/welcome/19/
 
 ---------------------------------------------------------
 
@@ -286,6 +301,18 @@ https://www.youtube.com/watch?v=RntMODQdZcA&list=PLT95Z_I5wZkfAQmyl9VHNyW8k4gFwT
 Lionel Grand. НЕЙРОУЧЕНЫЙ: Как Учиться в 10 раз БЫСТРЕЕ
 https://www.youtube.com/watch?v=3gMSP0olx2k
 
+Геннадий Давыдович Ищущему. Телепортация—механизм.Все просто. Хотите научиться? Я тоже.В.ф.№21т. 16.12.19.89836266309
+https://www.youtube.com/watch?v=Y0DtuTjxWr8
+
+Valmiki Travel. ЭТА «ВОСЬМЕРКА» МОЖЕТ ПОДНЯТЬ ДАЖЕ ЛЕЖАЧЕГО!
+https://www.youtube.com/watch?v=Q2vBS1C4BJo
+
+21 Legit Ways to Earn Money Online without Paying Anything
+https://www.tigren.com/blog/how-to-earn-money-online-without-paying-anything/
+
+Кот заговорил
+https://www.youtube.com/shorts/bHxQems5THY
+
 ---------------------------------------------------------
 
 # Radio
@@ -294,9 +321,15 @@ https://onlineradiobox.com/es/nature/?cs=es.nature&played=1
 
 ---------------------------------------------------------
 
-# MArts & Fitness
+# Matrial Arts & Fitness
 
 David Bao (暴一宏). Five Stance Form 五步拳 (Wu Bu Quan) - Kung Fu Wushu Changquan
 https://www.youtube.com/watch?v=HBCJyoCptKY
+
+Самый быстрый мастер меча в мире
+https://www.youtube.com/shorts/bf4udTfokzI
+
+Nunchaku china Master
+https://www.youtube.com/shorts/pf-NdkgtPpk
 
 ---------------------------------------------------------
