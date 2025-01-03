@@ -96,6 +96,36 @@ https://cssauthor.com/free-javascript-books/
 23 Free JavaScript Books
 https://gist.github.com/WebRTCGame/9fa80ed32a7413bd0f8d71304d6335eb
 
+Получение сырых данных Audio в js
+https://ru.stackoverflow.com/questions/798995/%D0%9F%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D1%81%D1%8B%D1%80%D1%8B%D1%85-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-audio-%D0%B2-js
+
+How to continuously generate raw audio samples in javascript using the web audio API?
+https://stackoverflow.com/questions/67342004/how-to-continuously-generate-raw-audio-samples-in-javascript-using-the-web-audio
+
+Franks laboratory. JavaScript Audio CRASH COURSE For Beginners
+https://www.youtube.com/watch?v=VXWvfrmpapI
+
+Quick Start To Generate Tones In Javascript
+https://www.cirruslabs.io/blog1/modernized-technology/quick-start-to-generate-tones-in-javascript
+
+Music and Coding. #12 - Build an Interactive Guitar Fretboard with Javascript. HTML and CSS - Add Instrument Selector
+https://www.youtube.com/watch?v=ewgPS-4ycoE
+
+JavaScript Guitar
+https://guitar.js.org/
+
+How to use Web Audio API to make sound like guitar, piano etc
+https://stackoverflow.com/questions/24615677/how-to-use-web-audio-api-to-make-sound-like-guitar-piano-etc
+
+Let's build an actual working Guitar🎸 with JavaScript
+https://dev.to/thormeier/let-s-build-an-actual-working-guitar-with-javascript-bfb
+
+Reading file contents on the client-side in javascript in various browsers
+https://stackoverflow.com/questions/750032/reading-file-contents-on-the-client-side-in-javascript-in-various-browsers
+
+How to read a local text file in the browser?
+https://stackoverflow.com/questions/14446447/how-to-read-a-local-text-file-in-the-browser
+
 ---------------------------------------------------------
 
 # React, Redux
@@ -246,6 +276,9 @@ https://www.youtube.com/watch?v=43apxjq0IUs
 Club James Studios - English Speaking Videos. Learn 290 USEFUL COLLOCATIONS in English To Enhance Your English Speaking Skills in Conversations
 https://www.youtube.com/watch?v=4hlv9HNKui4
 
+Easy English.
+https://www.youtube.com/@easyenglish551/playlists
+
 ---------------------------------------------------------
 
 # Games
@@ -262,6 +295,12 @@ https://linuxconfig.org/how-to-install-uninstall-and-update-firefox-on-ubuntu-20
 
 firefox
 https://www.mozilla.org/ru/firefox/welcome/19/
+
+Install Firefox on Linux
+https://support.mozilla.org/en-US/kb/install-firefox-linux#firefox:linux:fx115
+
+Firefox System Requirements
+https://www.mozilla.org/en-US/firefox/133.0/system-requirements/#gnulinux
 
 ---------------------------------------------------------
 
@@ -313,6 +352,30 @@ https://www.tigren.com/blog/how-to-earn-money-online-without-paying-anything/
 Кот заговорил
 https://www.youtube.com/shorts/bHxQems5THY
 
+Спина
+https://www.youtube.com/shorts/zopPTrlSxMc
+
+Родосвет Рюрикович •Сила Шамана. Как закрыть каналы оттока энергии ЗА 2 МИНУТЫ.
+https://www.youtube.com/watch?v=17fb15tPLcI
+
+Резонанс Иванова. Сопротивляешься настоящему моменту?
+https://www.youtube.com/watch?v=llt0noBa3uM
+
+СИЛА В СИЛЕ. ПЕРЕСТАНЬ СЕБЯ ВИНИТЬ | АРСЕН МАРКАРЯН
+https://www.youtube.com/watch?v=4xbHh9HCBxg
+
+Медитации исцеления. Медитация от страха за один час с первого раза самостоятельно с матрицей Гаряева. Инструкция + сеанс
+https://www.youtube.com/watch?v=uupcfDn8Cpw
+
+Как можно воплотить в жизнь что угодно
+https://www.youtube.com/shorts/VK3k8sbuHhk
+
+podduevMax. Упражнение, которое изменило жизнь пациента: избавление от боли в пояснице
+https://www.youtube.com/watch?v=fosdo9Bi11I
+
+Interesting experiments
+https://www.youtube.com/shorts/78fhkGzCAoc
+
 ---------------------------------------------------------
 
 # Radio
@@ -345,12 +408,24 @@ https://www.freecodecamp.org/news/introduction-to-blockchain/
 Technical primer to Blockchain & Ethereum
 https://www.freecodecamp.org/news/technical-primer-to-blockchain-ethereum/
 
+Bitcoin and Cryptocurrency Technologies
+https://bitcoinbook.cs.princeton.edu/
+
+Learning Bitcoin from the Command Line 2.2.0
+https://github.com/BlockchainCommons/Learning-Bitcoin-from-the-Command-Line
+
+Grokking Bitcoin
+https://rosenbaum.se/book/grokking-bitcoin.html
+
 ---------------------------------------------------------
 
 # Law
 
 The law of property and possession
 https://www.britannica.com/topic/Roman-law/The-law-of-property-and-possession
+
+Uniform Commercial Code
+https://www.law.cornell.edu/ucc
 
 ---------------------------------------------------------
 
