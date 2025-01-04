@@ -5,6 +5,7 @@ body {
   padding: 0;
 }
 
+
 .menu,
 .content {
   overflow: auto;
@@ -16,4 +17,15 @@ body {
 
 .content {
   flex: 3;
+}
+
+
+.menu-list h2 {
+  font-size: 1em;
+  font-weight: normal;
+}
+
+.menu-list a {
+  text-decoration: none;
+  color: initial;
 }
