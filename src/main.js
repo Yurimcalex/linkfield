@@ -1,4 +1,4 @@
-//import './style.css';
+import './style.css';
 import parseText from './parser.js';
 import createUI from './ui.js';
 
