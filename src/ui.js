@@ -7,7 +7,7 @@ export default function createUI(data) {
 
   html += '<section class="content">';
   for (let d of data) {
-    html += '<div>';
+    html += '<div class="content-category">';
     html += `<h2 id=${d.title}>${d.title}</h2>`;
     html += createCategoryUL(d.links);
     html += '</div>';
