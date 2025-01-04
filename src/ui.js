@@ -18,12 +18,12 @@ export default function createUI(data) {
 }
 
 
-function createMenuUL(topics) {
+function createMenuUL(items) {
 	let html = '';
 	html += '<div><ul>';
-	for (let topic of topics) {
+	for (let item of items) {
 		html += '<li>';
-		html += `<h3><a href=${`#` + topic}>${topic}</a></h3>`;
+		html += `<h3><a href=${`#` + item}>${item}</a></h3>`;
 		html += '</li>';
 	}
 	html += '</ul></div>';
