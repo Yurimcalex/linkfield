@@ -23,7 +23,7 @@ function createMenuUL(items) {
 	html += '<div><ul>';
 	for (let item of items) {
 		html += '<li>';
-		html += `<h3><a href=${`#` + item}>${item}</a></h3>`;
+		html += `<h2><a href=${`#` + item}>${item}</a></h2>`;
 		html += '</li>';
 	}
 	html += '</ul></div>';
