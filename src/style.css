@@ -36,3 +36,9 @@ body {
   font-weight: normal;
   font-size: 1.5em;
 }
+
+
+.content-category-list h3 {
+  font-size: 1em;
+  font-weight: normal;
+}
