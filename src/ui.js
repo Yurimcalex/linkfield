@@ -3,13 +3,22 @@ export default function createUI(data) {
   for (let d of data) {
     html += '<div>';
     html += `<h2>${d.title}</h2>`;
-    for (let link of d.links) {
-      html += '<ul>';
-      html += `<h3><a href=${link.link} target="_blank">${link.topic}</a></h3>`;
-      html += '</ul>';
-    }
+    html += createCategoryUL(d.links);
     html += '</div>';
   }
 
   return html;
+}
+
+
+function createCategoryUL(links) {
+	let html = '';
+	html += '<ul>';
+	for (let link of links) {
+		html += '<li>';
+		html += `<h3><a href=${link.link} target="_blank">${link.topic}</a></h3>`;
+		html += '</li>';
+	}
+	html += '</ul>';
+	return html;
 }
