@@ -1,5 +1,8 @@
 export default function createUI(data) {
   let html = '';
+
+  html += createMenuUL(data.map(d => d.title));
+
   for (let d of data) {
     html += '<div>';
     html += `<h2>${d.title}</h2>`;
@@ -8,6 +11,19 @@ export default function createUI(data) {
   }
 
   return html;
+}
+
+
+function createMenuUL(topics) {
+	let html = '';
+	html += '<div><ul>';
+	for (let topic of topics) {
+		html += '<li>';
+		html += `<h3><a href='#'>${topic}</a></h3>`;
+		html += '</li>';
+	}
+	html += '</ul></div>';
+	return html;
 }
 
 
