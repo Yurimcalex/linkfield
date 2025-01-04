@@ -5,7 +5,7 @@ export default function createUI(data) {
 
   for (let d of data) {
     html += '<div>';
-    html += `<h2>${d.title}</h2>`;
+    html += `<h2 id=${d.title}>${d.title}</h2>`;
     html += createCategoryUL(d.links);
     html += '</div>';
   }
@@ -19,7 +19,7 @@ function createMenuUL(topics) {
 	html += '<div><ul>';
 	for (let topic of topics) {
 		html += '<li>';
-		html += `<h3><a href='#'>${topic}</a></h3>`;
+		html += `<h3><a href=${`#` + topic}>${topic}</a></h3>`;
 		html += '</li>';
 	}
 	html += '</ul></div>';
