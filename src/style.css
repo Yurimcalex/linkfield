@@ -86,6 +86,10 @@ body {
     display: none;
     background: white;
   }
+
+  .content {
+    margin-top: 30px;
+  }
 }
 
 /* open/close category menu */
