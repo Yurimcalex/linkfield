@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/7717527/smooth-scrolling-when-clicking-an-anchor-link
