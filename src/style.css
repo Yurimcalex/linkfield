@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 /* --- layout --- */
 body {
   display: flex;
@@ -13,11 +17,23 @@ body {
 }
 
 .menu-panel {
-  flex-shrink: 0;
+  flex-basis: 250px;
 }
 
 .content {
-  flex: 3;
+  flex-basis: 450px;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 650px) {
+  body {
+    flex-wrap: wrap;
+  }
+
+  .menu-panel {
+    flex-grow: 1;
+  }
 }
 
 /* --- menu for link category selection --- */
