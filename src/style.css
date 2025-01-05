@@ -1,3 +1,4 @@
+/* --- layout --- */
 body {
   display: flex;
   height: 100vh;
@@ -19,7 +20,7 @@ body {
   flex: 3;
 }
 
-
+/* --- menu for link category selection --- */
 .category-menu h2 {
   font-size: 1em;
   font-weight: normal;
@@ -30,7 +31,7 @@ body {
   color: initial;
 }
 
-
+/* --- link category container --- */
 .link-category h2 {
   text-align: center;
   font-weight: normal;
@@ -38,6 +39,7 @@ body {
 }
 
 
+/* --- link list --- */
 .link-list h3 {
   font-size: 1em;
   font-weight: normal;
