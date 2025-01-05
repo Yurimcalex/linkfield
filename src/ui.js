@@ -49,14 +49,23 @@ function createCategoryUL(links) {
 export function handleMenuEvents() {
 	const menu = document.querySelector('.category-menu');
 	const menuOpener = document.querySelector('.menu-opener');
+	const content = document.querySelector('.content');
 
 	menuOpener.addEventListener('click', () => {
 		menu.classList.add('show');
 		menuOpener.classList.add('hide');
+		content.classList.add('hide');
 	});
 
 	menu.addEventListener('click', () => {
 		menu.classList.remove('show');
 		menuOpener.classList.remove('hide');
+		content.classList.remove('hide');
+	});
+
+	window.addEventListener('resize', () => {
+		menu.classList.remove('show');
+		menuOpener.classList.remove('hide');
+		content.classList.remove('hide');
 	});
 }
