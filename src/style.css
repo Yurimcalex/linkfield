@@ -79,10 +79,12 @@ body {
 
   .menu-opener {
     display: block;
+    background: white;
   }
 
   .category-menu {
     display: none;
+    background: white;
   }
 }
 
