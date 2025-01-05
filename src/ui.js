@@ -20,7 +20,7 @@ export default function createUI(data) {
 
 function createMenuUL(items) {
 	let html = '';
-	html += '<div><ul class="menu-list">';
+	html += '<div><ul class="category-menu">';
 	for (let item of items) {
 		html += '<li>';
 		html += `<h2><a href=${`#` + item}>${item}</a></h2>`;
