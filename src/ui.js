@@ -33,7 +33,7 @@ function createMenuUL(items) {
 
 function createCategoryUL(links) {
 	let html = '';
-	html += '<ul class="content-category-list">';
+	html += '<ul class="link-list">';
 	for (let link of links) {
 		html += '<li>';
 		html += `<h3><a href=${link.link} target="_blank">${link.topic}</a></h3>`;
