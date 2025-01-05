@@ -13,7 +13,7 @@ body {
 }
 
 .menu-panel {
-  flex: 1;
+  flex-shrink: 0;
 }
 
 .content {
