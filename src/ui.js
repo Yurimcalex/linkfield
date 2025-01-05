@@ -50,11 +50,13 @@ export function handleMenuEvents() {
 	const menu = document.querySelector('.category-menu');
 	const menuOpener = document.querySelector('.menu-opener');
 	const content = document.querySelector('.content');
+	let isOpenerClicked = false;
 
 	menuOpener.addEventListener('click', () => {
 		menu.classList.add('show');
 		menuOpener.classList.add('hide');
 		content.classList.add('hide');
+		isOpenerClicked = true;
 	});
 
 	menu.addEventListener('click', (e) => {
@@ -64,7 +66,12 @@ export function handleMenuEvents() {
 			content.classList.remove('hide');
 			const href = target.getAttribute("href");
 			const elem = document.getElementById(href.slice(1));
-   		window.scrollTo(0, elem.offsetTop - 50);
+
+			const scrollTarget = isOpenerClicked ? window : content;
+			const dY = isOpenerClicked ? 50 : 0;
+			scrollTarget.scrollTo(0, elem.offsetTop - dY);
+			isOpenerClicked = false;
+			
 			menu.classList.remove('show');
 			menuOpener.classList.remove('hide');
 			history.pushState(null, null, href);
