@@ -6,12 +6,12 @@ body {
 }
 
 
-.menu,
+.menu-panel,
 .content {
   overflow: auto;
 }
 
-.menu {
+.menu-panel {
   flex: 1;
 }
 

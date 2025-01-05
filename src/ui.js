@@ -1,7 +1,7 @@
 export default function createUI(data) {
   let html = '';
 
-  html += '<section class="menu">';
+  html += '<section class="menu-panel">';
   html += createMenuUL(data.map(d => d.title));
   html += '</section>';
 
