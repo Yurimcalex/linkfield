@@ -43,3 +43,20 @@ function createCategoryUL(links) {
 	html += '</ul>';
 	return html;
 }
+
+
+// open/close category menu feat
+export function handleMenuEvents() {
+	const menu = document.querySelector('.category-menu');
+	const menuOpener = document.querySelector('.menu-opener');
+
+	menuOpener.addEventListener('click', () => {
+		menu.classList.add('show');
+		menuOpener.classList.add('hide');
+	});
+
+	menu.addEventListener('click', () => {
+		menu.classList.remove('show');
+		menuOpener.classList.remove('hide');
+	});
+}
