@@ -58,6 +58,21 @@ body {
   color: initial;
 }
 
+@media screen and (max-width: 650px) {
+  .category-menu {
+    height: 100vh;
+    padding: 0;
+  }
+
+  .category-menu li:nth-child(even) {
+    background: #eee;
+  }
+
+  .category-menu li:nth-child(odd) {
+    background: lightgray;
+  }
+}
+
 /* --- link category container --- */
 .link-category h2 {
   text-align: center;
