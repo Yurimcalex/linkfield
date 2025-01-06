@@ -43,6 +43,10 @@ body {
   .category-menu-wrapper {
     overflow: auto;
   }
+
+  .content {
+    flex-basis: 300px;
+  }
 }
 
 /* --- menu for link category selection --- */
