@@ -314,6 +314,7 @@ https://www.markdownguide.org/basic-syntax/#headings
 
 # Figma
 
+Education Website Template
 https://www.figma.com/file/Ex1me550Oqp83srrKkqyKL/Free-Online-Education-Website-Template-(Community)?type=design&node-id=0-1&mode=design&t=5EMxnth85upPcA10-0
 -- template
 
