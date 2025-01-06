@@ -16,7 +16,11 @@ function trimEmptyEdges(str) { return str.trim(); }
 
 function parseLink(str) {
   const linkData = str.split(linkItemDelimiter);
-  return { topic: linkData[0], link: linkData[1] };
+  return { 
+    topic: linkData[0],
+    link: linkData[1],
+    type: linkData[2] ? linkData[2].slice(3) : ''
+  };
 }
 
 function parseBlock(str) {
