@@ -83,7 +83,12 @@ body {
 }
 
 /* --- link category container --- */
+.link-category {
+  padding: 10px;
+}
+
 .link-category h2 {
+  padding: 20px;
   text-align: center;
   font-weight: normal;
   font-size: 1.5em;
