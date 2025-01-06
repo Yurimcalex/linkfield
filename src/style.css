@@ -61,6 +61,12 @@ body {
   font-weight: normal;
 }
 
+.link-list span {
+  font-style: italic;;
+  font-size: 0.8em;
+  color: gray;
+}
+
 
 /* --- category menu opener --- */
 .menu-opener {
