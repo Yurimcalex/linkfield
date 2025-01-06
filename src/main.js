@@ -14,9 +14,8 @@ async function readTextFromFile(file) {
 async function render() {
   const textData = await readTextFromFile('initialLinkList.txt');
   const linksData = parseText(textData);
-  const htmlText = createUI(linksData);
   
-  document.body.innerHTML = htmlText;
+  createUI(linksData);
   handleMenuEvents();
 }
 

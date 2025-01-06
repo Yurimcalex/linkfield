@@ -1,35 +1,22 @@
 export default function createUI(data) {
-  let html = '';
+  document
+  	.querySelector('.category-menu')
+  	.innerHTML = createCategoryMenuContent(data.map(d => d.title));
 
-  html += '<section class="menu-panel">';
-  html += '<div class="menu-opener">Open menu</div>';
-  html += '<div class="category-menu-wrapper">'
-  html += createCategoryMenu(data.map(d => d.title));
-  html += '</div>';
-  html += '</section>';
-
-  html += '<section class="content">';
-  for (let d of data) {
-    html += '<div class="link-category">';
-    html += `<h2 id=${replaceSpace(d.title)}>${d.title}</h2>`;
-    html += createLinkList(d.links);
-    html += '</div>';
-  }
-  html += '</section>';
-
-  return html;
+  document
+  	.querySelector('.content')
+  	.innerHTML = createMainContent(data);
 }
 
 
-function createCategoryMenu(items) {
+function createMainContent(data) {
 	let html = '';
-	html += '<ul class="category-menu">';
-	for (let item of items) {
-		html += '<li>';
-		html += `<h2><a href=${`#` + replaceSpace(item)}>${item}</a></h2>`;
-		html += '</li>';
+	for (let d of data) {
+	  html += '<div class="link-category">';
+	  html += `<h2 id=${replaceSpace(d.title)}>${d.title}</h2>`;
+	  html += createLinkList(d.links);
+	  html += '</div>';
 	}
-	html += '</ul>';
 	return html;
 }
 
@@ -43,6 +30,17 @@ function createLinkList(links) {
 		html += '</li>';
 	}
 	html += '</ul>';
+	return html;
+}
+
+
+function createCategoryMenuContent(items) {
+	let html = '';
+	for (let item of items) {
+		html += '<li>';
+		html += `<h2><a href=${`#` + replaceSpace(item)}>${item}</a></h2>`;
+		html += '</li>';
+	}
 	return html;
 }
 
