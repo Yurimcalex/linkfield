@@ -3,14 +3,14 @@ export default function createUI(data) {
 
   html += '<section class="menu-panel">';
   html += '<div class="menu-opener">Open menu</div>';
-  html += createMenuUL(data.map(d => d.title));
+  html += createCategoryMenu(data.map(d => d.title));
   html += '</section>';
 
   html += '<section class="content">';
   for (let d of data) {
     html += '<div class="link-category">';
     html += `<h2 id=${replaceSpace(d.title)}>${d.title}</h2>`;
-    html += createCategoryUL(d.links);
+    html += createLinkList(d.links);
     html += '</div>';
   }
   html += '</section>';
@@ -19,7 +19,7 @@ export default function createUI(data) {
 }
 
 
-function createMenuUL(items) {
+function createCategoryMenu(items) {
 	let html = '';
 	html += '<ul class="category-menu">';
 	for (let item of items) {
@@ -32,7 +32,7 @@ function createMenuUL(items) {
 }
 
 
-function createCategoryUL(links) {
+function createLinkList(links) {
 	let html = '';
 	html += '<ul class="link-list">';
 	for (let link of links) {
