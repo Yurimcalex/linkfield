@@ -9,7 +9,7 @@ export default function createUI(data) {
   html += '<section class="content">';
   for (let d of data) {
     html += '<div class="link-category">';
-    html += `<h2 id=${d.title}>${d.title}</h2>`;
+    html += `<h2 id=${replaceSpace(d.title)}>${d.title}</h2>`;
     html += createCategoryUL(d.links);
     html += '</div>';
   }
@@ -24,7 +24,7 @@ function createMenuUL(items) {
 	html += '<ul class="category-menu">';
 	for (let item of items) {
 		html += '<li>';
-		html += `<h2><a href=${`#` + item}>${item}</a></h2>`;
+		html += `<h2><a href=${`#` + replaceSpace(item)}>${item}</a></h2>`;
 		html += '</li>';
 	}
 	html += '</ul>';
@@ -42,6 +42,11 @@ function createCategoryUL(links) {
 	}
 	html += '</ul>';
 	return html;
+}
+
+
+function replaceSpace(str) {
+	return str.split(' ').join('-');
 }
 
 
