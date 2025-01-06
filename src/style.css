@@ -37,12 +37,23 @@ body {
 }
 
 /* --- menu for link category selection --- */
+.category-menu {
+  padding: 10px 0;
+}
+
+.category-menu li:hover {
+  background: lightgray;
+}
+
 .category-menu h2 {
   font-size: 1em;
   font-weight: normal;
 }
 
 .category-menu a {
+  display: inline-block;
+  width: 100%;
+  padding: 10px 0 10px 20px;
   text-decoration: none;
   color: initial;
 }
