@@ -4,42 +4,55 @@
 
 The World of CSS Transforms
 https://www.joshwcomeau.com/css/transforms/
+-- guide
 
 CSS Transform Handbook – Complete Guide to CSS Transform Functions and Properties
 https://www.freecodecamp.org/news/complete-guide-to-css-transform-functions-and-properties/
+-- guide
 
 Can I use
 https://caniuse.com/?search=css-transformations
+-- tool
 
 cubic-bezier
 https://cubic-bezier.com
+-- tool
 
 Manual and Automated Cross Browser testing
 https://www.lambdatest.com/
+-- tool
 
 Bedimcode. Responsive Website Using HTML CSS & JavaScript | Fruit Website
 https://www.youtube.com/watch?v=7n7ofxoCAxo
+-- video
 
 EGATOR. Responsive Social Media Website With Theme Customization Using HTML CSS & JavaScript
 https://www.youtube.com/watch?v=AiFfDjmd0jU
+-- video
 
 Slaying The Dragon. Build Your Portfolio Website - HTML CSS JS - Dark Mode - Lazy Loading
 https://www.youtube.com/watch?v=dLDn_k8GmaU
+-- video
 
 Codehal. 3D Portfolio Website | HTML CSS & Javascript
 https://www.youtube.com/watch?v=zrBVFGlnyA8
+-- video
 
 CodeBucks. How to Create a Stunning Portfolio Website with Nextjs, Tailwind CSS and Framer-motion🌟
 https://www.youtube.com/watch?v=Yw7yWHigGKI
+-- video
 
 Envato Tuts+. Motion Design for the Web | FREE COURSE
 https://www.youtube.com/watch?v=vqXLGX0szIQ
+-- video
 
 EGATOR. Build & Deploy a Complete Responsive Personal Portfolio Website using HTML CSS JavaScript
 https://www.youtube.com/watch?v=EAC5hdmW1go
+-- video
 
 css arrow
 https://cssarrowplease.com/
+-- tool
 
 ---------------------------------------------------------
 
@@ -47,84 +60,111 @@ https://cssarrowplease.com/
 
 A simple swipe detection on vanilla js
 https://gist.github.com/SleepWalker/da5636b1abcbaff48c4d
+-- lib
 
 Adding a simple left/right swipe gesture
 https://stackoverflow.com/questions/62823062/adding-a-simple-left-right-swipe-gesture
+-- how to
 
 How to detect swipe in JavaScript? [duplicate]
 https://stackoverflow.com/questions/53192433/how-to-detect-swipe-in-javascript
+-- how to
 
 Simple Swipe with Vanilla JavaScript
 https://css-tricks.com/simple-swipe-with-vanilla-javascript/#top-of-site
+-- guide
 
 A throttle not calling the last throttled argument
 https://stackoverflow.com/questions/52576307/a-throttle-not-calling-the-last-throttled-argument
+-- how to
 
 Using Npm Scripts as a Build Tool
 https://deliciousbrains.com/npm-build-script/
+-- guide
 
 How can I use 'watch' in my npm scripts?
 https://stackoverflow.com/questions/36245415/how-can-i-use-watch-in-my-npm-scripts
+-- how to
 
 Is it possible to write data to file using only JavaScript?
 https://stackoverflow.com/questions/21012580/is-it-possible-to-write-data-to-file-using-only-javascript
+-- how to
 
 nodemon
 https://www.npmjs.com/package/nodemon
+-- tool
 
 nodejs
 https://unofficial-builds.nodejs.org/download/release/
+-- tool
 
 How to install node.tar.xz file in linux
 https://stackoverflow.com/questions/63312642/how-to-install-node-tar-xz-file-in-linux
+-- how to
 
 Install Node.js Locally with Node Version Manager (nvm)
 https://heynode.com/tutorial/install-nodejs-locally-nvm/
+-- guide
 
 Управление версиями Node.js и NPM с помощью NVM
 https://habr.com/ru/companies/timeweb/articles/541452/
+-- guide
 
 live-server
 https://www.npmjs.com/package/live-server
+-- tool
 
 НИКТО НЕ ЗНАЕТ JAVASCRIPT / ХАКЕР СО СТАЖЕМ — Demi Murych
 https://www.youtube.com/watch?v=hHdNfPOQjrg
+-- video
 
 Best Free JavaScript Books
 https://cssauthor.com/free-javascript-books/
+-- books
 
 23 Free JavaScript Books
 https://gist.github.com/WebRTCGame/9fa80ed32a7413bd0f8d71304d6335eb
+-- books
 
 Получение сырых данных Audio в js
 https://ru.stackoverflow.com/questions/798995/%D0%9F%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D1%81%D1%8B%D1%80%D1%8B%D1%85-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-audio-%D0%B2-js
+-- how to
 
 How to continuously generate raw audio samples in javascript using the web audio API?
 https://stackoverflow.com/questions/67342004/how-to-continuously-generate-raw-audio-samples-in-javascript-using-the-web-audio
+-- how to
 
 Franks laboratory. JavaScript Audio CRASH COURSE For Beginners
 https://www.youtube.com/watch?v=VXWvfrmpapI
+-- video
 
 Quick Start To Generate Tones In Javascript
 https://www.cirruslabs.io/blog1/modernized-technology/quick-start-to-generate-tones-in-javascript
+-- guide
 
 Music and Coding. #12 - Build an Interactive Guitar Fretboard with Javascript. HTML and CSS - Add Instrument Selector
 https://www.youtube.com/watch?v=ewgPS-4ycoE
+-- video
 
 JavaScript Guitar
 https://guitar.js.org/
+-- tool
 
 How to use Web Audio API to make sound like guitar, piano etc
 https://stackoverflow.com/questions/24615677/how-to-use-web-audio-api-to-make-sound-like-guitar-piano-etc
+-- how to
 
 Let's build an actual working Guitar🎸 with JavaScript
 https://dev.to/thormeier/let-s-build-an-actual-working-guitar-with-javascript-bfb
+-- guide
 
 Reading file contents on the client-side in javascript in various browsers
 https://stackoverflow.com/questions/750032/reading-file-contents-on-the-client-side-in-javascript-in-various-browsers
+-- how to
 
 How to read a local text file in the browser?
 https://stackoverflow.com/questions/14446447/how-to-read-a-local-text-file-in-the-browser
+-- how to
 
 ---------------------------------------------------------
 
@@ -132,36 +172,47 @@ https://stackoverflow.com/questions/14446447/how-to-read-a-local-text-file-in-th
 
 react-redux-links
 https://github.com/markerikson/react-redux-links
+-- link
 
 redux-ecosystem-links
 https://github.com/markerikson/redux-ecosystem-links
+-- link
 
 React30-Project23: Setting Up a React Project Using Webpack and Babel
 https://saurabhnativeblog.medium.com/react30-project23-setting-up-a-react-project-using-webpack-and-babel-f4ca5554dfec
+-- guide
 
 The best webpack configurations for React applications
 https://blog.logrocket.com/versatile-webpack-configurations-react-application/
+-- guide
 
 How to setup a React Project with Vite
 https://medium.com/@pascalokereke18/how-to-setup-a-react-project-with-vite-6c2130d3bce
+-- guide
 
 A modern animation library for JavaScript and React
 https://www.framer.com/motion/
+-- lib
 
 Code Alchemy. React Portfolio Website Tutorial - Portfolio Website Using React - React JS Portfolio Website
 https://www.youtube.com/watch?v=3aCoZudPEKE
+-- video
 
 webdecoded. React Project Tutorial: Build a Responsive Portfolio Website w/ Advanced Animations
 https://www.youtube.com/watch?v=hYv6BM2fWd8
+-- video
 
 Code It Down. React Music App | React & Tailwind Css music Application
 https://www.youtube.com/watch?v=FNNceKjri24
+-- video
 
 Most Popular React Tech Stack in 2023
 https://profy.dev/article/react-tech-stack
+-- article
 
 Making setInterval Declarative with React Hooks
 https://overreacted.io/making-setinterval-declarative-with-react-hooks/
+-- guide
 
 ---------------------------------------------------------
 
@@ -169,15 +220,19 @@ https://overreacted.io/making-setinterval-declarative-with-react-hooks/
 
 EdRoh. Build a COMPLETE Fullstack Responsive MERN App with Auth, Likes, Dark Mode | React, MongoDB, MUI
 https://www.youtube.com/watch?v=K8YELRmUb5o
+-- video
 
 Coding With Dawid. Build a Fullstack Food Ordering App with Next.js 14 (react.js, mongo, tailwind)
 https://www.youtube.com/watch?v=nGoSP3MBV2E
+-- video
 
 TubeGuruji. Build & Deploy Full Stack Next.Js Online Grocery React App Store | React, Strapi, Tailwindcss
 https://www.youtube.com/watch?v=7NN56jsaj6w
+-- video
 
 Dynamic Coding With Amit. Full Stack E-Commerce Responsive MERN App with Auth, Search, Filter, Upload Product | React, MongoDB
 https://www.youtube.com/watch?v=SUeVdpV768o
+-- video
 
 ---------------------------------------------------------
 
@@ -185,6 +240,7 @@ https://www.youtube.com/watch?v=SUeVdpV768o
 
 loftblog. React + Typescript + Mobx: создаем карточную игру «Дурак»
 https://www.youtube.com/watch?v=oODzkPYIoSQ
+-- video
 
 ---------------------------------------------------------
 
@@ -192,6 +248,7 @@ https://www.youtube.com/watch?v=oODzkPYIoSQ
 
 How do I undo the most recent local commits in Git?
 https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git
+-- how to
 
 ---------------------------------------------------------
 
@@ -199,6 +256,7 @@ https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-c
 
 Data Structure Visualizations
 https://www.cs.usfca.edu/~galles/visualization/Algorithms.html
+-- theory
 
 ---------------------------------------------------------
 
@@ -206,27 +264,35 @@ https://www.cs.usfca.edu/~galles/visualization/Algorithms.html
 
 Linux® commands Notes for Professionals book
 https://goalkicker.com/LinuxBook/
+-- book
 
 Internet drops every few minutes on wired and wireless connection
 https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1666432
+-- how to
 
 My docker container has no internet
 https://stackoverflow.com/questions/20430371/my-docker-container-has-no-internet
+-- how to
 
 Monitor CPU Temperature in Ubuntu
 https://www.redswitches.com/blog/linux-cpu-temperature/
+-- tool
 
 18 Methods to Make Ubuntu Faster
 https://operavps.com/docs/make-ubuntu-faster/
+-- article
 
 How can I scan for possible viruses on my Ubuntu system? [duplicate]
 https://askubuntu.com/questions/417429/how-can-i-scan-for-possible-viruses-on-my-ubuntu-system
+-- how to
 
 20 Best Linux Books You Can Download For Free Legally
 https://itsfoss.com/learn-linux-for-free/
+-- link
 
 Taking Firefox memory usage under control on Linux
 https://dev.to/msugakov/taking-firefox-memory-usage-under-control-on-linux-4b02
+-- guide
 
 ---------------------------------------------------------
 
@@ -234,6 +300,7 @@ https://dev.to/msugakov/taking-firefox-memory-usage-under-control-on-linux-4b02
 
 [Udemy, Pat Selby] How to Create Internet Stores the EASY WAY Using Wordpress [2016, ENG]
 https://rutracker.org/forum/viewtopic.php?t=5260184
+-- link
 
 ---------------------------------------------------------
 
@@ -241,12 +308,14 @@ https://rutracker.org/forum/viewtopic.php?t=5260184
 
 Markdown Guide
 https://www.markdownguide.org/basic-syntax/#headings
+-- guide
 
 ---------------------------------------------------------
 
 # Figma
 
 https://www.figma.com/file/Ex1me550Oqp83srrKkqyKL/Free-Online-Education-Website-Template-(Community)?type=design&node-id=0-1&mode=design&t=5EMxnth85upPcA10-0
+-- template
 
 ---------------------------------------------------------
 
@@ -254,30 +323,39 @@ https://www.figma.com/file/Ex1me550Oqp83srrKkqyKL/Free-Online-Education-Website-
 
 Arnel's Everyday English. 30 SUPER COMMON phrasal verbs | You can use them every day!
 https://www.youtube.com/watch?v=MHKa48BWbPw
+-- video
 
 Simple Teaching English. Lesson 104: List of 60 Opposite Phrasal Verbs | Pictionary
 https://www.youtube.com/watch?v=CI68qFZf9gQ
+-- video
 
 English Vocabulary Practice. 200 Daily Use English Action Words Vocabulary with Pictures for Beginners to Advance Learners
 https://www.youtube.com/watch?v=RALreafrz50
+-- video
 
 Kool English Words. 100 Action Verbs | Daily Life English Vocabulary With Examples | English Action Verbs
 https://www.youtube.com/watch?v=41YzYjDihSU
+-- video
 
 Speak English. Adjectives Words for Everyday Life + Self -Test| Basic English Vocabulary for Daily Talk
 https://www.youtube.com/watch?v=09CZKgFVEPA
+-- video
 
 LinguaTrip TV. Грамматика английского языка, которую вы обязательно должны знать
 https://www.youtube.com/watch?v=CFE_XzOCsu4
+-- video
 
 Kool English Words. 200+ Action Verbs In English |⭐Common Word In English |Action Verbs
 https://www.youtube.com/watch?v=43apxjq0IUs
+-- video
 
 Club James Studios - English Speaking Videos. Learn 290 USEFUL COLLOCATIONS in English To Enhance Your English Speaking Skills in Conversations
 https://www.youtube.com/watch?v=4hlv9HNKui4
+-- video
 
 Easy English.
 https://www.youtube.com/@easyenglish551/playlists
+-- video
 
 ---------------------------------------------------------
 
@@ -285,6 +363,7 @@ https://www.youtube.com/@easyenglish551/playlists
 
 List of All Weapon Runewords
 https://d2runewizard.com/runewords/gear-type/weap
+-- guide
 
 ---------------------------------------------------------
 
@@ -292,15 +371,19 @@ https://d2runewizard.com/runewords/gear-type/weap
 
 How to install, uninstall and update Firefox on Ubuntu
 https://linuxconfig.org/how-to-install-uninstall-and-update-firefox-on-ubuntu-20-04-focal-fossa-linux
+-- how to
 
 firefox
 https://www.mozilla.org/ru/firefox/welcome/19/
+-- tool
 
 Install Firefox on Linux
 https://support.mozilla.org/en-US/kb/install-firefox-linux#firefox:linux:fx115
+-- how to
 
 Firefox System Requirements
 https://www.mozilla.org/en-US/firefox/133.0/system-requirements/#gnulinux
+-- tool
 
 ---------------------------------------------------------
 
@@ -308,15 +391,19 @@ https://www.mozilla.org/en-US/firefox/133.0/system-requirements/#gnulinux
 
 professional-programming
 https://github.com/charlax/professional-programming
+-- link
 
 Programming Notes for Professionals books
 https://books.goalkicker.com/
+-- link
 
 The Ultimate List of Free SQL Resources
 https://github.com/amartinson193/The-Ultimate-List-of-Free-SQL-Resources
+-- link
 
 free-programming-books
 https://github.com/EbookFoundation/free-programming-books/tree/main
+-- link
 
 ---------------------------------------------------------
 
@@ -324,63 +411,83 @@ https://github.com/EbookFoundation/free-programming-books/tree/main
 
 Как живёт Глава Даркнета. Как стать умным - Метод Мориарти.
 https://www.youtube.com/watch?v=wbItXmjm7tY
+-- video
 
 Хранители Миров. Подведение итогов по всем знания и что будет дальше.
 https://www.youtube.com/watch?v=v62k3q3Ndvs
+-- video
 
 Антон Мажирин. 100% способ исполнения желаний. Наконец-то понял как это делать!
 https://www.youtube.com/watch?v=ApaNJUU5wQY
+-- video
 
 Отчеw наш на арамейском
 https://www.youtube.com/shorts/4tseh81xjf4
+-- video
 
 В ПОИСКАХ СВОБОДЫ. Перископ трансляция с Иваном Лимаревым и Арсеном Маркаряном
 https://www.youtube.com/watch?v=RntMODQdZcA&list=PLT95Z_I5wZkfAQmyl9VHNyW8k4gFwTcb6
+-- video
 
 Lionel Grand. НЕЙРОУЧЕНЫЙ: Как Учиться в 10 раз БЫСТРЕЕ
 https://www.youtube.com/watch?v=3gMSP0olx2k
+-- video
 
 Геннадий Давыдович Ищущему. Телепортация—механизм.Все просто. Хотите научиться? Я тоже.В.ф.№21т. 16.12.19.89836266309
 https://www.youtube.com/watch?v=Y0DtuTjxWr8
+-- video
 
 Valmiki Travel. ЭТА «ВОСЬМЕРКА» МОЖЕТ ПОДНЯТЬ ДАЖЕ ЛЕЖАЧЕГО!
 https://www.youtube.com/watch?v=Q2vBS1C4BJo
+-- video
 
 21 Legit Ways to Earn Money Online without Paying Anything
 https://www.tigren.com/blog/how-to-earn-money-online-without-paying-anything/
+-- video
 
 Кот заговорил
 https://www.youtube.com/shorts/bHxQems5THY
+-- video
 
 Спина
 https://www.youtube.com/shorts/zopPTrlSxMc
+-- video
 
 Родосвет Рюрикович •Сила Шамана. Как закрыть каналы оттока энергии ЗА 2 МИНУТЫ.
 https://www.youtube.com/watch?v=17fb15tPLcI
+-- video
 
 Резонанс Иванова. Сопротивляешься настоящему моменту?
 https://www.youtube.com/watch?v=llt0noBa3uM
+-- video
 
 СИЛА В СИЛЕ. ПЕРЕСТАНЬ СЕБЯ ВИНИТЬ | АРСЕН МАРКАРЯН
 https://www.youtube.com/watch?v=4xbHh9HCBxg
+-- video
 
 Медитации исцеления. Медитация от страха за один час с первого раза самостоятельно с матрицей Гаряева. Инструкция + сеанс
 https://www.youtube.com/watch?v=uupcfDn8Cpw
+-- video
 
 Как можно воплотить в жизнь что угодно
 https://www.youtube.com/shorts/VK3k8sbuHhk
+-- video
 
 podduevMax. Упражнение, которое изменило жизнь пациента: избавление от боли в пояснице
 https://www.youtube.com/watch?v=fosdo9Bi11I
+-- video
 
 Interesting experiments
 https://www.youtube.com/shorts/78fhkGzCAoc
+-- video
 
 ---------------------------------------------------------
 
 # Radio
 
+instrumental
 https://onlineradiobox.com/es/nature/?cs=es.nature&played=1
+-- radio
 
 ---------------------------------------------------------
 
@@ -388,12 +495,15 @@ https://onlineradiobox.com/es/nature/?cs=es.nature&played=1
 
 David Bao (暴一宏). Five Stance Form 五步拳 (Wu Bu Quan) - Kung Fu Wushu Changquan
 https://www.youtube.com/watch?v=HBCJyoCptKY
+-- video
 
 Самый быстрый мастер меча в мире
 https://www.youtube.com/shorts/bf4udTfokzI
+-- video
 
 Nunchaku china Master
 https://www.youtube.com/shorts/pf-NdkgtPpk
+-- video
 
 ---------------------------------------------------------
 
@@ -401,21 +511,27 @@ https://www.youtube.com/shorts/pf-NdkgtPpk
 
 Blockchain Tutorial For Developers: Step-By-Step Guide
 https://www.dappuniversity.com/articles/blockchain-tutorial
+-- guide
 
 Blockchain for Beginners Tutorial – Learn to Code Smart Contracts with JavaScript and Solidity
 https://www.freecodecamp.org/news/introduction-to-blockchain/
+-- guide
 
 Technical primer to Blockchain & Ethereum
 https://www.freecodecamp.org/news/technical-primer-to-blockchain-ethereum/
+-- guide
 
 Bitcoin and Cryptocurrency Technologies
 https://bitcoinbook.cs.princeton.edu/
+-- link
 
 Learning Bitcoin from the Command Line 2.2.0
 https://github.com/BlockchainCommons/Learning-Bitcoin-from-the-Command-Line
+-- guide
 
 Grokking Bitcoin
 https://rosenbaum.se/book/grokking-bitcoin.html
+-- book
 
 ---------------------------------------------------------
 
@@ -423,9 +539,11 @@ https://rosenbaum.se/book/grokking-bitcoin.html
 
 The law of property and possession
 https://www.britannica.com/topic/Roman-law/The-law-of-property-and-possession
+-- article
 
 Uniform Commercial Code
 https://www.law.cornell.edu/ucc
+-- code
 
 ---------------------------------------------------------
 
@@ -433,23 +551,30 @@ https://www.law.cornell.edu/ucc
 
 lonelypicker. Love Of My Life - Queen - Fingerstyle guitar with tabs
 https://www.youtube.com/watch?v=zq14_1szuzA
+-- video
 
 James Guitar. Basic Chords to Beautiful Chords Progression
 https://www.youtube.com/watch?v=bHvudpvnYDg
+-- video
 
 Alexandr Guitar. Кино - Кукушка (вступление) | аккорды, табулатура
 https://www.youtube.com/watch?v=cKAB4nlthLo
+-- video
 
 Aleksandr Marchenko. Metallica - Nothing else matters соло для акустической гитары (разбор)
 https://www.youtube.com/watch?v=XEs5-EdoWW0
+-- video
 
 Alex Mercy. Кукушка на гитаре, или как быть крутым в компании )
 https://www.youtube.com/watch?v=KEIFKyTED64
+-- video
 
 Artem Mironenko. 10 Музыка игр (8 bit консоли) Dendy/Nes/Nintendo
 https://www.youtube.com/watch?v=quQeP04nX0E&list=PLkOsY6RPB0HwO3wkA0zTrJQdZm-DhkxVo&index=59
+-- video
 
 Пачка Сигарет (Акустика) Tab
 https://www.songsterr.com/a/wsa/tab-s395598
+-- tabs
 
 ---------------------------------------------------------
