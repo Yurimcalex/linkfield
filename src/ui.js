@@ -3,7 +3,9 @@ export default function createUI(data) {
 
   html += '<section class="menu-panel">';
   html += '<div class="menu-opener">Open menu</div>';
+  html += '<div class="category-menu-wrapper">'
   html += createCategoryMenu(data.map(d => d.title));
+  html += '</div>';
   html += '</section>';
 
   html += '<section class="content">';
