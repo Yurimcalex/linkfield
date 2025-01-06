@@ -1,7 +1,6 @@
-import './style.css';
 import parseText from './parser.js';
 import createUI from './ui.js';
-import { handleMenuEvents } from './ui.js';
+import { handleMenuEvents, loadingComplete } from './ui.js';
 
 
 async function readTextFromFile(file) {
@@ -17,6 +16,7 @@ async function render() {
   
   createUI(linksData);
   handleMenuEvents();
+  loadingComplete();
 }
 
 

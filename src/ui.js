@@ -1,3 +1,5 @@
+
+
 export default function createUI(data) {
   document
   	.querySelector('.category-menu')
@@ -88,4 +90,13 @@ export function handleMenuEvents() {
 		menuOpener.classList.remove('hide');
 		content.classList.remove('hide');
 	});
+}
+
+
+export function loadingComplete() {
+	setTimeout(() => {
+		document
+			.querySelector('.loading-cover')
+			.style.display = 'none';
+		}, 0);
 }
