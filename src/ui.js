@@ -8,6 +8,8 @@ export default function createUI(data) {
   document
   	.querySelector('.content')
   	.innerHTML = createMainContent(data);
+
+  createLinkTypeOptions(data);
 }
 
 
@@ -44,6 +46,21 @@ function createCategoryMenuContent(items) {
 		html += '</li>';
 	}
 	return html;
+}
+
+
+function createLinkTypeOptions(data) {
+	const types = getLinkTypes(data);
+	console.log(types);
+}
+
+
+function getLinkTypes(data) {
+	const types = data
+		.map(d => d.links)
+		.reduce((acc, links) => [...acc, ...links], [])
+		.map(link => link.type);
+	return Array.from(new Set(types));
 }
 
 
