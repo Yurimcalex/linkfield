@@ -1,5 +1,5 @@
 import parseText from './parser.js';
-import createUI from './ui.js';
+import createUI from './ui/ui.js';
 
 
 async function readTextFromFile(file) {
