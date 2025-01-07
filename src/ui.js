@@ -10,6 +10,8 @@ export default function createUI(data) {
   document
   	.querySelector('.link-creator select')
   	.innerHTML = createLinkTypeOptions(data);
+
+  handleAddNewLinkEvents();
 }
 
 
@@ -120,4 +122,26 @@ export function loadingComplete() {
 			.querySelector('.loading-cover')
 			.style.display = 'none';
 		}, 0);
+}
+
+
+function handleAddNewLinkEvents() {
+	const openAddLinkBtn = document.querySelector('.add-link-opener');
+	const settingsWindow = document.querySelector('.settings-window');
+	
+	const linkInput = document.querySelector('.link-creator input');
+	const linkType = document.querySelector('.link-creator select');
+	const addNewLinkBtn = document.querySelector('.link-creator button');
+
+
+	openAddLinkBtn.addEventListener('click', () => {
+		settingsWindow.classList.remove('hide');
+	});
+
+	addNewLinkBtn.addEventListener('click', (e) => {
+		e.preventDefault();
+		console.log(linkInput.value, linkType.value);
+		linkInput.value = '';
+		settingsWindow.classList.add('hide');
+	});
 }
