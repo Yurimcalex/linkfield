@@ -1,6 +1,5 @@
 import parseText from './parser.js';
 import createUI from './ui.js';
-import { handleMenuEvents, loadingComplete } from './ui.js';
 
 
 async function readTextFromFile(file) {
@@ -15,8 +14,6 @@ async function render() {
   const linksData = parseText(textData);
   
   createUI(linksData);
-  handleMenuEvents();
-  loadingComplete();
 }
 
 

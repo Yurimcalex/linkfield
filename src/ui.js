@@ -11,7 +11,9 @@ export default function createUI(data) {
   	.querySelector('.link-creator select')
   	.innerHTML = createLinkTypeOptions(data);
 
+  handleMenuEvents();
   handleAddNewLinkEvents();
+  loadingComplete();
 }
 
 
@@ -76,7 +78,7 @@ function replaceSpace(str) {
 
 
 // open/close category menu feat
-export function handleMenuEvents() {
+function handleMenuEvents() {
 	const menu = document.querySelector('.category-menu');
 	const menuOpener = document.querySelector('.menu-opener');
 	const content = document.querySelector('.content');
@@ -116,7 +118,7 @@ export function handleMenuEvents() {
 }
 
 
-export function loadingComplete() {
+function loadingComplete() {
 	setTimeout(() => {
 		document
 			.querySelector('.loading-cover')
