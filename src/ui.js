@@ -1,5 +1,3 @@
-
-
 export default function createUI(data) {
   document
   	.querySelector('.category-menu')
@@ -9,7 +7,9 @@ export default function createUI(data) {
   	.querySelector('.content')
   	.innerHTML = createMainContent(data);
 
-  createLinkTypeOptions(data);
+  document
+  	.querySelector('.link-creator select')
+  	.innerHTML = createLinkTypeOptions(data);
 }
 
 
@@ -50,8 +50,12 @@ function createCategoryMenuContent(items) {
 
 
 function createLinkTypeOptions(data) {
+	let html = '';
 	const types = getLinkTypes(data);
-	console.log(types);
+	for (let type of types) {
+		html += `<option value=${type}>${type}</option>`
+	}
+	return html;
 }
 
 
