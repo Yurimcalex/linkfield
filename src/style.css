@@ -174,3 +174,16 @@ body {
   text-align: center;
   padding-top: 200px;
 }
+
+/* --- settings panel --- */
+.settings-panel {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+@media screen and (max-width: 650px) {
+  .settings-panel {
+    display: none;
+  }
+}
