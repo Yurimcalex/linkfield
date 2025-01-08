@@ -58,7 +58,7 @@ function createLinkListItem(linkData) {
 	html += `<span>${linkData.type}</span> `;
 	html += `<a href=${linkData.link} target="_blank">${linkData.topic}</a>`;
 	html += '<div>';
-	html += `<span><a>Edit</a></span>`;
+	html += `<span><a class="edit-btn">&#128393;</a></span>`;
 	html += '<span><a>Remove</a></span>';
 	html += '</div>';
 	html += '</h3>';

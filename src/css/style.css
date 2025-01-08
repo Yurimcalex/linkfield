@@ -111,7 +111,7 @@ body {
   font-weight: normal;
 }
 
-.link-list a {
+.link-list h3 > a {
   padding: 10px 0;
 }
 
@@ -265,6 +265,19 @@ body {
 }
 
 .link-creator-opener:hover {
+  background: gray;
+  color: white;
+}
+
+.edit-btn {
+  padding: 3px;
+  border-radius: 3px;
+  background: lightgray;
+  font-size: 1.3em;
+  cursor: pointer;
+}
+
+.edit-btn:hover {
   background: gray;
   color: white;
 }
