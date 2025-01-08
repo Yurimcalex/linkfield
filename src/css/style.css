@@ -222,7 +222,8 @@ body {
   margin: 5px;
 }
 
-.link-creator form div:first-child {
+.link-creator form div:first-child,
+.link-creator form div:first-child + div {
   flex-grow: 1;
 }
 
@@ -237,6 +238,15 @@ body {
 
 .link-creator form div:last-child {
   margin-left: auto;
+}
+
+.link-creator form span {
+  display: inline-block;
+  width: 85px;
+}
+
+.link-creator form > div:nth-last-child(2) span {
+  width: unset;
 }
 
 
