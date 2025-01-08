@@ -254,6 +254,21 @@ body {
 }
 
 
+/* --- settings menu --- */
+.link-creator-opener {
+  display: block;
+  padding: 5px;
+  border-radius: 3px;
+  background: lightgray;
+  font-size: 1.3em;
+  cursor: pointer;
+}
+
+.link-creator-opener:hover {
+  background: gray;
+  color: white;
+}
+
 /* --- close button --- */
 .close-btn {
   position: absolute;
