@@ -124,6 +124,7 @@ body {
 }
 
 .link-list h3 > div {
+  display: flex;
   margin-left: auto;
 }
 
@@ -269,6 +270,8 @@ body {
   color: white;
 }
 
+
+/* --- content list item btns --- */
 .edit-btn {
   padding: 3px;
   border-radius: 3px;
