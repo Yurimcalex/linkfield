@@ -13,6 +13,13 @@ export function handleLinkEvents() {
 		getNewLinkData();
 		settingsWindow.classList.add('hide');
 	});
+
+	settingsWindow.addEventListener('click', (e) => {
+		const target = e.target;
+		if (target.closest('.close-btn')) {
+			settingsWindow.classList.add('hide');
+		}
+	});
 }
 
 
