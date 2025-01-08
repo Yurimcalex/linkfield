@@ -1,6 +1,4 @@
-import { loadingComplete } from './handlers.js';
-import { handleMenuEvents } from './handlers/menuEvents.js';
-import { handleLinkEvents } from './handlers/linkEvents.js';
+import applyHandlers from './handlers/handlers.js';
 
 export default function createUI(data) {
   document
@@ -15,9 +13,7 @@ export default function createUI(data) {
   	.querySelector('.link-creator select')
   	.innerHTML = createLinkTypeOptions(data);
 
-  handleMenuEvents();
-  handleLinkEvents();
-  loadingComplete();
+  applyHandlers();
 }
 
 
