@@ -3,6 +3,7 @@ import { createLink } from '../ui.js';
 const openLinkCreatorBtn = document.querySelector('.link-creator-opener');
 const settingsWindow = document.querySelector('.settings-window');
 const addLinkForm = document.querySelector('.link-creator form');
+const content = document.querySelector('.content');
 
 
 export function handleLinkEvents() {
@@ -21,6 +22,13 @@ export function handleLinkEvents() {
 		const target = e.target;
 		if (target.closest('.close-btn')) {
 			settingsWindow.classList.add('hide');
+		}
+	});
+
+	content.addEventListener('click', (e) => {
+		const target = e.target;
+		if (target.classList.contains('remove-btn')) {
+			target.closest('li').remove();
 		}
 	});
 }
