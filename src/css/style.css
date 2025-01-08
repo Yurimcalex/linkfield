@@ -115,12 +115,16 @@ body {
   padding: 10px 0;
 }
 
-.link-list span {
+.link-list h3 > span:first-child {
   flex-basis: 70px;
   flex-shrink: 0;
   font-style: italic;;
   font-size: 0.8em;
   color: gray;
+}
+
+.link-list h3 > div {
+  margin-left: auto;
 }
 
 
