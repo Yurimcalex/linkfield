@@ -1,0 +1,44 @@
+.link-creator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  border-radius: 5px;
+  background: lightgray;
+}
+
+.link-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.link-form-item {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+}
+
+.link-form-item:first-child,
+.link-form-item:first-child + .link-form-item {
+  flex-grow: 1;
+}
+
+.link-creator input {
+  flex-grow: 1;
+}
+
+.link-creator span {
+  display: inline-block;
+  width: 85px;
+  padding-right: 5px;
+  font-size: 0.9em;
+}
+
+.link-form-item:last-child {
+  margin-left: auto;
+}
+
+.link-form-item:nth-last-child(2) span {
+  width: unset;
+}
