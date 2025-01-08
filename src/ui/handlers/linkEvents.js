@@ -30,6 +30,13 @@ export function handleLinkEvents() {
 		if (target.classList.contains('remove-btn')) {
 			target.closest('li').remove();
 		}
+
+		if (target.classList.contains('edit-btn')) {
+			const li = target.closest('li');
+			openLinkCreatorBtn.click();
+			putLinkDataIntoForm(li);
+			li.remove();
+		}
 	});
 }
 
@@ -43,4 +50,17 @@ function getNewLinkData() {
 	};
 	addLinkForm.link.value = '';
 	return data;
+}
+
+
+function putLinkDataIntoForm(linkItem) {
+	const list = linkItem.closest('.link-list');
+	const linkType = linkItem.querySelector('.link-type');
+	const linkTopic = linkItem.querySelector('.link-topic');
+	const linkList = linkItem.closest('.link-list');
+
+	addLinkForm.link.value = linkTopic.getAttribute('href');
+	addLinkForm.topic.value = linkTopic.textContent;
+	addLinkForm.type.value = linkType.textContent;
+	addLinkForm.category.value = linkList.dataset.category;
 }
