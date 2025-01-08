@@ -1,5 +1,5 @@
-import { handleMenuEvents, handleLinkEvents, loadingComplete } from './handlers.js';
-
+import { handleLinkEvents, loadingComplete } from './handlers.js';
+import { handleMenuEvents } from './handlers/menuEvents.js';
 
 export default function createUI(data) {
   document
