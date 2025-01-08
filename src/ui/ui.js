@@ -26,16 +26,16 @@ function createMainContent(data) {
 	for (let d of data) {
 	  html += '<div class="link-category">';
 	  html += `<h2 id=${replaceSpace(d.title)}>${d.title}</h2>`;
-	  html += createLinkList(d.links);
+	  html += createLinkList(d.links, d.title);
 	  html += '</div>';
 	}
 	return html;
 }
 
 
-function createLinkList(links) {
+function createLinkList(links, category) {
 	let html = '';
-	html += '<ul class="link-list">';
+	html += `<ul class="link-list" data-category="${category}">`;
 	for (let link of links) {
 		html += '<li>';
 		html += `<h3><span>${link.type}</span> <a href=${link.link} target="_blank">${link.topic}</a></h3>`;
@@ -43,6 +43,17 @@ function createLinkList(links) {
 	}
 	html += '</ul>';
 	return html;
+}
+
+
+export function createLink(linkData) {
+	let html = '';
+	html += '<li>';
+	html += `<h3><span>${linkData.type}</span> <a href=${linkData.link} target="_blank">${linkData.topic}</a></h3>`;
+	html += '</li>';
+	document
+		.querySelector(`[data-category="${linkData.category}"]`)
+		.innerHTML += html;
 }
 
 
