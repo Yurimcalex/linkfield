@@ -285,6 +285,20 @@ body {
   color: white;
 }
 
+.remove-btn {
+  margin-left: 5px;
+  padding: 3px;
+  border-radius: 3px;
+  background: lightgray;
+  font-size: 1.3em;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  background: gray;
+  color: white;
+}
+
 /* --- close button --- */
 .close-btn {
   position: absolute;
