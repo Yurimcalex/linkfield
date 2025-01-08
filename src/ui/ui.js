@@ -21,6 +21,13 @@ export default function createUI(data) {
 }
 
 
+export function createLink(linkData) {
+	document
+		.querySelector(`[data-category="${linkData.category}"]`)
+		.innerHTML += createLinkListItem(linkData);
+}
+
+
 function createMainContent(data) {
 	let html = '';
 	for (let d of data) {
@@ -37,23 +44,19 @@ function createLinkList(links, category) {
 	let html = '';
 	html += `<ul class="link-list" data-category="${category}">`;
 	for (let link of links) {
-		html += '<li>';
-		html += `<h3><span>${link.type}</span> <a href=${link.link} target="_blank">${link.topic}</a></h3>`;
-		html += '</li>';
+		html += createLinkListItem(link);
 	}
 	html += '</ul>';
 	return html;
 }
 
 
-export function createLink(linkData) {
+function createLinkListItem(linkData) {
 	let html = '';
 	html += '<li>';
 	html += `<h3><span>${linkData.type}</span> <a href=${linkData.link} target="_blank">${linkData.topic}</a></h3>`;
 	html += '</li>';
-	document
-		.querySelector(`[data-category="${linkData.category}"]`)
-		.innerHTML += html;
+	return html;
 }
 
 
