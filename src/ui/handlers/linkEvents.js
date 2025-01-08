@@ -29,7 +29,7 @@ export function handleLinkEvents() {
 function getNewLinkData() {
 	const data = {
 		link: addLinkForm.link.value,
-		topic: 'new link',
+		topic: addLinkForm.topic.value,
 		type: addLinkForm.type.value,
 		category: addLinkForm.category.value
 	};
