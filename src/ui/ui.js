@@ -10,8 +10,12 @@ export default function createUI(data) {
   	.innerHTML = createMainContent(data);
 
   document
-  	.querySelector('.link-creator select')
+  	.querySelector('.link-creator select[name="type"]')
   	.innerHTML = createLinkTypeOptions(data);
+
+  document
+  	.querySelector('.link-creator select[name="category"]')
+  	.innerHTML = createLinkCategoryOptions(data);
 
   applyHandlers();
 }
@@ -48,6 +52,16 @@ function createCategoryMenuContent(items) {
 		html += '<li>';
 		html += `<h2><a href=${`#` + replaceSpace(item)}>${item}</a></h2>`;
 		html += '</li>';
+	}
+	return html;
+}
+
+
+function createLinkCategoryOptions(data) {
+	let html = '';
+	const categories = data.map(d => d.title);
+	for (let category of categories) {
+		html += `<option value=${category}>${category}</option>`
 	}
 	return html;
 }
