@@ -3,9 +3,9 @@ const menu = document.querySelector('.category-menu');
 const menuOpener = document.querySelector('.menu-opener');
 const content = document.querySelector('.content');
 
-let isOpenerClicked = false;
 // takes into account the height of the menu bar
 const DY = 50;
+const SMALL_SCREEN_WIDTH = 650;
 
 
 export function handleMenuEvents() {	
@@ -17,9 +17,10 @@ export function handleMenuEvents() {
 	menu.addEventListener('click', (e) => {
 		const target = e.target;
 		if (target.tagName === 'A') {
+			const href = target.getAttribute("href");
 			e.preventDefault();
 			content.classList.remove('hide');
-			scrollContentTo(target);
+			scrollContentTo(href);
 			toggleCategoryMenu(false);
 		};
 	});
@@ -27,7 +28,13 @@ export function handleMenuEvents() {
 	window.addEventListener('resize', () => {
 		toggleCategoryMenu(false);
 		content.classList.remove('hide');
+		scrollContentTo(location.hash);
 	});
+}
+
+
+function isSmallScreen() {
+	return window.innerWidth <= SMALL_SCREEN_WIDTH;
 }
 
 
@@ -35,15 +42,14 @@ function toggleCategoryMenu(toOpen) {
 	const meth = toOpen ? 'add' : 'remove';
 	menu.classList[meth]('show');
 	menuOpener.classList[meth]('hide');
-	isOpenerClicked = toOpen;
 }
 
 
-function scrollContentTo(category) {
-	const href = category.getAttribute("href");
-	const elem = document.getElementById(href.slice(1));
-	const scrollTarget = isOpenerClicked ? window : content;
+function scrollContentTo(id) {
+	const elem = document.getElementById(id.slice(1));
+	const isSmall = isSmallScreen();
+	const scrollTarget = isSmall ? window : content;
 	// scroll the window for large screen, scroll the content for small screen,
-	scrollTarget.scrollTo(0, elem.offsetTop - (isOpenerClicked ? DY : 0));
-	history.pushState(null, null, href);
+	scrollTarget.scrollTo(0, elem.offsetTop - (isSmall ? DY : 0));
+	history.pushState(null, null, id);
 }
