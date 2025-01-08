@@ -221,7 +221,7 @@ body {
   margin: 5px;
 }
 
-.link-creator div:first-child {
+.link-creator form div:first-child {
   display: flex;
   align-items: center;
   flex-grow: 1;
@@ -236,7 +236,7 @@ body {
   font-size: 0.9em;
 }
 
-.link-creator div:last-child {
+.link-creator form div:last-child {
   margin-left: auto;
 }
 
