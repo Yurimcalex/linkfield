@@ -239,3 +239,13 @@ body {
 .link-creator div:last-child {
   margin-left: auto;
 }
+
+
+/* --- close button --- */
+.close-btn {
+  position: absolute;
+  top: -30px;
+  right: -20px;
+  font-size: 0.8em;
+  cursor: pointer;
+}
