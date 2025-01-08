@@ -1,3 +1,4 @@
+@import './category-menu.css';
 @import './link-list.css';
 
 * {
@@ -51,42 +52,7 @@ body {
   }
 }
 
-/* --- menu for link category selection --- */
-.category-menu {
-  padding: 10px 0;
-}
 
-.category-menu li:hover {
-  background: lightgray;
-}
-
-.category-menu h2 {
-  font-size: 1em;
-  font-weight: normal;
-}
-
-.category-menu a {
-  display: inline-block;
-  width: 100%;
-  padding: 10px 0 10px 20px;
-  text-decoration: none;
-  color: initial;
-}
-
-@media screen and (max-width: 650px) {
-  .category-menu {
-    height: 100vh;
-    padding: 0;
-  }
-
-  .category-menu li:nth-child(even) {
-    background: #eee;
-  }
-
-  .category-menu li:nth-child(odd) {
-    background: lightgray;
-  }
-}
 
 /* --- link category container --- */
 .link-category {
@@ -118,11 +84,6 @@ body {
 
   .menu-opener {
     display: block;
-    background: white;
-  }
-
-  .category-menu {
-    display: none;
     background: white;
   }
 

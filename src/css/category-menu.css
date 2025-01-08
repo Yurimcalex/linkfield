@@ -1,0 +1,37 @@
+.category-menu {
+  padding: 10px 0;
+}
+
+.category-menu-item:hover {
+  background: lightgray;
+}
+
+.category-menu-header {
+  font-size: 1em;
+  font-weight: normal;
+}
+
+.category-menu-content {
+  display: inline-block;
+  width: 100%;
+  padding: 10px 0 10px 20px;
+  text-decoration: none;
+  color: initial;
+}
+
+@media screen and (max-width: 650px) {
+  .category-menu {
+    display: none;
+    height: 100vh;
+    padding: 0;
+    background: white;
+  }
+
+  .category-menu-item:nth-child(even) {
+    background: #eee;
+  }
+
+  .category-menu-item:nth-child(odd) {
+    background: lightgray;
+  }
+}
