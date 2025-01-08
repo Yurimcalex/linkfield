@@ -216,14 +216,13 @@ body {
   flex-wrap: wrap;
 }
 
-.link-creator div {
-  flex-shrink: 0;
+.link-creator form div {
+  display: flex;
+  align-items: center;
   margin: 5px;
 }
 
 .link-creator form div:first-child {
-  display: flex;
-  align-items: center;
   flex-grow: 1;
 }
 
