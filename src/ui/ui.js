@@ -61,7 +61,7 @@ function createLinkCategoryOptions(data) {
 	let html = '';
 	const categories = data.map(d => d.title);
 	for (let category of categories) {
-		html += `<option value=${category}>${category}</option>`
+		html += `<option value="${category}">${category}</option>`
 	}
 	return html;
 }

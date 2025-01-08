@@ -24,6 +24,6 @@ export function handleLinkEvents() {
 
 
 function getNewLinkData() {
-	console.log(addLinkForm.link.value, addLinkForm.type.value);
+	console.log(addLinkForm.link.value, addLinkForm.category.value, addLinkForm.type.value);
 	addLinkForm.link.value = '';
 }
