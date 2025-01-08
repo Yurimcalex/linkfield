@@ -1,3 +1,5 @@
+@import './link-list.css';
+
 * {
   box-sizing: border-box;
 }
@@ -96,36 +98,6 @@ body {
   text-align: center;
   font-weight: normal;
   font-size: 1.5em;
-}
-
-
-/* --- link list --- */
-.link-list {
-  padding-left: 10px;
-}
-
-.link-list h3 {
-  display: flex;
-  align-items: center;
-  font-size: 1em;
-  font-weight: normal;
-}
-
-.link-list h3 > a {
-  padding: 10px 0;
-}
-
-.link-list h3 > span:first-child {
-  flex-basis: 70px;
-  flex-shrink: 0;
-  font-style: italic;;
-  font-size: 0.8em;
-  color: gray;
-}
-
-.link-list h3 > div {
-  display: flex;
-  margin-left: auto;
 }
 
 
@@ -270,34 +242,6 @@ body {
   color: white;
 }
 
-
-/* --- content list item btns --- */
-.edit-btn {
-  padding: 3px;
-  border-radius: 3px;
-  background: lightgray;
-  font-size: 1.3em;
-  cursor: pointer;
-}
-
-.edit-btn:hover {
-  background: gray;
-  color: white;
-}
-
-.remove-btn {
-  margin-left: 5px;
-  padding: 3px;
-  border-radius: 3px;
-  background: lightgray;
-  font-size: 1.3em;
-  cursor: pointer;
-}
-
-.remove-btn:hover {
-  background: gray;
-  color: white;
-}
 
 /* --- close button --- */
 .close-btn {

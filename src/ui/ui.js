@@ -54,14 +54,14 @@ function createLinkList(links, category) {
 function createLinkListItem(linkData) {
 	let html = '';
 	html += '<li>';
-	html += '<h3>';
-	html += `<span>${linkData.type}</span> `;
-	html += `<a href=${linkData.link} target="_blank">${linkData.topic}</a>`;
-	html += '<div>';
-	html += `<span><a class="edit-btn">&#128393;</a></span>`;
-	html += '<span><a class="remove-btn">&#128473;</a></span>';
-	html += '</div>';
-	html += '</h3>';
+		html += '<h3>';
+			html += `<span class="link-type">${linkData.type}</span> `;
+			html += `<a class="link-topic" href=${linkData.link} target="_blank">${linkData.topic}</a>`;
+			html += '<div class="link-controls">';
+				html += `<span><a class="link-btn edit-btn">&#128393;</a></span>`;
+				html += '<span><a class="link-btn remove-btn">&#128473;</a></span>';
+			html += '</div>';
+		html += '</h3>';
 	html += '</li>';
 	return html;
 }
