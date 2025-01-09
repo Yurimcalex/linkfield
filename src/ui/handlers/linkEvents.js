@@ -41,6 +41,7 @@ function handleEditLinkBtnClick(e) {
 		
 		openLinkCreatorBtn.click();
 		putLinkDataIntoForm(linkItem);
+		changeAddFormButtonText('Edit');
 		
 		addLinkForm.add.addEventListener('click', function interceptAddBtnclick() {
 			const { category: newCategory } = getNewLinkData();
@@ -52,10 +53,15 @@ function handleEditLinkBtnClick(e) {
 				scrollContentTo(newCategory);
 			}
 			oldLink.remove();
+			changeAddFormButtonText('Add');
 			
 			addLinkForm.add.removeEventListener('click', interceptAddBtnclick);
 		});
 	}
+}
+
+function changeAddFormButtonText(newText) {
+	addLinkForm.add.textContent = newText;
 }
 
 function scrollContentTo(category) {
