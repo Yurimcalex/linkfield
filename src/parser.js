@@ -14,19 +14,23 @@ function isntEmpty(str) { return !!str; }
 
 function trimEmptyEdges(str) { return str.trim(); }
 
-function parseLink(str) {
+function parseLink(str, title) {
   const linkData = str.split(linkItemDelimiter);
   return { 
     topic: linkData[0],
     link: linkData[1],
-    type: linkData[2] ? linkData[2].slice(3) : ''
+    type: linkData[2] ? linkData[2].slice(3) : '',
+    category: title
   };
 }
 
 function parseBlock(str) {
   const blockData = str.split(linkDelimiter);
+  const title = blockData[0].slice(2);
   return {
-    title: blockData[0].slice(2),
-    links: blockData.slice(1).map(parseLink)
+    title,
+    links: blockData.slice(1).map((str) => {
+      return parseLink(str, title);
+    })
   };
 }
