@@ -14,13 +14,13 @@ export function handleLinkEvents() {
 		const linkData = getNewLinkData();
 		e.preventDefault();
 		createLink(linkData);
-		settingsWindow.classList.add('hide');
+		closeSettingsWindow();
 	});
 
 	settingsWindow.addEventListener('click', (e) => {
 		const target = e.target;
 		if (target.closest('.close-btn')) {
-			settingsWindow.classList.add('hide');
+			closeSettingsWindow();
 		}
 	});
 
@@ -65,6 +65,10 @@ export function handleLinkEvents() {
 
 function openSettingsWindow() {
 	settingsWindow.classList.remove('hide');
+}
+
+function closeSettingsWindow() {
+	settingsWindow.classList.add('hide');
 }
 
 
