@@ -53,11 +53,11 @@ function createLinkList(links, category) {
 
 function createLinkListItem(linkData) {
 	let html = '';
-	html += '<li>';
+	html += '<li class="link-list-item">';
 		html += '<h3>';
 			html += `<span class="link-type">${linkData.type}</span> `;
 			html += `<a class="link-topic" href=${linkData.link} target="_blank">${linkData.topic}</a>`;
-			html += '<div class="link-controls">';
+			html += '<div class="link-controls visibility sm">';
 				html += `<span><a class="link-btn edit-btn">&#128393;</a></span>`;
 				html += '<span><a class="link-btn remove-btn">&#128473;</a></span>';
 			html += '</div>';

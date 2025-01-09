@@ -21,6 +21,36 @@ export function handleLinkEvents() {
 		handleRemoveLinkBtnClick(e);
 		handleEditLinkBtnClick(e);
 	});
+
+	handleLinkHover();
+}
+
+
+function handleLinkHover() {
+	let currElm = null;
+	content.addEventListener('mouseover', (e) => {
+		if (currElm) return;
+		let target = event.target.closest('.link-list-item');
+		if (!target) return;
+		currElm = target;
+		toggleLinkControlsDisplay(currElm);
+	});
+
+	content.addEventListener('mouseout', (e) => {
+		if (!currElm) return;
+		let relatedTarget = event.relatedTarget;
+		while (relatedTarget) {
+		  if (relatedTarget == currElm) return;
+		  relatedTarget = relatedTarget.parentNode;
+		}
+		toggleLinkControlsDisplay(currElm);
+	 	currElm = null;
+	});
+}
+
+function toggleLinkControlsDisplay(linkItem) {
+	const controlsCont = linkItem.querySelector('.link-controls')
+	controlsCont.classList.toggle('visibility');
 }
 
 
