@@ -46,6 +46,7 @@ function toggleCategoryMenu(toOpen) {
 
 
 function scrollContentTo(id) {
+	if (!id) return;
 	const elem = document.getElementById(id.slice(1));
 	const isSmall = isSmallScreen();
 	const scrollTarget = isSmall ? window : content;
