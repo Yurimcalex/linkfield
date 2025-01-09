@@ -108,7 +108,7 @@ function putLinkDataIntoForm(linkItem) {
 
 	addLinkForm.link.value = linkTopic.getAttribute('href');
 	addLinkForm.topic.value = linkTopic.textContent;
-	addLinkForm.type.value = linkType.textContent;
+	addLinkForm.type.value = replaceSpace(linkType.textContent);
 	addLinkForm.category.value = linkList.dataset.category;
 }
 

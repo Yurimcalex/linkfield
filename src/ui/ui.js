@@ -94,7 +94,7 @@ function createLinkTypeOptions(data) {
 	let html = '';
 	const types = getLinkTypes(data);
 	for (let type of types) {
-		html += `<option value=${type}>${type}</option>`
+		html += `<option value=${replaceSpace(type)}>${type}</option>`
 	}
 	return html;
 }
