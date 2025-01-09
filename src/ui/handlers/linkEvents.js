@@ -8,7 +8,11 @@ const menu = document.querySelector('.category-menu');
 
 
 export function handleLinkEvents() {
-	openLinkCreatorBtn.addEventListener('click', openSettingsWindow);
+	openLinkCreatorBtn.addEventListener('click', () => {
+		openSettingsWindow();
+		resetAddLinkForm();
+	});
+
 	addLinkForm.add.addEventListener('click', displayNewLink);
 	// handle close button click on "add new link" panel
 	settingsWindow.addEventListener('click', closeAddLinkPanel);
@@ -88,7 +92,6 @@ function getNewLinkData() {
 	for (let prop in data) {
 		data[prop] = addLinkForm[prop].value;
 	}
-	resetAddLinkForm();
 	return data;
 }
 
