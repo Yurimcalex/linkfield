@@ -23,27 +23,25 @@ export function handleLinkEvents() {
 
 		const target = e.target;
 		if (target.classList.contains('edit-btn')) {
-			const li = target.closest('li');
-			const list = li.closest('.link-list');
-			const category = list.dataset.category;
-			// it is needes because after add btn has clicked the new list content will be created (because of innerHTML)
-			// and so target li wont be there
-			const liInd = Array.from(list.children).indexOf(li);
+			// const li = target.closest('li');
+			// const list = li.closest('.link-list');
+			// const category = list.dataset.category;
+			// const liInd = Array.from(list.children).indexOf(li);
+
+			const { linkItem, list, position, category } = getTargetLinkInfo(target);
 			
 			openLinkCreatorBtn.click();
-			putLinkDataIntoForm(li);
+			putLinkDataIntoForm(linkItem);
 			// when the category has changed it needs to scroll to that category
 			// when it hasnt changed it needs to replace the target link by new one
 			// because of there is no way to get new just created link before add btn clicking of the form
 			// the info about that link is able to catch with another handler
 			addLinkForm.add.addEventListener('click', function interceptAddBtnclick() {
 				const { category: newCategory } = getNewLinkData();
-				const newLink = list.querySelector('li:last-child');
-				const oldLink = list.children[liInd];
+				const oldLink = list.children[position];
 				
 				if (category === newCategory) {	
-					//oldLink.after(newLink);
-					replaceLinkWithEditedOne(list, liInd);
+					replaceLinkWithEditedOne(list, position);
 				} else {
 					scrollContentTo(newCategory);
 				}
@@ -64,6 +62,17 @@ function replaceLinkWithEditedOne(linkList, linkInd) {
 	const oldLink = linkList.children[linkInd];
 	const newLink = linkList.querySelector('li:last-child');
 	oldLink.after(newLink);
+}
+
+function getTargetLinkInfo(target) {
+	const li = target.closest('li');
+	const list = li.closest('.link-list');
+	return {
+		linkItem: li,
+		list,
+		category: list.dataset.category,
+		position:  Array.from(list.children).indexOf(li)
+	};
 }
 
 
