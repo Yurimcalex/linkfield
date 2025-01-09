@@ -10,13 +10,8 @@ const menu = document.querySelector('.category-menu');
 export function handleLinkEvents() {
 	openLinkCreatorBtn.addEventListener('click', openSettingsWindow);
 	addLinkForm.add.addEventListener('click', displayNewLink);
-
-	settingsWindow.addEventListener('click', (e) => {
-		const target = e.target;
-		if (target.closest('.close-btn')) {
-			closeSettingsWindow();
-		}
-	});
+	// handle close button click on "add new link" panel
+	settingsWindow.addEventListener('click', closeAddLinkPanel);
 
 	content.addEventListener('click', (e) => {
 		const target = e.target;
@@ -71,6 +66,14 @@ function displayNewLink(e) {
 	createLink(newlinkData);
 	closeSettingsWindow();
 	e.preventDefault();
+}
+
+
+function closeAddLinkPanel(e) {
+	const target = e.target;
+	if (target.closest('.close-btn')) {
+		closeSettingsWindow();
+	}
 }
 
 
