@@ -134,6 +134,7 @@ function replaceLinkWithEditedOne(linkList, linkInd) {
 	const oldLink = linkList.children[linkInd];
 	const newLink = linkList.querySelector('li:last-child');
 	oldLink.after(newLink);
+	newLink.click();
 }
 
 function getTargetLinkInfo(target) {
