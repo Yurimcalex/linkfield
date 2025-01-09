@@ -94,7 +94,8 @@ function handleEditLinkBtnClick(e) {
 			if (category === newCategory) {	
 				replaceLinkWithEditedOne(list, position);
 			} else {
-				scrollContentTo(newCategory);
+				//scrollContentTo(newCategory);
+				scrollContentToJustCreatedLink(newCategory);
 			}
 			oldLink.remove();
 			changeAddFormButtonText('Add');
@@ -110,6 +111,14 @@ function changeAddFormButtonText(newText) {
 
 function scrollContentTo(category) {
 	menu.querySelector(`a[href="#${replaceSpace(category)}"]`).click();
+}
+
+// just created link was moved to the new category so it needs to select this link to scroll to
+function scrollContentToJustCreatedLink(category) {
+	const listItems = content.querySelector(`[data-category="${category}"]`).children;
+	const item = listItems[listItems.length - 1];
+	item.scrollIntoView(false);
+	item.click();
 }
 
 function replaceLinkWithEditedOne(linkList, linkInd) {
