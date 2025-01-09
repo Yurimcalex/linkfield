@@ -1,5 +1,7 @@
-.link-list {
-  padding-left: 10px;
+.link-list {}
+
+.link-list-item {
+  padding: 0 10px 0 20px;
 }
 
 .link-list-item:hover {
@@ -49,7 +51,7 @@
 }
 
 .visibility {
-  visibility: hidden;
+  /*visibility: hidden;*/
 }
 
 @media screen and (max-width: 650px) {

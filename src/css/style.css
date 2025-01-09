@@ -55,7 +55,7 @@ body {
 
 /* --- link category container --- */
 .link-category {
-  padding: 10px;
+  padding: 10px 0;
 }
 
 .link-category h2 {
