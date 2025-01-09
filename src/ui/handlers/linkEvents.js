@@ -23,6 +23,16 @@ export function handleLinkEvents() {
 	});
 
 	handleLinkHover();
+
+	let prevElm = null;
+	content.addEventListener('click', (e) => {
+		const target = e.target.closest('.link-list-item');
+		if (target) {
+			if (prevElm) prevElm.classList.remove('current');
+			target.classList.add('current');
+			prevElm = target;
+		}
+	});
 }
 
 
