@@ -20,6 +20,7 @@ export function handleLinkEvents() {
 	content.addEventListener('click', (e) => {
 		handleRemoveLinkBtnClick(e);
 
+
 		const target = e.target;
 		if (target.classList.contains('edit-btn')) {
 			const li = target.closest('li');
@@ -41,13 +42,13 @@ export function handleLinkEvents() {
 				const oldLink = list.children[liInd];
 				
 				if (category === newCategory) {	
-					oldLink.after(newLink);
+					//oldLink.after(newLink);
+					replaceLinkWithEditedOne(list, liInd);
 				} else {
-					//menu.querySelector(`a[href="#${replaceSpace(newCategory)}"]`).click();
 					scrollContentTo(newCategory);
 				}
-				
 				oldLink.remove();
+				
 				addLinkForm.add.removeEventListener('click', interceptAddBtnclick);
 			});
 		}
@@ -57,6 +58,12 @@ export function handleLinkEvents() {
 
 function scrollContentTo(category) {
 	menu.querySelector(`a[href="#${replaceSpace(category)}"]`).click();
+}
+
+function replaceLinkWithEditedOne(linkList, linkInd) {
+	const oldLink = linkList.children[linkInd];
+	const newLink = linkList.querySelector('li:last-child');
+	oldLink.after(newLink);
 }
 
 
