@@ -2,8 +2,13 @@
   padding-left: 10px;
 }
 
+.link-list-item:hover {
+  background: #eee;
+}
+
 .link-list h3 {
   display: flex;
+  padding: 3px;
   align-items: center;
   font-size: 1em;
   font-weight: normal;
