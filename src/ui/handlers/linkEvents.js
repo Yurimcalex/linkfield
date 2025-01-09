@@ -43,7 +43,8 @@ export function handleLinkEvents() {
 				if (category === newCategory) {	
 					oldLink.after(newLink);
 				} else {
-					menu.querySelector(`a[href="#${replaceSpace(newCategory)}"]`).click();
+					//menu.querySelector(`a[href="#${replaceSpace(newCategory)}"]`).click();
+					scrollContentTo(newCategory);
 				}
 				
 				oldLink.remove();
@@ -51,6 +52,11 @@ export function handleLinkEvents() {
 			});
 		}
 	});
+}
+
+
+function scrollContentTo(category) {
+	menu.querySelector(`a[href="#${replaceSpace(category)}"]`).click();
 }
 
 
