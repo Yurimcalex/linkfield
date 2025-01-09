@@ -14,11 +14,9 @@ export function handleLinkEvents() {
 	settingsWindow.addEventListener('click', closeAddLinkPanel);
 
 	content.addEventListener('click', (e) => {
-		const target = e.target;
-		if (target.classList.contains('remove-btn')) {
-			target.closest('li').remove();
-		}
+		handleRemoveLinkBtnClick(e);
 
+		const target = e.target;
 		if (target.classList.contains('edit-btn')) {
 			const li = target.closest('li');
 			const list = li.closest('.link-list');
@@ -73,6 +71,14 @@ function closeAddLinkPanel(e) {
 	const target = e.target;
 	if (target.closest('.close-btn')) {
 		closeSettingsWindow();
+	}
+}
+
+
+function handleRemoveLinkBtnClick(e) {
+	const target = e.target;
+	if (target.classList.contains('remove-btn')) {
+		target.closest('li').remove();
 	}
 }
 
