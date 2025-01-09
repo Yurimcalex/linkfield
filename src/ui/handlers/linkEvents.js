@@ -84,12 +84,10 @@ function handleRemoveLinkBtnClick(e) {
 
 
 function getNewLinkData() {
-	const data = {
-		link: addLinkForm.link.value,
-		topic: addLinkForm.topic.value,
-		type: addLinkForm.type.value,
-		category: addLinkForm.category.value
-	};
+	const data = { link: '', topic: '', type: '', category: '' };
+	for (let prop in data) {
+		data[prop] = addLinkForm[prop].value;
+	}
 	resetAddLinkForm();
 	return data;
 }
