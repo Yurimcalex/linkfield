@@ -19,40 +19,44 @@ export function handleLinkEvents() {
 
 	content.addEventListener('click', (e) => {
 		handleRemoveLinkBtnClick(e);
-
-
-		const target = e.target;
-		if (target.classList.contains('edit-btn')) {
-			// const li = target.closest('li');
-			// const list = li.closest('.link-list');
-			// const category = list.dataset.category;
-			// const liInd = Array.from(list.children).indexOf(li);
-
-			const { linkItem, list, position, category } = getTargetLinkInfo(target);
-			
-			openLinkCreatorBtn.click();
-			putLinkDataIntoForm(linkItem);
-			// when the category has changed it needs to scroll to that category
-			// when it hasnt changed it needs to replace the target link by new one
-			// because of there is no way to get new just created link before add btn clicking of the form
-			// the info about that link is able to catch with another handler
-			addLinkForm.add.addEventListener('click', function interceptAddBtnclick() {
-				const { category: newCategory } = getNewLinkData();
-				const oldLink = list.children[position];
-				
-				if (category === newCategory) {	
-					replaceLinkWithEditedOne(list, position);
-				} else {
-					scrollContentTo(newCategory);
-				}
-				oldLink.remove();
-				
-				addLinkForm.add.removeEventListener('click', interceptAddBtnclick);
-			});
-		}
+		handleEditLinkBtnClick(e);
 	});
 }
 
+
+// When the category has changed it needs to scroll to that category.
+// When it hasnt changed it needs to replace the target link by new one.
+// There is no way to get new just created link before add btn clicking of the form
+// so the info about that link is able to catch with another handler.
+// Because of the link list uses innerHTML to create its content
+// there will be three versions of target link item:
+// 1) the one in the old list content
+// 2) the one in the new list content
+// 3) and current edited one - this is the case
+function handleEditLinkBtnClick(e) {
+	const target = e.target;
+
+	if (target.classList.contains('edit-btn')) {
+		const { linkItem, list, position, category } = getTargetLinkInfo(target);
+		
+		openLinkCreatorBtn.click();
+		putLinkDataIntoForm(linkItem);
+		
+		addLinkForm.add.addEventListener('click', function interceptAddBtnclick() {
+			const { category: newCategory } = getNewLinkData();
+			const oldLink = list.children[position];
+			
+			if (category === newCategory) {	
+				replaceLinkWithEditedOne(list, position);
+			} else {
+				scrollContentTo(newCategory);
+			}
+			oldLink.remove();
+			
+			addLinkForm.add.removeEventListener('click', interceptAddBtnclick);
+		});
+	}
+}
 
 function scrollContentTo(category) {
 	menu.querySelector(`a[href="#${replaceSpace(category)}"]`).click();
