@@ -95,7 +95,7 @@ function handleEditLinkBtnClick(e) {
 				replaceLinkWithEditedOne(list, position);
 			} else {
 				//scrollContentTo(newCategory);
-				scrollContentToJustCreatedLink(newCategory);
+				focusOnJustMovedLink(newCategory);
 			}
 			oldLink.remove();
 			changeAddFormButtonText('Add');
@@ -114,18 +114,20 @@ function scrollContentTo(category) {
 }
 
 // just created link was moved to the new category so it needs to select this link to scroll to
-function scrollContentToJustCreatedLink(category) {
+function focusOnJustMovedLink(category) {
 	const listItems = content.querySelector(`[data-category="${category}"]`).children;
-	const item = listItems[listItems.length - 1];
-	item.scrollIntoView(false);
-	item.click();
+	const linkItem = listItems[listItems.length - 1];
+	linkItem.scrollIntoView(false);
+	linkItem.click();
+	highlightLinkForTime(linkItem);
+	window.scrollBy(0, 20);
 }
 
 function highlightLinkForTime(linkItem) {
 	linkItem.classList.add('highlight');
 	setTimeout(() => {
 		linkItem.classList.remove('highlight');
-	}, 1000);
+	}, 2000);
 }
 
 function replaceLinkWithEditedOne(linkList, linkInd) {
