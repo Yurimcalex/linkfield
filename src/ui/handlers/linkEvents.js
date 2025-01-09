@@ -90,8 +90,13 @@ function getNewLinkData() {
 		type: addLinkForm.type.value,
 		category: addLinkForm.category.value
 	};
-	addLinkForm.link.value = '';
+	resetAddLinkForm();
 	return data;
+}
+
+function resetAddLinkForm() {
+	addLinkForm.link.value = '';
+	addLinkForm.topic.value = '';
 }
 
 
