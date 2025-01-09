@@ -9,13 +9,7 @@ const menu = document.querySelector('.category-menu');
 
 export function handleLinkEvents() {
 	openLinkCreatorBtn.addEventListener('click', openSettingsWindow);
-
-	addLinkForm.add.addEventListener('click', (e) => {
-		const linkData = getNewLinkData();
-		e.preventDefault();
-		createLink(linkData);
-		closeSettingsWindow();
-	});
+	addLinkForm.add.addEventListener('click', displayNewLink);
 
 	settingsWindow.addEventListener('click', (e) => {
 		const target = e.target;
@@ -69,6 +63,14 @@ function openSettingsWindow() {
 
 function closeSettingsWindow() {
 	settingsWindow.classList.add('hide');
+}
+
+
+function displayNewLink(e) {
+	const newlinkData = getNewLinkData();
+	createLink(newlinkData);
+	closeSettingsWindow();
+	e.preventDefault();
 }
 
 
