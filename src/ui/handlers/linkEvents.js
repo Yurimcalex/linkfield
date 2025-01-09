@@ -23,7 +23,11 @@ export function handleLinkEvents() {
 	});
 
 	handleLinkHover();
+	handleLinkClick();
+}
 
+
+function handleLinkClick() {
 	let prevElm = null;
 	content.addEventListener('click', (e) => {
 		const target = e.target.closest('.link-list-item');
