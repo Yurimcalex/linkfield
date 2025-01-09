@@ -121,6 +121,13 @@ function scrollContentToJustCreatedLink(category) {
 	item.click();
 }
 
+function highlightLinkForTime(linkItem) {
+	linkItem.classList.add('highlight');
+	setTimeout(() => {
+		linkItem.classList.remove('highlight');
+	}, 1000);
+}
+
 function replaceLinkWithEditedOne(linkList, linkInd) {
 	const oldLink = linkList.children[linkInd];
 	const newLink = linkList.querySelector('li:last-child');
