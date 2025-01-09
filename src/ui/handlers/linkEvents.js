@@ -8,9 +8,7 @@ const menu = document.querySelector('.category-menu');
 
 
 export function handleLinkEvents() {
-	openLinkCreatorBtn.addEventListener('click', () => {
-		settingsWindow.classList.remove('hide');
-	});
+	openLinkCreatorBtn.addEventListener('click', openSettingsWindow);
 
 	addLinkForm.add.addEventListener('click', (e) => {
 		const linkData = getNewLinkData();
@@ -62,6 +60,11 @@ export function handleLinkEvents() {
 			});
 		}
 	});
+}
+
+
+function openSettingsWindow() {
+	settingsWindow.classList.remove('hide');
 }
 
 
