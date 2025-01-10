@@ -1,4 +1,7 @@
-import { createLink } from '../linkItem.js';
+import { handleOpenLinkForm } from './openLinkForm.js';
+
+
+import { createLink } from '../../linkItem.js';
 
 const openLinkCreatorBtn = document.querySelector('.link-creator-opener');
 const settingsWindow = document.querySelector('.settings-window');
@@ -8,10 +11,12 @@ const menu = document.querySelector('.category-menu');
 
 
 export function handleLinkEvents() {
-	openLinkCreatorBtn.addEventListener('click', () => {
-		openSettingsWindow();
-		resetAddLinkForm();
-	});
+	// openLinkCreatorBtn.addEventListener('click', () => {
+	// 	openSettingsWindow();
+	// 	resetAddLinkForm();
+	// });
+	handleOpenLinkForm();
+
 
 	addLinkForm.add.addEventListener('click', displayNewLink);
 	// handle close button click on "add new link" panel

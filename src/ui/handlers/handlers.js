@@ -1,5 +1,5 @@
 import { handleMenuEvents } from './menuEvents.js';
-import { handleLinkEvents } from './linkEvents.js'; 
+import { handleLinkEvents } from './link/events.js';
 
 export default function apply() {
 	handleMenuEvents();
