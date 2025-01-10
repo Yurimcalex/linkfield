@@ -1,5 +1,6 @@
 import { handleOpenLinkForm } from './openLinkForm.js';
 import { handleDisplayCreatedLink } from './displayCreatedLink.js';
+import { handleCloseLinkForm } from './closeLinkForm.js';
 
 
 import { createLink } from '../../linkItem.js';
@@ -18,10 +19,10 @@ export function handleLinkEvents() {
 	// });
 	handleOpenLinkForm();
 	handleDisplayCreatedLink();
-
+	handleCloseLinkForm();
 	//addLinkForm.add.addEventListener('click', displayNewLink);
 	// handle close button click on "add new link" panel
-	settingsWindow.addEventListener('click', closeAddLinkPanel);
+	//settingsWindow.addEventListener('click', closeAddLinkPanel);
 
 	content.addEventListener('click', (e) => {
 		handleRemoveLinkBtnClick(e);
