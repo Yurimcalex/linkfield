@@ -3,6 +3,7 @@ import { handleDisplayCreatedLink } from './displayCreatedLink.js';
 import { handleCloseLinkForm } from './closeLinkForm.js';
 import { handleLinkHover } from './linkHover.js';
 import { handleLinkClick } from './linkClick.js';
+import { handleLinkRemove } from './linkRemove.js';
 
 
 import { createLink } from '../../linkItem.js';
@@ -20,9 +21,9 @@ export function handleLinkEvents() {
 	handleCloseLinkForm();
 	handleLinkHover();
 	handleLinkClick();
+	handleLinkRemove();
 
 	content.addEventListener('click', (e) => {
-		handleRemoveLinkBtnClick(e);
 		handleEditLinkBtnClick(e);
 	});
 }
@@ -119,14 +120,6 @@ function closeAddLinkPanel(e) {
 	const target = e.target;
 	if (target.closest('.close-btn')) {
 		closeSettingsWindow();
-	}
-}
-
-
-function handleRemoveLinkBtnClick(e) {
-	const target = e.target;
-	if (target.classList.contains('remove-btn')) {
-		target.closest('li').remove();
 	}
 }
 
