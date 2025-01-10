@@ -2,6 +2,7 @@ import { handleOpenLinkForm } from './openLinkForm.js';
 import { handleDisplayCreatedLink } from './displayCreatedLink.js';
 import { handleCloseLinkForm } from './closeLinkForm.js';
 import { handleLinkHover } from './linkHover.js';
+import { handleLinkClick } from './linkClick.js';
 
 
 import { createLink } from '../../linkItem.js';
@@ -14,67 +15,17 @@ const menu = document.querySelector('.category-menu');
 
 
 export function handleLinkEvents() {
-	// openLinkCreatorBtn.addEventListener('click', () => {
-	// 	openSettingsWindow();
-	// 	resetAddLinkForm();
-	// });
 	handleOpenLinkForm();
 	handleDisplayCreatedLink();
 	handleCloseLinkForm();
 	handleLinkHover();
-	//addLinkForm.add.addEventListener('click', displayNewLink);
-	// handle close button click on "add new link" panel
-	//settingsWindow.addEventListener('click', closeAddLinkPanel);
+	handleLinkClick();
 
 	content.addEventListener('click', (e) => {
 		handleRemoveLinkBtnClick(e);
 		handleEditLinkBtnClick(e);
 	});
-
-	//handleLinkHover();
-	handleLinkClick();
 }
-
-
-function handleLinkClick() {
-	let prevElm = null;
-	content.addEventListener('click', (e) => {
-		const target = e.target.closest('.link-list-item');
-		if (target) {
-			if (prevElm) prevElm.classList.remove('current');
-			target.classList.add('current');
-			prevElm = target;
-		}
-	});
-}
-
-
-// function handleLinkHover() {
-// 	let currElm = null;
-// 	content.addEventListener('mouseover', (e) => {
-// 		if (currElm) return;
-// 		let target = event.target.closest('.link-list-item');
-// 		if (!target) return;
-// 		currElm = target;
-// 		toggleLinkControlsDisplay(currElm);
-// 	});
-
-// 	content.addEventListener('mouseout', (e) => {
-// 		if (!currElm) return;
-// 		let relatedTarget = event.relatedTarget;
-// 		while (relatedTarget) {
-// 		  if (relatedTarget == currElm) return;
-// 		  relatedTarget = relatedTarget.parentNode;
-// 		}
-// 		toggleLinkControlsDisplay(currElm);
-// 	 	currElm = null;
-// 	});
-// }
-
-// function toggleLinkControlsDisplay(linkItem) {
-// 	const controlsCont = linkItem.querySelector('.link-controls')
-// 	controlsCont.classList.toggle('visibility');
-// }
 
 
 // When the category has changed it needs to scroll to that category.
@@ -158,20 +109,9 @@ function getTargetLinkInfo(target) {
 }
 
 
-function openSettingsWindow() {
-	settingsWindow.classList.remove('hide');
-}
 
 function closeSettingsWindow() {
 	settingsWindow.classList.add('hide');
-}
-
-
-function displayNewLink(e) {
-	const newlinkData = getNewLinkData();
-	createLink(newlinkData);
-	closeSettingsWindow();
-	e.preventDefault();
 }
 
 
@@ -197,11 +137,6 @@ function getNewLinkData() {
 		data[prop] = addLinkForm[prop].value;
 	}
 	return data;
-}
-
-function resetAddLinkForm() {
-	addLinkForm.link.value = '';
-	addLinkForm.topic.value = '';
 }
 
 
