@@ -42,6 +42,27 @@ export function handleMenuEvents() {
 			currMenuItem = container;
 		}
 	});
+
+
+	content.addEventListener('scroll', (e) => {
+		const centerX = document.documentElement.clientWidth / 2;
+		const elem = document.elementFromPoint(centerX, 20);
+		const container = elem.closest('.link-category');
+		if (container) {
+			const category = container.dataset.category;
+			const menuLink = menu.querySelector(`a[href="#${replaceSpace(category)}"]`);
+			const menuItem = menuLink.closest('li');
+
+			if (menuItem.classList.contains('highlight')) {
+				return;
+			} else {
+				if (currMenuItem) currMenuItem.classList.remove('highlight');
+				menuItem.classList.add('highlight');
+				currMenuItem = menuItem;
+			}
+		}
+		//console.log('ok');
+	});
 }
 
 
@@ -65,4 +86,9 @@ function scrollContentTo(id) {
 	// scroll the window for large screen, scroll the content for small screen,
 	scrollTarget.scrollTo(0, elem.offsetTop - (isSmall ? DY : 0));
 	history.pushState(null, null, id);
+}
+
+
+function replaceSpace(str) {
+	return str.split(' ').join('-');
 }

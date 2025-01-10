@@ -31,7 +31,7 @@ export function createLink(linkData) {
 function createMainContent(data) {
 	let html = '';
 	for (let d of data) {
-	  html += '<div class="link-category">';
+	  html += `<div class="link-category" data-category="${d.title}">`;
 	  html += `<h2 id=${replaceSpace(d.title)}>${d.title}</h2>`;
 	  html += createLinkList(d.links, d.title);
 	  html += '</div>';
