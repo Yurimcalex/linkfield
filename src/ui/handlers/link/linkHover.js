@@ -1,5 +1,6 @@
 const content = document.querySelector('.content');
 let currElm = null;
+let hoveredElm = null;
 
 export function handleLinkHover() {
 	content.addEventListener('mouseover', mouseover);
@@ -27,6 +28,11 @@ function mouseout(e) {
 
 	toggleControlsDisplay(currElm);
 	currElm = null;
+
+	if (hoveredElm) {
+		toggleControlsDisplay(hoveredElm);
+		hoveredElm = null;
+	}
 }
 
 
@@ -34,4 +40,12 @@ function toggleControlsDisplay(link) {
 	link
 		.querySelector('.link-controls')
 		.classList.toggle('visibility');
+}
+
+
+export function displayControls(link) {
+	link
+		.querySelector('.link-controls')
+		.classList.toggle('visibility');
+	hoveredElm = link;
 }
