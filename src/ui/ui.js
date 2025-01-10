@@ -1,20 +1,21 @@
 import { createCategoryMenuContent } from './categoryMenu.js';
 import { createContent } from './content.js';
+import { createCategorySelectContent } from './categorySelect.js';
 import applyHandlers from './handlers/handlers.js';
 
 export default function createUI(data) {
   createCategoryMenuContent(data.map(d => d.title));
   createContent(data);
-
+  createCategorySelectContent(data.map(d => d.title));
   
 
   document
   	.querySelector('.link-creator select[name="type"]')
   	.innerHTML = createLinkTypeOptions(data);
 
-  document
-  	.querySelector('.link-creator select[name="category"]')
-  	.innerHTML = createLinkCategoryOptions(data);
+  // document
+  // 	.querySelector('.link-creator select[name="category"]')
+  // 	.innerHTML = createLinkCategoryOptions(data);
 
   applyHandlers();
 }
@@ -22,14 +23,14 @@ export default function createUI(data) {
 
 
 
-function createLinkCategoryOptions(data) {
-	let html = '';
-	const categories = data.map(d => d.title);
-	for (let category of categories) {
-		html += `<option value="${category}">${category}</option>`
-	}
-	return html;
-}
+// function createLinkCategoryOptions(data) {
+// 	let html = '';
+// 	const categories = data.map(d => d.title);
+// 	for (let category of categories) {
+// 		html += `<option value="${category}">${category}</option>`
+// 	}
+// 	return html;
+// }
 
 
 function createLinkTypeOptions(data) {
