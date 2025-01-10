@@ -6,9 +6,7 @@ export default function createUI(data) {
   createCategoryMenuContent(data.map(d => d.title));
   createContent(data);
 
-  // document
-  // 	.querySelector('.content')
-  // 	.innerHTML = createMainContent(data);
+  
 
   document
   	.querySelector('.link-creator select[name="type"]')
@@ -22,50 +20,6 @@ export default function createUI(data) {
 }
 
 
-export function createLink(linkData) {
-	document
-		.querySelector(`[data-category="${linkData.category}"]`)
-		.innerHTML += createLinkListItem(linkData);
-}
-
-
-// function createMainContent(data) {
-// 	let html = '';
-// 	for (let d of data) {
-// 	  html += `<div class="link-category" data-category="${d.title}">`;
-// 	  html += `<h2 id=${replaceSpace(d.title)}>${d.title}</h2>`;
-// 	  html += createLinkList(d.links, d.title);
-// 	  html += '</div>';
-// 	}
-// 	return html;
-// }
-
-
-// function createLinkList(links, category) {
-// 	let html = '';
-// 	html += `<ul class="link-list" data-category="${category}">`;
-// 	for (let link of links) {
-// 		html += createLinkListItem(link);
-// 	}
-// 	html += '</ul>';
-// 	return html;
-// }
-
-
-// function createLinkListItem(linkData) {
-// 	let html = '';
-// 	html += '<li class="link-list-item">';
-// 		html += '<h3>';
-// 			html += `<span class="link-type">${linkData.type}</span> `;
-// 			html += `<a class="link-topic" href=${linkData.link} target="_blank">${linkData.topic}</a>`;
-// 			html += '<div class="link-controls visibility sm">';
-// 				html += `<span><a class="link-btn edit-btn">&#128393;</a></span>`;
-// 				html += '<span><a class="link-btn remove-btn">&#128473;</a></span>';
-// 			html += '</div>';
-// 		html += '</h3>';
-// 	html += '</li>';
-// 	return html;
-// }
 
 
 function createLinkCategoryOptions(data) {

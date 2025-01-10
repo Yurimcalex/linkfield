@@ -1,4 +1,4 @@
-import { createLink } from '../ui.js';
+import { createLink } from '../linkItem.js';
 
 const openLinkCreatorBtn = document.querySelector('.link-creator-opener');
 const settingsWindow = document.querySelector('.settings-window');
