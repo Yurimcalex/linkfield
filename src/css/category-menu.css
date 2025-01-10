@@ -6,6 +6,10 @@
   background: lightgray;
 }
 
+.category-menu-item.highlight {
+  background: lightgray;
+}
+
 .category-menu-header {
   font-size: 1em;
   font-weight: normal;

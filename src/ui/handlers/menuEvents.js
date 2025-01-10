@@ -30,6 +30,18 @@ export function handleMenuEvents() {
 		content.classList.remove('hide');
 		scrollContentTo(location.hash);
 	});
+
+
+	let currMenuItem = null;
+	menu.addEventListener('click', (e) => {
+		const target = e.target;
+		if (target.classList.contains('category-menu-content')) {
+			const container = target.closest('.category-menu-item');
+			container.classList.add('highlight');
+			if (currMenuItem) currMenuItem.classList.remove('highlight');
+			currMenuItem = container;
+		}
+	});
 }
 
 
