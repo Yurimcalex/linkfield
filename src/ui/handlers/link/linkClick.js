@@ -9,8 +9,13 @@ export function handleLinkClick() {
 function сlick(e) {
 	const target = e.target.closest('.link-list-item');
 	if (target) {
-		if (prevElm) prevElm.classList.remove('current');
+		if (prevElm) removeCurrentFocus();
 		target.classList.add('current');
 		prevElm = target;
 	}
+}
+
+
+export function removeCurrentFocus() {
+	prevElm.classList.remove('current');
 }

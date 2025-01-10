@@ -1,4 +1,5 @@
 import { createLink } from '../../linkItem.js';
+import { removeCurrentFocus } from './linkClick.js';
 
 const form = document.querySelector('.link-creator form');
 const settingsWindow = document.querySelector('.settings-window');
@@ -12,6 +13,7 @@ export function handleDisplayCreatedLink() {
 
 
 function display() {
+	removeCurrentFocus();
 	createLink( getFormData(form) );
 	closeSettingsWindow();
 }
