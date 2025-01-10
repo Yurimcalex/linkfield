@@ -1,9 +1,8 @@
+import { createCategoryMenuContent } from './categoryMenu.js';
 import applyHandlers from './handlers/handlers.js';
 
 export default function createUI(data) {
-  document
-  	.querySelector('.category-menu')
-  	.innerHTML = createCategoryMenuContent(data.map(d => d.title));
+  createCategoryMenuContent(data.map(d => d.title));
 
   document
   	.querySelector('.content')
@@ -63,19 +62,6 @@ function createLinkListItem(linkData) {
 			html += '</div>';
 		html += '</h3>';
 	html += '</li>';
-	return html;
-}
-
-
-function createCategoryMenuContent(items) {
-	let html = '';
-	for (let item of items) {
-		html += '<li class="category-menu-item">';
-			html += '<h2 class="category-menu-header">';
-				html += `<a class="category-menu-content" href=${`#` + replaceSpace(item)}>${item}</a>`;
-			html += '</h2>';
-		html += '</li>';
-	}
 	return html;
 }
 
