@@ -60,10 +60,22 @@ export function handleMenuEvents() {
 				if (currMenuItem) currMenuItem.classList.remove('highlight');
 				menuItem.classList.add('highlight');
 				currMenuItem = menuItem;
+				scrollMenuItemIntoView(menu, menuItem);
 			}
 		}
-		//console.log('ok');
 	});
+}
+
+
+function scrollMenuItemIntoView(menu, item) {
+	const scrollContainer = menu.closest('.menu-panel');
+	const scrollY = scrollContainer.scrollTop;
+	const itemCoords = item.getBoundingClientRect();
+	if (itemCoords.top < 0) {
+		item.scrollIntoView();
+	} else if (itemCoords.top > window.innerHeight - itemCoords.height) {
+		item.scrollIntoView(false);
+	}
 }
 
 
