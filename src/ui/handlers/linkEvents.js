@@ -115,7 +115,7 @@ function scrollContentTo(category) {
 
 // just created link was moved to the new category so it needs to select this link to scroll to
 function focusOnJustMovedLink(category) {
-	const listItems = content.querySelector(`[data-category="${category}"]`).children;
+	const listItems = content.querySelector(`ul[data-category="${category}"]`).children;
 	const linkItem = listItems[listItems.length - 1];
 	linkItem.scrollIntoView(false);
 	linkItem.click();
