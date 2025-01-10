@@ -37,6 +37,7 @@ export function handleMenuEvents() {
 		const target = e.target;
 		if (target.classList.contains('category-menu-content')) {
 			const container = target.closest('.category-menu-item');
+			if (container === currMenuItem) return;
 			container.classList.add('highlight');
 			if (currMenuItem) currMenuItem.classList.remove('highlight');
 			currMenuItem = container;
