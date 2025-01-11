@@ -19,7 +19,7 @@ export const REMOVE_BUTTON =  'remove-btn';
 
 const SETTINGS_WINDOW = 'settings-window';
 const SET_LINK_WINDOW = 'link-creator';
-const CLOSE_BUTTON =    'close-btn';
+export const CLOSE_BUTTON =    'close-btn';
 const LINK_FORM =       'link-form';
 
 
@@ -34,6 +34,7 @@ const selectors = {
 		content:        `.${CONTENT}`,
 		categorySelect: `.${SET_LINK_WINDOW} select[name="category"]`,
 		typeSelect:     `.${SET_LINK_WINDOW} select[name="type"]`,
+		settingsWindow: `.${SETTINGS_WINDOW}`
 	},
 
 	dynamicElements: {
