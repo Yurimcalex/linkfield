@@ -8,10 +8,11 @@ import {
 } from '../elements.js';
 import { elements } from '../elements.js';
 
+const { content } = elements;
 
 export function createLink(data) {
 	elements
-		.select('linkList')(data.category)
+		.select(content, 'linkList', data.category)
 		.innerHTML += createLinkItem(data);
 }
 
