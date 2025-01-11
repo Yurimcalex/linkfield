@@ -32,6 +32,6 @@ export function getFormData(form) {
 }
 
 
-function closeSettingsWindow() {
+export function closeSettingsWindow() {
 	settingsWindow.classList.add('hide');
 }
