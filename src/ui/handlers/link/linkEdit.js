@@ -1,15 +1,20 @@
+import { 
+	EDIT_BUTTON,
+	LINK_LIST_ITEM,
+	LINK_LIST,
+	elements
+} from '../../elements.js';
 import { getFormData } from './displayCreatedLink.js';
 import { replaceSpace } from '../../utils.js';
 
-const openBtn = document.querySelector('.link-creator-opener');
-const form = document.querySelector('.link-creator form');
-const content = document.querySelector('.content');
+const { openSettingsButton: openBtn, linkForm: form, content } = elements;
+
 
 export function handleLinkEdit() {
 	content.addEventListener('click', (e) => {
 		const target = e.target;
-		if (target.classList.contains('edit-btn')) {
-			editData(target);
+		if (target.classList.contains(`${EDIT_BUTTON}`)) {
+			editData( target.closest(`.${LINK_LIST_ITEM}`) );
 		}
 	});
 }
@@ -24,18 +29,18 @@ export function handleLinkEdit() {
 // 1) the one in the old list content
 // 2) the one in the new list content
 // 3) and current edited one - this is the case
-function editData(link) {
-	const { linkItem, list, position, category } = getLinkInfo(link);
+function editData(linkItem) {
+	const { list, position, category } = getLinkInfo(linkItem);
 		
 		openBtn.click();
-		putDataIntoForm(linkItem);
+		putDataIntoForm(linkItem, list);
 		changeFormButtonText('Edit');
 		
 		form.add.addEventListener('click', function interceptAddBtnclick() {
 			const { category: newCategory } = getFormData(form);
 			const oldLink = list.children[position];
 			
-			if (category === newCategory) {	
+			if (category === newCategory) {
 				replaceLinkWithEditedOne(list, position);
 			} else {
 				focusOnLink(newCategory);
@@ -49,23 +54,20 @@ function editData(link) {
 }
 
 
-function getLinkInfo(link) {
-	const li = link.closest('li');
-	const list = li.closest('.link-list');
+function getLinkInfo(linkItem) {
+	const list = linkItem.closest(`.${LINK_LIST}`);
 	return {
-		linkItem: li,
+		linkItem: linkItem,
 		list,
 		category: list.dataset.category,
-		position:  Array.from(list.children).indexOf(li)
+		position:  Array.from(list.children).indexOf(linkItem)
 	};
 }
 
 
-function putDataIntoForm(linkItem) {
-	const list = linkItem.closest('.link-list');
-	const linkType = linkItem.querySelector('.link-type');
-	const linkTopic = linkItem.querySelector('.link-topic');
-	const linkList = linkItem.closest('.link-list');
+function putDataIntoForm(linkItem, linkList) {
+	const linkType = elements.select(linkItem, 'linkType');
+	const linkTopic = elements.select(linkItem, 'linkTopic');
 
 	form.link.value = linkTopic.getAttribute('href');
 	form.topic.value = linkTopic.textContent;
@@ -81,16 +83,16 @@ function changeFormButtonText(newText) {
 
 function replaceLinkWithEditedOne(linkList, linkInd) {
 	const oldLink = linkList.children[linkInd];
-	const newLink = linkList.querySelector('li:last-child');
+	const newLink = elements.select(linkList, 'lastListItem');
 	oldLink.after(newLink);
 	newLink.click();
 }
 
 
 export function focusOnLink(category) {
-	const listItems = content.querySelector(`ul[data-category="${category}"]`).children;
+	const listItems = elements.select(content, 'linkList', category).children;
 	const link = listItems[listItems.length - 1];
-	
+
 	if (!isVisible(link)) {
 		link.scrollIntoView(false);
 	}
