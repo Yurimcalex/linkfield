@@ -6,6 +6,7 @@ export function handleOpenLinkForm() {
 	openBtn.addEventListener('click', () => {
 		openSettingsWindow();
 		resetAddLinkForm();
+		form.edit.classList.add('hide');
 	});
 }
 
