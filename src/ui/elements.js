@@ -1,8 +1,8 @@
 const MENU_PANEL = 					 'menu-panel';
 const CATEGORY_MENU =        'category-menu';
-const CATEGORY_MENU_ITEM =   `${CATEGORY_MENU}-item`;
-const CATEGORY_MENU_HEADER = `${CATEGORY_MENU}-header`;
-const CATEGORY_MENU_LINK =   `${CATEGORY_MENU}-content`;
+export const CATEGORY_MENU_ITEM =   `${CATEGORY_MENU}-item`;
+export const CATEGORY_MENU_HEADER = `${CATEGORY_MENU}-header`;
+export const CATEGORY_MENU_LINK =   `${CATEGORY_MENU}-content`;
 const OPEN_CATEGORY_MENU_BUTTON = 'menu-opener';
 
 
@@ -19,10 +19,35 @@ const REMOVE_BUTTON =  'remove-btn';
 
 const SETTINGS_WINDOW = 'settings-window';
 const SET_LINK_WINDOW = 'link-creator';
-const CLOSE_BUTTON = 'close-btn';
-const LINK_FORM = 'link-form';
+const CLOSE_BUTTON =    'close-btn';
+const LINK_FORM =       'link-form';
 
 
 const OPEN_SETTINGS_BUTTON = 'link-creator-opener';
 
 const LOADING_COVER = 'loading-cover';
+
+
+const selectors = {
+	permanentElements: {
+		categoryMenu:   `.${CATEGORY_MENU}`,
+		// content:        `.${CONTENT}`;
+		// categorySelect: `.${SET_LINK_WINDOW} select[name="category"]`;
+		// typeSelect:     `.${SET_LINK_WINDOW} select[name="type"]`;
+	},
+
+	dynamicElements: {
+		// linkList: function (category) { return `ul[data-category="${category}"]` }
+	}
+};
+
+
+export const elements = {};
+getPermanentElements();
+
+
+function getPermanentElements() {
+	for (let key in selectors.permanentElements) {
+		elements[key] = document.querySelector(selectors.permanentElements[key]);
+	}
+}
