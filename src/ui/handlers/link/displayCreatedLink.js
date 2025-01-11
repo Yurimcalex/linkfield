@@ -1,9 +1,10 @@
+import { elements } from '../../elements.js';
 import { createLink } from '../../templates/linkItem.js';
 import { removeCurrentFocus } from './linkClick.js';
 import { focusOnLink } from './linkEdit.js';
 
-const form = document.querySelector('.link-creator form');
-const settingsWindow = document.querySelector('.settings-window');
+const { linkForm: form, settingsWindow } = elements;
+
 
 export function handleDisplayCreatedLink() {
 	form.add.addEventListener('click', (e) => {
