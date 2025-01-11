@@ -34,7 +34,8 @@ const selectors = {
 		content:        `.${CONTENT}`,
 		categorySelect: `.${SET_LINK_WINDOW} select[name="category"]`,
 		typeSelect:     `.${SET_LINK_WINDOW} select[name="type"]`,
-		settingsWindow: `.${SETTINGS_WINDOW}`
+		settingsWindow: `.${SETTINGS_WINDOW}`,
+		linkForm:       `.${LINK_FORM}`,
 	},
 
 	dynamicElements: {
