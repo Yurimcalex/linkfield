@@ -1,12 +1,12 @@
-const MENU_PANEL = 					 'menu-panel';
-const CATEGORY_MENU =        'category-menu';
-export const CATEGORY_MENU_ITEM =   `${CATEGORY_MENU}-item`;
-export const CATEGORY_MENU_HEADER = `${CATEGORY_MENU}-header`;
-export const CATEGORY_MENU_LINK =   `${CATEGORY_MENU}-content`;
-const OPEN_CATEGORY_MENU_BUTTON = 'menu-opener';
+       const MENU_PANEL = 					     'menu-panel';
+       const CATEGORY_MENU =             'category-menu';
+export const CATEGORY_MENU_ITEM =        `${CATEGORY_MENU}-item`;
+export const CATEGORY_MENU_HEADER =      `${CATEGORY_MENU}-header`;
+export const CATEGORY_MENU_LINK =        `${CATEGORY_MENU}-content`;
+       const OPEN_CATEGORY_MENU_BUTTON = 'menu-opener';
 
 
-const CONTENT =        'content';
+       const CONTENT =        'content';
 export const LINK_CATEGORY =  'link-category';
 export const LINK_LIST =      'link-list';
 export const LINK_LIST_ITEM = 'link-list-item';
@@ -17,10 +17,10 @@ export const EDIT_BUTTON =    'edit-btn';
 export const REMOVE_BUTTON =  'remove-btn';
 
 
-const SETTINGS_WINDOW = 'settings-window';
-const SET_LINK_WINDOW = 'link-creator';
+       const SETTINGS_WINDOW = 'settings-window';
+       const SET_LINK_WINDOW = 'link-creator';
 export const CLOSE_BUTTON =    'close-btn';
-const LINK_FORM =       'link-form';
+       const LINK_FORM =       'link-form';
 
 
 const OPEN_SETTINGS_BUTTON = 'link-creator-opener';
@@ -30,16 +30,20 @@ const LOADING_COVER = 'loading-cover';
 
 const selectors = {
 	permanentElements: {
-		categoryMenu:   `.${CATEGORY_MENU}`,
-		content:        `.${CONTENT}`,
-		categorySelect: `.${SET_LINK_WINDOW} select[name="category"]`,
-		typeSelect:     `.${SET_LINK_WINDOW} select[name="type"]`,
-		settingsWindow: `.${SETTINGS_WINDOW}`,
-		linkForm:       `.${LINK_FORM}`,
+		categoryMenu:       `.${CATEGORY_MENU}`,
+		content:            `.${CONTENT}`,
+		categorySelect:     `.${SET_LINK_WINDOW} select[name="category"]`,
+		typeSelect:         `.${SET_LINK_WINDOW} select[name="type"]`,
+		settingsWindow:     `.${SETTINGS_WINDOW}`,
+		linkForm:           `.${LINK_FORM}`,
+		openSettingsButton: `.${OPEN_SETTINGS_BUTTON}`,
 	},
 
 	dynamicElements: {
-		linkList: function (category) { return `ul[data-category="${category}"]` }
+		linkList: function (category) { return `ul[data-category="${category}"]`; },
+		linkType: function () { return `.${LINK_TYPE}`; },
+		linkTopic: function () { return `.${LINK_TOPIC}`; },
+		lastListItem: function () { return `.${LINK_LIST_ITEM}:last-child`; }
 	}
 };
 
@@ -54,9 +58,7 @@ function getPermanentElements() {
 	}
 }
 
-function getDynamicElement(elementName) {
-	return function (data) {
-		const getSelector = selectors.dynamicElements[elementName];
-		return document.querySelector(getSelector(data));
-	}
+function getDynamicElement(container, elementName, data) {
+	const getSelector = selectors.dynamicElements[elementName];
+	return container.querySelector(getSelector(data));
 }
