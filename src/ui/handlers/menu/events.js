@@ -1,5 +1,6 @@
 import { handleMenuOpen } from './menuOpen.js';
 import { handleCategorySelect } from './categorySelect.js';
+import { handleWindowResize } from './windowResize.js';
 
 // open and close category menu
 const menu = document.querySelector('.category-menu');
@@ -14,6 +15,7 @@ const SMALL_SCREEN_WIDTH = 650;
 export function handleMenuEvents() {
 	handleMenuOpen();
 	handleCategorySelect();
+	handleWindowResize();
 	// menuOpener.addEventListener('click', () => {
 	// 	toggleCategoryMenu(true);
 	// 	content.classList.add('hide');
@@ -30,11 +32,11 @@ export function handleMenuEvents() {
 	// 	};
 	// });
 
-	window.addEventListener('resize', () => {
-		toggleCategoryMenu(false);
-		content.classList.remove('hide');
-		scrollContentTo(location.hash);
-	});
+	// window.addEventListener('resize', () => {
+	// 	toggleCategoryMenu(false);
+	// 	content.classList.remove('hide');
+	// 	scrollContentTo(location.hash);
+	// });
 
 
 	let currMenuItem = null;

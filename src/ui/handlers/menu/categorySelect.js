@@ -27,7 +27,7 @@ function selectCategory(menuItem) {
 }
 
 
-function scrollContentTo(id) {
+export function scrollContentTo(id) {
 	if (!id) return;
 	const elem = document.getElementById(id.slice(1));
 	const isSmall = isSmallScreen();
