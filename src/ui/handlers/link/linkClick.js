@@ -17,5 +17,5 @@ function сlick(e) {
 
 
 export function removeCurrentFocus() {
-	prevElm.classList.remove('current');
+	if (prevElm) prevElm.classList.remove('current');
 }

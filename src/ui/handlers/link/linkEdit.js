@@ -87,13 +87,12 @@ function replaceLinkWithEditedOne(linkList, linkInd) {
 }
 
 
-function focusOnLink(category) {
+export function focusOnLink(category) {
 	const listItems = content.querySelector(`ul[data-category="${category}"]`).children;
 	const link = listItems[listItems.length - 1];
 	
 	if (!isVisible(link)) {
 		link.scrollIntoView(false);
-		window.scrollBy(0, 20);
 	}
 	
 	link.click();

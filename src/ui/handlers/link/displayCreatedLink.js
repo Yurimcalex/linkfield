@@ -1,5 +1,6 @@
 import { createLink } from '../../linkItem.js';
 import { removeCurrentFocus } from './linkClick.js';
+import { focusOnLink } from './linkEdit.js';
 
 const form = document.querySelector('.link-creator form');
 const settingsWindow = document.querySelector('.settings-window');
@@ -13,9 +14,11 @@ export function handleDisplayCreatedLink() {
 
 
 function display() {
+	const data = getFormData(form);
 	removeCurrentFocus();
-	createLink( getFormData(form) );
+	createLink(data);
 	closeSettingsWindow();
+	focusOnLink(data.category);
 }
 
 
