@@ -1,8 +1,10 @@
+import { LINK_CATEGORY, LINK_LIST } from './elements.js';
+import { elements } from './elements.js';
 import { createLinkItem } from './linkItem.js';
 import { replaceSpace } from './utils.js';
 
-const content = document.querySelector('.content');
 
+const { content } = elements;
 
 export function createContent(data) {
 	content.innerHTML = createCategories(data);
@@ -12,7 +14,7 @@ export function createContent(data) {
 function createCategories(data) {
 	let html = '';
 	for (let d of data) {
-	  html += `<div class="link-category" data-category="${d.title}">`;
+	  html += `<div class="${LINK_CATEGORY}" data-category="${d.title}">`;
 	  	html += `<h2 id=${replaceSpace(d.title)}>${d.title}</h2>`;
 	  	html += createList(d.links, d.title);
 	  html += '</div>';
@@ -23,7 +25,7 @@ function createCategories(data) {
 
 function createList(links, category) {
 	let html = '';
-	html += `<ul class="link-list" data-category="${category}">`;
+	html += `<ul class="${LINK_LIST}" data-category="${category}">`;
 	for (let link of links) {
 		html += createLinkItem(link);
 	}
