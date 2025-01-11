@@ -32,7 +32,7 @@ const selectors = {
 	permanentElements: {
 		categoryMenu:   `.${CATEGORY_MENU}`,
 		// content:        `.${CONTENT}`;
-		// categorySelect: `.${SET_LINK_WINDOW} select[name="category"]`;
+		categorySelect: `.${SET_LINK_WINDOW} select[name="category"]`,
 		// typeSelect:     `.${SET_LINK_WINDOW} select[name="type"]`;
 	},
 
