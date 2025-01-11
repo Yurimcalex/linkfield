@@ -9,12 +9,12 @@ const OPEN_CATEGORY_MENU_BUTTON = 'menu-opener';
 const CONTENT =        'content';
 export const LINK_CATEGORY =  'link-category';
 export const LINK_LIST =      'link-list';
-const LINK_LIST_ITEM = 'link-list-item';
-const LINK_TYPE =      'link-type';
-const LINK_TOPIC =     'link-topic';
-const LINK_CONTROLS =  'link-controls';
-const EDIT_BUTTON =    'edit-btn';
-const REMOVE_BUTTON =  'remove-btn';
+export const LINK_LIST_ITEM = 'link-list-item';
+export const LINK_TYPE =      'link-type';
+export const LINK_TOPIC =     'link-topic';
+export const LINK_CONTROLS =  'link-controls';
+export const EDIT_BUTTON =    'edit-btn';
+export const REMOVE_BUTTON =  'remove-btn';
 
 
 const SETTINGS_WINDOW = 'settings-window';
@@ -37,17 +37,24 @@ const selectors = {
 	},
 
 	dynamicElements: {
-		// linkList: function (category) { return `ul[data-category="${category}"]` }
+		linkList: function (category) { return `ul[data-category="${category}"]` }
 	}
 };
 
 
-export const elements = {};
+export const elements = { select: getDynamicElement };
 getPermanentElements();
 
 
 function getPermanentElements() {
 	for (let key in selectors.permanentElements) {
 		elements[key] = document.querySelector(selectors.permanentElements[key]);
+	}
+}
+
+function getDynamicElement(elementName) {
+	return function (data) {
+		const getSelector = selectors.dynamicElements[elementName];
+		return document.querySelector(getSelector(data));
 	}
 }
