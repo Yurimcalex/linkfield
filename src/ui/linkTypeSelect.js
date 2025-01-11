@@ -1,6 +1,8 @@
+import { elements } from './elements.js';
 import { replaceSpace } from './utils.js';
 
-const select = document.querySelector('.link-creator select[name="type"]');
+const { typeSelect: select } = elements;
+
 
 export function createTypeSelectContent(data) {
 	select.innerHTML = createOptions(data);
