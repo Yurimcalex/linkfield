@@ -1,3 +1,5 @@
+import { handleMenuOpen } from './menuOpen.js';
+
 // open and close category menu
 const menu = document.querySelector('.category-menu');
 const menuOpener = document.querySelector('.menu-opener');
@@ -8,11 +10,12 @@ const DY = 50;
 const SMALL_SCREEN_WIDTH = 650;
 
 
-export function handleMenuEvents() {	
-	menuOpener.addEventListener('click', () => {
-		toggleCategoryMenu(true);
-		content.classList.add('hide');
-	});
+export function handleMenuEvents() {
+	handleMenuOpen();
+	// menuOpener.addEventListener('click', () => {
+	// 	toggleCategoryMenu(true);
+	// 	content.classList.add('hide');
+	// });
 
 	menu.addEventListener('click', (e) => {
 		const target = e.target;
