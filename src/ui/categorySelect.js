@@ -1,4 +1,7 @@
-const select = document.querySelector('.link-creator select[name="category"]');
+import { elements } from './elements.js';
+
+const { categorySelect: select } = elements;
+
 
 export function createCategorySelectContent(data) {
 	select.innerHTML = createOptions(data);
