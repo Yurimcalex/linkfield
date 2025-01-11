@@ -1,6 +1,7 @@
 import { handleMenuOpen } from './menuOpen.js';
 import { handleCategorySelect } from './categorySelect.js';
 import { handleWindowResize } from './windowResize.js';
+import { handleMenuItemSelect } from './menuItemSelect.js';
 
 // open and close category menu
 const menu = document.querySelector('.category-menu');
@@ -16,6 +17,7 @@ export function handleMenuEvents() {
 	handleMenuOpen();
 	handleCategorySelect();
 	handleWindowResize();
+	handleMenuItemSelect();
 	// menuOpener.addEventListener('click', () => {
 	// 	toggleCategoryMenu(true);
 	// 	content.classList.add('hide');
@@ -39,17 +41,17 @@ export function handleMenuEvents() {
 	// });
 
 
-	let currMenuItem = null;
-	menu.addEventListener('click', (e) => {
-		const target = e.target;
-		if (target.classList.contains('category-menu-content')) {
-			const container = target.closest('.category-menu-item');
-			if (container === currMenuItem) return;
-			container.classList.add('highlight');
-			if (currMenuItem) currMenuItem.classList.remove('highlight');
-			currMenuItem = container;
-		}
-	});
+	// let currMenuItem = null;
+	// menu.addEventListener('click', (e) => {
+	// 	const target = e.target;
+	// 	if (target.classList.contains('category-menu-content')) {
+	// 		const container = target.closest('.category-menu-item');
+	// 		if (container === currMenuItem) return;
+	// 		container.classList.add('highlight');
+	// 		if (currMenuItem) currMenuItem.classList.remove('highlight');
+	// 		currMenuItem = container;
+	// 	}
+	// });
 
 
 	content.addEventListener('scroll', (e) => {
