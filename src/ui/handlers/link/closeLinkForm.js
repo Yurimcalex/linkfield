@@ -1,4 +1,7 @@
-const settingsWindow = document.querySelector('.settings-window');
+import { CLOSE_BUTTON, elements } from '../../elements.js';
+
+const { settingsWindow } = elements;
+
 
 export function handleCloseLinkForm() {
 	settingsWindow.addEventListener('click', closeForm);
@@ -7,7 +10,7 @@ export function handleCloseLinkForm() {
 
 function closeForm(e) {
 	const target = e.target;
-	if (target.closest('.close-btn')) {
+	if (target.closest(`.${CLOSE_BUTTON}`)) {
 		closeSettingsWindow();
 	}
 }
