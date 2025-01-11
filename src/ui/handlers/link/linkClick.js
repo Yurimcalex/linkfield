@@ -1,5 +1,8 @@
-const content = document.querySelector('.content');
+import { LINK_LIST_ITEM, elements } from '../../elements.js';
+
+const { content } = elements;
 let prevElm = null;
+
 
 export function handleLinkClick() {
 	content.addEventListener('click', сlick);
@@ -7,7 +10,7 @@ export function handleLinkClick() {
 
 
 function сlick(e) {
-	const target = e.target.closest('.link-list-item');
+	const target = e.target.closest(`.${LINK_LIST_ITEM}`);
 	if (target) {
 		if (prevElm) removeCurrentFocus();
 		target.classList.add('current');
