@@ -19,7 +19,7 @@ function display() {
 }
 
 
-function getFormData(form) {
+export function getFormData(form) {
 	const data = { link: '', topic: '', type: '', category: '' };
 	for (let prop in data) {
 		data[prop] = form[prop].value;
