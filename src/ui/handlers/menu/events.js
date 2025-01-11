@@ -1,4 +1,5 @@
 import { handleMenuOpen } from './menuOpen.js';
+import { handleCategorySelect } from './categorySelect.js';
 
 // open and close category menu
 const menu = document.querySelector('.category-menu');
@@ -12,21 +13,22 @@ const SMALL_SCREEN_WIDTH = 650;
 
 export function handleMenuEvents() {
 	handleMenuOpen();
+	handleCategorySelect();
 	// menuOpener.addEventListener('click', () => {
 	// 	toggleCategoryMenu(true);
 	// 	content.classList.add('hide');
 	// });
 
-	menu.addEventListener('click', (e) => {
-		const target = e.target;
-		if (target.tagName === 'A') {
-			const href = target.getAttribute("href");
-			e.preventDefault();
-			content.classList.remove('hide');
-			scrollContentTo(href);
-			toggleCategoryMenu(false);
-		};
-	});
+	// menu.addEventListener('click', (e) => {
+	// 	const target = e.target;
+	// 	if (target.tagName === 'A') {
+	// 		const href = target.getAttribute("href");
+	// 		e.preventDefault();
+	// 		content.classList.remove('hide');
+	// 		scrollContentTo(href);
+	// 		toggleCategoryMenu(false);
+	// 	};
+	// });
 
 	window.addEventListener('resize', () => {
 		toggleCategoryMenu(false);

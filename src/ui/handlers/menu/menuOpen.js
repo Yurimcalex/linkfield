@@ -10,7 +10,7 @@ export function handleMenuOpen() {
 }
 
 
-function toggleMenu(toOpen) {
+export function toggleMenu(toOpen) {
 	const meth = toOpen ? 'add' : 'remove';
 	menu.classList[meth]('show');
 	opener.classList[meth]('hide');
