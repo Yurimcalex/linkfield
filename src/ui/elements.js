@@ -7,8 +7,8 @@ const OPEN_CATEGORY_MENU_BUTTON = 'menu-opener';
 
 
 const CONTENT =        'content';
-const LINK_CATEGORY =  'link-category';
-const LINK_LIST =      'link-list';
+export const LINK_CATEGORY =  'link-category';
+export const LINK_LIST =      'link-list';
 const LINK_LIST_ITEM = 'link-list-item';
 const LINK_TYPE =      'link-type';
 const LINK_TOPIC =     'link-topic';
@@ -31,7 +31,7 @@ const LOADING_COVER = 'loading-cover';
 const selectors = {
 	permanentElements: {
 		categoryMenu:   `.${CATEGORY_MENU}`,
-		// content:        `.${CONTENT}`;
+		content:        `.${CONTENT}`,
 		categorySelect: `.${SET_LINK_WINDOW} select[name="category"]`,
 		// typeSelect:     `.${SET_LINK_WINDOW} select[name="type"]`;
 	},
