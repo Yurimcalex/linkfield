@@ -38,7 +38,7 @@ function editData(link) {
 			if (category === newCategory) {	
 				replaceLinkWithEditedOne(list, position);
 			} else {
-				focusOnJustMovedLink(newCategory);
+				focusOnLink(newCategory);
 			}
 			oldLink.remove();
 			changeFormButtonText('Add');
@@ -87,13 +87,22 @@ function replaceLinkWithEditedOne(linkList, linkInd) {
 }
 
 
-function focusOnJustMovedLink(category) {
+function focusOnLink(category) {
 	const listItems = content.querySelector(`ul[data-category="${category}"]`).children;
-	const linkItem = listItems[listItems.length - 1];
-	linkItem.scrollIntoView(false);
-	linkItem.click();
-	highlightLinkForTime(linkItem);
-	window.scrollBy(0, 20);
+	const link = listItems[listItems.length - 1];
+	
+	if (!isVisible(link)) {
+		link.scrollIntoView(false);
+		window.scrollBy(0, 20);
+	}
+	
+	link.click();
+	highlightLinkForTime(link);
+}
+
+function isVisible(link) {
+	const { top, height } = link.getBoundingClientRect();
+	return top > 0 && top < window.innerHeight - height;
 }
 
 function highlightLinkForTime(linkItem) {
