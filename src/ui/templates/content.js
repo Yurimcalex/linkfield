@@ -1,7 +1,7 @@
-import { LINK_CATEGORY, LINK_LIST } from './elements.js';
-import { elements } from './elements.js';
+import { LINK_CATEGORY, LINK_LIST } from '../elements.js';
+import { elements } from '../elements.js';
 import { createLinkItem } from './linkItem.js';
-import { replaceSpace } from './utils.js';
+import { replaceSpace } from '../utils.js';
 
 
 const { content } = elements;

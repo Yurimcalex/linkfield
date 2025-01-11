@@ -2,10 +2,10 @@ import {
 	CATEGORY_MENU_ITEM,
 	CATEGORY_MENU_HEADER,
 	CATEGORY_MENU_LINK 
-} from './elements.js';
+} from '../elements.js';
 
-import { elements } from './elements.js';
-import { replaceSpace } from './utils.js';
+import { elements } from '../elements.js';
+import { replaceSpace } from '../utils.js';
 
 const { categoryMenu: menu } = elements;
 

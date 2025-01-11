@@ -1,4 +1,4 @@
-import { createLink } from '../../linkItem.js';
+import { createLink } from '../../templates/linkItem.js';
 import { removeCurrentFocus } from './linkClick.js';
 import { focusOnLink } from './linkEdit.js';
 

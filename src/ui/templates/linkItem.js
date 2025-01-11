@@ -5,8 +5,8 @@ import {
 	LINK_CONTROLS,
 	EDIT_BUTTON,
 	REMOVE_BUTTON
-} from './elements.js';
-import { elements } from './elements.js';
+} from '../elements.js';
+import { elements } from '../elements.js';
 
 
 export function createLink(data) {

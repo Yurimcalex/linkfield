@@ -1,7 +1,7 @@
-import { createCategoryMenuContent } from './categoryMenu.js';
-import { createContent } from './content.js';
-import { createCategorySelectContent } from './categorySelect.js';
-import { createTypeSelectContent } from './linkTypeSelect.js';
+import { createCategoryMenuContent } from './templates/categoryMenu.js';
+import { createContent } from './templates/content.js';
+import { createCategorySelectContent } from './templates/categorySelect.js';
+import { createTypeSelectContent } from './templates/linkTypeSelect.js';
 import applyHandlers from './handlers/handlers.js';
 
 

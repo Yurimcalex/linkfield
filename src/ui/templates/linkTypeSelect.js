@@ -1,5 +1,5 @@
-import { elements } from './elements.js';
-import { replaceSpace } from './utils.js';
+import { elements } from '../elements.js';
+import { replaceSpace } from '../utils.js';
 
 const { typeSelect: select } = elements;
 
