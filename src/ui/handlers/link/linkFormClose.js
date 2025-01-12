@@ -3,7 +3,7 @@ import { CLOSE_BUTTON, elements } from '../../elements.js';
 const { settingsWindow } = elements;
 
 
-export function handleCloseLinkForm() {
+export function handleLinkFormClose() {
 	settingsWindow.addEventListener('click', closeForm);
 }
 

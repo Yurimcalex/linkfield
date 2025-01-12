@@ -13,7 +13,7 @@ const form = document.querySelector('.link-creator form');
 export let editableItem = {};
 
 
-export function handleOpenLinkForm() {
+export function handleLinkFormOpen() {
 	openBtn.addEventListener('click', () => {
 		openSettingsWindow();
 		resetAddLinkForm();

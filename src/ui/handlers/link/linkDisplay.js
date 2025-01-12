@@ -6,7 +6,7 @@ import { focusOnLink } from './linkEdit.js';
 const { linkForm: form, settingsWindow } = elements;
 
 
-export function handleDisplayCreatedLink() {
+export function handleLinkDisplay() {
 	form.add.addEventListener('click', (e) => {
 		e.preventDefault();
 		display();

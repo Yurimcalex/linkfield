@@ -1,6 +1,6 @@
 import { elements } from '../../elements.js';
-import { editableItem } from './openLinkForm.js';
-import { getFormData, closeSettingsWindow } from './displayCreatedLink.js';
+import { editableItem } from './linkFormOpen.js';
+import { getFormData, closeSettingsWindow } from './linkDisplay.js';
 import { createLink } from '../../templates/linkItem.js';
 import { removeCurrentFocus } from './linkClick.js';
 
