@@ -1,3 +1,6 @@
+import { replaceSpace } from './utils.js';
+
+
        const MENU_PANEL = 					     'menu-panel';
        const CATEGORY_MENU =             'category-menu';
 export const CATEGORY_MENU_ITEM =        `${CATEGORY_MENU}-item`;
@@ -46,6 +49,7 @@ const selectors = {
 		linkTopic: function () { return `.${LINK_TOPIC}`; },
 		lastListItem: function () { return `.${LINK_LIST_ITEM}:last-child`; },
 		linkControls: function () { return `.${LINK_CONTROLS}`; },
+		categoryMenuLink: function (category) { return `a[href="#${replaceSpace(category)}"]`; },
 	}
 };
 
