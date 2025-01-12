@@ -1,6 +1,7 @@
-const menu = document.querySelector('.category-menu');
-const opener = document.querySelector('.menu-opener');
-const content = document.querySelector('.content');
+import { elements } from '../../elements.js';
+
+const { categoryMenu: menu, openCategoryMenuButton: opener, content } = elements;
+
 
 export function handleMenuOpen() {
 	opener.addEventListener('click', () => {
