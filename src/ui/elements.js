@@ -37,6 +37,7 @@ const selectors = {
 		settingsWindow:     `.${SETTINGS_WINDOW}`,
 		linkForm:           `.${LINK_FORM}`,
 		openSettingsButton: `.${OPEN_SETTINGS_BUTTON}`,
+		openCategoryMenuButton: `.${OPEN_CATEGORY_MENU_BUTTON}`,
 	},
 
 	dynamicElements: {
@@ -44,7 +45,7 @@ const selectors = {
 		linkType: function () { return `.${LINK_TYPE}`; },
 		linkTopic: function () { return `.${LINK_TOPIC}`; },
 		lastListItem: function () { return `.${LINK_LIST_ITEM}:last-child`; },
-		linkControls: function () { return `.${LINK_CONTROLS}` },
+		linkControls: function () { return `.${LINK_CONTROLS}`; },
 	}
 };
 

@@ -1,17 +1,17 @@
+import { CATEGORY_MENU_LINK, elements } from '../../elements.js';
 import { toggleMenu } from './menuOpen.js';
 
-const menu = document.querySelector('.category-menu');
-const opener = document.querySelector('.menu-opener');
-const content = document.querySelector('.content');
+const { categoryMenu: menu, openCategoryMenuButton: opener, content } = elements;
 
 // takes into account the height of the menu bar
 const DY = 50;
 const SMALL_SCREEN_WIDTH = 650;
 
+
 export function handleCategorySelect() {
 	menu.addEventListener('click', (e) => {
 		const target = e.target;
-		if (target.tagName === 'A') {
+		if (target.classList.contains(`${CATEGORY_MENU_LINK}`)) {
 			e.preventDefault();
 			selectCategory(target);
 		};
