@@ -1,7 +1,9 @@
+import { elements } from '../../elements.js';
 import { toggleMenu } from './menuOpen.js';
 import { scrollContentTo } from './categorySelect.js';
 
-const content = document.querySelector('.content');
+const { content } = elements;
+
 
 export function handleWindowResize() {
 	window.addEventListener('resize', () => {
