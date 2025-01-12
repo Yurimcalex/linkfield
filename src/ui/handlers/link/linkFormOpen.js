@@ -6,9 +6,7 @@ import {
 } from '../../elements.js';
 import { replaceSpace } from '../../utils.js';
 
-const openBtn = document.querySelector('.link-creator-opener');
-const settingsWindow = document.querySelector('.settings-window');
-const form = document.querySelector('.link-creator form');
+const { openSettingsButton: openBtn, settingsWindow, form } = elements;
 
 export let editableItem = {};
 
