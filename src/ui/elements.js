@@ -43,7 +43,8 @@ const selectors = {
 		linkList: function (category) { return `ul[data-category="${category}"]`; },
 		linkType: function () { return `.${LINK_TYPE}`; },
 		linkTopic: function () { return `.${LINK_TOPIC}`; },
-		lastListItem: function () { return `.${LINK_LIST_ITEM}:last-child`; }
+		lastListItem: function () { return `.${LINK_LIST_ITEM}:last-child`; },
+		linkControls: function () { return `.${LINK_CONTROLS}` },
 	}
 };
 

@@ -1,6 +1,9 @@
-const content = document.querySelector('.content');
+import { LINK_LIST_ITEM, LINK_CONTROLS, elements } from '../../elements.js';
+
+const { content } = elements;
 let currElm = null;
 let hoveredElm = null;
+
 
 export function handleLinkHover() {
 	content.addEventListener('mouseover', mouseover);
@@ -10,7 +13,7 @@ export function handleLinkHover() {
 
 function mouseover(e) {
 	if (currElm) return;
-	let target = event.target.closest('.link-list-item');
+	let target = event.target.closest(`.${LINK_LIST_ITEM}`);
 	if (!target) return;
 	currElm = target;
 	toggleControlsDisplay(currElm);
@@ -37,15 +40,11 @@ function mouseout(e) {
 
 
 function toggleControlsDisplay(link) {
-	link
-		.querySelector('.link-controls')
-		.classList.toggle('visibility');
+	elements.select(link, 'linkControls').classList.toggle('visibility');
 }
 
 
 export function displayControls(link) {
-	link
-		.querySelector('.link-controls')
-		.classList.toggle('visibility');
+	elements.select(link, 'linkControls').classList.toggle('visibility');
 	hoveredElm = link;
 }
