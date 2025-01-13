@@ -22,3 +22,10 @@ function getLinkTypes(data) {
 		.map(link => link.type);
 	return Array.from(new Set(types));
 }
+
+
+export function getCategoryLinkTypes(links) {
+	const types = [];
+	links.forEach(link => types.push(link.type));
+	return Array.from(new Set(types));
+}
