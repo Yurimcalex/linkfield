@@ -16,6 +16,7 @@ function createSelect(types) {
 	for (let type of types) {
 		html += `<option value=${replaceSpace(type)}>${type}</option>`;
 	}
+	html += '<option value="no" selected disabled>Select option</option>';
 	html += '</select>';
 	return html;
 }
