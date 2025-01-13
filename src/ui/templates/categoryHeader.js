@@ -4,7 +4,7 @@ export function createCategoryHeader(category, linkTypes) {
 	let html = '';
 	html += `<h2 id=${replaceSpace(category)}>`;
 		html += `<span>${category}</span>`;
-		html += `<span>Sort by ${createSelect(linkTypes)}</span>`;
+		html += `<span>Arrange by ${createSelect(linkTypes)}</span>`;
 	html += '</h2>';
 	return html;
 }
@@ -12,7 +12,7 @@ export function createCategoryHeader(category, linkTypes) {
 
 function createSelect(types) {
 	let html = '';
-	html += '<select name="sort-by-type">';
+	html += '<select name="Arrange-by-type">';
 	for (let type of types) {
 		html += `<option value=${replaceSpace(type)}>${type}</option>`;
 	}
