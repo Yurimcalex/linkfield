@@ -6,7 +6,7 @@ import {
 } from '../../elements.js';
 import { replaceSpace } from '../../utils.js';
 
-const { openSettingsButton: openBtn, settingsWindow, form } = elements;
+const { openSettingsButton: openBtn, settingsWindow, linkForm: form } = elements;
 
 export let editableItem = {};
 
