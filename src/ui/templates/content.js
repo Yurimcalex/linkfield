@@ -1,7 +1,7 @@
 import { LINK_CATEGORY, LINK_LIST } from '../elements.js';
 import { elements } from '../elements.js';
+import { createCategoryHeader } from './categoryHeader.js';
 import { createLinkItem } from './linkItem.js';
-import { replaceSpace } from '../utils.js';
 
 
 const { content } = elements;
@@ -15,7 +15,7 @@ function createCategories(data) {
 	let html = '';
 	for (let d of data) {
 	  html += `<div class="${LINK_CATEGORY}" data-category="${d.title}">`;
-	  	html += `<h2 id=${replaceSpace(d.title)}>${d.title}</h2>`;
+	  	html += createCategoryHeader(d.title);
 	  	html += createList(d.links, d.title);
 	  html += '</div>';
 	}
