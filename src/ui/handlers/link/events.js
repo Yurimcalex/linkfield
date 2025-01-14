@@ -6,6 +6,7 @@ import { handleLinkClick } from './linkClick.js';
 import { handleLinkRemove } from './linkRemove.js';
 import { handleLinkEdit } from './linkEdit.js';
 import { handleCategorySort } from './categorySort.js';
+import { handleCategoryHeaderHover } from './categoryHeaderHover.js';
 
 
 export function handleLinkEvents() {
@@ -17,4 +18,5 @@ export function handleLinkEvents() {
 	handleLinkRemove();
 	handleLinkEdit();
 	handleCategorySort();
+	handleCategoryHeaderHover();
 }
