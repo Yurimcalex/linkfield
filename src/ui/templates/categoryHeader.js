@@ -1,10 +1,11 @@
+import { LINK_CATEGORY_HEADER } from '../elements.js';
 import { replaceSpace } from '../utils.js';
 
 export function createCategoryHeader(category, linkTypes) {
 	let html = '';
-	html += `<h2 id=${replaceSpace(category)}>`;
+	html += `<h2 id=${replaceSpace(category)} class=${LINK_CATEGORY_HEADER}>`;
 		html += `<span>${category}</span>`;
-		html += `<span>Arrange by ${createSelect(linkTypes)}</span>`;
+		html += `<span class="visibility">Arrange by ${createSelect(linkTypes)}</span>`;
 	html += '</h2>';
 	return html;
 }
