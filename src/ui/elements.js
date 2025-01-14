@@ -11,6 +11,7 @@ export const CATEGORY_MENU_LINK =        `${CATEGORY_MENU}-content`;
 
        const CONTENT =        'content';
 export const LINK_CATEGORY =  'link-category';
+export const LINK_CATEGORY_HEADER = 'link-category-header';
 export const LINK_LIST =      'link-list';
 export const LINK_LIST_ITEM = 'link-list-item';
 export const LINK_TYPE =      'link-type';
@@ -50,6 +51,7 @@ const selectors = {
 		lastListItem: function () { return `.${LINK_LIST_ITEM}:last-child`; },
 		linkControls: function () { return `.${LINK_CONTROLS}`; },
 		categoryMenuLink: function (category) { return `a[href="#${replaceSpace(category)}"]`; },
+		linkArranger: function () { return `select[name="Arrange-by-type"]`; }
 	}
 };
 
