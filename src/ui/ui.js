@@ -18,6 +18,9 @@ export default function createUI(data) {
 
 
 	content.innerHTML = createCategoriesHTML(data);
+
+
+
   categorySelect.innerHTML = createCategoryOptions(getCategories(data));
   typeSelect.innerHTML = createTypeOptions(getLinkTypes(data));
 
@@ -67,9 +70,14 @@ function getCategories(data) {
 }
 
 
-function getCategoryLinkData(data, categoryInd) {
-	return data[categoryInd].links;
+function getCategoryLinkTypes(data, category) {
+	return data
+		.find(d => d.title === category)
+		.links.map(link => link.type);
 }
+
+
+
 
 
 function getLinkTypes(data) {
@@ -77,12 +85,5 @@ function getLinkTypes(data) {
 		.map(d => d.links)
 		.reduce((acc, links) => [...acc, ...links], [])
 		.map(link => link.type);
-	return Array.from(new Set(types));
-}
-
-
-export function getCategoryLinkTypes(links) {
-	const types = [];
-	links.forEach(link => types.push(link.type));
 	return Array.from(new Set(types));
 }
