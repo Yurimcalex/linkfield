@@ -2,7 +2,7 @@ import { replaceSpace } from './utils.js';
 
 
        const MENU_PANEL = 					     'menu-panel';
-       const CATEGORY_MENU =             'category-menu';
+       const CATEGORY_MENU =             'category-menu';            // category selection menu element class name
 export const CATEGORY_MENU_ITEM =        `${CATEGORY_MENU}-item`;
 export const CATEGORY_MENU_HEADER =      `${CATEGORY_MENU}-header`;
 export const CATEGORY_MENU_LINK =        `${CATEGORY_MENU}-content`;
