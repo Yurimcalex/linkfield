@@ -23,6 +23,11 @@
   color: initial;
 }
 
+.category-menu-content span {
+  font-size: 0.7em;
+  color: gray;
+}
+
 @media screen and (max-width: 650px) {
   .category-menu {
     display: none;
