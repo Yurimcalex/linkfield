@@ -1,9 +1,3 @@
-//import { createCategorySelectContent } from './templates/categorySelect.js';
-import { createTypeSelectContent } from './templates/linkTypeSelect.js';
-import applyHandlers from './handlers/handlers.js';
-
-
-
 import { elements } from './elements.js';
 import { replaceSpace } from './utils.js';
 import { createCategoryMenuItem } from './templates/categoryMenu.js';
@@ -11,16 +5,17 @@ import { createLinkCategory } from './templates/linkCategory.js';
 import { createСategoryListItem } from './templates/categoryListItem.js';
 import { createCategoryHeader } from './templates/categoryHeader.js';
 import { createCategoryOptions } from './templates/linkFormCategorySelect.js';
+import { createTypeOptions } from './templates/linkFormTypeSelect.js';
+import applyHandlers from './handlers/handlers.js';
 
-const { categoryMenu, content, categorySelect } = elements;
+const { categoryMenu, content, categorySelect, typeSelect } = elements;
+
 
 export default function createUI(data) {
 	categoryMenu.innerHTML = createCategoryMenuHTML(data);
 	content.innerHTML = createCategoriesHTML(data);
   categorySelect.innerHTML = createCategoryOptions(getCategories(data));
-
-  //createCategorySelectContent(data.map(d => d.title));
-  createTypeSelectContent(getLinkTypes(data));
+  typeSelect.innerHTML = createTypeOptions(getLinkTypes(data));
 
   applyHandlers();
 }
