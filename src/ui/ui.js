@@ -12,7 +12,11 @@ const { categoryMenu, content, categorySelect, typeSelect } = elements;
 
 
 export default function createUI(data) {
-	categoryMenu.innerHTML = createCategoryMenuHTML(data);
+	const categories = getCategories(data);
+
+	categoryMenu.innerHTML = createCategoryMenuHTML(categories);
+
+
 	content.innerHTML = createCategoriesHTML(data);
   categorySelect.innerHTML = createCategoryOptions(getCategories(data));
   typeSelect.innerHTML = createTypeOptions(getLinkTypes(data));
@@ -28,8 +32,8 @@ export function createLink(data) {
 }
 
 
-function createCategoryMenuHTML(data) {
-	return getCategories(data).reduce((html, category) => {
+function createCategoryMenuHTML(categories) {
+	return categories.reduce((html, category) => {
 		return html + createCategoryMenuItem(category, replaceSpace(category));
 	}, '');
 }
