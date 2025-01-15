@@ -15,9 +15,7 @@ export default function createUI(data) {
 	const categories = getCategories(data);
 
 	categoryMenu.innerHTML = createCategoryMenuHTML(categories);
-
-
-	content.innerHTML = createCategoriesHTML(data);
+	content.innerHTML = createCategoriesHTML(data, categories);
 
 
 
@@ -42,23 +40,21 @@ function createCategoryMenuHTML(categories) {
 }
 
 
-function createCategoriesHTML(data) {
-	let categories = '';
+function createCategoriesHTML(data, categories) {
+	let html = '';
 
-	for (let d of data) {
-		const category = d.title;
-		const linkTypes = getCategoryLinkTypes(d.links);
+	categories.forEach(category => {
+		const linkTypes = getCategoryLinkTypes(data, category);
 		const header = createCategoryHeader(category, linkTypes);
+		
 		let list = '';
+		const links = getCategoryLinks(data, category);
+		links.forEach(link => list += createСategoryListItem(link.link, link.type, link.topic));
 
-		for (let link of d.links) {
-			list += createСategoryListItem(link.link, link.type, link.topic);
-		}
+		html += createLinkCategory(category, header, list);
+	});
 
-		categories += createLinkCategory(category, header, list);
-	}
-
-	return categories;
+	return html;
 }
 
 
@@ -77,6 +73,10 @@ function getCategoryLinkTypes(data, category) {
 }
 
 
+
+function getCategoryLinks(data, category) {
+	return data.find(d => d.title === category).links;
+}
 
 
 
