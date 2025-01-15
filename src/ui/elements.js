@@ -53,7 +53,7 @@ const selectors = {
 		categoryMenuLink: function (category) { return `a[href="#${replaceSpace(category)}"]`; },
 		linkArranger: function () { return `select[name="Arrange-by-type"]`; },
 		categoryMenuLinkCounter: function (category) { return `a[href="#${replaceSpace(category)}"] > span`; },
-		categoryHeaderSelect: function (category) { return `.${LINK_CATEGORY_HEADER} select`; }
+		categoryHeaderSelect: function (category) { return `[id="${replaceSpace(category)}"] select`; }
 	}
 };
 
