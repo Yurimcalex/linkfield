@@ -12,16 +12,11 @@ const { categoryMenu, content, categorySelect, typeSelect } = elements;
 
 
 export default function createUI(data) {
-	const categories = getCategories(data);
-
+	const categories = data.getCategories();
 	categoryMenu.innerHTML = createCategoryMenuHTML(categories);
 	content.innerHTML = createCategoriesHTML(data, categories);
-
-
-
-  categorySelect.innerHTML = createCategoryOptions(getCategories(data));
-  typeSelect.innerHTML = createTypeOptions(getLinkTypes(data));
-
+  categorySelect.innerHTML = createCategoryOptions(categories);
+  typeSelect.innerHTML = createTypeOptions(data.getLinkTypes());
   applyHandlers();
 }
 
@@ -42,48 +37,13 @@ function createCategoryMenuHTML(categories) {
 
 function createCategoriesHTML(data, categories) {
 	let html = '';
-
 	categories.forEach(category => {
-		const linkTypes = getCategoryLinkTypes(data, category);
+		const linkTypes = data.getCategoryLinkTypes(category);
 		const header = createCategoryHeader(category, linkTypes);
-		
 		let list = '';
-		const links = getCategoryLinks(data, category);
+		const links = data.getCategoryLinks(category);
 		links.forEach(link => list += createСategoryListItem(link.link, link.type, link.topic));
-
 		html += createLinkCategory(category, header, list);
 	});
-
 	return html;
-}
-
-
-
-
-
-function getCategories(data) {
-	return data.map(d => d.title);
-}
-
-
-function getCategoryLinkTypes(data, category) {
-	return data
-		.find(d => d.title === category)
-		.links.map(link => link.type);
-}
-
-
-
-function getCategoryLinks(data, category) {
-	return data.find(d => d.title === category).links;
-}
-
-
-
-function getLinkTypes(data) {
-	const types = data
-		.map(d => d.links)
-		.reduce((acc, links) => [...acc, ...links], [])
-		.map(link => link.type);
-	return Array.from(new Set(types));
 }

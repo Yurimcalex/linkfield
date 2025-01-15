@@ -3,16 +3,43 @@ const linkDelimiter = '\n\n';
 const linkItemDelimiter = '\n';
 
 export default function parseText(text) {
-  return text
-    .split(blockDelimiter)
-    .filter(isntEmpty)
-    .map(trimEmptyEdges)
-    .map(parseBlock);
+  return {
+    data: text
+      .split(blockDelimiter)
+      .filter(isntEmpty)
+      .map(trimEmptyEdges)
+      .map(parseBlock),
+
+    getCategories() {
+      return this.data.map(d => d.title);
+    },
+
+    getCategoryLinkTypes(category) {
+      return this.data
+        .find(d => d.title === category)
+        .links.map(link => link.type);
+    },
+
+    getCategoryLinks(category) {
+      return this.data.find(d => d.title === category).links;
+    },
+
+    getLinkTypes() {
+      const types = this.data
+        .map(d => d.links)
+        .reduce((acc, links) => [...acc, ...links], [])
+        .map(link => link.type);
+      return Array.from(new Set(types));
+    }
+  }
 }
+
 
 function isntEmpty(str) { return !!str; }
 
+
 function trimEmptyEdges(str) { return str.trim(); }
+
 
 function parseLink(str, title) {
   const linkData = str.split(linkItemDelimiter);
@@ -23,6 +50,7 @@ function parseLink(str, title) {
     category: title
   };
 }
+
 
 function parseBlock(str) {
   const blockData = str.split(linkDelimiter);
