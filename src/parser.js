@@ -31,6 +31,10 @@ export default function parseText(text) {
         .reduce((acc, links) => [...acc, ...links], [])
         .map(link => link.type);
       return Array.from(new Set(types));
+    },
+
+    countLinkItems(category) {
+      return this.data.find(d => d.title === category).links.length;
     }
   }
 }

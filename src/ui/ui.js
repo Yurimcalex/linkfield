@@ -13,7 +13,7 @@ const { categoryMenu, content, categorySelect, typeSelect } = elements;
 
 export default function createUI(data) {
 	const categories = data.getCategories();
-	categoryMenu.innerHTML = createCategoryMenuHTML(categories);
+	categoryMenu.innerHTML = createCategoryMenuHTML(data, categories);
 	content.innerHTML = createCategoriesHTML(data, categories);
   categorySelect.innerHTML = createCategoryOptions(categories);
   typeSelect.innerHTML = createTypeOptions(data.getLinkTypes());
@@ -28,9 +28,11 @@ export function createLink(data) {
 }
 
 
-function createCategoryMenuHTML(categories) {
+function createCategoryMenuHTML(data, categories) {
 	return categories.reduce((html, category) => {
-		return html + createCategoryMenuItem(category, replaceSpace(category));
+		const id = replaceSpace(category);
+		const total = data.countLinkItems(category);
+		return html + createCategoryMenuItem(category, id, total);
 	}, '');
 }
 
