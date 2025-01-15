@@ -1,5 +1,5 @@
 import { elements } from '../../elements.js';
-import { createLink } from '../../templates/linkItem.js';
+import { createLink } from '../../ui.js';
 import { removeCurrentFocus } from './linkClick.js';
 import { focusOnLink } from './linkEdit.js';
 

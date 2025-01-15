@@ -6,14 +6,6 @@ import {
 	EDIT_BUTTON,
 	REMOVE_BUTTON
 } from '../elements.js';
-import { elements } from '../elements.js';
-
-
-export function createLink(data) {
-	elements
-		.select(content, 'linkList', data.category)
-		.innerHTML += createLinkItem(data);
-}
 
 
 export function createСategoryListItem(linkSrc, linkType, linkDescription) {

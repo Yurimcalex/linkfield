@@ -1,7 +1,7 @@
 import { elements } from '../../elements.js';
 import { editableItem } from './linkFormOpen.js';
 import { getFormData, closeSettingsWindow } from './linkDisplay.js';
-import { createLink } from '../../templates/linkItem.js';
+import { createLink } from '../../ui.js';
 import { removeCurrentFocus } from './linkClick.js';
 
 
