@@ -15,9 +15,10 @@ export default function parseText(text) {
     },
 
     getCategoryLinkTypes(category) {
-      return this.data
+      const types = this.data
         .find(d => d.title === category)
         .links.map(link => link.type);
+      return Array.from(new Set(types));
     },
 
     getCategoryLinks(category) {
