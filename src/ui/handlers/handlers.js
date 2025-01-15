@@ -2,8 +2,8 @@ import { handleMenuEvents } from './menu/events.js';
 import { handleLinkEvents } from './link/events.js';
 
 export default function apply() {
-	handleMenuEvents();
 	handleLinkEvents();
+	handleMenuEvents();
 	loadingComplete();
 }
 

@@ -52,7 +52,8 @@ const selectors = {
 		linkControls: function () { return `.${LINK_CONTROLS}`; },
 		categoryMenuLink: function (category) { return `a[href="#${replaceSpace(category)}"]`; },
 		linkArranger: function () { return `select[name="Arrange-by-type"]`; },
-		categoryMenuLinkCounter: function (category) { return `a[href="#${replaceSpace(category)}"] > span`; }
+		categoryMenuLinkCounter: function (category) { return `a[href="#${replaceSpace(category)}"] > span`; },
+		categoryHeaderSelect: function (category) { return `.${LINK_CATEGORY_HEADER} select`; }
 	}
 };
 
