@@ -51,7 +51,8 @@ const selectors = {
 		lastListItem: function () { return `.${LINK_LIST_ITEM}:last-child`; },
 		linkControls: function () { return `.${LINK_CONTROLS}`; },
 		categoryMenuLink: function (category) { return `a[href="#${replaceSpace(category)}"]`; },
-		linkArranger: function () { return `select[name="Arrange-by-type"]`; }
+		linkArranger: function () { return `select[name="Arrange-by-type"]`; },
+		categoryMenuLinkCounter: function (category) { return `a[href="#${replaceSpace(category)}"] > span`; }
 	}
 };
 

@@ -3,6 +3,7 @@ import { handleCategorySelect } from './categorySelect.js';
 import { handleWindowResize } from './windowResize.js';
 import { handleMenuItemSelect } from './menuItemSelect.js';
 import { handleMenuItemFocus } from './menuItemFocus.js';
+import { handleLinkCounterUpdate } from './linkCounterUpdate.js';
 
 
 export function handleMenuEvents() {
@@ -11,4 +12,5 @@ export function handleMenuEvents() {
 	handleWindowResize();
 	handleMenuItemSelect();
 	handleMenuItemFocus();
+	handleLinkCounterUpdate();
 }
