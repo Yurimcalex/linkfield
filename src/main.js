@@ -6,13 +6,18 @@ import UI from './components/UI.js';
 async function render() {
   const textData = await readTextFromFile('initialLinkList.txt');
   const linksData = parseText(textData);
-  
-  const initialAppData = linksData.getLinks();
-  const store = createStore(initialAppData);
+  const initialLinksData = linksData.getLinks();
+
+  const initialData = {
+  	links: { data: linksData.getLinks() },
+  	ui: {}
+  };
+
+  const store = createStore(initialData);
   const ui = new UI(store);
   ui.mount();
   
-  //console.log(store.store.getState());
+  console.log(store.store.getState());
 }
 
 render();

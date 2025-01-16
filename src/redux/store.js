@@ -1,16 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
 import linksReducer from './linksSlice.js';
+import uiReducer from './uiSlice.js';
+
 
 export function initStore(data) {
 	return configureStore({
 		reducer: {
-			links: linksReducer
+			links: linksReducer,
+			ui: uiReducer
 		},
 		
-		preloadedState: {
-			links: {
-				data
-			}
-		}
+		preloadedState: data
 	});
 }
