@@ -1,33 +1,21 @@
 import parseText from './parser.js';
-import createUI from './ui/ui.js';
-
-
-
 import { createStore } from './redux/redux.js';
-import { initUI } from './components/components.js';
-
+import UI from './components/UI.js';
 
 
 async function render() {
   const textData = await readTextFromFile('initialLinkList.txt');
   const linksData = parseText(textData);
   
-
-  const store = createStore(linksData.getLinks());
-  initUI(store);
+  const initialAppData = linksData.getLinks();
+  const store = createStore(initialAppData);
+  const ui = new UI(store);
+  ui.mount();
   
-  console.log(store.store.getState());
-  //createUI(linksData);
+  //console.log(store.store.getState());
 }
 
-
-
-
-
-
-
 render();
-
 
 
 async function readTextFromFile(file) {
