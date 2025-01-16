@@ -1,5 +1,6 @@
-import { store } from './store.js';
+import { initStore } from './store.js';
 
-export function configureStore() {
-	console.log(store);
+export function createStore(data) {
+	const store = initStore(data);
+	return store;
 }

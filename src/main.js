@@ -3,7 +3,7 @@ import createUI from './ui/ui.js';
 
 
 
-import { configureStore } from './redux/redux.js';
+import { createStore } from './redux/redux.js';
 
 
 
@@ -12,9 +12,17 @@ async function render() {
   const textData = await readTextFromFile('initialLinkList.txt');
   const linksData = parseText(textData);
   
-  configureStore();
+
+  const store = createStore(linksData.getLinks());
+  console.log(store);
+
   //createUI(linksData);
 }
+
+
+
+
+
 
 
 render();
