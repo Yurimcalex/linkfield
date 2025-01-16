@@ -14,7 +14,7 @@ async function render() {
   
 
   const store = createStore(linksData.getLinks());
-  console.log(store);
+  console.log(store.getState());
 
   //createUI(linksData);
 }
