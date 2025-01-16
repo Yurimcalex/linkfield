@@ -14,4 +14,4 @@ const linksSlice = createSlice({
 
 export default linksSlice.reducer;
 
-export const allLinksSelector = (state) => state.links.data;
+export const selectAllLinks = (state) => state.links.data;
