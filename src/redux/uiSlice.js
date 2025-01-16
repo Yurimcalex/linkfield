@@ -8,11 +8,18 @@ const uiSlice = createSlice({
 	},
 
 	reducers: {
-		
+		menuCategorySelected: (state, action) => {
+			state.menuCategory = action.payload;
+		}
 	}
 });
 
 export default uiSlice.reducer;
 
 
+// actions
+export const { menuCategorySelected } = uiSlice.actions;
+
+
+// selectors
 export const selectMenuCategory = (state) => state.ui.menuCategory;
