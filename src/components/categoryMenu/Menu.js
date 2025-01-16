@@ -3,8 +3,8 @@ import {
 	CATEGORY_MENU_ITEM,
 	CATEGORY_MENU_HEADER,
 	CATEGORY_MENU_LINK 
-} from './classNames.js';
-import { replaceSpace } from '../ui/utils.js';
+} from '../classNames.js';
+import { replaceSpace } from '../../ui/utils.js';
 
 
 /*

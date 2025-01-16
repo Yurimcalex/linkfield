@@ -1,4 +1,4 @@
-import CategoryMenu from './categoryMenuWrapper.js';
+import CategoryMenu from './categoryMenu/MenuWrapper.js';
 
 
 export default class UI {

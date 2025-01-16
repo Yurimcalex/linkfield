@@ -1,10 +1,10 @@
-import Menu from './categoryMenu.js';
-import { selectCategoryData } from '../redux/linksSlice.js';
-import { selectMenuCategory } from '../redux/uiSlice.js';
-import { menuCategorySelected } from '../redux/uiSlice.js';
+import Menu from './Menu.js';
+import { selectCategoryData } from '../../redux/linksSlice.js';
+import { selectMenuCategory } from '../../redux/uiSlice.js';
+import { menuCategorySelected } from '../../redux/uiSlice.js';
 
 
-export default class CategoryMenu {
+export default class Wrapper {
 	constructor(store) {
 		this.selectCategories = store.useSelector(selectCategoryData);
 		this.selectCategory = store.useSelector(selectMenuCategory);
