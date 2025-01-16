@@ -16,8 +16,7 @@ async function render() {
   const store = createStore(initialData);
   const ui = new UI(store);
   ui.mount();
-  
-  console.log(store.store.getState());
+  store.store.subscribe(() => ui.update());
 }
 
 render();
