@@ -1,21 +1,21 @@
 import Menu from './Menu.js';
 import { selectCategoryData } from '../../redux/linksSlice.js';
 import { selectMenuCategory } from '../../redux/uiSlice.js';
-import { menuCategorySelected } from '../../redux/uiSlice.js';
+import { clickCategoryMenu } from '../actions.js';
 
 
 export default class Wrapper {
 	constructor(store) {
 		this.selectCategories = store.useSelector(selectCategoryData);
 		this.selectCategory = store.useSelector(selectMenuCategory);
-		this.dispatch = store.useDispatch();
+		this.storeAction = clickCategoryMenu(store.useDispatch());
 	}
 
 	mount() {
 		const categories = this.selectCategories();
 		const category = this.selectCategory();
-		const handleClick = (category) => this.dispatch(menuCategorySelected(category));
-		this.component = new Menu(categories, category, handleClick);
+	
+		this.component = new Menu(categories, category, this.storeAction);
 		this.categories = categories;
 		this.category = category;
 	}
