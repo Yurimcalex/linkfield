@@ -12,17 +12,15 @@ import { replaceSpace } from '../ui/utils.js';
 	total - number of links in category
 */
 export default class Menu {
-	constructor(categories, selectedCategory, clickHandler) {
+	constructor(categories, selectedCategory, storeAction) {
 		this.node = document.querySelector(`.${CATEGORY_MENU}`);
-		this.categories = categories;
-		this.selectedCategory = selectedCategory;
-		this.create();
-		this.update(selectedCategory);
+		this.create(categories);
+		this.highlight(selectedCategory);
 		
 		this.node.addEventListener('click', (e) => {
 			const target = e.target.closest(`.${CATEGORY_MENU_ITEM}`);
 			if (target) {
-				clickHandler(target.dataset.category);	
+				storeAction(target.dataset.category);	
 			}
 		});
 	}
@@ -40,17 +38,21 @@ export default class Menu {
 		return html;
 	}
 
-	create() {
-		this.node.innerHTML = this.categories.reduce((html, { category, total }) => {
+	create(categories) {
+		this.node.innerHTML = categories.reduce((html, { category, total }) => {
 			return html + this.createItemTemplate(category, replaceSpace(category), total);
 		}, '');
 	}
 
-	update(selectedCategory) {
-		if (!selectedCategory) return;
+	highlight(category) {
+		if (!category) return;
 		const highlighted = this.node.querySelector('li.highlight');
 		if (highlighted) highlighted.classList.remove('highlight');
-		const target = this.node.querySelector(`li[data-category="${selectedCategory}"]`);
+		const target = this.node.querySelector(`li[data-category="${category}"]`);
 		if (target) target.classList.add('highlight');
+	}
+
+	update(selectedCategory) {
+		if (selectedCategory) this.highlight(selectedCategory);
 	}
  }
