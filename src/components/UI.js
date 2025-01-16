@@ -8,9 +8,11 @@ export default class UI {
 		this.store = store;
 	}
 
-	mount(store) {
-		this.categoryMenu = categoryMenu.mount(this.store);
+	mount() {
+		categoryMenu.mount(this.store);
 	}
 
-	update() {}
+	update() {
+		categoryMenu.update(this.store);
+	}
 }
