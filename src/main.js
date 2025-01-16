@@ -10,7 +10,7 @@ async function render() {
 
   const initialData = {
   	links: { data: linksData.getLinks() },
-  	ui: {}
+  	ui: { menuCategory: getCategoryFromHash(location) }
   };
 
   const store = createStore(initialData);
@@ -26,4 +26,13 @@ async function readTextFromFile(file) {
   const response = await fetch(file);
   const text = await response.text();
   return text;
+}
+
+
+function getCategoryFromHash(location) {
+  const hash = location.hash;
+  if (hash) {
+    return hash.slice(1).split('-').join(' ');
+  }
+  return '';
 }

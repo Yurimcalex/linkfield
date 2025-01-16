@@ -17,6 +17,7 @@ export default class Menu {
 		this.categories = categories;
 		this.selectedCategory = selectedCategory;
 		this.create();
+		this.update(selectedCategory);
 		
 		this.node.addEventListener('click', (e) => {
 			const target = e.target.closest(`.${CATEGORY_MENU_ITEM}`);
@@ -46,9 +47,10 @@ export default class Menu {
 	}
 
 	update(selectedCategory) {
+		if (!selectedCategory) return;
 		const highlighted = this.node.querySelector('li.highlight');
 		if (highlighted) highlighted.classList.remove('highlight');
 		const target = this.node.querySelector(`li[data-category="${selectedCategory}"]`);
-		target.classList.add('highlight');
+		if (target) target.classList.add('highlight');
 	}
  }
