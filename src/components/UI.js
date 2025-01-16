@@ -1,18 +1,16 @@
-import { categoryMenu } from './categoryMenuWrapper.js';
-
-
+import CategoryMenu from './categoryMenuWrapper.js';
 
 
 export default class UI {
 	constructor(store) {
-		this.store = store;
+		this.categoryMenu = new CategoryMenu(store);
 	}
 
 	mount() {
-		categoryMenu.mount(this.store);
+		this.categoryMenu.mount();
 	}
 
 	update() {
-		categoryMenu.update(this.store);
+		this.categoryMenu.update();
 	}
 }
