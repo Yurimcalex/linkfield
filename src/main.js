@@ -4,7 +4,7 @@ import createUI from './ui/ui.js';
 
 
 import { createStore } from './redux/redux.js';
-
+import { initUI } from './components/components.js';
 
 
 
@@ -14,8 +14,9 @@ async function render() {
   
 
   const store = createStore(linksData.getLinks());
-  console.log(store.getState());
-
+  initUI(store);
+  
+  console.log(store.store.getState());
   //createUI(linksData);
 }
 
