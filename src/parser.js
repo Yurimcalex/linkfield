@@ -35,6 +35,10 @@ export default function parseText(text) {
 
     countLinkItems(category) {
       return this.data.find(d => d.title === category).links.length;
+    },
+
+    getLinks() {
+      return this.data.reduce((acc, item) => [...acc, ...item.links], []);
     }
   }
 }
