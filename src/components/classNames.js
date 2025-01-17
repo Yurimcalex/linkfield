@@ -6,10 +6,10 @@ export const CATEGORY_MENU =             'category-menu';            // category
 export const CATEGORY_MENU_ITEM =        `${CATEGORY_MENU}-item`;
 export const CATEGORY_MENU_HEADER =      `${CATEGORY_MENU}-header`;
 export const CATEGORY_MENU_LINK =        `${CATEGORY_MENU}-content`;
-       const OPEN_CATEGORY_MENU_BUTTON = 'menu-opener';
+export const OPEN_CATEGORY_MENU_BUTTON = 'menu-opener';
 
 
-       const CONTENT =        'content';
+export const CONTENT =        'content';
 export const LINK_CATEGORY =  'link-category';
 export const LINK_CATEGORY_HEADER = 'link-category-header';
 export const LINK_LIST =      'link-list';
