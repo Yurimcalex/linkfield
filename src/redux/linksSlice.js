@@ -42,3 +42,10 @@ export const selectCategoryData = (state) => {
 	}
 	return result;
 };
+
+export const selectCategoryNames = (state) => 
+	Array.from(
+		new Set(
+			state.links.data.map(d => d.category)
+		)
+	);
