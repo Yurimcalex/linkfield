@@ -25,6 +25,8 @@ export default linksSlice.reducer;
 // selectors
 export const selectAllLinks = (state) => state.links.data;
 
+export const selectAllLinksId = (state) => state.links.data.map(d => d.id);
+
 export const selectCategoryData = (state) => {
 	let result = [];
 	const data = {};
