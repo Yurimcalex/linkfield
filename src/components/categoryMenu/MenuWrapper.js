@@ -1,14 +1,21 @@
 import Menu from './Menu.js';
 import { selectCategoryData } from '../../redux/linksSlice.js';
-import { selectMenuCategory } from '../../redux/uiSlice.js';
-import { clickCategoryMenu } from '../actions.js';
+import { selectMenuCategory, selectIsSmallScreen } from '../../redux/uiSlice.js';
+import { clickCategoryMenu, clickCategoryMenuOnSmallScreen } from '../actions.js';
 
 
 export default class Wrapper {
 	constructor(store) {
 		this.selectCategories = store.useSelector(selectCategoryData);
 		this.selectCategory = store.useSelector(selectMenuCategory);
-		this.storeAction = clickCategoryMenu(store.useDispatch());
+
+		this.storeAction = (arg1) => {
+			const isSmallScreen = store.useSelector(selectIsSmallScreen)();
+			clickCategoryMenu(store.useDispatch())(arg1);
+			if (isSmallScreen) {
+				clickCategoryMenuOnSmallScreen(store.useDispatch())();
+			}
+		}
 	}
 
 	mount() {
