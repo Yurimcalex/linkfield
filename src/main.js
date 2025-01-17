@@ -10,7 +10,10 @@ async function render() {
 
   const initialData = {
   	links: { data: linksData.getLinks() },
-  	ui: { menuCategory: getCategoryFromHash(location) }
+  	ui: { 
+      menuCategory: getCategoryFromHash(location),
+      isMenuOpened: false
+    }
   };
 
   const store = createStore(initialData);
