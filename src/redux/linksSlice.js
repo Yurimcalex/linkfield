@@ -49,3 +49,6 @@ export const selectCategoryNames = (state) =>
 			state.links.data.map(d => d.category)
 		)
 	);
+
+export const selectLinksByCategory = (state, category) =>
+	state.links.data.filter(link => link.category === category);
