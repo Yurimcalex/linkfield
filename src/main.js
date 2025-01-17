@@ -12,7 +12,8 @@ async function render() {
   	links: { data: linksData.getLinks() },
   	ui: { 
       menuCategory: getCategoryFromHash(location),
-      isMenuOpened: false
+      isMenuOpened: false,
+      isSmallScreen: getIsSmallScreen(),
     }
   };
 
@@ -38,4 +39,10 @@ function getCategoryFromHash(location) {
     return hash.slice(1).split('-').join(' ');
   }
   return '';
+}
+
+
+function getIsSmallScreen() {
+  const SMALL_SCREEN_WIDTH = 650;
+  return window.innerWidth <= SMALL_SCREEN_WIDTH;
 }
