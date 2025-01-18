@@ -9,17 +9,18 @@ export default class Component {
 		this.DY = 50; // takes into account the height of the menu bar
 
 		window.addEventListener('resize', () => {
-			storeAction1(this.getIsSmallScreen());
+			const isSmallScreen = getIsSmallScreen();
+			storeAction1(isSmallScreen);
+			
+			if (!isSmallScreen) {
+				const category = getCategoryFromHash(window.location);
+				if (category) this.scrollContentTo(category, isSmallScreen);
+			}
 		});
 
 		this.content.addEventListener('scroll', () => {
 			this.focusCategoryMenuItem(storeAction2);
 		});
-	}
-
-	getIsSmallScreen() {
-	  const SMALL_SCREEN_WIDTH = 650;
-	  return window.innerWidth <= SMALL_SCREEN_WIDTH;
 	}
 
 	// scroll the window for large screen, scroll the content for small screen
@@ -42,7 +43,7 @@ export default class Component {
 	}
 
 	focusCategoryMenuItem(fn) {
-		const isSmall = this.getIsSmallScreen();
+		const isSmall = getIsSmallScreen();
 		if (isSmall) return;
 		const menuItem = this.getMenuItemToFocus();
 		if (!menuItem) return;
@@ -69,4 +70,19 @@ export default class Component {
 			this.scrollContentTo(category, isSmallScreen);
 		}
 	}
+}
+
+
+function getCategoryFromHash(location) {
+  const hash = location.hash;
+  if (hash) {
+    return hash.slice(1).split('-').join(' ');
+  }
+  return '';
+}
+
+
+function getIsSmallScreen() {
+  const SMALL_SCREEN_WIDTH = 650;
+  return window.innerWidth <= SMALL_SCREEN_WIDTH;
 }
