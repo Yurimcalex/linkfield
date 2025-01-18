@@ -1,6 +1,7 @@
 import Category from './Category.js';
 import Header from './header/HeaderWrapper.js';
 import { selectLinksByCategory } from '../../../redux/linksSlice.js';
+import { selectLinkType } from '../../../redux/filtersSlice.js';
 
 
 export default class CategoryWrapper {
@@ -8,6 +9,7 @@ export default class CategoryWrapper {
 		this.store = store;
 		this.category = category;
 		this.selectLinks = store.useSelector(selectLinksByCategory);
+		this.selectLinkType = store.useSelector(selectLinkType);
 	}
 
 	mount() {
@@ -15,10 +17,15 @@ export default class CategoryWrapper {
 		this.component = new Category(this.category, links);
 		this.links = links;
 		this.mountChild(this.store, this.category);
+
 	}
 
 	update() {
-		this.component.update();
+		const linkType = this.selectLinkType(this.category);
+		if (linkType.category === this.category) {
+			this.component.update(linkType.type);
+		}
+		
 		this.updateChild();
 	}
 
