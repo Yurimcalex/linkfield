@@ -47,7 +47,7 @@ export default class Category {
 
 	create(category, linksData) {
 		const container = document.querySelector(`.${CONTENT}`);
-		container.innerHTML += this.createTemplate(category, linksData);
+		container.insertAdjacentHTML('beforeend', this.createTemplate(category, linksData));
 		this.node = document.querySelector(`.${LINK_CATEGORY}[data-category="${category}"]`);
 	}
 
