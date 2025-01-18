@@ -29,7 +29,7 @@ export default class Component {
 		const categoryHeader = document.getElementById(id);
 		const container = isSmallScreen ? window : this.content;
 		container.scrollTo(0, categoryHeader.offsetTop - (isSmallScreen ? this.DY : 0));
-		history.pushState(null, null, id);
+		history.pushState(null, null, `#${id}`);
 	}
 
 	scrollMenuItemIntoView(menu, item) {
