@@ -15,7 +15,9 @@ import {
 export default class Category {
 	constructor(category, linksData) {
 		this.node = null;
+		this.category = category;
 		this.create(category, linksData);
+		this.list = this.node.querySelector(`.${LINK_LIST}`);
 	}
 
 	createTemplate(category, linksData) {
@@ -45,13 +47,28 @@ export default class Category {
 		return html;
 	}
 
+	arrange(type) {
+		const items = Array.from(this.list.children).map(li => {
+			const linkType = li.querySelector(`.${LINK_TYPE}`).textContent;
+			return { type: linkType, element: li };
+		});
+
+		const newArrangedItems = items.sort((a, b) => {
+			if (a.type === type) return -1;
+				return 1;
+			})
+			.map(item => item.element);
+			
+		this.list.append(...newArrangedItems);
+	}
+
 	create(category, linksData) {
 		const container = document.querySelector(`.${CONTENT}`);
 		container.insertAdjacentHTML('beforeend', this.createTemplate(category, linksData));
 		this.node = document.querySelector(`.${LINK_CATEGORY}[data-category="${category}"]`);
 	}
 
-	update() {
-		
+	update(linkType) {
+		this.arrange(linkType);
 	}
 }
