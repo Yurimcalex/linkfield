@@ -4,20 +4,24 @@ const filtersSlice = createSlice({
 	name: 'filters',
 
 	initialState: {
-		categoryLink: {
-			//[category]: [link type]
+		linkType: {
+			category: '',
+			type: ''
 		}
 	},
 
 	reducers: {
 		linkTypeSelected: (state, action) => {
-			const { category, type } = action.payload;
-			state.categoryLink[category] = type;
+			state.linkType = { ...action.payload };
 		}
 	}
 });
 
 export default filtersSlice.reducer;
 
-
+// actions 
 export const { linkTypeSelected } = filtersSlice.actions;
+
+
+// selectors
+export const selectLinkType = (state, category) => state.filters.linkType;
