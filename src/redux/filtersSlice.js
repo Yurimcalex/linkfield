@@ -9,8 +9,15 @@ const filtersSlice = createSlice({
 		}
 	},
 
-	reducers: {}
+	reducers: {
+		linkTypeSelected: (state, action) => {
+			const { category, type } = action.payload;
+			state.categoryLink[category] = type;
+		}
+	}
 });
 
 export default filtersSlice.reducer;
 
+
+export const { linkTypeSelected } = filtersSlice.actions;
