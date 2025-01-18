@@ -3,8 +3,15 @@ import { replaceSpace } from '../../../../ui/utils.js';
 
 
 export default class Header {
-	constructor(category, linkTypes) {
+	constructor(category, linkTypes, storeAction) {
 		this.create(category, linkTypes);
+		createHoverEffect()(this.node, () => this.toggleSelect());
+
+		this.node.addEventListener('change', (e) => {
+			const category = replaceHyphen(this.node.getAttribute('id'));
+			const type = replaceHyphen(e.target.value);
+			storeAction({ category, type });
+		});
 	}
 
 	createTemplate(category, linkTypes) {
@@ -35,7 +42,6 @@ export default class Header {
 		const container = document.querySelector(`.${LINK_CATEGORY}[data-category="${category}"]`);
 		container.insertAdjacentHTML('afterbegin', this.createTemplate(category, linkTypes));
 		this.node = container.querySelector('h2');
-		createHoverEffect()(this.node, () => this.toggleSelect());
 	}
 
 	update() {}
@@ -68,4 +74,9 @@ function createHoverEffect() {
 		fn(currElm);
 		currElm = null;
 	}
+}
+
+
+function replaceHyphen(str) {
+	return str.split('-').join(' ');
 }
