@@ -33,6 +33,6 @@ export default class ContentWrapper {
 	}
 
 	updateChildren() {
-
+		this.children.forEach(elm => elm.update());
 	}
 }
