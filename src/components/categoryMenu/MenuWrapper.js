@@ -9,10 +9,11 @@ export default class Wrapper {
 		this.selectCategories = store.useSelector(selectCategoryData);
 		this.selectCategory = store.useSelector(selectMenuCategory);
 
-		this.storeAction = (arg1) => {
+		this.storeAction = (category, event) => {
 			const isSmallScreen = store.useSelector(selectIsSmallScreen)();
-			clickCategoryMenu(store.useDispatch())(arg1);
+			clickCategoryMenu(store.useDispatch())(category);
 			if (isSmallScreen) {
+				event.preventDefault();
 				clickCategoryMenuOnSmallScreen(store.useDispatch())();
 			}
 		}

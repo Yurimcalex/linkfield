@@ -20,8 +20,7 @@ export default class Menu {
 		this.node.addEventListener('click', (e) => {
 			const target = e.target.closest(`.${CATEGORY_MENU_ITEM}`);
 			if (target) {
-				e.preventDefault();
-				storeAction(target.dataset.category);	
+				storeAction(target.dataset.category, e);	
 			}
 		});
 	}
