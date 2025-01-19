@@ -1,4 +1,4 @@
-import { menuCategorySelected, categoryMenuToggled, screenSizeChanged } from '../redux/uiSlice.js';
+import { menuCategorySelected, categoryMenuToggled, screenSizeChanged, settingsWindowToggled } from '../redux/uiSlice.js';
 import { linkTypeSelected } from '../redux/filtersSlice.js';
 import { linkRemoved } from '../redux/linksSlice.js';
 
@@ -20,3 +20,6 @@ export const selectCategoryLinkType = (dispatch) =>
 
 export const removeLink = (dispatch) =>
 	(id) => dispatch(linkRemoved(id));
+
+export const toggleSettingWindow = (dispatch) =>
+	() => dispatch(settingsWindowToggled());
