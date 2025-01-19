@@ -18,6 +18,8 @@ export default class Category {
 		this.category = category;
 		this.create(category, linksData);
 		this.list = this.node.querySelector(`.${LINK_LIST}`);
+		this.prevSelectedItem = null;
+		this.node.addEventListener('click', (e) => this.selectListItem(e));
 	}
 
 	createTemplate(category, linksData) {
@@ -52,14 +54,25 @@ export default class Category {
 			const linkType = li.querySelector(`.${LINK_TYPE}`).textContent;
 			return { type: linkType, element: li };
 		});
-
 		const newArrangedItems = items.sort((a, b) => {
 			if (a.type === type) return -1;
 				return 1;
 			})
 			.map(item => item.element);
-			
 		this.list.append(...newArrangedItems);
+	}
+
+	selectListItem(e) {
+		const target = e.target.closest(`.${LINK_LIST_ITEM}`);
+		if (target) {
+			if (this.prevSelectedItem) {
+				this.prevSelectedItem.classList.remove('current');
+				this.prevSelectedItem.querySelector(`.${LINK_CONTROLS}`).classList.add('visibility');
+			}
+			target.classList.add('current');
+			target.querySelector(`.${LINK_CONTROLS}`).classList.remove('visibility');
+			this.prevSelectedItem = target;
+		}
 	}
 
 	create(category, linksData) {
