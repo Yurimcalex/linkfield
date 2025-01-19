@@ -1,5 +1,6 @@
 import { menuCategorySelected, categoryMenuToggled, screenSizeChanged } from '../redux/uiSlice.js';
 import { linkTypeSelected } from '../redux/filtersSlice.js';
+import { linkRemoved } from '../redux/linksSlice.js';
 
 
 export const clickCategoryMenu = (dispatch) =>
@@ -16,3 +17,6 @@ export const clickCategoryMenuOnSmallScreen = (dispatch) =>
 
 export const selectCategoryLinkType = (dispatch) =>
 	(payload) => dispatch(linkTypeSelected(payload));
+
+export const removeLink = (dispatch) =>
+	(id) => dispatch(linkRemoved(id));
