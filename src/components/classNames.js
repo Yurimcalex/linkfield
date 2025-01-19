@@ -21,13 +21,14 @@ export const EDIT_BUTTON =    'edit-btn';
 export const REMOVE_BUTTON =  'remove-btn';
 
 
-       const SETTINGS_WINDOW = 'settings-window';
+export const SETTINGS_MENU = 'settings-menu';
+export const SETTINGS_WINDOW = 'settings-window';
        const SET_LINK_WINDOW = 'link-creator';
 export const CLOSE_BUTTON =    'close-btn';
        const LINK_FORM =       'link-form';
 
 
-const OPEN_SETTINGS_BUTTON = 'link-creator-opener';
+export const OPEN_SETTINGS_BUTTON = 'link-creator-opener';
 
 const LOADING_COVER = 'loading-cover';
 
