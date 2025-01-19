@@ -16,14 +16,16 @@ export default class CategoryWrapper {
 		const links = this.selectLinks(this.category);
 		this.component = new Category(this.category, links);
 		this.links = links;
+		this.linkType = this.selectLinkType(this.category);
 		this.mountChild(this.store, this.category);
 
 	}
 
 	update() {
 		const linkType = this.selectLinkType(this.category);
-		if (linkType.category === this.category) {
+		if (linkType.category === this.category && linkType !== this.linkType) {
 			this.component.update(linkType.type);
+			this.linkType = linkType;
 		}
 		
 		this.updateChild();
