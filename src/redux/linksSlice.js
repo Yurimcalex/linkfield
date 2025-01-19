@@ -15,11 +15,20 @@ const linksSlice = createSlice({
 	},
 
 	reducers: {
-		
+		linkRemoved: (state, action) => {
+			const id = action.payload;
+			const ind = state.data.findIndex(d => d.id == id);
+			state.data.splice(ind, 1);
+			state.removedId = id;
+		}
 	}
 });
 
 export default linksSlice.reducer;
+
+
+// actions
+export const { linkRemoved } = linksSlice.actions;
 
 
 // selectors
@@ -61,3 +70,5 @@ export const selectLinkTypesByCategory = (state, category) => {
 		)
 	);
 };
+
+export const selectRemovedLinkId = (state) => state.links.removedId;
