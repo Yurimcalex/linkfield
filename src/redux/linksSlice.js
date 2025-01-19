@@ -46,10 +46,7 @@ export const selectCategoryData = (state) => {
 			data[category] += 1;
 		}
 	});
-	for (let item in data) {
-		result.push({ category: item, total: data[item] });
-	}
-	return result;
+	return data;
 };
 
 export const selectCategoryNames = (state) => 
