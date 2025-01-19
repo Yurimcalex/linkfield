@@ -27,7 +27,7 @@ export default class Header {
 		let html = '';
 		html += '<select name="Arrange-by-type">';
 		for (let type of types) {
-			html += `<option value=${replaceSpace(type)}>${type}</option>`;
+			html += `<option value=${replaceSpace(type)} data-type="${type}">${type}</option>`;
 		}
 		html += '<option value="no" selected disabled>Select option</option>';
 		html += '</select>';
@@ -44,7 +44,13 @@ export default class Header {
 		this.node = container.querySelector('h2');
 	}
 
-	update() {}
+	removeSelectOption(type) {
+		this.node.querySelector(`option[data-type="${type}"]`).remove();
+	}
+
+	update(typeToRemove) {
+		if (typeToRemove) this.removeSelectOption(typeToRemove);
+	}
 }
 
 

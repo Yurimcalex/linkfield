@@ -21,6 +21,18 @@ export default class HeaderWrapper {
 	}
 
 	update() {
-		this.component.update();
+		const linkTypes = this.selectLinkTypes(this.category);
+
+		// remove list item
+		if (linkTypes.length < this.linkTypes.length) {
+			for (let type of this.linkTypes) {
+				if (!linkTypes.includes(type)) {
+					this.component.update(type);
+					this.linkTypes = linkTypes;
+					break;
+				}
+			}
+		}
+		//this.component.update();
 	}
 }
