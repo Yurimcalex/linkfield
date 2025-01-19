@@ -2,6 +2,7 @@ import CategoryMenu from './categoryMenu/MenuWrapper.js';
 import MenuOpener from './categoryMenuOpener/OpenerWrapper.js';
 import CommonComponent from './common/ComponentWrapper.js';
 import Content from './linkCategories/ContentWrapper.js';
+import SettingsMenu from './settingsMenu/SettingsMenuWrapper.js';
 
 
 export default class UI {
@@ -10,6 +11,7 @@ export default class UI {
 		this.menuOpener = new MenuOpener(store);
 		this.commonComponent = new CommonComponent(store);
 		this.content = new Content(store);
+		this.settingsMenu = new SettingsMenu(store);
 	}
 
 	mount() {
@@ -17,6 +19,7 @@ export default class UI {
 		this.menuOpener.mount();
 		this.commonComponent.mount();
 		this.content.mount();
+		this.settingsMenu.mount();
 	}
 
 	update() {
@@ -24,5 +27,6 @@ export default class UI {
 		this.menuOpener.update();
 		this.commonComponent.update();
 		this.content.update();
+		this.settingsMenu.update();
 	}
 }
