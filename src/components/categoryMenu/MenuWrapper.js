@@ -29,10 +29,23 @@ export default class Wrapper {
 	}
 
 	update() {
+		// select item in category menu
 		const category = this.selectCategory();
 		if (category !== this.category) {
 		 	this.component.update(category);
 		 	this.category = category;
+		}
+
+		// remove item in category list
+		const categories = this.selectCategories();
+		for (let category in this.categories) {
+			const prev = this.categories[category];
+			const curr = categories[category];
+			if (prev !== curr) {
+				this.component.update(null, { category, total: curr || 0 });
+				this.categories = categories;
+				break;
+			}
 		}
 	}
 }
