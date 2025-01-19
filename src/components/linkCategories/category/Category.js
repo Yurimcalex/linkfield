@@ -13,13 +13,21 @@ import {
 
 // linksData = []
 export default class Category {
-	constructor(category, linksData) {
+	constructor(category, linksData, removeLinkAction) {
 		this.node = null;
 		this.category = category;
 		this.create(category, linksData);
 		this.list = this.node.querySelector(`.${LINK_LIST}`);
 		this.prevSelectedItem = null;
-		this.node.addEventListener('click', (e) => this.selectListItem(e));
+		this.node.addEventListener('click', (e) => {
+			const target = e.target;
+			if (target.classList.contains(`${REMOVE_BUTTON}`)) {
+				const id = target.dataset.linkid;
+				removeLinkAction(id);
+			} else {
+				this.selectListItem(e);
+			}
+		});
 		this.prevHoveredItem = null;
 		for (let listItem of this.list.children) {
 			createHoverEffect()(listItem, (...args) => this.hoverListItem(...args));
@@ -31,22 +39,22 @@ export default class Category {
 		html += `<div class="${LINK_CATEGORY}" data-category="${category}">`;
 			html += `<ul class="${LINK_LIST}" data-category="${category}">`;
 				linksData.forEach(link => {
-					html += `${this.createListItemTemplate(link.link, link.type, link.topic)}`;
+					html += `${this.createListItemTemplate(link.id, link.link, link.type, link.topic)}`;
 				});
 			html += '</ul>';
 		html += '</div>';
 		return html;
 	}
 
-	createListItemTemplate(linkSrc, linkType, linkDescription) {
+	createListItemTemplate(id, linkSrc, linkType, linkDescription) {
 		let html = '';
-		html += `<li class="${LINK_LIST_ITEM}">`;
+		html += `<li class="${LINK_LIST_ITEM}" data-linkid=${id}>`;
 			html += '<h3>';
 				html += `<span class="${LINK_TYPE}">${linkType}</span> `;
 				html += `<a class="${LINK_TOPIC}" href=${linkSrc} target="_blank">${linkDescription}</a>`;
 				html += `<div class="${LINK_CONTROLS} visibility sm">`;
-					html += `<span><a class="link-btn ${EDIT_BUTTON}">&#128393;</a></span>`;
-					html += `<span><a class="link-btn ${REMOVE_BUTTON}">&#128473;</a></span>`;
+					html += `<span><a class="link-btn ${EDIT_BUTTON}" data-linkid=${id}>&#128393;</a></span>`;
+					html += `<span><a class="link-btn ${REMOVE_BUTTON}" data-linkid=${id}>&#128473;</a></span>`;
 				html += '</div>';
 			html += '</h3>';
 		html += '</li>';
@@ -99,8 +107,12 @@ export default class Category {
 		this.node = document.querySelector(`.${LINK_CATEGORY}[data-category="${category}"]`);
 	}
 
-	update(linkType) {
-		this.arrange(linkType);
+	update(linkType, removedLinkId) {
+		if (linkType) this.arrange(linkType);
+		if (removedLinkId) {
+			this.list.querySelector(`.${LINK_LIST_ITEM}[data-linkid="${removedLinkId}"]`).remove();
+		}
+		console.log(this.category, 'list updated!');
 	}
 }
 
