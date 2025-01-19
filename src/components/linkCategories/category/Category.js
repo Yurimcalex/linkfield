@@ -20,6 +20,10 @@ export default class Category {
 		this.list = this.node.querySelector(`.${LINK_LIST}`);
 		this.prevSelectedItem = null;
 		this.node.addEventListener('click', (e) => this.selectListItem(e));
+		this.prevHoveredItem = null;
+		for (let listItem of this.list.children) {
+			createHoverEffect()(listItem, (...args) => this.hoverListItem(...args));
+		}
 	}
 
 	createTemplate(category, linksData) {
@@ -75,6 +79,20 @@ export default class Category {
 		}
 	}
 
+	hoverListItem(item) {
+		if (item && item === this.prevSelectedItem) return;
+		const controls = item.querySelector(`.${LINK_CONTROLS}`);
+		// in
+		if (this.prevHoveredItem !== item) {
+			controls.classList.remove('visibility');
+			this.prevHoveredItem = item;
+		// out
+		} else {
+			controls.classList.add('visibility');
+			this.prevHoveredItem = null;
+		}
+	}
+
 	create(category, linksData) {
 		const container = document.querySelector(`.${CONTENT}`);
 		container.insertAdjacentHTML('beforeend', this.createTemplate(category, linksData));
@@ -83,5 +101,33 @@ export default class Category {
 
 	update(linkType) {
 		this.arrange(linkType);
+	}
+}
+
+
+function createHoverEffect() {
+	let currElm = null;
+	return function create(container, fn) {
+		container.addEventListener('mouseover', (e) => mouseover(e, container, fn));
+		container.addEventListener('mouseout', (e) => mouseout(e, container, fn));
+	};
+
+	function mouseover(e, container, fn) {
+		if (currElm) return;
+		currElm = container;
+		fn(currElm);
+	}
+
+	function mouseout(e, container, fn) {
+		if (!currElm) return;
+
+		let relatedTarget = event.relatedTarget;
+		while (relatedTarget) {
+			 if (relatedTarget == currElm) return;
+			 relatedTarget = relatedTarget.parentNode;
+		}
+
+		fn(currElm);
+		currElm = null;
 	}
 }
