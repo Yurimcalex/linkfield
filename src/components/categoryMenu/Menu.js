@@ -39,7 +39,7 @@ export default class Menu {
 	}
 
 	create(categories) {
-		this.node.innerHTML = categories.reduce((html, { category, total }) => {
+		this.node.innerHTML = Object.entries(categories).reduce((html, [category, total ]) => {
 			return html + this.createItemTemplate(category, replaceSpace(category), total);
 		}, '');
 	}
@@ -52,7 +52,13 @@ export default class Menu {
 		if (target) target.classList.add('highlight');
 	}
 
-	update(selectedCategory) {
-		if (selectedCategory) this.highlight(selectedCategory);
+	changeItemCount(categoryData) {
+		const { category, total } = categoryData;
+		this.node.querySelector(`.${CATEGORY_MENU_ITEM}[data-category="${category}"] a > span`).textContent = total;
 	}
- }
+
+	update(selectedCategory, categoryData) {
+		if (selectedCategory) this.highlight(selectedCategory);
+		if (categoryData) this.changeItemCount(categoryData);
+	}
+}
