@@ -25,7 +25,7 @@ export const SETTINGS_MENU = 'settings-menu';
 export const SETTINGS_WINDOW = 'settings-window';
        const SET_LINK_WINDOW = 'link-creator';
 export const CLOSE_BUTTON =    'close-btn';
-       const LINK_FORM =       'link-form';
+export const LINK_FORM =       'link-form';
 
 
 export const OPEN_SETTINGS_BUTTON = 'link-creator-opener';
