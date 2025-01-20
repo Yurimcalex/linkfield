@@ -13,7 +13,7 @@ import {
 
 // linksData = []
 export default class Category {
-	constructor(category, linksData, removeLinkAction) {
+	constructor(category, linksData, removeLinkAction, openLinkFormAction) {
 		this.node = null;
 		this.category = category;
 		this.create(category, linksData);
@@ -24,6 +24,8 @@ export default class Category {
 			if (target.classList.contains(`${REMOVE_BUTTON}`)) {
 				const id = target.dataset.linkid;
 				removeLinkAction(id);
+			} else if (target.classList.contains(`${EDIT_BUTTON}`)) {
+				openLinkFormAction(target.closest(`.${EDIT_BUTTON}`).dataset.linkid);
 			} else {
 				const listItem = target.closest(`.${LINK_LIST_ITEM}`);
 				if (listItem) this.selectListItem(listItem);
