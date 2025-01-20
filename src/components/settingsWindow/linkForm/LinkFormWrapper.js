@@ -1,5 +1,5 @@
 import LinkFrom from './LinkForm.js';
-import { selectCategoryNames, selectLinkTypes } from '../../../redux/linksSlice.js';
+import { selectCategoryNames, selectLinkTypes, selectEditingLink } from '../../../redux/linksSlice.js';
 import { selectLinkFormMode } from '../../../redux/uiSlice.js';
 import { toggleSettingWindow, changeLinkFormMode, createLink } from '../../actions.js';
 
@@ -17,6 +17,7 @@ export default class LinkFromWrapper {
 			this.changeLinkFormMode('');
 			this.createLink(linkData);
 		};
+		this.selectEditingLink = store.useSelector(selectEditingLink);
 	}
 
 	mount() {
@@ -32,7 +33,7 @@ export default class LinkFromWrapper {
 	update() {
 		const mode = this.selectLinkFormMode();
 		if (mode !== this.mode) {
-			this.component.update(mode);
+			this.component.update(mode, this.selectEditingLink());
 			this.mode = mode;
 		}
 	}
