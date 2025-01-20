@@ -10,16 +10,9 @@ export default class SettingsMenu {
 				openSettingsWindowAction();
 			}
 		});
-		this.settingsWindow = document.querySelector(`.${SETTINGS_WINDOW}`);
-	}
-
-	toggleSettingsWindow() {
-		this.settingsWindow.classList.toggle('hide');
 	}
 
 	create() {}
 
-	update() {
-		this.toggleSettingsWindow();
-	}
+	update() {}
 }
