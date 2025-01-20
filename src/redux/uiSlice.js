@@ -8,6 +8,7 @@ const uiSlice = createSlice({
 		isMenuOpened: false, // on small screen assigns whether category menu is opened or isn't
 		isSmallScreen: false,
 		isSettingsWindowOpened: false,
+		linkFormMode: '', // whether link form is for creation or editing
 	},
 
 	reducers: {
@@ -22,7 +23,10 @@ const uiSlice = createSlice({
 		},
 		settingsWindowToggled: (state) => {
 			state.isSettingsWindowOpened = !state.isSettingsWindowOpened;
-		}
+		},
+		linkFormModeChanged: (state, action) => {
+			state.linkFormMode = action.payload;
+		} 
 	}
 });
 
@@ -30,7 +34,12 @@ export default uiSlice.reducer;
 
 
 // actions
-export const { menuCategorySelected, categoryMenuToggled, screenSizeChanged, settingsWindowToggled } = uiSlice.actions;
+export const { 
+	menuCategorySelected,
+	categoryMenuToggled,
+	screenSizeChanged,
+	settingsWindowToggled,
+	linkFormModeChanged } = uiSlice.actions;
 
 
 // selectors
@@ -39,3 +48,5 @@ export const selectMenuVisibility = (state) => state.ui.isMenuOpened;
 export const selectIsSmallScreen = (state) => state.ui.isSmallScreen;
 
 export const selectIsSettingsWindowOpened = (state) => state.ui.isSettingsWindowOpened;
+
+export const selectLinkFormMode = (state) => state.ui.linkFormMode;
