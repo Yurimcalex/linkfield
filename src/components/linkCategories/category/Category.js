@@ -101,16 +101,27 @@ export default class Category {
 		}
 	}
 
+	createItem(data) {
+		const html = this.createListItemTemplate(data.id, data.link, data.type, data.topic);
+		this.list.insertAdjacentHTML('beforeend', html);
+		const item = this.list.querySelector(`.${LINK_LIST_ITEM}:last-child`);
+		createHoverEffect()(item, (...args) => this.hoverListItem(...args));
+		
+	}
+
 	create(category, linksData) {
 		const container = document.querySelector(`.${CONTENT}`);
 		container.insertAdjacentHTML('beforeend', this.createTemplate(category, linksData));
 		this.node = document.querySelector(`.${LINK_CATEGORY}[data-category="${category}"]`);
 	}
 
-	update(linkType, removedLinkId) {
+	update(linkType, removedLinkId, createdLinkData) {
 		if (linkType) this.arrange(linkType);
 		if (removedLinkId) {
 			this.list.querySelector(`.${LINK_LIST_ITEM}[data-linkid="${removedLinkId}"]`).remove();
+		}
+		if (createdLinkData) {
+			this.createItem(createdLinkData);
 		}
 		console.log(this.category, 'list updated!');
 	}
