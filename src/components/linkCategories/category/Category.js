@@ -25,7 +25,7 @@ export default class Category {
 				const id = target.dataset.linkid;
 				removeLinkAction(id);
 			} else {
-				this.selectListItem(e);
+				this.selectListItem(target.closest(`.${LINK_LIST_ITEM}`));
 			}
 		});
 		this.prevHoveredItem = null;
@@ -74,17 +74,14 @@ export default class Category {
 		this.list.append(...newArrangedItems);
 	}
 
-	selectListItem(e) {
-		const target = e.target.closest(`.${LINK_LIST_ITEM}`);
-		if (target) {
-			if (this.prevSelectedItem) {
-				this.prevSelectedItem.classList.remove('current');
-				this.prevSelectedItem.querySelector(`.${LINK_CONTROLS}`).classList.add('visibility');
-			}
-			target.classList.add('current');
-			target.querySelector(`.${LINK_CONTROLS}`).classList.remove('visibility');
-			this.prevSelectedItem = target;
+	selectListItem(item) {
+		if (this.prevSelectedItem) {
+			this.prevSelectedItem.classList.remove('current');
+			this.prevSelectedItem.querySelector(`.${LINK_CONTROLS}`).classList.add('visibility');
 		}
+		item.classList.add('current');
+		item.querySelector(`.${LINK_CONTROLS}`).classList.remove('visibility');
+		this.prevSelectedItem = item;
 	}
 
 	hoverListItem(item) {
@@ -101,12 +98,32 @@ export default class Category {
 		}
 	}
 
+	isVisible(item) {
+		const { top, height } = item.getBoundingClientRect();
+		return top > 0 && top < window.innerHeight - height;
+	}
+
+	highlightListItemForTime(item) {
+		item.classList.add('highlight');
+		setTimeout(() => {
+			item.classList.remove('highlight');
+		}, 2000);
+	}
+
+	listItemFocus(item) {
+		this.selectListItem(item);
+		if (!this.isVisible(item)) {
+			item.scrollIntoView(false);
+		}
+		this.highlightListItemForTime(item);
+	}
+
 	createItem(data) {
 		const html = this.createListItemTemplate(data.id, data.link, data.type, data.topic);
 		this.list.insertAdjacentHTML('beforeend', html);
 		const item = this.list.querySelector(`.${LINK_LIST_ITEM}:last-child`);
 		createHoverEffect()(item, (...args) => this.hoverListItem(...args));
-		
+		this.listItemFocus(item);
 	}
 
 	create(category, linksData) {
