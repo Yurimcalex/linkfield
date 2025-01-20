@@ -1,6 +1,10 @@
 import Category from './Category.js';
 import Header from './header/HeaderWrapper.js';
-import { selectLinksByCategory, selectRemovedLinkId, selectJustCreatedLink } from '../../../redux/linksSlice.js';
+import { 
+	selectLinksByCategory,
+ 	selectRemovedLinkId,
+ 	selectJustCreatedLink,
+ 	selectCreatedLinkId, selectEditedLink } from '../../../redux/linksSlice.js';
 import { selectLinkType } from '../../../redux/filtersSlice.js';
 import { removeLink, toggleSettingWindow, changeLinkFormMode, linkForEditingSelected } from '../../actions.js';
 
@@ -22,6 +26,8 @@ export default class CategoryWrapper {
 			this.linkForEditingSelected(linkId);
 			this.changeLinkFormMode('editing');
 		};
+		this.selectCreatedLinkId = store.useSelector(selectCreatedLinkId);
+		this.selectEditedLink = store.useSelector(selectEditedLink);
 	}
 
 	mount() {
@@ -44,15 +50,25 @@ export default class CategoryWrapper {
 			this.linkType = linkType;
 		}
 
-		const links = this.selectLinks(this.category);
-		if (links.length < this.links.length) { // link was removed
-			this.component.update(null, this.selectRemovedLinkId());
-			this.links = links;
+		const removedId = this.selectRemovedLinkId();
+		if (removedId !== this.removedId) { // link was removed
+			this.component.update(null, removedId);
+			this.removedId = removedId;
+
 		}
 
-		if (links.length > this.links.length) { // link was created
+		const createdId = this.selectCreatedLinkId();
+		if (createdId !== this.createdId) { // link was created
 			this.component.update(null, null, this.selectJustCreatedLink());
-			this.links = links;
+			this.createdId = createdId;
+		}
+
+		const editedLink = this.selectEditedLink();
+		if (editedLink !== this.editedLink) {
+			if (editedLink.category === this.category) {
+				this.component.update(null, null, null, editedLink);
+			}
+			this.editedLink = editedLink;
 		}
 		
 		this.updateChild();
@@ -66,4 +82,12 @@ export default class CategoryWrapper {
 	updateChild() {
 		this.child.update();
 	}
+}
+
+
+function hasSameValues(obj1, obj2) {
+	for (let p in obj1) {
+		if (obj1[p] != obj2[p]) return false;
+	}
+	return true;
 }
