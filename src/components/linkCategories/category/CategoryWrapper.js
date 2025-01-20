@@ -2,7 +2,7 @@ import Category from './Category.js';
 import Header from './header/HeaderWrapper.js';
 import { selectLinksByCategory, selectRemovedLinkId, selectJustCreatedLink } from '../../../redux/linksSlice.js';
 import { selectLinkType } from '../../../redux/filtersSlice.js';
-import { removeLink } from '../../actions.js';
+import { removeLink, toggleSettingWindow, changeLinkFormMode, linkForEditingSelected } from '../../actions.js';
 
 
 export default class CategoryWrapper {
@@ -14,11 +14,23 @@ export default class CategoryWrapper {
 		this.selectRemovedLinkId = store.useSelector(selectRemovedLinkId);
 		this.removeLink = removeLink(store.useDispatch());
 		this.selectJustCreatedLink = store.useSelector(selectJustCreatedLink);
+		this.toggleSettingWindow = toggleSettingWindow(store.useDispatch());
+		this.changeLinkFormMode = changeLinkFormMode(store.useDispatch());
+		this.linkForEditingSelected = linkForEditingSelected(store.useDispatch());
+		this.openLinkFormForEditing = (linkId) => {
+			this.toggleSettingWindow();
+			this.changeLinkFormMode('editing');
+			this.linkForEditingSelected(linkId);
+		};
 	}
 
 	mount() {
 		const links = this.selectLinks(this.category);
-		this.component = new Category(this.category, links, this.removeLink);
+		this.component = new Category(
+			this.category, links,
+			this.removeLink,
+			this.openLinkFormForEditing
+		);
 		this.links = links;
 		this.linkType = this.selectLinkType(this.category);
 		this.mountChild(this.store, this.category);
