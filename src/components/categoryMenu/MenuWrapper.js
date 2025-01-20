@@ -40,12 +40,11 @@ export default class Wrapper {
 		const categories = this.selectCategories();
 		for (let category in this.categories) {
 			const prev = this.categories[category];
-			const curr = categories[category];
+			const curr = categories[category];	
 			if (prev !== curr) {
 				this.component.update(null, { category, total: curr || 0 });
-				this.categories = categories;
-				break;
 			}
 		}
+		this.categories = categories;
 	}
 }
