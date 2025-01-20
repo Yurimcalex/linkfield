@@ -29,11 +29,13 @@ const linksSlice = createSlice({
 			state.editedId = action.payload;
 		},
 		linkEdited: (state, action) => {
-			const { id, link, type, topic } = action.payload; 
+			const { id, link, type, topic, category } = action.payload; 
 			const item = state.data.find(d => d.id == id);
 			item.link = link;
 			item.type = type;
 			item.topic = topic;
+			item.category = category;
+			state.editedLink = { ...action.payload };
 		}
 	}
 });
@@ -57,6 +59,8 @@ export const selectJustCreatedLink = (state) => {
 export const selectEditingLink = (state) => {
 	return state.links.data.find(d => d.id == state.links.editedId);
 };
+
+export const selectEditedLink = (state) => state.links.editedLink;
 
 export const selectAllLinksId = (state) => state.links.data.map(d => d.id);
 
