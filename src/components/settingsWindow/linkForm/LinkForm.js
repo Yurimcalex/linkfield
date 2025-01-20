@@ -2,7 +2,7 @@ import { LINK_FORM } from '../../classNames.js';
 
 
 export default class LinkFrom {
-	constructor(categories, types, createLinkAction) {
+	constructor(categories, types, createLinkAction, editLinkAction) {
 		this.node = document.querySelector(`.${LINK_FORM}`);
 		this.categorySelect = this.node.querySelector(`select[name="category"]`);
 		this.typeSelect = this.node.querySelector(`select[name="type"]`);
@@ -12,6 +12,15 @@ export default class LinkFrom {
 			const target = e.target;
 			if (target === this.node.add) {
 				createLinkAction(this.getData());
+			}
+			if (target === this.node.edit) {
+				editLinkAction({
+					id: this.editingLinkId,
+					link: this.node.link.value,
+					type: this.node.type.value,
+					topic: this.node.topic.value,
+					category: this.node.category.value
+				});
 			}
 		});
 	}
@@ -48,7 +57,8 @@ export default class LinkFrom {
 		this.reset();
 		this.node.edit.classList.remove('hide');
 		this.node.add.classList.add('hide');
-		const { link, type, topic, category } = editedLinkData;
+		const { id, link, type, topic, category } = editedLinkData;
+		this.editingLinkId = id;
 		this.node.link.value = link;
 		this.node.type.value = type;
 		this.node.topic.value = topic;
