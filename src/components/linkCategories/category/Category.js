@@ -25,7 +25,8 @@ export default class Category {
 				const id = target.dataset.linkid;
 				removeLinkAction(id);
 			} else {
-				this.selectListItem(target.closest(`.${LINK_LIST_ITEM}`));
+				const listItem = target.closest(`.${LINK_LIST_ITEM}`);
+				if (listItem) this.selectListItem(listItem);
 			}
 		});
 		this.prevHoveredItem = null;
