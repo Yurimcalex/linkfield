@@ -17,12 +17,24 @@ export default class LinkFrom {
 		return html;
 	}
 
+	reset() {
+		this.node.link.value = '';
+		this.node.topic.value = '';
+	}
+
+	setCreateionMode() {
+		this.reset();
+		this.node.edit.classList.add('hide');
+		this.node.add.classList.remove('hide');
+	}
+
 	create(categories, types) {
 		this.categorySelect.innerHTML = this.createOptionsTemplate(categories);
 		this.typeSelect.innerHTML = this.createOptionsTemplate(types);
 	}
 
-	update() {
 
+	update(mode) {
+		if (mode === 'creation') this.setCreateionMode();
 	}
 }
