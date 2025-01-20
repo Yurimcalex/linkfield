@@ -5,7 +5,7 @@ import {
  settingsWindowToggled,
  linkFormModeChanged } from '../redux/uiSlice.js';
 import { linkTypeSelected } from '../redux/filtersSlice.js';
-import { linkRemoved, linkCreated } from '../redux/linksSlice.js';
+import { linkRemoved, linkCreated, editedLinkIdSelected } from '../redux/linksSlice.js';
 
 
 export const clickCategoryMenu = (dispatch) =>
@@ -34,3 +34,9 @@ export const changeLinkFormMode = (dispatch) =>
 
 export const createLink = (dispatch) => 
 	(link) => dispatch(linkCreated(link));
+
+export const linkForEditingSelected = (dispatch) => 
+	(id) => dispatch(editedLinkIdSelected(id));
+
+export const editLink = (dispatch) => 
+	(link) => dispatch(linkEdited(link));
