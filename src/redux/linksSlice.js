@@ -20,6 +20,10 @@ const linksSlice = createSlice({
 			const ind = state.data.findIndex(d => d.id == id);
 			state.data.splice(ind, 1);
 			state.removedId = id;
+		},
+		linkCreated: (state, action) => {
+			state.data.push({ ...action.payload });
+			state.createdId = action.payload.id;
 		}
 	}
 });
@@ -28,7 +32,7 @@ export default linksSlice.reducer;
 
 
 // actions
-export const { linkRemoved } = linksSlice.actions;
+export const { linkRemoved, linkCreated } = linksSlice.actions;
 
 
 // selectors
