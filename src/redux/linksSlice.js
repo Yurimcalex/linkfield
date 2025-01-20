@@ -24,6 +24,16 @@ const linksSlice = createSlice({
 		linkCreated: (state, action) => {
 			state.data.push({ ...action.payload });
 			state.createdId = action.payload.id;
+		},
+		editedLinkIdSelected: (state, action) => {
+			state.editedId = action.payload;
+		},
+		linkEdited: (state, action) => {
+			const { id, link, type, topic } = action.payload; 
+			const item = state.data.find(d => d.id == id);
+			item.link = link;
+			item.type = type;
+			item.topic = topic;
 		}
 	}
 });
@@ -32,7 +42,7 @@ export default linksSlice.reducer;
 
 
 // actions
-export const { linkRemoved, linkCreated } = linksSlice.actions;
+export const { linkRemoved, linkCreated, linkEdited, editedLinkIdSelected } = linksSlice.actions;
 
 
 // selectors
@@ -88,3 +98,5 @@ export const selectLinkTypesByCategory = (state, category) => {
 export const selectRemovedLinkId = (state) => state.links.removedId;
 
 export const selectCreatedLinkId = (state) => state.links.createdId;
+
+export const selectEditedLinkId = (state) => state.links.editedId;
