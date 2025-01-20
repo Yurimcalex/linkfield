@@ -2,11 +2,18 @@ import { LINK_FORM } from '../../classNames.js';
 
 
 export default class LinkFrom {
-	constructor(categories, types) {
+	constructor(categories, types, createLinkAction) {
 		this.node = document.querySelector(`.${LINK_FORM}`);
 		this.categorySelect = this.node.querySelector(`select[name="category"]`);
 		this.typeSelect = this.node.querySelector(`select[name="type"]`);
 		this.create(categories, types);
+		this.node.addEventListener('click', (e) => {
+			e.preventDefault();
+			const target = e.target;
+			if (target === this.node.add) {
+				createLinkAction(this.getData());
+			}
+		});
 	}
 
 	createOptionsTemplate(items) {
@@ -15,6 +22,15 @@ export default class LinkFrom {
 			html += `<option value="${item}">${item}</option>`;
 		}
 		return html;
+	}
+
+	getData() {
+		const data = { link: '', topic: '', type: '', category: '' };
+		for (let prop in data) {
+			data[prop] = this.node[prop].value;
+		}
+		data.id = String(Math.random()).slice(2, 10);
+		return data;
 	}
 
 	reset() {
