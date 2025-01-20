@@ -26,6 +26,7 @@ export default class Category {
 				removeLinkAction(id);
 			} else if (target.classList.contains(`${EDIT_BUTTON}`)) {
 				openLinkFormAction(target.closest(`.${EDIT_BUTTON}`).dataset.linkid);
+				this.selectListItem(target.closest(`.${LINK_LIST_ITEM}`));
 			} else {
 				const listItem = target.closest(`.${LINK_LIST_ITEM}`);
 				if (listItem) this.selectListItem(listItem);
@@ -129,21 +130,37 @@ export default class Category {
 		this.listItemFocus(item);
 	}
 
+	updateList(data) {
+		const { id, link, type, topic, category } = data;
+		const item = document.querySelector(`.${LINK_LIST_ITEM}[data-linkid="${id}"]`);
+		item.querySelector(`.${LINK_TYPE}`).textContent = type;
+		const a = item.querySelector(`.${LINK_TOPIC}`);
+		a.href = link;
+		a.textContent = topic;
+		if (!this.list.contains(item)) {
+			this.list.append(item);
+		}
+		this.listItemFocus(item);
+	}
+
 	create(category, linksData) {
 		const container = document.querySelector(`.${CONTENT}`);
 		container.insertAdjacentHTML('beforeend', this.createTemplate(category, linksData));
 		this.node = document.querySelector(`.${LINK_CATEGORY}[data-category="${category}"]`);
 	}
 
-	update(linkType, removedLinkId, createdLinkData) {
+	update(linkType, removedLinkId, createdLinkData, editedLinkData) {
 		if (linkType) this.arrange(linkType);
 		if (removedLinkId) {
-			this.list.querySelector(`.${LINK_LIST_ITEM}[data-linkid="${removedLinkId}"]`).remove();
+			const item = this.list.querySelector(`.${LINK_LIST_ITEM}[data-linkid="${removedLinkId}"]`);
+			if (item) item.remove();
 		}
 		if (createdLinkData) {
 			this.createItem(createdLinkData);
 		}
-		console.log(this.category, 'list updated!');
+		if (editedLinkData) {
+			this.updateList(editedLinkData);
+		}
 	}
 }
 
