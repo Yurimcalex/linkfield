@@ -19,8 +19,8 @@ export default class CategoryWrapper {
 		this.linkForEditingSelected = linkForEditingSelected(store.useDispatch());
 		this.openLinkFormForEditing = (linkId) => {
 			this.toggleSettingWindow();
-			this.changeLinkFormMode('editing');
 			this.linkForEditingSelected(linkId);
+			this.changeLinkFormMode('editing');
 		};
 	}
 
