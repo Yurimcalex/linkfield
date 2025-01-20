@@ -1,6 +1,6 @@
 import Category from './Category.js';
 import Header from './header/HeaderWrapper.js';
-import { selectLinksByCategory, selectRemovedLinkId } from '../../../redux/linksSlice.js';
+import { selectLinksByCategory, selectRemovedLinkId, selectJustCreatedLink } from '../../../redux/linksSlice.js';
 import { selectLinkType } from '../../../redux/filtersSlice.js';
 import { removeLink } from '../../actions.js';
 
@@ -13,6 +13,7 @@ export default class CategoryWrapper {
 		this.selectLinkType = store.useSelector(selectLinkType);
 		this.selectRemovedLinkId = store.useSelector(selectRemovedLinkId);
 		this.removeLink = removeLink(store.useDispatch());
+		this.selectJustCreatedLink = store.useSelector(selectJustCreatedLink);
 	}
 
 	mount() {
@@ -34,6 +35,11 @@ export default class CategoryWrapper {
 		const links = this.selectLinks(this.category);
 		if (links.length < this.links.length) { // link was removed
 			this.component.update(null, this.selectRemovedLinkId());
+			this.links = links;
+		}
+
+		if (links.length > this.links.length) { // link was created
+			this.component.update(null, null, this.selectJustCreatedLink());
 			this.links = links;
 		}
 		
