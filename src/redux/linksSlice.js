@@ -38,6 +38,12 @@ export const { linkRemoved, linkCreated } = linksSlice.actions;
 // selectors
 export const selectAllLinks = (state) => state.links.data;
 
+export const selectLinkById = (state, id) => state.links.data.find(d => d.id == id);
+
+export const selectJustCreatedLink = (state) => {
+	return state.links.data.find(d => d.id == state.links.createdId);
+};
+
 export const selectAllLinksId = (state) => state.links.data.map(d => d.id);
 
 export const selectCategoryData = (state) => {
@@ -80,3 +86,5 @@ export const selectLinkTypesByCategory = (state, category) => {
 };
 
 export const selectRemovedLinkId = (state) => state.links.removedId;
+
+export const selectCreatedLinkId = (state) => state.links.createdId;
