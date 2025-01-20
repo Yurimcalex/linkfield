@@ -44,13 +44,25 @@ export default class LinkFrom {
 		this.node.add.classList.remove('hide');
 	}
 
+	setEditingMode(editedLinkData) {
+		this.reset();
+		this.node.edit.classList.remove('hide');
+		this.node.add.classList.add('hide');
+		const { link, type, topic, category } = editedLinkData;
+		this.node.link.value = link;
+		this.node.type.value = type;
+		this.node.topic.value = topic;
+		this.node.category.value = category;
+	}
+
 	create(categories, types) {
 		this.categorySelect.innerHTML = this.createOptionsTemplate(categories);
 		this.typeSelect.innerHTML = this.createOptionsTemplate(types);
 	}
 
 
-	update(mode) {
+	update(mode, editedLinkData) {
 		if (mode === 'creation') this.setCreateionMode();
+		if (mode === 'editing') this.setEditingMode(editedLinkData);
 	}
 }

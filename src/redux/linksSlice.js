@@ -54,6 +54,10 @@ export const selectJustCreatedLink = (state) => {
 	return state.links.data.find(d => d.id == state.links.createdId);
 };
 
+export const selectEditingLink = (state) => {
+	return state.links.data.find(d => d.id == state.links.editedId);
+};
+
 export const selectAllLinksId = (state) => state.links.data.map(d => d.id);
 
 export const selectCategoryData = (state) => {
