@@ -24,3 +24,9 @@ export function createHoverEffect() {
 		currElm = null;
 	}
 }
+
+
+export function isVisible(item) {
+	const { top, height } = item.getBoundingClientRect();
+	return top > 0 && top < window.innerHeight - height;
+}

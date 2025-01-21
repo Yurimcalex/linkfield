@@ -5,24 +5,32 @@ import {
 	LINK_LIST_ITEM,
 	LINK_CONTROLS,
 	REMOVE_BUTTON,
-	EDIT_BUTTON } from './classNames.js';
+	EDIT_BUTTON,
+	LINK_TYPE,
+	LINK_TOPIC } from './classNames.js';
 
+export const dom = {
+	getContent: () => document.querySelector(`.${CONTENT}`),
 
-export const getContent = () => document.querySelector(`.${CONTENT}`);
+	getCategory: (category) => document.querySelector(`.${LINK_CATEGORY}[data-category="${category}"]`),
 
-export const getCategory = (category) => 
-	document.querySelector(`.${LINK_CATEGORY}[data-category="${category}"]`);
+	getLinkList: (category) => document.querySelector(`.${LINK_LIST}[data-category="${category}"]`),
 
-export const getLinkList = (category) =>
-	document.querySelector(`.${LINK_LIST}[data-category="${category}"]`);
+	getLinkRemoveButton: (target) => target.closest(`.${REMOVE_BUTTON}`),
 
-export const getLinkRemoveButton = (target) => target.closest(`.${REMOVE_BUTTON}`);
+	getLinkEditButton: (target) => target.closest(`.${EDIT_BUTTON}`),
 
-export const getLinkEditButton = (target) => target.closest(`.${EDIT_BUTTON}`);
+	getLink: (target) => target.closest(`.${LINK_LIST_ITEM}`),
 
-export const getLink = (target) => target.closest(`.${LINK_LIST_ITEM}`);
+	getLinkById: (target, id) => target.querySelector(`.${LINK_LIST_ITEM}[data-linkid="${id}"]`),
 
-export const getCurrentSelectedLink = () => 
-	document.querySelector(`.${LINK_LIST_ITEM}.current`);
-
-export const getLinkControls = (target) => target.querySelector(`.${LINK_CONTROLS}`); 
+	getLastLink: (target) => target.querySelector(`.${LINK_LIST_ITEM}:last-child`),
+	
+	getCurrentSelectedLink: () => document.querySelector(`.${LINK_LIST_ITEM}.current`),
+	
+	getLinkControls: (target) => target.querySelector(`.${LINK_CONTROLS}`),
+	
+	getLinkType: (target) => target.querySelector(`.${LINK_TYPE}`),
+	
+	getLinkTopic: (target) => target.querySelector(`.${LINK_TOPIC}`),
+};

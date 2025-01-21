@@ -1,13 +1,6 @@
-import {
-	CONTENT, LINK_CATEGORY, LINK_LIST, LINK_LIST_ITEM, LINK_TYPE, LINK_TOPIC, LINK_CONTROLS,
-	EDIT_BUTTON,
-	REMOVE_BUTTON
-} from '../../classNames.js';
-import { 
-	getContent, getCategory, getLinkList, getLinkRemoveButton, getLinkEditButton, getLink,
-	getCurrentSelectedLink, getLinkControls } from '../../elements.js';
+import { dom } from '../../elements.js';
 import { createTemplate, createListItemTemplate } from './categoryTemplate.js';
-import { createHoverEffect } from '../../utils.js';
+import { createHoverEffect, isVisible } from '../../utils.js';
 
 
 // linksData = []
@@ -15,23 +8,23 @@ export default class Category {
 	constructor(category, linksData, removeLinkAction, openLinkFormAction) {
 		this.category = category;
 		this.create(category, linksData);
-		this.node = getCategory(category);
-		this.list = getLinkList(category); 
+		this.node = dom.getCategory(category);
+		this.list = dom.getLinkList(category); 
 		this.prevHoveredItem = null;
 		this.createHover = createHoverEffect();
 
 		this.node.addEventListener('click', (e) => {
 			const target = e.target;
 			const id = target.dataset.linkid;
-			const link = getLink(target);
+			const link = dom.getLink(target);
 			
-			if (target === getLinkRemoveButton(target)) {
+			if (target === dom.getLinkRemoveButton(target)) {
 				removeLinkAction(id);
-			} else if (target === getLinkEditButton(target)) {
+			} else if (target === dom.getLinkEditButton(target)) {
 				openLinkFormAction(id);
-				this.selectLink(link, getCurrentSelectedLink());
+				this.selectLink(link, dom.getCurrentSelectedLink());
 			} else {
-				if (link) this.selectLink(link, getCurrentSelectedLink());
+				if (link) this.selectLink(link, dom.getCurrentSelectedLink());
 			}
 		});
 
@@ -44,15 +37,15 @@ export default class Category {
 	selectLink(link, prevLink) {
 		if (prevLink) {
 			prevLink.classList.remove('current');
-			getLinkControls(prevLink).classList.add('visibility');
+			dom.getLinkControls(prevLink).classList.add('visibility');
 		}
 		link.classList.add('current');
-		getLinkControls(link).classList.remove('visibility');
+		dom.getLinkControls(link).classList.remove('visibility');
 	}
 
 	hoverLink(link) {
 		if (link.classList.contains('current')) return;
-		const controls = getLinkControls(link);
+		const controls = dom.getLinkControls(link);
 		if (this.prevHoveredItem !== link) { // in
 			controls.classList.remove('visibility');
 			this.prevHoveredItem = link;
@@ -62,81 +55,72 @@ export default class Category {
 		}
 	}
 
-
-
-	arrange(type) {
-		const items = Array.from(this.list.children).map(li => {
-			const linkType = li.querySelector(`.${LINK_TYPE}`).textContent;
-			return { type: linkType, element: li };
-		});
-		const newArrangedItems = items.sort((a, b) => {
-			if (a.type === type) return -1;
-				return 1;
-			})
-			.map(item => item.element);
-		this.list.append(...newArrangedItems);
-	}
-
-	
-
-	isVisible(item) {
-		const { top, height } = item.getBoundingClientRect();
-		return top > 0 && top < window.innerHeight - height;
-	}
-
-	highlightListItemForTime(item) {
-		item.classList.add('highlight');
+	highlightLink(link) {
+		link.classList.add('highlight');
 		setTimeout(() => {
-			item.classList.remove('highlight');
+			link.classList.remove('highlight');
 		}, 2000);
 	}
 
-	listItemFocus(item) {
-		this.selectListItem(item);
-		if (!this.isVisible(item)) {
-			item.scrollIntoView(false);
+	focusLink(link) {
+		this.selectLink(link, dom.getCurrentSelectedLink());
+		if (!isVisible(link)) link.scrollIntoView(false);
+		this.highlightLink(link);
+	}
+
+	// type - stored in filters slice of the store
+	arrangeLinksByType(type) {
+		const items = Array.from(this.list.children)
+			.map(link => ({ type: dom.getLinkType(link).textContent, element: link }));
+		const arrangedLinks = items
+			.sort((a, b) => a.type === type ? -1 : 1)
+			.map(item => item.element);
+		this.list.append(...arrangedLinks);
+	}
+
+	// id - stored in links slice of the store
+	removeLink(id) {
+		const link = dom.getLinkById(this.list, id);
+		if (link) {
+			const nextLink = link.nextElementSibling;
+			if (nextLink) dom.getLinkControls(nextLink).classList.remove('visibility');
+			link.remove();
 		}
-		this.highlightListItemForTime(item);
 	}
 
-	createItem(data) {
-		const html = createListItemTemplate(data.id, data.link, data.type, data.topic);
-		this.list.insertAdjacentHTML('beforeend', html);
-		const item = this.list.querySelector(`.${LINK_LIST_ITEM}:last-child`);
-		createHoverEffect()(item, (...args) => this.hoverListItem(...args));
-		this.listItemFocus(item);
+	// data comes from the links slice of the store
+	createLink(data) {
+		this.list.insertAdjacentHTML(
+			'beforeend',
+			createListItemTemplate(data.id, data.link, data.type, data.topic)
+		);
+		const link = dom.getLastLink(this.list);
+		this.createHover(link, (...args) => this.hoverLink(...args));
+		this.focusLink(link);
 	}
 
-	updateList(data) {
+	// data comes from the links slice of the store
+	updateLink(data) {
 		const { id, link, type, topic, category } = data;
-		const item = document.querySelector(`.${LINK_LIST_ITEM}[data-linkid="${id}"]`);
-		item.querySelector(`.${LINK_TYPE}`).textContent = type;
-		const a = item.querySelector(`.${LINK_TOPIC}`);
-		a.href = link;
-		a.textContent = topic;
-		if (!this.list.contains(item)) {
-			this.list.append(item);
-		}
-		this.listItemFocus(item);
+		const linkElement = dom.getLinkById(document, id);
+		const linkType = dom.getLinkType(linkElement);
+		const linkTopic = dom.getLinkTopic(linkElement);
+		linkType.textContent = type;
+		linkTopic.src = link;
+		linkTopic.textContent = topic;
+		if (!this.list.contains(linkElement)) this.list.append(linkElement);
+		this.focusLink(linkElement);
 	}
+
 
 	create(category, linksData) {
-		getContent()
-			.insertAdjacentHTML('beforeend', createTemplate(category, linksData));
+		dom.getContent().insertAdjacentHTML('beforeend', createTemplate(category, linksData));
 	}
 
 	update(linkType, removedLinkId, createdLinkData, editedLinkData) {
-		if (linkType) this.arrange(linkType);
-
-		if (removedLinkId) {
-			const item = this.list.querySelector(`.${LINK_LIST_ITEM}[data-linkid="${removedLinkId}"]`);
-			if (item) item.remove();
-		}
-		if (createdLinkData) {
-			this.createItem(createdLinkData);
-		}
-		if (editedLinkData) {
-			this.updateList(editedLinkData);
-		}
+		if (linkType) this.arrangeLinksByType(linkType);
+		if (removedLinkId) this.removeLink(removedLinkId);
+		if (createdLinkData) this.createLink(createdLinkData);
+		if (editedLinkData) this.updateLink(editedLinkData);
 	}
 }
