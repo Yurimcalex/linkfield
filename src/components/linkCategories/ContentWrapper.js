@@ -20,6 +20,7 @@ export default class ContentWrapper {
 	}
 
 	update() {
+		this.component.update();
 		this.updateChildren();
 	}
 
