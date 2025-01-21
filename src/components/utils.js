@@ -30,3 +30,13 @@ export function isVisible(item) {
 	const { top, height } = item.getBoundingClientRect();
 	return top > 0 && top < window.innerHeight - height;
 }
+
+
+export function replaceSpace(str) {
+	return str.split(' ').join('-');
+}
+
+
+export function replaceHyphen(str) {
+	return str.split('-').join(' ');
+}

@@ -7,7 +7,8 @@ import {
 	REMOVE_BUTTON,
 	EDIT_BUTTON,
 	LINK_TYPE,
-	LINK_TOPIC } from './classNames.js';
+	LINK_TOPIC,
+	LINK_CATEGORY_HEADER } from './classNames.js';
 
 export const dom = {
 	getContent: () => document.querySelector(`.${CONTENT}`),
@@ -33,4 +34,10 @@ export const dom = {
 	getLinkType: (target) => target.querySelector(`.${LINK_TYPE}`),
 	
 	getLinkTopic: (target) => target.querySelector(`.${LINK_TOPIC}`),
+
+	getCategoryHeader: (target) => target.querySelector(`.${LINK_CATEGORY_HEADER}`),
+
+	getSelect: (target) => target.querySelector('select'),
+
+	getOptionByType: (target, type) => target.querySelector(`option[data-type="${type}"]`),
 };
