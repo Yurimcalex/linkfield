@@ -1,6 +1,3 @@
-import { LINK_CATEGORY, LINK_CATEGORY_HEADER } from '../../../classNames.js';
-import { replaceSpace } from '../../../../ui/utils.js';
-
 import { createTemplate } from './HeaderTemplate.js';
 import { createHoverEffect, replaceHyphen } from '../../../utils.js';
 import { dom } from '../../../elements.js';
