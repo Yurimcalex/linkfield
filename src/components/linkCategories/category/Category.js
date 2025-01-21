@@ -3,14 +3,14 @@ import { createTemplate, createListItemTemplate } from './categoryTemplate.js';
 import { createHoverEffect, isVisible } from '../../utils.js';
 
 
-// linksData = []
+let prevHoveredItem = null;
+
 export default class Category {
 	constructor(category, linksData, removeLinkAction, openLinkFormAction) {
 		this.category = category;
 		this.create(category, linksData);
 		this.node = dom.getCategory(category);
 		this.list = dom.getLinkList(category); 
-		this.prevHoveredItem = null;
 		this.createHover = createHoverEffect();
 
 		this.node.addEventListener('click', (e) => {
@@ -46,12 +46,12 @@ export default class Category {
 	hoverLink(link) {
 		if (link.classList.contains('current')) return;
 		const controls = dom.getLinkControls(link);
-		if (this.prevHoveredItem !== link) { // in
+		if (prevHoveredItem !== link) { // in
 			controls.classList.remove('visibility');
-			this.prevHoveredItem = link;
+			prevHoveredItem = link;
 		} else { // out
 			controls.classList.add('visibility');
-			this.prevHoveredItem = null;
+			prevHoveredItem = null;
 		}
 	}
 
