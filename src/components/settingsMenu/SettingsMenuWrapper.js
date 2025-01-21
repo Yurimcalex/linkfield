@@ -1,15 +1,10 @@
 import SettingsMenu from './SettingsMenu.js';
-import { toggleSettingWindow, changeLinkFormMode } from '../actions.js';
+import { openLinkFormForCreation } from '../actions.js';
 
 
 export default class SettingsMenuWrapper {
 	constructor(store) {
-		this.toggleSettingWindow = toggleSettingWindow(store.useDispatch());
-		this.changeLinkFormMode = changeLinkFormMode(store.useDispatch());
-		this.openLinkFormForCreation = () => {
-			this.toggleSettingWindow();
-			this.changeLinkFormMode('creation');
-		};
+		this.openLinkFormForCreation = openLinkFormForCreation(store.useDispatch());
 	}
 
 	mount() {

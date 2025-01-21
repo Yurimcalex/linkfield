@@ -1,42 +1,63 @@
-import {
- menuCategorySelected,
- categoryMenuToggled,
- screenSizeChanged,
- settingsWindowToggled,
- linkFormModeChanged } from '../redux/uiSlice.js';
+import { menuCategorySelected, categoryMenuToggled, screenSizeChanged, settingsWindowToggled,
+	linkFormModeChanged } from '../redux/uiSlice.js';
+
 import { linkTypeSelected } from '../redux/filtersSlice.js';
 import { linkRemoved, linkCreated, editedLinkIdSelected, linkEdited } from '../redux/linksSlice.js';
 
 
-export const clickCategoryMenu = (dispatch) =>
+export const pickMenuCategory = (dispatch) =>
 	(category) => dispatch(menuCategorySelected(category));
 
-export const clickMenuOpener = (dispatch) =>
+export const toggleMenuOpener = (dispatch) =>
 	() => dispatch(categoryMenuToggled());
 
 export const changeScreenSize = (dispatch) =>
 	(isSmall) => dispatch(screenSizeChanged(isSmall));
 
-export const clickCategoryMenuOnSmallScreen = (dispatch) =>
-	() => dispatch(categoryMenuToggled());
-
-export const selectCategoryLinkType = (dispatch) =>
+export const pickCategoryLinkType = (dispatch) =>
 	(payload) => dispatch(linkTypeSelected(payload));
 
 export const removeLink = (dispatch) =>
 	(id) => dispatch(linkRemoved(id));
 
-export const toggleSettingWindow = (dispatch) =>
-	() => dispatch(settingsWindowToggled());
+export const clickOnCategoryMenu = (dispatch) =>
+	(category, isSmallScreen, event) => {
+		dispatch(menuCategorySelected(category));
+		if (isSmallScreen) {
+			event.preventDefault();
+			dispatch(categoryMenuToggled());
+		}
+	};
 
-export const changeLinkFormMode = (dispatch) => 
-	(mode) => dispatch(linkFormModeChanged(mode));
+export const openLinkFormForEditing = (dispatch) =>
+	(linkId) => {
+		dispatch(settingsWindowToggled());
+		dispatch(editedLinkIdSelected(linkId));
+		dispatch(linkFormModeChanged('editing'));
+	};
 
-export const createLink = (dispatch) => 
-	(link) => dispatch(linkCreated(link));
+export const openLinkFormForCreation = (dispatch) =>
+	() => {
+		dispatch(settingsWindowToggled());
+		dispatch(linkFormModeChanged('creation'));
+	};
 
-export const linkForEditingSelected = (dispatch) => 
-	(id) => dispatch(editedLinkIdSelected(id));
+export const closeSettingsWindow = (dispatch) => 
+	() => {
+		dispatch(settingsWindowToggled());
+		dispatch(linkFormModeChanged(''));
+	};
 
-export const editLink = (dispatch) => 
-	(link) => dispatch(linkEdited(link));
+export const createNewLink = (dispatch) => 
+	(linkData) => {
+		dispatch(settingsWindowToggled());
+		dispatch(linkFormModeChanged(''));
+		dispatch(linkCreated(linkData));
+	};
+
+export const editPickedLink = (dispatch) => 
+	(linkData) => {
+		dispatch(settingsWindowToggled());
+		dispatch(linkFormModeChanged(''));
+		dispatch(linkEdited(linkData));
+	};

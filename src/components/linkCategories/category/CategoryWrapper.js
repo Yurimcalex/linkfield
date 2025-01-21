@@ -6,7 +6,7 @@ import {
  	selectJustCreatedLink,
  	selectCreatedLinkId, selectEditedLink } from '../../../redux/linksSlice.js';
 import { selectLinkType } from '../../../redux/filtersSlice.js';
-import { removeLink, toggleSettingWindow, changeLinkFormMode, linkForEditingSelected } from '../../actions.js';
+import { openLinkFormForEditing, removeLink } from '../../actions.js';
 
 
 export default class CategoryWrapper {
@@ -18,14 +18,7 @@ export default class CategoryWrapper {
 		this.selectRemovedLinkId = store.useSelector(selectRemovedLinkId);
 		this.removeLink = removeLink(store.useDispatch());
 		this.selectJustCreatedLink = store.useSelector(selectJustCreatedLink);
-		this.toggleSettingWindow = toggleSettingWindow(store.useDispatch());
-		this.changeLinkFormMode = changeLinkFormMode(store.useDispatch());
-		this.linkForEditingSelected = linkForEditingSelected(store.useDispatch());
-		this.openLinkFormForEditing = (linkId) => {
-			this.toggleSettingWindow();
-			this.linkForEditingSelected(linkId);
-			this.changeLinkFormMode('editing');
-		};
+		this.openLinkFormForEditing = openLinkFormForEditing(store.useDispatch());
 		this.selectCreatedLinkId = store.useSelector(selectCreatedLinkId);
 		this.selectEditedLink = store.useSelector(selectEditedLink);
 	}

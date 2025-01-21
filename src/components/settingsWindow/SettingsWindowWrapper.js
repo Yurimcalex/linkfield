@@ -1,20 +1,14 @@
 import SettingsWindow from './SettingsWindow.js';
 import LinkFrom from './linkForm/LinkFormWrapper.js';
 import { selectIsSettingsWindowOpened } from '../../redux/uiSlice.js';
-import { toggleSettingWindow, changeLinkFormMode } from '../actions.js';
+import { closeSettingsWindow } from '../actions.js';
 
 
 export default class SettingsWindowWrapper {
 	constructor(store) {
 		this.store = store;
 		this.selectIsSettingsWindowOpened = store.useSelector(selectIsSettingsWindowOpened);
-		this.toggleSettingWindow = toggleSettingWindow(store.useDispatch());
-		this.changeLinkFormMode = changeLinkFormMode(store.useDispatch());
-		this.closeSettingsWindow = () => {
-			this.toggleSettingWindow();
-			this.changeLinkFormMode('');
-		};
-
+		this.closeSettingsWindow = closeSettingsWindow(store.useDispatch());
 	}
 
 	mount() {

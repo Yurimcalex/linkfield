@@ -1,19 +1,19 @@
 import Component from './Component.js';
 import { selectMenuCategory, selectIsSmallScreen } from '../../redux/uiSlice.js';
-import { changeScreenSize, clickCategoryMenu } from '../actions.js';
+import { changeScreenSize, pickMenuCategory } from '../actions.js';
 
 
 export default class Wrapper {
 	constructor(store) {
 		this.changeScreenSize = changeScreenSize(store.useDispatch());
-		this.selectCategory = clickCategoryMenu(store.useDispatch());
+		this.pickMenuCategory = pickMenuCategory(store.useDispatch());
 
 		this.selectMenuCategory = store.useSelector(selectMenuCategory);
 		this.selectIsSmallScreen = store.useSelector(selectIsSmallScreen);
 	}
 
 	mount() {
-		this.component = new Component(this.changeScreenSize, this.selectCategory);
+		this.component = new Component(this.changeScreenSize, this.pickMenuCategory);
 	}
 
 	update() {
