@@ -26,7 +26,7 @@ export default class Category {
 				removeLinkAction(id);
 			} else if (target.classList.contains(`${EDIT_BUTTON}`)) {
 				openLinkFormAction(target.closest(`.${EDIT_BUTTON}`).dataset.linkid);
-				this.selectListItem(target.closest(`.${LINK_LIST_ITEM}`));
+				//this.selectListItem(target.closest(`.${LINK_LIST_ITEM}`));
 			} else {
 				const listItem = target.closest(`.${LINK_LIST_ITEM}`);
 				if (listItem) this.selectListItem(listItem);

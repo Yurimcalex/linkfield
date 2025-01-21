@@ -1,4 +1,5 @@
 import Menu from './Menu.js';
+import { useSelector, useDispatch } from '../../redux/redux.js';
 import { selectCategoryData } from '../../redux/linksSlice.js';
 import { selectMenuCategory, selectIsSmallScreen } from '../../redux/uiSlice.js';
 import { clickOnCategoryMenu } from '../actions.js';
@@ -6,11 +7,12 @@ import { clickOnCategoryMenu } from '../actions.js';
 
 export default class Wrapper {
 	constructor(store) {
-		this.selectCategories = store.useSelector(selectCategoryData);
-		this.selectCategory = store.useSelector(selectMenuCategory);
-		this.selectIsSmallScreen = store.useSelector(selectIsSmallScreen);
-		this.clickOnCategoryMenu = clickOnCategoryMenu(store.useDispatch());
-
+		this.component = null;
+		this.categories = null;
+		this.category = null;
+		useSelector(this, store, [ selectCategoryData, selectMenuCategory, selectIsSmallScreen ]);
+		useDispatch(this, store, [ clickOnCategoryMenu ]);
+		
 		this.clickMenu = (category, event) => {
 			const isSmallScreen = this.selectIsSmallScreen();
 			this.clickOnCategoryMenu(category, isSmallScreen, event);
@@ -18,8 +20,8 @@ export default class Wrapper {
 	}
 
 	mount() {
-		const categories = this.selectCategories();
-		const category = this.selectCategory();
+		const categories = this.selectCategoryData();
+		const category = this.selectMenuCategory();
 	
 		this.component = new Menu(categories, category, this.clickMenu);
 		this.categories = categories;
@@ -28,14 +30,14 @@ export default class Wrapper {
 
 	update() {
 		// select item in category menu
-		const category = this.selectCategory();
+		const category = this.selectMenuCategory();
 		if (category !== this.category) {
 		 	this.component.update(category);
 		 	this.category = category;
 		}
 
 		// remove item in category list
-		const categories = this.selectCategories();
+		const categories = this.selectCategoryData();
 		for (let category in this.categories) {
 			const prev = this.categories[category];
 			const curr = categories[category];	

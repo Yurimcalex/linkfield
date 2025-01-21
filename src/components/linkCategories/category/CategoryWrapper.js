@@ -1,10 +1,9 @@
 import Category from './Category.js';
 import Header from './header/HeaderWrapper.js';
+import { useSelector, useDispatch } from '../../../redux/redux.js';
 import { 
-	selectLinksByCategory,
- 	selectRemovedLinkId,
- 	selectJustCreatedLink,
- 	selectCreatedLinkId, selectEditedLink } from '../../../redux/linksSlice.js';
+	selectLinksByCategory, selectRemovedLinkId, selectJustCreatedLink, selectCreatedLinkId,
+	selectEditedLink } from '../../../redux/linksSlice.js';
 import { selectLinkType } from '../../../redux/filtersSlice.js';
 import { openLinkFormForEditing, removeLink } from '../../actions.js';
 
@@ -13,51 +12,52 @@ export default class CategoryWrapper {
 	constructor(store, category) {
 		this.store = store;
 		this.category = category;
-		this.selectLinks = store.useSelector(selectLinksByCategory);
-		this.selectLinkType = store.useSelector(selectLinkType);
-		this.selectRemovedLinkId = store.useSelector(selectRemovedLinkId);
-		this.removeLink = removeLink(store.useDispatch());
-		this.selectJustCreatedLink = store.useSelector(selectJustCreatedLink);
-		this.openLinkFormForEditing = openLinkFormForEditing(store.useDispatch());
-		this.selectCreatedLinkId = store.useSelector(selectCreatedLinkId);
-		this.selectEditedLink = store.useSelector(selectEditedLink);
+		this.component = null;
+		this.child = null;
+		this.links = null;
+		this.linkType = null;
+		this.removedId = null;
+		this.createdId = null;
+		this.editedLink = null;
+		useSelector(this, store, [ selectLinksByCategory, selectLinkType, selectRemovedLinkId,
+															 selectJustCreatedLink, selectCreatedLinkId, selectEditedLink ]);
+		useDispatch(this, store, [ openLinkFormForEditing, removeLink ]);
 	}
 
 	mount() {
-		const links = this.selectLinks(this.category);
-		this.component = new Category(
-			this.category, links,
-			this.removeLink,
-			this.openLinkFormForEditing
-		);
+		const links = this.selectLinksByCategory(this.category);
+		this.component = new Category( this.category, links, this.removeLink, this.openLinkFormForEditing );
 		this.links = links;
-		this.linkType = this.selectLinkType(this.category);
-		this.mountChild(this.store, this.category);
 
+		this.mountChild(this.store, this.category);
 	}
 
 	update() {
+		// arrange category links by type
 		const linkType = this.selectLinkType(this.category);
 		if (linkType.category === this.category && linkType !== this.linkType) {
 			this.component.update(linkType.type);
 			this.linkType = linkType;
 		}
 
+		// link was removed
 		const removedId = this.selectRemovedLinkId();
-		if (removedId !== this.removedId) { // link was removed
+		if (removedId !== this.removedId) {
 			this.component.update(null, removedId);
 			this.removedId = removedId;
-
 		}
 
+		// link was created
 		const createdId = this.selectCreatedLinkId();
-		if (createdId !== this.createdId) { // link was created
-			this.component.update(null, null, this.selectJustCreatedLink());
+		const createdLink = this.selectJustCreatedLink();
+		if (createdId !== this.createdId && createdLink && createdLink.category === this.category) {
+			this.component.update(null, null, createdLink);
 			this.createdId = createdId;
 		}
 
+		// link was edited
 		const editedLink = this.selectEditedLink();
-		if (editedLink !== this.editedLink) {
+		if (editedLink && editedLink !== this.editedLink) {
 			if (editedLink.category === this.category) {
 				this.component.update(null, null, null, editedLink);
 			}
@@ -75,12 +75,4 @@ export default class CategoryWrapper {
 	updateChild() {
 		this.child.update();
 	}
-}
-
-
-function hasSameValues(obj1, obj2) {
-	for (let p in obj1) {
-		if (obj1[p] != obj2[p]) return false;
-	}
-	return true;
 }

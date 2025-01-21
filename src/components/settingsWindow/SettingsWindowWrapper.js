@@ -1,5 +1,6 @@
 import SettingsWindow from './SettingsWindow.js';
 import LinkFrom from './linkForm/LinkFormWrapper.js';
+import { useSelector, useDispatch } from '../../redux/redux.js';
 import { selectIsSettingsWindowOpened } from '../../redux/uiSlice.js';
 import { closeSettingsWindow } from '../actions.js';
 
@@ -7,8 +8,11 @@ import { closeSettingsWindow } from '../actions.js';
 export default class SettingsWindowWrapper {
 	constructor(store) {
 		this.store = store;
-		this.selectIsSettingsWindowOpened = store.useSelector(selectIsSettingsWindowOpened);
-		this.closeSettingsWindow = closeSettingsWindow(store.useDispatch());
+		this.component = null;
+		this.child = null;
+		this.isSettingsWindowOpened = null;
+		useSelector(this, store, [ selectIsSettingsWindowOpened ]);
+		useDispatch(this, store, [ closeSettingsWindow ]);
 	}
 
 	mount() {

@@ -14,3 +14,13 @@ export function createStore(data) {
 		}
 	};
 }
+
+
+export function useSelector(owner, store, selectors) {
+	selectors.forEach(selector => owner[selector.name] = store.useSelector(selector));
+}
+
+
+export function useDispatch(owner, store, actions) {
+	actions.forEach(action => owner[action.name] = action(store.useDispatch()));
+}

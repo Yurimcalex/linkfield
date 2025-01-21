@@ -1,10 +1,12 @@
 import SettingsMenu from './SettingsMenu.js';
+import { useDispatch } from '../../redux/redux.js';
 import { openLinkFormForCreation } from '../actions.js';
 
 
 export default class SettingsMenuWrapper {
 	constructor(store) {
-		this.openLinkFormForCreation = openLinkFormForCreation(store.useDispatch());
+		this.component = null;
+		useDispatch(this, store, [ openLinkFormForCreation ]);
 	}
 
 	mount() {
