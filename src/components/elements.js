@@ -31,15 +31,12 @@ export const dom = {
 		getTopic: (target) => target.querySelector(`.${LINK_TOPIC}`),
 	},
 
-
-	getCategoryHeader: (target) => target.querySelector(`.${LINK_CATEGORY_HEADER}`),
-
-	getCategoryHeaderById: (id) => document.getElementById(id),
-
-	getSelect: (target) => target.querySelector('select'),
-
-	getOptionByType: (target, type) => target.querySelector(`option[data-type="${type}"]`),
-
+	categoryHeader: {
+		get: (target) => target.querySelector(`.${LINK_CATEGORY_HEADER}`),
+		getById: (id) => document.getElementById(id),
+		getSelect: (target) => target.querySelector('select'),
+		getOptionByType: (target, type) => target.querySelector(`option[data-type="${type}"]`),
+	},
 
 	categoryMenu: {
 		getMenu: () => document.querySelector(`.${CATEGORY_MENU}`),

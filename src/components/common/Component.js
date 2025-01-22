@@ -33,7 +33,7 @@ export default class Component {
 	scrollToCategory(category, isSmallScreen) {
 		if (!category) return;
 		const id = replaceSpace(category);
-		const categoryHeader = dom.getCategoryHeaderById(id);
+		const categoryHeader = dom.categoryHeader.getById(id);
 		const container = isSmallScreen ? window : this.content;
 		container.scrollTo(0, categoryHeader.offsetTop - (isSmallScreen ? this.DY : 0));
 		updateHash(id);

@@ -17,17 +17,17 @@ export default class Header {
 	}
 
 	toggleSelect() {
-		dom.getSelect(this.node).parentNode.classList.toggle('visibility');
+		dom.categoryHeader.getSelect(this.node).parentNode.classList.toggle('visibility');
 	}
 
 	create(category, linkTypes) {
 		const categoryElement = dom.getCategory(category);
 		categoryElement.insertAdjacentHTML('afterbegin', createTemplate(category, linkTypes));
-		this.node = dom.getCategoryHeader(categoryElement);
+		this.node = dom.categoryHeader.get(categoryElement);
 	}
 
 	removeSelectOption(type) {
-		dom.getOptionByType(this.node, type).remove();
+		dom.categoryHeader.getOptionByType(this.node, type).remove();
 	}
 
 	update(typeToRemove) {
