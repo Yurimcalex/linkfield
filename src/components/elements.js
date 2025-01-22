@@ -11,13 +11,21 @@ import {
 	LINK_CATEGORY_HEADER,
 	CATEGORY_MENU,
 	CATEGORY_MENU_ITEM,
-	OPEN_CATEGORY_MENU_BUTTON } from './classNames.js';
+	OPEN_CATEGORY_MENU_BUTTON,
+	SETTINGS_MENU,
+	OPEN_SETTINGS_BUTTON } from './classNames.js';
+
 
 export const dom = {
 	getContent: () => document.querySelector(`.${CONTENT}`),
 	getCategory: (category) => document.querySelector(`.${LINK_CATEGORY}[data-category="${category}"]`),
 	getCategoryByElem: (target) => target.closest(`.${LINK_CATEGORY}`),
 	getLinkList: (category) => document.querySelector(`.${LINK_LIST}[data-category="${category}"]`),
+
+	settingsMenu: {
+		get: () => document.querySelector(`.${SETTINGS_MENU}`),
+		getOpenButton: (target) => target.closest(`.${OPEN_SETTINGS_BUTTON}`),
+	},
 
 	link: {
 		get: (target) => target.closest(`.${LINK_LIST_ITEM}`),
@@ -48,6 +56,6 @@ export const dom = {
 		getItemTotal: (target, category) => 
 			target.querySelector(`.${CATEGORY_MENU_ITEM}[data-category="${category}"] a > span`),
 
-		getOpener: () => document.querySelector(`.${OPEN_CATEGORY_MENU_BUTTON}`)
+		getOpener: () => document.querySelector(`.${OPEN_CATEGORY_MENU_BUTTON}`),
 	},
 };

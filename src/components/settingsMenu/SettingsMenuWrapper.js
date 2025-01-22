@@ -13,5 +13,7 @@ export default class SettingsMenuWrapper {
 		this.component = new SettingsMenu(this.openLinkFormForCreation);
 	}
 
-	update() {}
+	update() {
+		this.component.update();
+	}
 }
