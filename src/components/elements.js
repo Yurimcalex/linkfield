@@ -10,7 +10,8 @@ import {
 	LINK_TOPIC,
 	LINK_CATEGORY_HEADER,
 	CATEGORY_MENU,
-	CATEGORY_MENU_ITEM } from './classNames.js';
+	CATEGORY_MENU_ITEM,
+	OPEN_CATEGORY_MENU_BUTTON } from './classNames.js';
 
 export const dom = {
 	getContent: () => document.querySelector(`.${CONTENT}`),
@@ -50,6 +51,7 @@ export const dom = {
 		getItemByCategory: (target, category) => 
 			target.querySelector(`.${CATEGORY_MENU_ITEM}[data-category="${category}"]`),
 		getItemTotal: (target, category) => 
-			target.querySelector(`.${CATEGORY_MENU_ITEM}[data-category="${category}"] a > span`)
+			target.querySelector(`.${CATEGORY_MENU_ITEM}[data-category="${category}"] a > span`),
+		getOpener: () => document.querySelector(`.${OPEN_CATEGORY_MENU_BUTTON}`)
 	},
 };

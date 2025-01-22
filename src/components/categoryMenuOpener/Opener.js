@@ -1,10 +1,11 @@
-import { OPEN_CATEGORY_MENU_BUTTON, CATEGORY_MENU, CONTENT } from '../classNames.js';
+import { dom } from '../elements.js';
+
 
 export default class Opener {
 	constructor(storeAction) {
-		this.node = document.querySelector(`.${OPEN_CATEGORY_MENU_BUTTON}`);
-		this.content = document.querySelector(`.${CONTENT}`);
-		this.menu = document.querySelector(`.${CATEGORY_MENU}`);
+		this.node = dom.categoryMenu.getOpener();
+		this.content = dom.getContent();
+		this.menu = dom.categoryMenu.getMenu();
 
 		this.node.addEventListener('click', (e) => {
 			storeAction();
