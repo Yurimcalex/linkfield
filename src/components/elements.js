@@ -14,7 +14,9 @@ import {
 	OPEN_CATEGORY_MENU_BUTTON,
 	SETTINGS_MENU,
 	OPEN_SETTINGS_BUTTON,
-	LINK_FORM } from './classNames.js';
+	LINK_FORM,
+	SETTINGS_WINDOW,
+	CLOSE_BUTTON } from './classNames.js';
 
 
 export const dom = {
@@ -22,6 +24,8 @@ export const dom = {
 	getCategory: (category) => document.querySelector(`.${LINK_CATEGORY}[data-category="${category}"]`),
 	getCategoryByElem: (target) => target.closest(`.${LINK_CATEGORY}`),
 	getLinkList: (category) => document.querySelector(`.${LINK_LIST}[data-category="${category}"]`),
+	getSettingsWindow: () => document.querySelector(`.${SETTINGS_WINDOW}`),
+	getCloseButton: (target) => target.closest(`.${CLOSE_BUTTON}`),
 
 	linkForm: {
 		get: () => document.querySelector(`.${LINK_FORM}`),
