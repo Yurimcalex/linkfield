@@ -1,10 +1,6 @@
-import {
-	CATEGORY_MENU,
-	CATEGORY_MENU_ITEM,
-	CATEGORY_MENU_HEADER,
-	CATEGORY_MENU_LINK 
-} from '../classNames.js';
-import { replaceSpace } from '../../ui/utils.js';
+import { createItemTemplate } from './MenuTemplate.js';
+import { dom } from '../elements.js';
+import { replaceSpace } from '../utils.js';
 
 
 /*
@@ -13,52 +9,41 @@ import { replaceSpace } from '../../ui/utils.js';
 */
 export default class Menu {
 	constructor(categories, selectedCategory, storeAction) {
-		this.node = document.querySelector(`.${CATEGORY_MENU}`);
+		this.node = dom.categoryMenu.getMenu();
 		this.create(categories);
-		this.highlight(selectedCategory);
+		this.highlightItem(selectedCategory);
 		
 		this.node.addEventListener('click', (e) => {
-			const target = e.target.closest(`.${CATEGORY_MENU_ITEM}`);
-			if (target) {
-				storeAction(target.dataset.category, e);	
+			const menuItem = dom.categoryMenu.getItem(e.target);
+			if (menuItem) {
+				storeAction(menuItem.dataset.category, e);	
 			}
 		});
 	}
+	
+	highlightItem(category) {
+		if (!category) return;
+		const highlightedItem = dom.categoryMenu.getHighlightedItem(this.node);
+		if (highlightedItem) highlightedItem.classList.remove('highlight');
+		const currentItem = dom.categoryMenu.getItemByCategory(this.node, category);
+		if (currentItem) currentItem.classList.add('highlight');
+	}
 
-	createItemTemplate(category, itemId, total) {
-		let html = '';
-		html += `<li class="${CATEGORY_MENU_ITEM}" data-category="${category}">`;
-			html += `<h2 class="${CATEGORY_MENU_HEADER}">`;
-				html += `<a class="${CATEGORY_MENU_LINK}" href=#${itemId}>`;
-					html += `${category} `;
-					html += `<span>${total}</span>`;
-				html += '</a>';
-			html += '</h2>';
-		html += '</li>';
-		return html;
+	changeLinkCount(categoryData) {
+		const { category, total } = categoryData;
+		dom.categoryMenu.getItemTotal(this.node, category).textContent = total;
 	}
 
 	create(categories) {
-		this.node.innerHTML = Object.entries(categories).reduce((html, [category, total ]) => {
-			return html + this.createItemTemplate(category, replaceSpace(category), total);
-		}, '');
-	}
-
-	highlight(category) {
-		if (!category) return;
-		const highlighted = this.node.querySelector('li.highlight');
-		if (highlighted) highlighted.classList.remove('highlight');
-		const target = this.node.querySelector(`li[data-category="${category}"]`);
-		if (target) target.classList.add('highlight');
-	}
-
-	changeItemCount(categoryData) {
-		const { category, total } = categoryData;
-		this.node.querySelector(`.${CATEGORY_MENU_ITEM}[data-category="${category}"] a > span`).textContent = total;
+		this.node.innerHTML = Object
+			.entries(categories)
+			.reduce((html, [category, total]) => {
+				return html + createItemTemplate(category, replaceSpace(category), total);
+			}, '');
 	}
 
 	update(selectedCategory, categoryData) {
-		if (selectedCategory) this.highlight(selectedCategory);
-		if (categoryData) this.changeItemCount(categoryData);
+		if (selectedCategory) this.highlightItem(selectedCategory);
+		if (categoryData) this.changeLinkCount(categoryData);
 	}
 }

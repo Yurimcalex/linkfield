@@ -8,7 +8,9 @@ import {
 	EDIT_BUTTON,
 	LINK_TYPE,
 	LINK_TOPIC,
-	LINK_CATEGORY_HEADER } from './classNames.js';
+	LINK_CATEGORY_HEADER,
+	CATEGORY_MENU,
+	CATEGORY_MENU_ITEM } from './classNames.js';
 
 export const dom = {
 	getContent: () => document.querySelector(`.${CONTENT}`),
@@ -40,4 +42,14 @@ export const dom = {
 	getSelect: (target) => target.querySelector('select'),
 
 	getOptionByType: (target, type) => target.querySelector(`option[data-type="${type}"]`),
+
+	categoryMenu: {
+		getMenu: () => document.querySelector(`.${CATEGORY_MENU}`),
+		getItem: (target) => target.closest(`.${CATEGORY_MENU_ITEM}`),
+		getHighlightedItem: (target) => target.querySelector(`.${CATEGORY_MENU_ITEM}.highlight`),
+		getItemByCategory: (target, category) => 
+			target.querySelector(`.${CATEGORY_MENU_ITEM}[data-category="${category}"]`),
+		getItemTotal: (target, category) => 
+			target.querySelector(`.${CATEGORY_MENU_ITEM}[data-category="${category}"] a > span`)
+	},
 };
