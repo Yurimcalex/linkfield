@@ -15,30 +15,22 @@ import {
 
 export const dom = {
 	getContent: () => document.querySelector(`.${CONTENT}`),
-
 	getCategory: (category) => document.querySelector(`.${LINK_CATEGORY}[data-category="${category}"]`),
-
 	getCategoryByElem: (target) => target.closest(`.${LINK_CATEGORY}`),
-
 	getLinkList: (category) => document.querySelector(`.${LINK_LIST}[data-category="${category}"]`),
 
-	getLinkRemoveButton: (target) => target.closest(`.${REMOVE_BUTTON}`),
+	link: {
+		get: (target) => target.closest(`.${LINK_LIST_ITEM}`),
+		getById: (target, id) => target.querySelector(`.${LINK_LIST_ITEM}[data-linkid="${id}"]`),
+		getRemoveButton: (target) => target.closest(`.${REMOVE_BUTTON}`),
+		getEditButton: (target) => target.closest(`.${EDIT_BUTTON}`),
+		getLast: (target) => target.querySelector(`.${LINK_LIST_ITEM}:last-child`),
+		getCurrentSelected: () => document.querySelector(`.${LINK_LIST_ITEM}.current`),
+		getControls: (target) => target.querySelector(`.${LINK_CONTROLS}`),
+		getType: (target) => target.querySelector(`.${LINK_TYPE}`),
+		getTopic: (target) => target.querySelector(`.${LINK_TOPIC}`),
+	},
 
-	getLinkEditButton: (target) => target.closest(`.${EDIT_BUTTON}`),
-
-	getLink: (target) => target.closest(`.${LINK_LIST_ITEM}`),
-
-	getLinkById: (target, id) => target.querySelector(`.${LINK_LIST_ITEM}[data-linkid="${id}"]`),
-
-	getLastLink: (target) => target.querySelector(`.${LINK_LIST_ITEM}:last-child`),
-	
-	getCurrentSelectedLink: () => document.querySelector(`.${LINK_LIST_ITEM}.current`),
-	
-	getLinkControls: (target) => target.querySelector(`.${LINK_CONTROLS}`),
-	
-	getLinkType: (target) => target.querySelector(`.${LINK_TYPE}`),
-	
-	getLinkTopic: (target) => target.querySelector(`.${LINK_TOPIC}`),
 
 	getCategoryHeader: (target) => target.querySelector(`.${LINK_CATEGORY_HEADER}`),
 
@@ -48,14 +40,17 @@ export const dom = {
 
 	getOptionByType: (target, type) => target.querySelector(`option[data-type="${type}"]`),
 
+
 	categoryMenu: {
 		getMenu: () => document.querySelector(`.${CATEGORY_MENU}`),
 		getItem: (target) => target.closest(`.${CATEGORY_MENU_ITEM}`),
 		getHighlightedItem: (target) => target.querySelector(`.${CATEGORY_MENU_ITEM}.highlight`),
 		getItemByCategory: (target, category) => 
 			target.querySelector(`.${CATEGORY_MENU_ITEM}[data-category="${category}"]`),
+
 		getItemTotal: (target, category) => 
 			target.querySelector(`.${CATEGORY_MENU_ITEM}[data-category="${category}"] a > span`),
+
 		getOpener: () => document.querySelector(`.${OPEN_CATEGORY_MENU_BUTTON}`)
 	},
 };

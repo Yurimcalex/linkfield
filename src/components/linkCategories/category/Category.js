@@ -16,15 +16,15 @@ export default class Category {
 		this.node.addEventListener('click', (e) => {
 			const target = e.target;
 			const id = target.dataset.linkid;
-			const link = dom.getLink(target);
+			const link = dom.link.get(target);
 			
-			if (target === dom.getLinkRemoveButton(target)) {
+			if (target === dom.link.getRemoveButton(target)) {
 				removeLinkAction(id);
-			} else if (target === dom.getLinkEditButton(target)) {
+			} else if (target === dom.link.getEditButton(target)) {
 				openLinkFormAction(id);
-				this.selectLink(link, dom.getCurrentSelectedLink());
+				this.selectLink(link, dom.link.getCurrentSelected());
 			} else {
-				if (link) this.selectLink(link, dom.getCurrentSelectedLink());
+				if (link) this.selectLink(link, dom.link.getCurrentSelected());
 			}
 		});
 
@@ -37,15 +37,15 @@ export default class Category {
 	selectLink(link, prevLink) {
 		if (prevLink) {
 			prevLink.classList.remove('current');
-			dom.getLinkControls(prevLink).classList.add('visibility');
+			dom.link.getControls(prevLink).classList.add('visibility');
 		}
 		link.classList.add('current');
-		dom.getLinkControls(link).classList.remove('visibility');
+		dom.link.getControls(link).classList.remove('visibility');
 	}
 
 	hoverLink(link) {
 		if (link.classList.contains('current')) return;
-		const controls = dom.getLinkControls(link);
+		const controls = dom.link.getControls(link);
 		if (prevHoveredItem !== link) { // in
 			controls.classList.remove('visibility');
 			prevHoveredItem = link;
@@ -63,7 +63,7 @@ export default class Category {
 	}
 
 	focusLink(link) {
-		this.selectLink(link, dom.getCurrentSelectedLink());
+		this.selectLink(link, dom.link.getCurrentSelected());
 		if (!isVisible(link)) link.scrollIntoView(false);
 		this.highlightLink(link);
 	}
@@ -71,7 +71,7 @@ export default class Category {
 	// type - stored in filters slice of the store
 	arrangeLinksByType(type) {
 		const items = Array.from(this.list.children)
-			.map(link => ({ type: dom.getLinkType(link).textContent, element: link }));
+			.map(link => ({ type: dom.link.getType(link).textContent, element: link }));
 		const arrangedLinks = items
 			.sort((a, b) => a.type === type ? -1 : 1)
 			.map(item => item.element);
@@ -80,10 +80,10 @@ export default class Category {
 
 	// id - stored in links slice of the store
 	removeLink(id) {
-		const link = dom.getLinkById(this.list, id);
+		const link = dom.link.getById(this.list, id);
 		if (link) {
 			const nextLink = link.nextElementSibling;
-			if (nextLink) dom.getLinkControls(nextLink).classList.remove('visibility');
+			if (nextLink) dom.link.getControls(nextLink).classList.remove('visibility');
 			link.remove();
 		}
 	}
@@ -94,7 +94,7 @@ export default class Category {
 			'beforeend',
 			createListItemTemplate(data.id, data.link, data.type, data.topic)
 		);
-		const link = dom.getLastLink(this.list);
+		const link = dom.link.getLast(this.list);
 		this.createHover(link, (...args) => this.hoverLink(...args));
 		this.focusLink(link);
 	}
@@ -102,9 +102,9 @@ export default class Category {
 	// data comes from the links slice of the store
 	updateLink(data) {
 		const { id, link, type, topic, category } = data;
-		const linkElement = dom.getLinkById(document, id);
-		const linkType = dom.getLinkType(linkElement);
-		const linkTopic = dom.getLinkTopic(linkElement);
+		const linkElement = dom.link.getById(document, id);
+		const linkType = dom.link.getType(linkElement);
+		const linkTopic = dom.link.getTopic(linkElement);
 		linkType.textContent = type;
 		linkTopic.src = link;
 		linkTopic.textContent = topic;
