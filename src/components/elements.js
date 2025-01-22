@@ -18,6 +18,8 @@ export const dom = {
 
 	getCategory: (category) => document.querySelector(`.${LINK_CATEGORY}[data-category="${category}"]`),
 
+	getCategoryByElem: (target) => target.closest(`.${LINK_CATEGORY}`),
+
 	getLinkList: (category) => document.querySelector(`.${LINK_LIST}[data-category="${category}"]`),
 
 	getLinkRemoveButton: (target) => target.closest(`.${REMOVE_BUTTON}`),
@@ -39,6 +41,8 @@ export const dom = {
 	getLinkTopic: (target) => target.querySelector(`.${LINK_TOPIC}`),
 
 	getCategoryHeader: (target) => target.querySelector(`.${LINK_CATEGORY_HEADER}`),
+
+	getCategoryHeaderById: (id) => document.getElementById(id),
 
 	getSelect: (target) => target.querySelector('select'),
 

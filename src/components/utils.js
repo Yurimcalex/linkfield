@@ -40,3 +40,30 @@ export function replaceSpace(str) {
 export function replaceHyphen(str) {
 	return str.split('-').join(' ');
 }
+
+
+export function getCategoryFromHash() {
+  const hash = window.location.hash;
+  return hash ? replaceHyphen(hash.slice(1)) : '';
+}
+
+
+export function getIsSmallScreen() {
+  const SMALL_SCREEN_WIDTH = 650;
+  return window.innerWidth <= SMALL_SCREEN_WIDTH;
+}
+
+
+export function updateHash(id) {
+	history.pushState(null, null, `#${id}`);
+}
+
+
+export function scrollElementIntoView(element) {
+	const coords = element.getBoundingClientRect();
+	if (coords.top < 0) {
+		element.scrollIntoView();
+	} else if (coords.top > window.innerHeight - coords.height) {
+		element.scrollIntoView(false);
+	}
+}
