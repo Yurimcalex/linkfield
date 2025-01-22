@@ -13,7 +13,8 @@ import {
 	CATEGORY_MENU_ITEM,
 	OPEN_CATEGORY_MENU_BUTTON,
 	SETTINGS_MENU,
-	OPEN_SETTINGS_BUTTON } from './classNames.js';
+	OPEN_SETTINGS_BUTTON,
+	LINK_FORM } from './classNames.js';
 
 
 export const dom = {
@@ -21,6 +22,12 @@ export const dom = {
 	getCategory: (category) => document.querySelector(`.${LINK_CATEGORY}[data-category="${category}"]`),
 	getCategoryByElem: (target) => target.closest(`.${LINK_CATEGORY}`),
 	getLinkList: (category) => document.querySelector(`.${LINK_LIST}[data-category="${category}"]`),
+
+	linkForm: {
+		get: () => document.querySelector(`.${LINK_FORM}`),
+		getCategorySelect: (target) => target.querySelector(`select[name="category"]`),
+		getTypesSelect: (target) => target.querySelector(`select[name="type"]`),
+	},
 
 	settingsMenu: {
 		get: () => document.querySelector(`.${SETTINGS_MENU}`),

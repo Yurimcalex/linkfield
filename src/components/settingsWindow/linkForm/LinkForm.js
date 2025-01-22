@@ -1,45 +1,39 @@
-import { LINK_FORM } from '../../classNames.js';
+import { createOptionsTemplate } from './LinkFormTemplate.js';
+import { dom } from '../../elements.js';
 
 
 export default class LinkFrom {
 	constructor(categories, types, createLinkAction, editLinkAction) {
-		this.node = document.querySelector(`.${LINK_FORM}`);
-		this.categorySelect = this.node.querySelector(`select[name="category"]`);
-		this.typeSelect = this.node.querySelector(`select[name="type"]`);
+		this.node = dom.linkForm.get();
+		this.categorySelect = dom.linkForm.getCategorySelect(this.node);
+		this.typeSelect = dom.linkForm.getTypesSelect(this.node);
 		this.create(categories, types);
+		this.dataTemplate = { link: '', topic: '', type: '', category: '' };
+
 		this.node.addEventListener('click', (e) => {
 			e.preventDefault();
 			const target = e.target;
+			
 			if (target === this.node.add) {
-				createLinkAction(this.getData());
-			}
-			if (target === this.node.edit) {
-				editLinkAction({
-					id: this.editingLinkId,
-					link: this.node.link.value,
-					type: this.node.type.value,
-					topic: this.node.topic.value,
-					category: this.node.category.value
-				});
+				createLinkAction({ ...this.getFormData(), id: String(Math.random()).slice(2, 10) });
+			} else if (target === this.node.edit) {
+				editLinkAction({ ...this.getFormData(), id: this.editingLinkId });
 			}
 		});
 	}
 
-	createOptionsTemplate(items) {
-		let html = '';
-		for (let item of items) {
-			html += `<option value="${item}">${item}</option>`;
-		}
-		return html;
-	}
-
-	getData() {
-		const data = { link: '', topic: '', type: '', category: '' };
+	getFormData() {
+		const data = { ...this.dataTemplate };
 		for (let prop in data) {
 			data[prop] = this.node[prop].value;
 		}
-		data.id = String(Math.random()).slice(2, 10);
 		return data;
+	}
+
+	setFormData(linkData) {
+		for (let prop in this.dataTemplate) {
+			this.node[prop].value = linkData[prop];
+		}
 	}
 
 	reset() {
@@ -55,21 +49,16 @@ export default class LinkFrom {
 
 	setEditingMode(editedLinkData) {
 		this.reset();
+		this.editingLinkId = editedLinkData.id;
+		this.setFormData(editedLinkData);
 		this.node.edit.classList.remove('hide');
 		this.node.add.classList.add('hide');
-		const { id, link, type, topic, category } = editedLinkData;
-		this.editingLinkId = id;
-		this.node.link.value = link;
-		this.node.type.value = type;
-		this.node.topic.value = topic;
-		this.node.category.value = category;
 	}
 
 	create(categories, types) {
-		this.categorySelect.innerHTML = this.createOptionsTemplate(categories);
-		this.typeSelect.innerHTML = this.createOptionsTemplate(types);
+		this.categorySelect.innerHTML = createOptionsTemplate(categories);
+		this.typeSelect.innerHTML = createOptionsTemplate(types);
 	}
-
 
 	update(mode, editedLinkData) {
 		if (mode === 'creation') this.setCreateionMode();
