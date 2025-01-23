@@ -1,9 +1,7 @@
 import Category from './Category.js';
 import Header from './header/HeaderWrapper.js';
 import { useSelector, useDispatch } from '../../../redux/redux.js';
-import { 
-	selectLinksByCategory, selectJustCreatedLink, selectCreatedLinkId,
-	selectEditedLink } from '../../../redux/linksSlice.js';
+import { selectLinksByCategory, selectEditedLink } from '../../../redux/linksSlice.js';
 import { openLinkFormForEditing, removeLink } from '../../actions.js';
 
 
@@ -14,10 +12,8 @@ export default class CategoryWrapper {
 		this.component = null;
 		this.child = null;
 		this.links = null;
-		this.createdId = null;
 		this.editedLink = null;
-		useSelector(this, store, [ selectLinksByCategory,
-															 selectJustCreatedLink, selectCreatedLinkId, selectEditedLink ]);
+		useSelector(this, store, [ selectLinksByCategory, selectEditedLink ]);
 		useDispatch(this, store, [ openLinkFormForEditing, removeLink ]);
 	}
 
@@ -29,19 +25,14 @@ export default class CategoryWrapper {
 		this.mountChild(this.store, this.category);
 	}
 
-	update(linkType, removedId) {
+	update(linkType, removedId, createdLinkData) {
 		// arrange category links by type
 		if (linkType) this.component.update(linkType.type);
 		// link was removed
 		if (removedId) this.component.update(null, removedId);
-
 		// link was created
-		const createdId = this.selectCreatedLinkId();
-		const createdLink = this.selectJustCreatedLink();
-		if (createdId !== this.createdId && createdLink && createdLink.category === this.category) {
-			this.component.update(null, null, createdLink);
-			this.createdId = createdId;
-		}
+		if (createdLinkData) this.component.update(null, null, createdLinkData);
+		
 
 		// link was edited
 		const editedLink = this.selectEditedLink();
@@ -54,7 +45,7 @@ export default class CategoryWrapper {
 		
 		this.updateChild();
 
-		console.log(`${this.category} UPDATED!`);
+		//console.log(`${this.category} UPDATED!`);
 	}
 
 	mountChild(store, category) {
