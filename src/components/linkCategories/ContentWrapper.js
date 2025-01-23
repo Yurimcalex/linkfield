@@ -2,6 +2,7 @@ import Content from './Content.js';
 import Category from './category/CategoryWrapper.js';
 import { useSelector } from '../../redux/redux.js';
 import { selectCategoryNames } from '../../redux/linksSlice.js';
+import { selectAction } from '../../redux/actionSlice.js';
 
 
 export default class ContentWrapper {
@@ -9,7 +10,14 @@ export default class ContentWrapper {
 		this.store = store;
 		this.component = null;
 		this.children = [];
-		useSelector(this, store, [ selectCategoryNames ]);
+		useSelector(this, store, [ selectCategoryNames, selectAction ]);
+
+		this.updateActions = {
+			'filters/linkTypeSelected': true,
+			'links/linkRemoved': true,
+			'links/linkCreated': true,
+			'links/linkEdited': true
+		};
 	}
 
 	mount() {
@@ -20,6 +28,9 @@ export default class ContentWrapper {
 	}
 
 	update() {
+		const action = this.selectAction();
+		if (!(action in this.updateActions)) return;
+
 		this.component.update();
 		this.updateChildren();
 	}
