@@ -2,8 +2,8 @@ import Content from './Content.js';
 import Category from './category/CategoryWrapper.js';
 import { useSelector } from '../../redux/redux.js';
 import { 
-	selectCategoryNames,
-	selectRemovedLinkId, selectRemovedLinkCategory, selectJustCreatedLink } from '../../redux/linksSlice.js';
+	selectCategoryNames, selectRemovedLinkId,
+	selectRemovedLinkCategory, selectJustCreatedLink, selectEditedLink } from '../../redux/linksSlice.js';
 import { selectLinkType } from '../../redux/filtersSlice.js';
 import { selectAction } from '../../redux/actionSlice.js';
 
@@ -14,7 +14,7 @@ export default class ContentWrapper {
 		this.component = null;
 		this.children = [];
 		useSelector(this, store, [ selectCategoryNames, selectAction, selectLinkType, selectRemovedLinkId,
-		                           selectRemovedLinkCategory, selectJustCreatedLink ]);
+		                           selectRemovedLinkCategory, selectJustCreatedLink, selectEditedLink ]);
 
 		this.updateActions = {
 			'filters/linkTypeSelected': true,
@@ -31,7 +31,6 @@ export default class ContentWrapper {
 
 	update() {
 		const action = this.selectAction();
-		console.log(`ACTION ${action} <---`)
 		if (!(action in this.updateActions)) return;
 		this.component.update();
 		this.updateChildren(action);
@@ -72,6 +71,16 @@ export default class ContentWrapper {
 				for (let child of this.children) {
 					if (child.category === linkData.category) {
 						child.update(null, null, linkData);
+						return;
+					}
+				}
+			}
+
+			case 'links/linkEdited': {
+				const linkData = this.selectEditedLink();
+				for (let child of this.children) {
+					if (child.category === linkData.category) {
+						child.update(null, null, null, linkData);
 						return;
 					}
 				}
