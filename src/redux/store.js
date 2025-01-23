@@ -27,6 +27,7 @@ const actionEnhancer = (createStore) => {
     const newDispatch = (action) => {
       const result = store.dispatch(action);
       store.dispatch(actionHappened(action.type));
+      store.dispatch(actionHappened(''));
       return result;
     }
 
@@ -37,7 +38,7 @@ const actionEnhancer = (createStore) => {
 
 function logActionType(store) {
   return next => action => {
-    console.log(action.type);
+    //console.log(action.type);
     return next(action);
   }
 }
