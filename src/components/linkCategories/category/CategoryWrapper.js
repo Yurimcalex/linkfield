@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from '../../../redux/redux.js';
 import { 
 	selectLinksByCategory, selectRemovedLinkId, selectJustCreatedLink, selectCreatedLinkId,
 	selectEditedLink } from '../../../redux/linksSlice.js';
-import { selectLinkType } from '../../../redux/filtersSlice.js';
 import { openLinkFormForEditing, removeLink } from '../../actions.js';
 
 
@@ -15,11 +14,10 @@ export default class CategoryWrapper {
 		this.component = null;
 		this.child = null;
 		this.links = null;
-		this.linkType = null;
 		this.removedId = null;
 		this.createdId = null;
 		this.editedLink = null;
-		useSelector(this, store, [ selectLinksByCategory, selectLinkType, selectRemovedLinkId,
+		useSelector(this, store, [ selectLinksByCategory, selectRemovedLinkId,
 															 selectJustCreatedLink, selectCreatedLinkId, selectEditedLink ]);
 		useDispatch(this, store, [ openLinkFormForEditing, removeLink ]);
 	}
@@ -32,13 +30,9 @@ export default class CategoryWrapper {
 		this.mountChild(this.store, this.category);
 	}
 
-	update() {
+	update(linkType) {
 		// arrange category links by type
-		const linkType = this.selectLinkType(this.category);
-		if (linkType.category === this.category && linkType !== this.linkType) {
-			this.component.update(linkType.type);
-			this.linkType = linkType;
-		}
+		if (linkType) this.component.update(linkType.type);
 
 		// link was removed
 		const removedId = this.selectRemovedLinkId();
@@ -65,6 +59,8 @@ export default class CategoryWrapper {
 		}
 		
 		this.updateChild();
+
+		console.log(`${this.category} UPDATED!`);
 	}
 
 	mountChild(store, category) {

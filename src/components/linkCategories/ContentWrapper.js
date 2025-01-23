@@ -2,6 +2,7 @@ import Content from './Content.js';
 import Category from './category/CategoryWrapper.js';
 import { useSelector } from '../../redux/redux.js';
 import { selectCategoryNames } from '../../redux/linksSlice.js';
+import { selectLinkType } from '../../redux/filtersSlice.js';
 import { selectAction } from '../../redux/actionSlice.js';
 
 
@@ -10,7 +11,7 @@ export default class ContentWrapper {
 		this.store = store;
 		this.component = null;
 		this.children = [];
-		useSelector(this, store, [ selectCategoryNames, selectAction ]);
+		useSelector(this, store, [ selectCategoryNames, selectAction, selectLinkType ]);
 
 		this.updateActions = {
 			'filters/linkTypeSelected': true,
@@ -22,17 +23,14 @@ export default class ContentWrapper {
 
 	mount() {
 		this.component = new Content();
-		const categoryNames = this.selectCategoryNames();
-
-		this.mountChildren(this.store, categoryNames);
+		this.mountChildren(this.store, this.selectCategoryNames());
 	}
 
 	update() {
 		const action = this.selectAction();
 		if (!(action in this.updateActions)) return;
-
 		this.component.update();
-		this.updateChildren();
+		this.updateChildren(action);
 	}
 
 	mountChildren(store, categoryNames) {
@@ -42,7 +40,20 @@ export default class ContentWrapper {
 		this.children.forEach(elm => elm.mount());
 	}
 
-	updateChildren() {
-		this.children.forEach(elm => elm.update());
+	updateChildren(action) {
+		switch (action) {
+			case 'filters/linkTypeSelected': {
+				const linkType = this.selectLinkType();
+				for (let child of this.children) {
+					if (child.category === linkType.category) {
+						child.update(linkType);
+						return;
+					}
+				}
+			}
+
+			default:
+				this.children.forEach(elm => elm.update());
+		}
 	}
 }
