@@ -2,7 +2,7 @@ import Category from './Category.js';
 import Header from './header/HeaderWrapper.js';
 import { useSelector, useDispatch } from '../../../redux/redux.js';
 import { 
-	selectLinksByCategory, selectRemovedLinkId, selectJustCreatedLink, selectCreatedLinkId,
+	selectLinksByCategory, selectJustCreatedLink, selectCreatedLinkId,
 	selectEditedLink } from '../../../redux/linksSlice.js';
 import { openLinkFormForEditing, removeLink } from '../../actions.js';
 
@@ -14,10 +14,9 @@ export default class CategoryWrapper {
 		this.component = null;
 		this.child = null;
 		this.links = null;
-		this.removedId = null;
 		this.createdId = null;
 		this.editedLink = null;
-		useSelector(this, store, [ selectLinksByCategory, selectRemovedLinkId,
+		useSelector(this, store, [ selectLinksByCategory,
 															 selectJustCreatedLink, selectCreatedLinkId, selectEditedLink ]);
 		useDispatch(this, store, [ openLinkFormForEditing, removeLink ]);
 	}
@@ -30,16 +29,11 @@ export default class CategoryWrapper {
 		this.mountChild(this.store, this.category);
 	}
 
-	update(linkType) {
+	update(linkType, removedId) {
 		// arrange category links by type
 		if (linkType) this.component.update(linkType.type);
-
 		// link was removed
-		const removedId = this.selectRemovedLinkId();
-		if (removedId !== this.removedId) {
-			this.component.update(null, removedId);
-			this.removedId = removedId;
-		}
+		if (removedId) this.component.update(null, removedId);
 
 		// link was created
 		const createdId = this.selectCreatedLinkId();
