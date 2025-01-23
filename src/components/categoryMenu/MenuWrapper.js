@@ -2,6 +2,7 @@ import Menu from './Menu.js';
 import { useSelector, useDispatch } from '../../redux/redux.js';
 import { selectCategoryData } from '../../redux/linksSlice.js';
 import { selectMenuCategory, selectIsSmallScreen } from '../../redux/uiSlice.js';
+import { selectAction } from '../../redux/actionSlice.js';
 import { clickOnCategoryMenu } from '../actions.js';
 
 
@@ -10,41 +11,50 @@ export default class Wrapper {
 		this.component = null;
 		this.categories = null;
 		this.category = null;
-		useSelector(this, store, [ selectCategoryData, selectMenuCategory, selectIsSmallScreen ]);
+		useSelector(this, store, [ selectCategoryData, selectMenuCategory, selectIsSmallScreen, selectAction ]);
 		useDispatch(this, store, [ clickOnCategoryMenu ]);
 		
 		this.clickMenu = (category, event) => {
 			const isSmallScreen = this.selectIsSmallScreen();
 			this.clickOnCategoryMenu(category, isSmallScreen, event);
 		}
+
+		this.updateActions = {
+			'ui/menuCategorySelected': true,
+			'links/linkRemoved': true,
+			'links/linkCreated': true
+		};
 	}
 
 	mount() {
 		const categories = this.selectCategoryData();
-		const category = this.selectMenuCategory();
-	
-		this.component = new Menu(categories, category, this.clickMenu);
+		this.component = new Menu(categories, this.selectCategoryData(), this.clickMenu);
 		this.categories = categories;
-		this.category = category;
 	}
 
 	update() {
-		// select item in category menu
-		const category = this.selectMenuCategory();
-		if (category !== this.category) {
-		 	this.component.update(category);
-		 	this.category = category;
-		}
+		const action = this.selectAction();
+		if (!(action in this.updateActions)) return;
 
-		// remove item in category list
-		const categories = this.selectCategoryData();
-		for (let category in this.categories) {
-			const prev = this.categories[category];
-			const curr = categories[category];	
-			if (prev !== curr) {
-				this.component.update(null, { category, total: curr || 0 });
+		switch (action) {
+			case 'ui/menuCategorySelected': {
+				this.component.update(this.selectMenuCategory());
+				return;
+			}
+				
+			case 'links/linkRemoved':
+			case 'links/linkCreated': {
+				const categories = this.selectCategoryData();
+				for (let category in this.categories) {
+					const prev = this.categories[category];
+					const curr = categories[category];	
+					if (prev !== curr) {
+						this.component.update(null, { category, total: curr || 0 });
+					}
+				}
+				this.categories = categories;
+				return;
 			}
 		}
-		this.categories = categories;
 	}
 }
