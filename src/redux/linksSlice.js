@@ -18,16 +18,20 @@ const linksSlice = createSlice({
 		linkRemoved: (state, action) => {
 			const id = action.payload;
 			const ind = state.data.findIndex(d => d.id == id);
-			state.data.splice(ind, 1);
 			state.removedId = id;
+			state.removedLinkCategory = state.data[ind].category;
+			state.data.splice(ind, 1);
 		},
+
 		linkCreated: (state, action) => {
 			state.data.push({ ...action.payload });
 			state.createdId = action.payload.id;
 		},
+
 		editedLinkIdSelected: (state, action) => {
 			state.editedId = action.payload;
 		},
+
 		linkEdited: (state, action) => {
 			const { id, link, type, topic, category } = action.payload; 
 			const item = state.data.find(d => d.id == id);
@@ -108,3 +112,5 @@ export const selectRemovedLinkId = (state) => state.links.removedId;
 export const selectCreatedLinkId = (state) => state.links.createdId;
 
 export const selectEditedLinkId = (state) => state.links.editedId;
+
+export const selectRemovedLinkCategory = (state) => state.links.removedLinkCategory;
