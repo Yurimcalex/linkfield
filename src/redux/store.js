@@ -9,9 +9,20 @@ export function initStore(data) {
 		reducer: {
 			links: linksReducer,
 			ui: uiReducer,
-			filters: filtersSlice
+			filters: filtersSlice,
+			action: actionSlice
 		},
+
+		middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logActionType),
 		
 		preloadedState: data
 	});
+}
+
+
+function logActionType(store) {
+  return next => action => {
+    console.log(action.type);
+    return next(action);
+  }
 }
