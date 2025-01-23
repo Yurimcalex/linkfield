@@ -44,46 +44,31 @@ export default class ContentWrapper {
 	}
 
 	updateChildren(action) {
+		const update = (dataCategory, data) => {
+			for (let child of this.children) {
+				if (child.category === dataCategory) {
+					return child.update(data);
+				}
+			}
+		};
+
 		switch (action) {
 			case 'filters/linkTypeSelected': {
 				const linkType = this.selectLinkType();
-				for (let child of this.children) {
-					if (child.category === linkType.category) {
-						child.update(linkType);
-						return;
-					}
-				}
+				return update(linkType.category, { linkType });
 			}
-
 			case 'links/linkRemoved': {
-				const removedId = this.selectRemovedLinkId();
+				const removedLinkId = this.selectRemovedLinkId();
 				const category = this.selectRemovedLinkCategory();
-				for (let child of this.children) {
-					if (child.category === category) {
-						child.update(null, removedId);
-						return;
-					}
-				}
+				return update(category, { removedLinkId });
 			}
-
 			case 'links/linkCreated': {
-				const linkData = this.selectJustCreatedLink();
-				for (let child of this.children) {
-					if (child.category === linkData.category) {
-						child.update(null, null, linkData);
-						return;
-					}
-				}
+				const createdLinkData = this.selectJustCreatedLink();
+				return update(createdLinkData.category, { createdLinkData });
 			}
-
 			case 'links/linkEdited': {
-				const linkData = this.selectEditedLink();
-				for (let child of this.children) {
-					if (child.category === linkData.category) {
-						child.update(null, null, null, linkData);
-						return;
-					}
-				}
+				const editedLinkData = this.selectEditedLink();
+				return update(editedLinkData.category, { editedLinkData });
 			}
 		}
 	}

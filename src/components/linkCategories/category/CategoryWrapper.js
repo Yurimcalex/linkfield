@@ -21,19 +21,9 @@ export default class CategoryWrapper {
 		this.mountChild(this.store, this.category);
 	}
 
-	update(linkType, removedId, createdLinkData, editedLinkData) {
-		// arrange category links by type
-		if (linkType) this.component.update(linkType.type);
-		// link was removed
-		if (removedId) this.component.update(null, removedId);
-		// link was created
-		if (createdLinkData) this.component.update(null, null, createdLinkData);
-		// link was edited
-		if (editedLinkData) this.component.update(null, null, null, editedLinkData);
-		
+	update(data) {
+		this.component.update(data);
 		this.updateChild();
-
-		console.log(`${this.category} UPDATED!`);
 	}
 
 	mountChild(store, category) {

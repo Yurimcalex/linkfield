@@ -117,10 +117,10 @@ export default class Category {
 		dom.getContent().insertAdjacentHTML('beforeend', createTemplate(category, linksData));
 	}
 
-	update(linkType, removedLinkId, createdLinkData, editedLinkData) {
-		if (linkType) this.arrangeLinksByType(linkType);
-		if (removedLinkId) this.removeLink(removedLinkId);
-		if (createdLinkData) this.createLink(createdLinkData);
-		if (editedLinkData) this.updateLink(editedLinkData);
+	update(data) {
+		if (data.linkType) this.arrangeLinksByType(data.linkType.type);
+		if (data.removedLinkId) this.removeLink(data.removedLinkId);
+		if (data.createdLinkData) this.createLink(data.createdLinkData);
+		if (data.editedLinkData) this.updateLink(data.editedLinkData);
 	}
 }
