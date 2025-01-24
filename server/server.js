@@ -5,6 +5,11 @@ import { MongoClient, ObjectId } from 'mongodb';
 const uri = process.env.ATLAS_URI;
 const client = new MongoClient(uri);
 
+// description: '',
+// src: '',
+// category: '',
+// type: ''
+
 async function run() {
 	try {
 		await client.connect();
@@ -41,11 +46,14 @@ async function run() {
 		// let res = await coll.find({ "_id" : new ObjectId('67863cc31128a8bdc4b6be8f') }).toArray();
 		// console.log(res);
 
-		const updatedDoc = await updateLink(coll, {
-			id: '67863cc31128a8bdc4b6be8f',
-			type: 'docs'
-		});
-		console.log(updatedDoc);
+		// const updatedDoc = await updateLink(coll, {
+		// 	id: '67863cc31128a8bdc4b6be8f',
+		// 	type: 'docs'
+		// });
+		// console.log(updatedDoc);
+
+		const deletedDoc = await deleteLink(coll, '67863cc31128a8bdc4b6be8f');
+		console.log(deletedDoc);
 
 	} finally {
 		await client.close();
@@ -70,6 +78,11 @@ async function updateLink(links_coll, linkData) {
 		{ _id: new ObjectId(linkData.id) },
 		{ $set: { ...data } }
 	);
+}
+
+
+async function deleteLink(links_coll, id) {
+	return await links_coll.deleteOne({ '_id': new ObjectId(id) });
 }
 
 
