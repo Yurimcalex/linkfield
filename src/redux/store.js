@@ -38,7 +38,7 @@ const actionEnhancer = (createStore) => {
 
 function logActionType(store) {
   return next => action => {
-    //console.log(action.type);
+    console.log(action.type);
     return next(action);
   }
 }
