@@ -2,6 +2,7 @@ import LinkFrom from './LinkForm.js';
 import { useSelector, useDispatch } from '../../../redux/redux.js';
 import { selectCategoryNames, selectLinkTypes, selectEditingLink } from '../../../redux/linksSlice.js';
 import { selectLinkFormMode } from '../../../redux/uiSlice.js';
+import { selectAction } from '../../../redux/actionSlice.js';
 import { createNewLink, editPickedLink } from '../../actions.js';
 
 
@@ -9,8 +10,13 @@ export default class LinkFromWrapper {
 	constructor(store) {
 		this.component = null;
 		this.mode = null;
-		useSelector(this, store, [ selectCategoryNames, selectLinkTypes, selectLinkFormMode, selectEditingLink ]);
+		useSelector(this, store, [ selectCategoryNames, selectLinkTypes,
+															 selectLinkFormMode, selectEditingLink, selectAction ]);
 		useDispatch(this, store, [ createNewLink, editPickedLink ]);
+
+		this.updateActions = {
+			'ui/linkFormModeChanged': true
+		};
 	}
 
 	mount() {
@@ -20,10 +26,9 @@ export default class LinkFromWrapper {
 	}
 
 	update() {
-		const mode = this.selectLinkFormMode();
-		if (mode !== this.mode) {
-			this.component.update(mode, this.selectEditingLink());
-			this.mode = mode;
+		const action = this.selectAction();
+		if (action in this.updateActions) {
+			this.component.update(this.selectLinkFormMode(), this.selectEditingLink());
 		}
 	}
 }
