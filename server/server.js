@@ -2,6 +2,12 @@ import 'dotenv/config';
 import { MongoClient, ObjectId } from 'mongodb';
 
 
+import db from './db/connection.js';
+
+console.log(db);
+
+
+
 const uri = process.env.ATLAS_URI;
 const client = new MongoClient(uri);
 
@@ -86,4 +92,4 @@ async function deleteLink(links_coll, id) {
 }
 
 
-run().catch(err => console.log(err));
+//run().catch(err => console.log(err));
