@@ -22,4 +22,13 @@ router.post('/', async (req, res) => {
 	res.send(result).status(204);
 });
 
+
+router.post('/links', async (req, res) => {
+	const collection = await db.collection('links');
+	const data = req.body;
+	const newDocuments = data.map(d => ({ ...d, date: new Date() }));
+	const result = await collection.insertMany(newDocuments);
+	res.send(result).status(204);
+});
+
 export default router;
