@@ -28,21 +28,15 @@ const api = {
 		});
 		const result = await response.json();
 		return { ...updatedData, _id: id };
+	},
+
+	deleteLink: async (id) => {
+		const response = await fetch(`${baseUrl}/links/${id}`, {
+			method: 'DELETE'
+		});
+		const result = await response.json();
+		return id;
 	}
 };
-
-
-test();
-
-async function test() {
-	// const result = await api.updateLink('679d10d42aa0d1b5c23f6801', {
-	// 	description: 'new description',
-	// 	category: 'new category',
-	// 	src: 'new src',
-	// 	type: 'new type'
-	// });
-
-	// console.log(result);
-}
 
 export default api;
