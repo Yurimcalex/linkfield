@@ -1,6 +1,7 @@
 import parseText from './parser.js';
 import { createStore } from './redux/redux.js';
 import UI from './components/UI.js';
+import api from './api/api.js';
 
 
 async function render() {
