@@ -31,4 +31,15 @@ router.post('/links', async (req, res) => {
 	res.send(result).status(204);
 });
 
+
+router.patch('/:id', async (req, res) => {
+	const collection = await db.collection('links');
+	const query = { _id: new ObjectId(req.params.id) };
+	const updates = {
+	  $set: { ...req.body, date: new Date() }
+	};
+	const result = await collection.updateOne(query, updates);
+	res.send(result).status(200);
+});
+
 export default router;
