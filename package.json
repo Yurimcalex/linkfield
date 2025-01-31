@@ -20,7 +20,10 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-async-errors": "^3.1.1",
     "mongodb": "^6.12.0"
   }
 }
