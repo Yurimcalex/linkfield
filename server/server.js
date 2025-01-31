@@ -5,6 +5,7 @@ import { MongoClient, ObjectId } from 'mongodb';
 import express from 'express';
 import cors from 'cors';
 import "express-async-errors";
+import links from './routes/links.js';
 
 const PORT = 5050;
 const app = express();
@@ -13,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 
-//app.use("/links", links);
+app.use("/links", links);
 
 // Global error handling
 app.use((err, _req, res, next) => {
