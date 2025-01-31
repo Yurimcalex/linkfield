@@ -2,9 +2,28 @@ import 'dotenv/config';
 import { MongoClient, ObjectId } from 'mongodb';
 
 
-import db from './db/connection.js';
+import express from 'express';
+import cors from 'cors';
+import "express-async-errors";
 
-console.log(db);
+const PORT = 5050;
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+
+//app.use("/links", links);
+
+// Global error handling
+app.use((err, _req, res, next) => {
+  res.status(500).send("Uh oh! An unexpected error occured.")
+});
+
+app.listen(PORT, () => {
+	console.log(`Server is running on port: ${PORT}`);
+});
+
 
 
 
