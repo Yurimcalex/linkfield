@@ -13,4 +13,13 @@ router.get('/', async (req, res) => {
 	res.send(result).status(200);
 });
 
+
+router.post('/', async (req, res) => {
+	const collection = await db.collection('links');
+	const newDocument = req.body;
+	newDocument.date = new Date();
+	const result = await collection.insertOne(newDocument);
+	res.send(result).status(204);
+});
+
 export default router;
