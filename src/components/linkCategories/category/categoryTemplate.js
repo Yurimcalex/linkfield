@@ -15,7 +15,7 @@ export function createTemplate(category, linksData) {
 	html += `<div class="${LINK_CATEGORY}" data-category="${category}">`;
 		html += `<ul class="${LINK_LIST}" data-category="${category}">`;
 			linksData.forEach(link => {
-				html += `${createListItemTemplate(link.id, link.link, link.type, link.topic)}`;
+				html += `${createListItemTemplate(link._id, link.src, link.type, link.description)}`;
 			});
 		html += '</ul>';
 	html += '</div>';

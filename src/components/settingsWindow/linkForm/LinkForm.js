@@ -8,16 +8,16 @@ export default class LinkFrom {
 		this.categorySelect = dom.linkForm.getCategorySelect(this.node);
 		this.typeSelect = dom.linkForm.getTypesSelect(this.node);
 		this.create(categories, types);
-		this.dataTemplate = { link: '', topic: '', type: '', category: '' };
+		this.dataTemplate = { src: '', description: '', type: '', category: '' };
 
 		this.node.addEventListener('click', (e) => {
 			e.preventDefault();
 			const target = e.target;
 			
 			if (target === this.node.add) {
-				createLinkAction({ ...this.getFormData(), id: String(Math.random()).slice(2, 10) });
+				createLinkAction({ ...this.getFormData(), _id: String(Math.random()).slice(2, 10) });
 			} else if (target === this.node.edit) {
-				editLinkAction({ ...this.getFormData(), id: this.editingLinkId });
+				editLinkAction({ ...this.getFormData(), _id: this.editingLinkId });
 			}
 		});
 	}
@@ -37,8 +37,8 @@ export default class LinkFrom {
 	}
 
 	reset() {
-		this.node.link.value = '';
-		this.node.topic.value = '';
+		this.node.src.value = '';
+		this.node.description.value = '';
 	}
 
 	setCreateionMode() {
@@ -49,7 +49,7 @@ export default class LinkFrom {
 
 	setEditingMode(editedLinkData) {
 		this.reset();
-		this.editingLinkId = editedLinkData.id;
+		this.editingLinkId = editedLinkData._id;
 		this.setFormData(editedLinkData);
 		this.node.edit.classList.remove('hide');
 		this.node.add.classList.add('hide');

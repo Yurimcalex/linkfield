@@ -92,7 +92,7 @@ export default class Category {
 	createLink(data) {
 		this.list.insertAdjacentHTML(
 			'beforeend',
-			createListItemTemplate(data.id, data.link, data.type, data.topic)
+			createListItemTemplate(data._id, data.src, data.type, data.description)
 		);
 		const link = dom.link.getLast(this.list);
 		this.createHover(link, (...args) => this.hoverLink(...args));
@@ -101,13 +101,13 @@ export default class Category {
 
 	// data comes from the links slice of the store
 	updateLink(data) {
-		const { id, link, type, topic, category } = data;
-		const linkElement = dom.link.getById(document, id);
+		const { _id, src, type, description, category } = data;
+		const linkElement = dom.link.getById(document, _id);
 		const linkType = dom.link.getType(linkElement);
 		const linkTopic = dom.link.getTopic(linkElement);
 		linkType.textContent = type;
-		linkTopic.src = link;
-		linkTopic.textContent = topic;
+		linkTopic.src = src;
+		linkTopic.textContent = description;
 		if (!this.list.contains(linkElement)) this.list.append(linkElement);
 		this.focusLink(linkElement);
 	}
