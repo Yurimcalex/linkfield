@@ -16,10 +16,12 @@ const db = {
 		const key = this.createKey();
 		const data = { ...linkData, _id: key };
 		localStorage.setItem(key, JSON.stringify(data));
+		return data;
 	},
 
 	removeLink(id) {
 		localStorage.removeItem(id);
+		return id;
 	},
 
 	getLinks() {
