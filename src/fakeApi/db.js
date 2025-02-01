@@ -2,7 +2,7 @@ const db = {
 	links: null,
 
 	createKey() {
-		return `links-${localStorage.length + 1}`;
+		return `links-${Math.random().toFixed(10).slice(2)}`;
 	},
 
 	loadLinks() {
