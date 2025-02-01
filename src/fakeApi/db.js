@@ -1,3 +1,6 @@
+import parseText from './parser.js';
+
+
 const db = {
 	links: null,
 
@@ -40,6 +43,24 @@ const db = {
 };
 
 db.init();
+
+
+initiateDB();
+
+async function initiateDB() {
+	const text = await readText('initialLinkList.txt');
+	const links = parseText(text).getLinks();
+	if (!localStorage.length) {
+		links.forEach(link => db.setLink(link));
+	}
+}
+
+
+async function readText(file) {
+  const response = await fetch(file);
+  const text = await response.text();
+  return text;
+}
 
 
 export default db;
