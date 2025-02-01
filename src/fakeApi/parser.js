@@ -53,18 +53,11 @@ function trimEmptyEdges(str) { return str.trim(); }
 function parseLink(str, title) {
   const linkData = str.split(linkItemDelimiter);
   return {
-    id: generateId(),
-    topic: linkData[0],
-    link: linkData[1],
+    description: linkData[0],
+    src: linkData[1],
     type: linkData[2] ? linkData[2].slice(3) : '',
     category: title
   };
-}
-
-
-let id = 1;
-function generateId() {
-  return id++;
 }
 
 
