@@ -1,4 +1,3 @@
-import parseText from './parser.js';
 import { createStore } from './redux/redux.js';
 import UI from './components/UI.js';
 import api from './api/api.js';
@@ -6,12 +5,10 @@ import fakeApi from './fakeApi/api.js';
 
 
 async function render() {
-  const textData = await readTextFromFile('initialLinkList.txt');
-  const linksData = parseText(textData);
-  const initialLinksData = linksData.getLinks();
+  const links = await fakeApi.loadLinks();
 
   const initialData = {
-  	links: { data: linksData.getLinks() },
+  	links: { data: links },
   	ui: { 
       menuCategory: getCategoryFromHash(location),
       isMenuOpened: false,
@@ -27,12 +24,6 @@ async function render() {
 
 render();
 
-
-async function readTextFromFile(file) {
-  const response = await fetch(file);
-  const text = await response.text();
-  return text;
-}
 
 
 function getCategoryFromHash(location) {
