@@ -1,5 +1,6 @@
 import { createStore } from './redux/redux.js';
 import UI from './components/UI.js';
+import { getCategoryFromHash, getIsSmallScreen } from './components/utils.js';
 import api from './api/api.js';
 import fakeApi from './fakeApi/api.js';
 
@@ -23,19 +24,3 @@ async function render() {
 }
 
 render();
-
-
-
-function getCategoryFromHash(location) {
-  const hash = location.hash;
-  if (hash) {
-    return hash.slice(1).split('-').join(' ');
-  }
-  return '';
-}
-
-
-function getIsSmallScreen() {
-  const SMALL_SCREEN_WIDTH = 650;
-  return window.innerWidth <= SMALL_SCREEN_WIDTH;
-}
