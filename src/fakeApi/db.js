@@ -19,6 +19,12 @@ const db = {
 		return data;
 	},
 
+	updateLink(id, linkData) {
+		const data = { ...linkData, _id: id };
+		localStorage.setItem(id, JSON.stringify(data));
+		return data;
+	},
+
 	removeLink(id) {
 		localStorage.removeItem(id);
 		return id;
