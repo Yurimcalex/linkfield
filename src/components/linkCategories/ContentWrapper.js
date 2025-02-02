@@ -2,8 +2,8 @@ import Content from './Content.js';
 import Category from './category/CategoryWrapper.js';
 import { useSelector } from '../../redux/redux.js';
 import { 
-	selectCategoryNames, selectRemovedLinkId,
-	selectRemovedLinkCategory, selectJustCreatedLink, selectEditedLink } from '../../redux/linksSlice.js';
+	selectLinkCategories, selectRemovedLinkId,
+	selectRemovedLinkCategory, selectCreatedLink, selectEditedLink } from '../../redux/linksSlice.js';
 import { selectLinkType } from '../../redux/filtersSlice.js';
 import { selectAction } from '../../redux/actionSlice.js';
 
@@ -13,8 +13,8 @@ export default class ContentWrapper {
 		this.store = store;
 		this.component = null;
 		this.children = [];
-		useSelector(this, store, [ selectCategoryNames, selectAction, selectLinkType, selectRemovedLinkId,
-		                           selectRemovedLinkCategory, selectJustCreatedLink, selectEditedLink ]);
+		useSelector(this, store, [ selectLinkCategories, selectAction, selectLinkType, selectRemovedLinkId,
+		                           selectRemovedLinkCategory, selectCreatedLink, selectEditedLink ]);
 
 		this.updateActions = {
 			'filters/linkTypeSelected': true,
@@ -26,7 +26,7 @@ export default class ContentWrapper {
 
 	mount() {
 		this.component = new Content();
-		this.mountChildren(this.store, this.selectCategoryNames());
+		this.mountChildren(this.store, this.selectLinkCategories());
 	}
 
 	update() {
@@ -63,7 +63,7 @@ export default class ContentWrapper {
 				return update(category, { removedLinkId });
 			}
 			case 'links/linkCreated': {
-				const createdLinkData = this.selectJustCreatedLink();
+				const createdLinkData = this.selectCreatedLink();
 				return update(createdLinkData.category, { createdLinkData });
 			}
 			case 'links/linkEdited': {

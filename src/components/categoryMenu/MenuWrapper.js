@@ -1,6 +1,6 @@
 import Menu from './Menu.js';
 import { useSelector, useDispatch } from '../../redux/redux.js';
-import { selectCategoryData } from '../../redux/linksSlice.js';
+import { selectCountLinksByCategory } from '../../redux/linksSlice.js';
 import { selectMenuCategory, selectIsSmallScreen } from '../../redux/uiSlice.js';
 import { selectAction } from '../../redux/actionSlice.js';
 import { clickOnCategoryMenu } from '../actions.js';
@@ -11,7 +11,7 @@ export default class Wrapper {
 		this.component = null;
 		this.categories = null;
 		this.category = null;
-		useSelector(this, store, [ selectCategoryData, selectMenuCategory, selectIsSmallScreen, selectAction ]);
+		useSelector(this, store, [ selectCountLinksByCategory, selectMenuCategory, selectIsSmallScreen, selectAction ]);
 		useDispatch(this, store, [ clickOnCategoryMenu ]);
 		
 		this.clickMenu = (category, event) => {
@@ -27,8 +27,8 @@ export default class Wrapper {
 	}
 
 	mount() {
-		const categories = this.selectCategoryData();
-		this.component = new Menu(categories, this.selectCategoryData(), this.clickMenu);
+		const categories = this.selectCountLinksByCategory();
+		this.component = new Menu(categories, this.selectMenuCategory(), this.clickMenu);
 		this.categories = categories;
 	}
 
@@ -44,7 +44,7 @@ export default class Wrapper {
 				
 			case 'links/linkRemoved':
 			case 'links/linkCreated': {
-				const categories = this.selectCategoryData();
+				const categories = this.selectCountLinksByCategory();
 				for (let category in this.categories) {
 					const prev = this.categories[category];
 					const curr = categories[category];	

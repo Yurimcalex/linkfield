@@ -52,23 +52,20 @@ export const { linkRemoved, linkCreated, linkEdited, editedLinkIdSelected } = li
 
 
 // selectors
-export const selectAllLinks = (state) => state.links.data;
-
-export const selectLinkById = (state, id) => state.links.data.find(d => d._id == id);
-
-export const selectJustCreatedLink = (state) => {
+export const selectCreatedLink = (state) => {
 	return state.links.data.find(d => d._id == state.links.createdId);
 };
+export const selectCreatedLinkId = (state) => state.links.createdId;
 
-export const selectEditingLink = (state) => {
+
+export const selectLinkForEdit = (state) => {
 	return state.links.data.find(d => d._id == state.links.editedId);
 };
-
+export const selectEditedLinkId = (state) => state.links.editedId;
 export const selectEditedLink = (state) => state.links.editedLink;
 
-export const selectAllLinksId = (state) => state.links.data.map(d => d._id);
 
-export const selectCategoryData = (state) => {
+export const selectCountLinksByCategory = (state) => {
 	let result = [];
 	const data = {};
 	state.links.data.forEach(({ category }) => {
@@ -81,12 +78,17 @@ export const selectCategoryData = (state) => {
 	return data;
 };
 
-export const selectCategoryNames = (state) => 
+
+export const selectLinkCategories = (state) => 
 	Array.from(
 		new Set(
 			state.links.data.map(d => d.category)
 		)
 	);
+export const selectLinksByCategory = (state, category) =>
+	state.links.data.filter(link => link.category === category);
+
+
 
 export const selectLinkTypes = (state) => 
 	Array.from(
@@ -94,10 +96,6 @@ export const selectLinkTypes = (state) =>
 			state.links.data.map(d => d.type)
 		)
 	);
-
-export const selectLinksByCategory = (state, category) =>
-	state.links.data.filter(link => link.category === category);
-
 export const selectLinkTypesByCategory = (state, category) => {
 	const links = selectLinksByCategory(state, category);
 	return Array.from(
@@ -107,10 +105,6 @@ export const selectLinkTypesByCategory = (state, category) => {
 	);
 };
 
+
 export const selectRemovedLinkId = (state) => state.links.removedId;
-
-export const selectCreatedLinkId = (state) => state.links.createdId;
-
-export const selectEditedLinkId = (state) => state.links.editedId;
-
 export const selectRemovedLinkCategory = (state) => state.links.removedLinkCategory;
