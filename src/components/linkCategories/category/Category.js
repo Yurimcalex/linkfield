@@ -98,6 +98,10 @@ export default class Category {
 			const nextLink = link.nextElementSibling;
 			if (nextLink) dom.link.getControls(nextLink).classList.remove('visibility');
 			link.remove();
+			if (!this.list.children.length) {
+				this.node.remove();
+				history.pushState(null, null, '');
+			}
 		}
 	}
 

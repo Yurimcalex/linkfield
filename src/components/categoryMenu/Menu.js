@@ -32,6 +32,10 @@ export default class Menu {
 	changeLinkCount(categoryData) {
 		const { category, total } = categoryData;
 		dom.categoryMenu.getItemTotal(this.node, category).textContent = total;
+		if (total === 0) {
+			const menuItem = dom.categoryMenu.getItemByCategory(this.node, category);
+			menuItem.remove();
+		}
 	}
 
 	create(categories) {
