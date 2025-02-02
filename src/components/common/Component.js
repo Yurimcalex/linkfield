@@ -72,9 +72,13 @@ export default class Component {
 		return dom.categoryMenu.getItemByCategory(this.menu, category);
 	}
 
-	update(category, isSmallScreen) {
+	update(category, isSmallScreen, newCategory) {
 		if (isSmallScreen) {
 			this.scrollToCategory(category, isSmallScreen);
+		}
+
+		if (newCategory) {
+			this.scrollToCategory(newCategory, false);
 		}
 	}
 }
