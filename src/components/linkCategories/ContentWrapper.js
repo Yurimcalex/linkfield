@@ -28,6 +28,7 @@ export default class ContentWrapper {
 		const categories = this.selectLinkCategories().sort();
 		this.component = new Content();
 		this.mountChildren(this.store, this.selectLinkCategories().sort());
+		this.categories = categories;
 	}
 
 	update() {
@@ -64,6 +65,17 @@ export default class ContentWrapper {
 				return update(category, { removedLinkId });
 			}
 			case 'links/linkCreated/fulfilled': {
+				const categories = this.selectLinkCategories();
+				for (let category of categories) {
+					if (!(this.categories.includes(category))) {
+						const newCategory = new Category(this.store, category);
+						newCategory.mount();
+						this.children.push(newCategory);
+						this.categories = categories;
+						return;
+					}
+				}
+				
 				const createdLinkData = this.selectCreatedLink();
 				return update(createdLinkData.category, { createdLinkData });
 			}
