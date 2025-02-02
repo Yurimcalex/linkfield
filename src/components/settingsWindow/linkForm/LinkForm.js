@@ -56,8 +56,9 @@ export default class LinkFrom {
 	}
 
 	reset() {
-		this.node.src.value = '';
-		this.node.description.value = '';
+		for (let prop in this.dataTemplate) {
+			this.node[prop].value = '';
+		}
 	}
 
 	setCreateionMode() {
