@@ -161,12 +161,3 @@ body {
   background: gray;
   color: white;
 }
-
-/* --- close button --- */
-.close-btn {
-  position: absolute;
-  top: -30px;
-  right: -20px;
-  font-size: 0.8em;
-  cursor: pointer;
-}
