@@ -23,6 +23,22 @@ export default class LinkFrom {
 				editLinkAction({ ...this.getFormData(), _id: this.editingLinkId });
 			}
 		});
+
+		this.node.addEventListener('change', (e) => {
+			const target = e.target;
+			if (target.tagName === 'SELECT' && target.value === 'own') {
+				const input = document.createElement('input');
+				input.type = 'text';
+				input.name = target.name;
+				input.oninput = input.onblur = (e) => {
+					if (!e.target.value) {
+						input.replaceWith(target);
+						target.value = '';
+					}
+				};
+				target.replaceWith(input);
+			}
+		});
 	}
 
 	getFormData() {

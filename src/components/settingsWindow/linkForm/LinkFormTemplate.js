@@ -3,5 +3,6 @@ export function createOptionsTemplate(items) {
 	for (let item of items) {
 		html += `<option value="${item}">${item}</option>`;
 	}
+	html += `<option value="own">your own...</option>`
 	return html;
 }
