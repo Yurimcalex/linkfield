@@ -27,9 +27,9 @@ export default class UI {
 
 	update() {
 		this.categoryMenu.update();
+		this.content.update();
 		this.menuOpener.update();
 		this.commonComponent.update();
-		this.content.update();
 		this.settingsMenu.update();
 		this.settingsWindow.update();
 	}
