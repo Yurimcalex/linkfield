@@ -29,7 +29,7 @@ export default class Wrapper {
 
 	mount() {
 		const categories = this.selectCountLinksByCategory();
-		this.component = new Menu(categories, this.selectMenuCategory(), this.clickMenu);
+		this.component = new Menu(sortCategories(categories), this.selectMenuCategory(), this.clickMenu);
 		this.categories = categories;
 	}
 
@@ -59,4 +59,14 @@ export default class Wrapper {
 			}
 		}
 	}
+}
+
+
+function sortCategories(categories) {
+	const arr = Object.entries(categories);
+	arr.sort((a, b) => {
+		if (a[0] > b[0]) return 1;
+		return -1;
+	});
+	return Object.fromEntries(arr);
 }

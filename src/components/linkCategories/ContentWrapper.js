@@ -25,8 +25,9 @@ export default class ContentWrapper {
 	}
 
 	mount() {
+		const categories = this.selectLinkCategories().sort();
 		this.component = new Content();
-		this.mountChildren(this.store, this.selectLinkCategories());
+		this.mountChildren(this.store, this.selectLinkCategories().sort());
 	}
 
 	update() {
