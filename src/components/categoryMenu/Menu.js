@@ -1,6 +1,6 @@
 import { createItemTemplate } from './MenuTemplate.js';
 import { dom } from '../elements.js';
-import { replaceSpace } from '../utils.js';
+import { replaceSpace, updateHash } from '../utils.js';
 
 
 /*
@@ -38,6 +38,11 @@ export default class Menu {
 		}
 	}
 
+	createItem(categoryData) {
+		const { category, total } = categoryData;
+		this.node.insertAdjacentHTML('beforeend', createItemTemplate(category, replaceSpace(category), total));
+	}
+
 	create(categories) {
 		this.node.innerHTML = Object
 			.entries(categories)
@@ -46,8 +51,9 @@ export default class Menu {
 			}, '');
 	}
 
-	update(selectedCategory, categoryData) {
+	update(selectedCategory, categoryData, newCategoryData) {
 		if (selectedCategory) this.highlightItem(selectedCategory);
 		if (categoryData) this.changeLinkCount(categoryData);
+		if (newCategoryData) this.createItem(newCategoryData);
 	}
 }

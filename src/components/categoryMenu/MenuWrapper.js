@@ -29,7 +29,7 @@ export default class Wrapper {
 
 	mount() {
 		const categories = this.selectCountLinksByCategory();
-		this.component = new Menu(sortCategories(categories), this.selectMenuCategory(), this.clickMenu);
+		this.component = new Menu( sortCategories(categories), this.selectMenuCategory(), this.clickMenu );
 		this.categories = categories;
 	}
 
@@ -47,6 +47,14 @@ export default class Wrapper {
 			case 'links/linkCreated/fulfilled':
 			case 'links/linkEdited/fulfilled': {
 				const categories = this.selectCountLinksByCategory();
+				for (let category in categories) {
+					if (!(category in this.categories)) {
+						this.component.update(null, null, { category, total: 1 });
+						this.categories = categories;
+						return;
+					}
+				}
+
 				for (let category in this.categories) {
 					const prev = this.categories[category];
 					const curr = categories[category];	
