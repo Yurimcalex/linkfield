@@ -22,3 +22,8 @@ export function createSelect(types) {
 	html += '</select>';
 	return html;
 }
+
+
+export function createOption(type) {
+	return `<option value=${replaceSpace(type)} data-type="${type}">${type}</option>`;
+}

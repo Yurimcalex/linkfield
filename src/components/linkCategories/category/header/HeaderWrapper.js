@@ -28,7 +28,17 @@ export default class HeaderWrapper {
 				if (!linkTypes.includes(type)) {
 					this.component.update(type);
 					this.linkTypes = linkTypes;
-					break;
+					return;
+				}
+			}
+		}
+
+		if (linkTypes.length > this.linkTypes.length) {
+			for (let type of linkTypes) {
+				if (!this.linkTypes.includes(type)) {
+					this.component.update(null, type);
+					this.linkTypes = linkTypes;
+					return;
 				}
 			}
 		}

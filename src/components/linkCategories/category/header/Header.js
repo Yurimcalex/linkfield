@@ -1,4 +1,4 @@
-import { createTemplate } from './HeaderTemplate.js';
+import { createTemplate, createOption } from './HeaderTemplate.js';
 import { createHoverEffect, replaceHyphen } from '../../../utils.js';
 import { dom } from '../../../elements.js';
 
@@ -20,17 +20,24 @@ export default class Header {
 		dom.categoryHeader.getSelect(this.node).parentNode.classList.toggle('visibility');
 	}
 
+	removeSelectOption(type) {
+		dom.categoryHeader.getOptionByType(this.node, type).remove();
+	}
+
+	createSelectOption(type) {
+		dom.categoryHeader
+			.getSelect(this.node)
+			.insertAdjacentHTML('afterbegin', createOption(type));
+	}
+
 	create(category, linkTypes) {
 		const categoryElement = dom.getCategory(category);
 		categoryElement.insertAdjacentHTML('afterbegin', createTemplate(category, linkTypes));
 		this.node = dom.categoryHeader.get(categoryElement);
 	}
 
-	removeSelectOption(type) {
-		dom.categoryHeader.getOptionByType(this.node, type).remove();
-	}
-
-	update(typeToRemove) {
+	update(typeToRemove, typeToCreate) {
 		if (typeToRemove) this.removeSelectOption(typeToRemove);
+		if (typeToCreate) this.createSelectOption(typeToCreate);
 	}
 }
