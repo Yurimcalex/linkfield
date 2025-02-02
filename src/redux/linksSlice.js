@@ -39,7 +39,7 @@ const linksSlice = createSlice({
 	extraReducers: builder => {
 		builder
 			.addCase(linkRemoved.pending, (state, action) => {
-				state.status = 'loading'
+				state.status = 'loading';
 			})	
 			.addCase(linkRemoved.fulfilled, (state, action) => {
 				const id = action.payload;
@@ -47,6 +47,14 @@ const linksSlice = createSlice({
 				state.removedLinkCategory = state.data[ind].category;
 				state.data.splice(ind, 1);
 				state.removedId = id;
+				state.status = 'idle';
+			})
+			.addCase(linkCreated.pending, (state, action) => {
+				state.status = 'loading';
+			})
+			.addCase(linkCreated.fulfilled, (state, action) => {
+				state.data.push({ ...action.payload });
+				state.createdId = action.payload._id;
 				state.status = 'idle';
 			});
 	}
@@ -61,9 +69,14 @@ export const linkRemoved = createAsyncThunk('links/linkRemoved', async (id) => {
 	return response;
 });
 
+export const linkCreated = createAsyncThunk('links/linkCreated', async (linkData) => {
+	const response = await fakeApi.createLink(linkData);
+	return response;
+});
+
 
 // actions
-export const { linkCreated, linkEdited, editedLinkIdSelected } = linksSlice.actions;
+export const { linkEdited, editedLinkIdSelected } = linksSlice.actions;
 
 
 // selectors

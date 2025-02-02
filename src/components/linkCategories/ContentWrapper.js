@@ -19,7 +19,7 @@ export default class ContentWrapper {
 		this.updateActions = {
 			'filters/linkTypeSelected': true,
 			'links/linkRemoved/fulfilled': true,
-			'links/linkCreated': true,
+			'links/linkCreated/fulfilled': true,
 			'links/linkEdited': true
 		};
 	}
@@ -62,7 +62,7 @@ export default class ContentWrapper {
 				const category = this.selectRemovedLinkCategory();
 				return update(category, { removedLinkId });
 			}
-			case 'links/linkCreated': {
+			case 'links/linkCreated/fulfilled': {
 				const createdLinkData = this.selectCreatedLink();
 				return update(createdLinkData.category, { createdLinkData });
 			}
