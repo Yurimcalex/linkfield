@@ -16,23 +16,8 @@ const linksSlice = createSlice({
 	},
 
 	reducers: {
-		linkCreated: (state, action) => {
-			state.data.push({ ...action.payload });
-			state.createdId = action.payload._id;
-		},
-
 		editedLinkIdSelected: (state, action) => {
 			state.editedId = action.payload;
-		},
-
-		linkEdited: (state, action) => {
-			const { _id, src, type, description, category } = action.payload; 
-			const item = state.data.find(d => d._id == _id);
-			item.src = src;
-			item.type = type;
-			item.description = description;
-			item.category = category;
-			state.editedLink = { ...action.payload };
 		}
 	},
 
@@ -56,6 +41,19 @@ const linksSlice = createSlice({
 				state.data.push({ ...action.payload });
 				state.createdId = action.payload._id;
 				state.status = 'idle';
+			})
+			.addCase(linkEdited.pending, (state, action) => {
+				state.status = 'loading';
+			})
+			.addCase(linkEdited.fulfilled, (state, action) => {
+				const { _id, src, type, description, category } = action.payload;
+				const item = state.data.find(d => d._id == _id);
+				item.src = src;
+				item.type = type;
+				item.description = description;
+				item.category = category;
+				state.editedLink = { ...action.payload };
+				state.status = 'idle';
 			});
 	}
 });
@@ -74,9 +72,14 @@ export const linkCreated = createAsyncThunk('links/linkCreated', async (linkData
 	return response;
 });
 
+export const linkEdited = createAsyncThunk('links/linkEdited', async (linkData) => {
+	const response = await fakeApi.updateLink(linkData._id, linkData);
+	return response;
+});
+
 
 // actions
-export const { linkEdited, editedLinkIdSelected } = linksSlice.actions;
+export const { editedLinkIdSelected } = linksSlice.actions;
 
 
 // selectors

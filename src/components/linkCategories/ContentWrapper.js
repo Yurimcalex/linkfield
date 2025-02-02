@@ -20,7 +20,7 @@ export default class ContentWrapper {
 			'filters/linkTypeSelected': true,
 			'links/linkRemoved/fulfilled': true,
 			'links/linkCreated/fulfilled': true,
-			'links/linkEdited': true
+			'links/linkEdited/fulfilled': true
 		};
 	}
 
@@ -66,7 +66,7 @@ export default class ContentWrapper {
 				const createdLinkData = this.selectCreatedLink();
 				return update(createdLinkData.category, { createdLinkData });
 			}
-			case 'links/linkEdited': {
+			case 'links/linkEdited/fulfilled': {
 				const editedLinkData = this.selectEditedLink();
 				return update(editedLinkData.category, { editedLinkData });
 			}

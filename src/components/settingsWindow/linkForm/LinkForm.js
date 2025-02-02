@@ -16,7 +16,10 @@ export default class LinkFrom {
 			
 			if (target === this.node.add) {
 				createLinkAction({ ...this.getFormData(), _id: String(Math.random()).slice(2, 10) });
+			
 			} else if (target === this.node.edit) {
+				const linkElement = dom.link.getById(document, this.editingLinkId);
+				linkElement.style.visibility = 'hidden';
 				editLinkAction({ ...this.getFormData(), _id: this.editingLinkId });
 			}
 		});

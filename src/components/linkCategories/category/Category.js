@@ -12,7 +12,6 @@ export default class Category {
 		this.node = dom.getCategory(category);
 		this.list = dom.getLinkList(category); 
 		this.createHover = createHoverEffect();
-		this.clickedLinkId;
 
 		this.node.addEventListener('click', (e) => {
 			const target = e.target;
@@ -22,13 +21,15 @@ export default class Category {
 			if (target === dom.link.getRemoveButton(target)) {
 				removeLinkAction(id);
 				this.hideLink(target);
+
 			} else if (target === dom.link.getEditButton(target)) {
 				openLinkFormAction(id);
 				this.selectLink(link, dom.link.getCurrentSelected());
+				this.currentId = id;
+
 			} else {
 				if (link) this.selectLink(link, dom.link.getCurrentSelected());
 			}
-			this.clickedLinkId = id;
 		});
 
 		for (let link of this.list.children) {
@@ -76,6 +77,10 @@ export default class Category {
 		link.style.visibility = 'hidden';
 	}
 
+	showLink(link) {
+		link.style.visibility = 'visible';
+	}
+
 	// type - stored in filters slice of the store
 	arrangeLinksByType(type) {
 		const items = Array.from(this.list.children)
@@ -117,6 +122,7 @@ export default class Category {
 		linkTopic.src = src;
 		linkTopic.textContent = description;
 		if (!this.list.contains(linkElement)) this.list.append(linkElement);
+		this.showLink(linkElement);
 		this.focusLink(linkElement);
 	}
 

@@ -22,7 +22,8 @@ export default class Wrapper {
 		this.updateActions = {
 			'ui/menuCategorySelected': true,
 			'links/linkRemoved/fulfilled': true,
-			'links/linkCreated/fulfilled': true
+			'links/linkCreated/fulfilled': true,
+			'links/linkEdited/fulfilled': true
 		};
 	}
 
@@ -43,7 +44,8 @@ export default class Wrapper {
 			}
 				
 			case 'links/linkRemoved/fulfilled':
-			case 'links/linkCreated/fulfilled': {
+			case 'links/linkCreated/fulfilled':
+			case 'links/linkEdited/fulfilled': {
 				const categories = this.selectCountLinksByCategory();
 				for (let category in this.categories) {
 					const prev = this.categories[category];
