@@ -15,7 +15,7 @@ export default class LinkFrom {
 			const target = e.target;
 			
 			if (target === this.node.add) {
-				createLinkAction({ ...this.getFormData(), _id: String(Math.random()).slice(2, 10) });
+				createLinkAction({ ...this.getFormData() });
 			
 			} else if (target === this.node.edit) {
 				const linkElement = dom.link.getById(document, this.editingLinkId);
