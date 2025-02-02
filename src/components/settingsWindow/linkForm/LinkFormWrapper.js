@@ -15,7 +15,10 @@ export default class LinkFromWrapper {
 		useDispatch(this, store, [ createNewLink, editPickedLink ]);
 
 		this.updateActions = {
-			'ui/linkFormModeChanged': true
+			'ui/linkFormModeChanged': true,
+			'links/linkRemoved/fulfilled': true,
+			'links/linkCreated/fulfilled': true,
+			'links/linkEdited/fulfilled': true,
 		};
 	}
 
@@ -23,12 +26,26 @@ export default class LinkFromWrapper {
 		const categories = this.selectLinkCategories();
 		const types = this.selectLinkTypes();
 		this.component = new LinkFrom(categories, types, this.createNewLink, this.editPickedLink);
+		this.categories = categories;
+		this.types = types;
 	}
 
 	update() {
 		const action = this.selectAction();
-		if (action in this.updateActions) {
-			this.component.update(this.selectLinkFormMode(), this.selectLinkForEdit());
+		switch (action) {
+			case 'ui/linkFormModeChanged': {
+				this.component.update(this.selectLinkFormMode(), this.selectLinkForEdit());
+				return;
+			}
+				
+			case 'links/linkRemoved/fulfilled':
+			case 'links/linkCreated/fulfilled':
+			case 'links/linkEdited/fulfilled': {
+				const categories = this.selectLinkCategories();
+				const types = this.selectLinkTypes();
+				this.component.update(null, null, { categories, types })
+				return;
+			}
 		}
 	}
 }

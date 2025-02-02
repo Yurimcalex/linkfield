@@ -80,8 +80,16 @@ export default class LinkFrom {
 		this.typeSelect.innerHTML = createOptionsTemplate(types);
 	}
 
-	update(mode, editedLinkData) {
+	updateOptions(options) {
+		const { categories, types } = options;
+		this.create(categories, types);
+	}
+
+	update(mode, editedLinkData, newOptions) {
 		if (mode === 'creation') this.setCreateionMode();
 		if (mode === 'editing') this.setEditingMode(editedLinkData);
+		if (newOptions) {
+			this.updateOptions(newOptions);
+		}
 	}
 }
