@@ -56,6 +56,8 @@ export default class LinkFrom {
 	}
 
 	reset() {
+		if (this.node.category.tagName === 'INPUT') this.node.category.replaceWith(this.categorySelect);
+		if (this.node.type.tagName === 'INPUT') this.node.type.replaceWith(this.typeSelect);
 		for (let prop in this.dataTemplate) {
 			this.node[prop].value = '';
 		}
