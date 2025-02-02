@@ -22,7 +22,7 @@ export default class Component {
 		});
 
 		this.content.addEventListener('scroll', () => {
-			this.focusOnCategoryMenuItem(storeAction2);
+			this.focusOnCategoryMenuItem(storeAction2, this.content);
 		});
 
 		const category = getCategoryFromHash();
@@ -39,10 +39,15 @@ export default class Component {
 		updateHash(id);
 	}
 
-	focusOnCategoryMenuItem(fn) {
+	focusOnCategoryMenuItem(fn, container) {
 		const isSmall = getIsSmallScreen();
+		let item;
 		if (isSmall) return;
-		const item = this.getMenuItemByPosition();
+		if (container.scrollHeight - container.scrollTop - container.clientHeight === 0) {
+			item = dom.categoryMenu.getLastItem(this.menu);
+		} else {
+			item = this.getMenuItemByPosition();
+		}
 		if (!item) return;
 		if (item.classList.contains('highlight')) return;
 		const id = replaceSpace(item.dataset.category);

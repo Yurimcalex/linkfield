@@ -68,5 +68,6 @@ export const dom = {
 			target.querySelector(`.${CATEGORY_MENU_ITEM}[data-category="${category}"] a > span`),
 
 		getOpener: () => document.querySelector(`.${OPEN_CATEGORY_MENU_BUTTON}`),
+		getLastItem: (target) => target.querySelector(`.${CATEGORY_MENU_ITEM}:last-child`)
 	},
 };
