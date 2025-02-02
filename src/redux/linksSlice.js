@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import fakeApi from '../fakeApi/api.js';
 
 const linksSlice = createSlice({
 	name: 'links',
@@ -15,14 +16,6 @@ const linksSlice = createSlice({
 	},
 
 	reducers: {
-		linkRemoved: (state, action) => {
-			const id = action.payload;
-			const ind = state.data.findIndex(d => d._id == id);
-			state.removedId = id;
-			state.removedLinkCategory = state.data[ind].category;
-			state.data.splice(ind, 1);
-		},
-
 		linkCreated: (state, action) => {
 			state.data.push({ ...action.payload });
 			state.createdId = action.payload._id;
@@ -41,14 +34,36 @@ const linksSlice = createSlice({
 			item.category = category;
 			state.editedLink = { ...action.payload };
 		}
+	},
+
+	extraReducers: builder => {
+		builder
+			.addCase(linkRemoved.pending, (state, action) => {
+				state.status = 'loading'
+			})	
+			.addCase(linkRemoved.fulfilled, (state, action) => {
+				const id = action.payload;
+				const ind = state.data.findIndex(d => d._id == id);
+				state.removedLinkCategory = state.data[ind].category;
+				state.data.splice(ind, 1);
+				state.removedId = id;
+				state.status = 'idle';
+			});
 	}
 });
 
 export default linksSlice.reducer;
 
 
+// async actions
+export const linkRemoved = createAsyncThunk('links/linkRemoved', async (id) => {
+	const response = await fakeApi.deleteLink(id);
+	return response;
+});
+
+
 // actions
-export const { linkRemoved, linkCreated, linkEdited, editedLinkIdSelected } = linksSlice.actions;
+export const { linkCreated, linkEdited, editedLinkIdSelected } = linksSlice.actions;
 
 
 // selectors
@@ -108,3 +123,6 @@ export const selectLinkTypesByCategory = (state, category) => {
 
 export const selectRemovedLinkId = (state) => state.links.removedId;
 export const selectRemovedLinkCategory = (state) => state.links.removedLinkCategory;
+
+
+export const selectLoadingStatus = (state) => state.links.status;

@@ -3,7 +3,7 @@ import Category from './category/CategoryWrapper.js';
 import { useSelector } from '../../redux/redux.js';
 import { 
 	selectLinkCategories, selectRemovedLinkId,
-	selectRemovedLinkCategory, selectCreatedLink, selectEditedLink } from '../../redux/linksSlice.js';
+	selectRemovedLinkCategory, selectCreatedLink, selectEditedLink, selectLoadingStatus } from '../../redux/linksSlice.js';
 import { selectLinkType } from '../../redux/filtersSlice.js';
 import { selectAction } from '../../redux/actionSlice.js';
 
@@ -14,11 +14,11 @@ export default class ContentWrapper {
 		this.component = null;
 		this.children = [];
 		useSelector(this, store, [ selectLinkCategories, selectAction, selectLinkType, selectRemovedLinkId,
-		                           selectRemovedLinkCategory, selectCreatedLink, selectEditedLink ]);
+		                           selectRemovedLinkCategory, selectCreatedLink, selectEditedLink, selectLoadingStatus ]);
 
 		this.updateActions = {
 			'filters/linkTypeSelected': true,
-			'links/linkRemoved': true,
+			'links/linkRemoved/fulfilled': true,
 			'links/linkCreated': true,
 			'links/linkEdited': true
 		};
@@ -57,7 +57,7 @@ export default class ContentWrapper {
 				const linkType = this.selectLinkType();
 				return update(linkType.category, { linkType });
 			}
-			case 'links/linkRemoved': {
+			case 'links/linkRemoved/fulfilled': {
 				const removedLinkId = this.selectRemovedLinkId();
 				const category = this.selectRemovedLinkCategory();
 				return update(category, { removedLinkId });
