@@ -1,0 +1,10 @@
+.settings-menu {}
+
+/* link form opener element */
+.settings-menu__link-form-opener {
+	display: block;
+	padding: 5px;
+	border-radius: 3px;
+	font-size: 1.3em;
+  cursor: pointer;
+}

@@ -1,4 +1,5 @@
 @import './page.css';
+@import './settings-menu.css';
 
 * {
   box-sizing: border-box;

@@ -25,6 +25,6 @@ export const CLOSE_BUTTON =    'close-btn';
 export const LINK_FORM =       'link-form';
 
 
-export const OPEN_SETTINGS_BUTTON = 'link-creator-opener';
+export const OPEN_SETTINGS_BUTTON = 'settings-menu__link-form-opener';
 
 const LOADING_COVER = 'loading-cover';
