@@ -1,9 +1,11 @@
        const MENU_PANEL = 					     'menu-panel';
-export const CATEGORY_MENU =             'category-menu';            // category selection menu element class name
-export const CATEGORY_MENU_ITEM =        `${CATEGORY_MENU}-item`;
-export const CATEGORY_MENU_HEADER =      `${CATEGORY_MENU}-header`;
-export const CATEGORY_MENU_LINK =        `${CATEGORY_MENU}-content`;
 export const OPEN_CATEGORY_MENU_BUTTON = 'menu-panel__menu-opener';
+export const CATEGORY_MENU =             'category-menu';            // category selection menu element class name
+export const CATEGORY_MENU_ITEM =        'category-menu__item';
+export const CATEGORY_MENU_HEADER =      'category-menu__header';
+export const CATEGORY_MENU_LINK =        'category-menu__link';
+export const CATEGORY_MENU_LINK_TOTAL =  'category-menu__link-total';
+
 
 
 export const CONTENT =              'content';

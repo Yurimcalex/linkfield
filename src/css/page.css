@@ -80,3 +80,12 @@
 		overflow: auto;
 	}
 }
+
+/* category menu */
+@media screen and (max-width: 650px) {
+	.page__category-menu_adaptive {
+		display: none;
+		height: 100vh;
+		padding: 0;
+	}
+}
