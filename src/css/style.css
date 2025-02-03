@@ -2,9 +2,9 @@
 @import './link-list.css';
 @import './link-creator.css';
 
-* {
+/** {
   box-sizing: border-box;
-}
+}*/
 
 /* --- layout --- */
 /*body {
@@ -15,20 +15,20 @@
 }
 */
 
-.menu-panel,
+/*.menu-panel,
 .content {
   overflow: auto;
-}
+}*/
 
 /*.menu-panel {
   flex-basis: 250px;
 }*/
 
-.content {
+/*.content {
   flex-basis: 450px;
   flex-grow: 1;
   flex-shrink: 0;
-}
+}*/
 
 @media screen and (max-width: 650px) {
   /*body {
@@ -39,18 +39,18 @@
     flex-grow: 1;
   }*/
 
-  .menu-panel,
+ /* .menu-panel,
   .content {
     overflow: unset;
-  }
+  }*/
 
   .category-menu-wrapper {
     overflow: auto;
   }
 
-  .content {
+  /*.content {
     flex-basis: 300px;
-  }
+  }*/
 }
 
 /* --- link category container --- */
@@ -96,9 +96,9 @@
     background: white;
   }
 
-  .content {
+  /*.content {
     margin-top: 30px;
-  }
+  }*/
 }
 
 /* open/close category menu */

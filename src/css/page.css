@@ -47,11 +47,23 @@
 @media screen and (max-width: 650px) {
 	.page__menu-panel_adaptive {
 		flex-grow: 1;
-		overflow: unset;
 		position: fixed;
 		width: 100%;
 		top: 0;
+		overflow: unset;
 	}
 }
 
+/* content element */
+.page__content {
+	flex-basis: 450px;
+	flex-grow: 1;
+	flex-shrink: 0;
+	overflow: auto;
+}
 
+.page__content_adaptive {
+	flex-basis: 300px;
+	margin-top: 30px;
+	overflow: unset;
+}
