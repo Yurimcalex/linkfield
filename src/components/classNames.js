@@ -1,14 +1,17 @@
        const MENU_PANEL = 					     'menu-panel';
 export const OPEN_CATEGORY_MENU_BUTTON = 'menu-panel__menu-opener';
-export const CATEGORY_MENU =             'category-menu';            // category selection menu element class name
+export const CATEGORY_MENU =             'category-menu';
+export const CATEGORY_MENU_SHOW =        'page__category-menu_visible';
 export const CATEGORY_MENU_ITEM =        'category-menu__item';
 export const CATEGORY_MENU_HEADER =      'category-menu__header';
 export const CATEGORY_MENU_LINK =        'category-menu__link';
 export const CATEGORY_MENU_LINK_TOTAL =  'category-menu__link-total';
+export const CATEGORY_MENU_OPENER_HIDE = 'page__menu-opener_hidden';
 
 
 
 export const CONTENT =              'content';
+export const CONTENT_HIDE =         'page__content_hidden';
 export const LINK_CATEGORY =        'category';
 export const LINK_CATEGORY_HEADER = 'category__header';
 export const LINK_CATEGORY_HEADER_SORTNAME = 'category__header-sortname';

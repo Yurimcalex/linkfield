@@ -1,3 +1,4 @@
+import { CONTENT_HIDE, CATEGORY_MENU_SHOW, CATEGORY_MENU_OPENER_HIDE } from '../classNames.js';
 import { dom } from '../elements.js';
 import { replaceSpace, getCategoryFromHash, getIsSmallScreen, updateHash, scrollElementIntoView } from '../utils.js';
 
@@ -18,6 +19,12 @@ export default class Component {
 					this.scrollToCategory(category, isSmallScreen);
 					scrollElementIntoView(this.getMenuItemByCategory(category));
 				}
+			}
+
+			if (!isSmallScreen) {
+				this.content.classList.remove(`${CONTENT_HIDE}`);
+				this.menu.classList.remove(`${CATEGORY_MENU_SHOW}`);
+				dom.categoryMenu.getOpener().classList.remove(`${CATEGORY_MENU_OPENER_HIDE}`)
 			}
 		});
 
