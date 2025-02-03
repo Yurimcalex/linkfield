@@ -1,3 +1,4 @@
+import { SETTINGS_WINDOW_HIDE } from '../classNames.js';
 import { dom } from '../elements.js';
 
 
@@ -13,7 +14,7 @@ export default class SettingsWindow {
 	}
 
 	toggleWindow() {
-		this.node.classList.toggle('hide');
+		this.node.classList.toggle(`${SETTINGS_WINDOW_HIDE}`);
 	}
 
 	create() {}

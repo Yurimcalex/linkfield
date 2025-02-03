@@ -27,6 +27,7 @@ export const REMOVE_BUTTON =        'link-list__item-button_close';
 
 export const SETTINGS_MENU =   'settings-menu';
 export const SETTINGS_WINDOW = 'settings-window';
+export const SETTINGS_WINDOW_HIDE = 'page__settings-window_hidden';
        const SET_LINK_WINDOW = 'link-creator';
 export const CLOSE_BUTTON =    'close-btn';
 export const LINK_FORM =       'link-form';
