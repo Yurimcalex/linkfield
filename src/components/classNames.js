@@ -50,3 +50,4 @@ export const THEME_BUTTON =         'theme__button_initial';
 export const THEME_LINK =           'theme__link_initial';
 export const THEME_LINK_SELECTED =  'theme__link_initial-selected';
 export const THEME_LINK_HIGHLIGHT = 'theme__link_initial-highlighted';
+export const THEME_COLOR_MUTE =     'theme__color-initial_mute';

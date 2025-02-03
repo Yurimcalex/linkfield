@@ -21,3 +21,7 @@
 .theme__link_initial-highlighted {
 	background: #C1E1C1;
 }
+
+.theme__color-initial_mute {
+	color: gray;
+}
