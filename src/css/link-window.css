@@ -40,3 +40,7 @@
 	padding-right: 5px;
 	font-size: 0.9em;
 }
+
+.link-window__btn_hide {
+	display: none;
+}

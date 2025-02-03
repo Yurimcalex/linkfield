@@ -1,3 +1,4 @@
+import { LINK_FORM_BUTTON_HIDE } from '../../classNames.js';
 import { createOptionsTemplate } from './LinkFormTemplate.js';
 import { dom } from '../../elements.js';
 
@@ -65,16 +66,16 @@ export default class LinkFrom {
 
 	setCreateionMode() {
 		this.reset();
-		this.node.edit.classList.add('hide');
-		this.node.add.classList.remove('hide');
+		this.node.edit.classList.add(`${LINK_FORM_BUTTON_HIDE}`);
+		this.node.add.classList.remove(`${LINK_FORM_BUTTON_HIDE}`);
 	}
 
 	setEditingMode(editedLinkData) {
 		this.reset();
 		this.editingLinkId = editedLinkData._id;
 		this.setFormData(editedLinkData);
-		this.node.edit.classList.remove('hide');
-		this.node.add.classList.add('hide');
+		this.node.edit.classList.remove(`${LINK_FORM_BUTTON_HIDE}`);
+		this.node.add.classList.add(`${LINK_FORM_BUTTON_HIDE}`);
 	}
 
 	create(categories, types) {

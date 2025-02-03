@@ -36,21 +36,22 @@ export const SETTINGS_MENU =        'settings-menu';
 export const OPEN_SETTINGS_BUTTON = 'settings-menu__link-form-opener';
 
 
-export const SETTINGS_WINDOW =      'settings-window';
-export const SETTINGS_WINDOW_HIDE = 'page__settings-window_hidden';
-       const SET_LINK_WINDOW =      'link-window';
-export const CLOSE_BUTTON =         'link-window__close-btn';
-export const LINK_FORM =            'link-window__form';
+export const SETTINGS_WINDOW =       'settings-window';
+export const SETTINGS_WINDOW_HIDE =  'page__settings-window_hidden';
+       const SET_LINK_WINDOW =       'link-window';
+export const CLOSE_BUTTON =          'link-window__close-btn';
+export const LINK_FORM =             'link-window__form';
+export const LINK_FORM_BUTTON_HIDE = 'link-window__btn_hide';
 
 
 const LOADING_COVER = 'loading-cover';
 
 
-export const THEME_BUTTON =         'theme__button_initial';
-export const THEME_LINK =           'theme__link_initial';
-export const THEME_LINK_SELECTED =  'theme__link_initial-selected';
-export const THEME_LINK_HIGHLIGHT = 'theme__link_initial-highlighted';
-export const THEME_COLOR_MUTE =     'theme__color-initial_mute';
-export const THEME_CATEGORY_MENU_ITEM = 'theme__category-menu-item_initial';
+export const THEME_BUTTON =                      'theme__button_initial';
+export const THEME_LINK =                        'theme__link_initial';
+export const THEME_LINK_SELECTED =               'theme__link_initial-selected';
+export const THEME_LINK_HIGHLIGHT =              'theme__link_initial-highlighted';
+export const THEME_COLOR_MUTE =                  'theme__color-initial_mute';
+export const THEME_CATEGORY_MENU_ITEM =          'theme__category-menu-item_initial';
 export const THEME_CATEGORY_MENU_ITEM_SELECTED = 'theme__category-menu-item_initial-selected';
 export const THEME_CATEGORY_MENU_ITEM_ADAPTIVE = 'theme__category-menu-item_initial-adaptive';
