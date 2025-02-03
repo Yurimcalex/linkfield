@@ -44,3 +44,5 @@ export const LINK_FORM =            'link-window__form';
 
 
 const LOADING_COVER = 'loading-cover';
+
+export const THEME_BUTTON = 'theme__button_initial';

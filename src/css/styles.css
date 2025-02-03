@@ -6,6 +6,7 @@
 @import './settings-window.css';
 @import './link-window.css';
 @import './page.css';
+@import './theme.css';
 
 * {
   box-sizing: border-box;

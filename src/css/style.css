@@ -148,16 +148,16 @@
 }
 
 /* --- settings menu --- */
-.link-creator-opener {
-  /*display: block;
+/*.link-creator-opener {
+  display: block;
   padding: 5px;
-  border-radius: 3px;*/
+  border-radius: 3px;
   background: lightgray;
-  /*font-size: 1.3em;
-  cursor: pointer;*/
-}
+  font-size: 1.3em;
+  cursor: pointer;
+}*/
 
-.link-creator-opener:hover {
+/*.link-creator-opener:hover {
   background: gray;
   color: white;
-}
+}*/

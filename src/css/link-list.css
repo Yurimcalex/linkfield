@@ -40,11 +40,11 @@
   cursor: pointer;
 }
 
-.link-list__item-button_edit {
+.link-list__item-button_edit {}
+
+.link-list__item-button_close {
   margin-left: 5px;
 }
-
-.link-list__item-button_close {}
 
 /*.link-list {}
 
