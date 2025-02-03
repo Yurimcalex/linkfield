@@ -5,19 +5,19 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="src/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="src/css/style.css">
+    <link rel="stylesheet" type="text/css" href="src/css/styles.css">
     <title>Links App</title>
   </head>
-  <body>
+  <body class="page page_adaptive">
     <!-- <section class="loading-cover">Loading ...</section> -->
 
-    <section class="settings-panel">
+    <section class="settings-panel page__settings-panel page__settings-panel_adaptive">
       <ul class="settings-menu">
         <li><a class="link-creator-opener">&#x002B;</a></li>
       </ul>
     </section>
 
-    <section class="settings-window hide">
+    <section class="settings-window page__settings-window page__settings-window_hidden">
       <div class="link-creator">
         <div class="close-btn"><a>Close</a></div>
         <form class="link-form">
@@ -30,7 +30,7 @@
       </div>
     </section>
 
-    <section class="menu-panel">
+    <section class="menu-panel page__menu-panel page__menu-panel_adaptive">
       <div class="menu-opener">Open menu</div>
       <div class="category-menu-wrapper">
         <ul class="category-menu"></ul>

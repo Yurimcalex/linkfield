@@ -1,0 +1,57 @@
+.page {
+	display: flex;
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+}
+
+@media screen and (max-width: 650px) {
+	.page_adaptive {
+		flex-wrap: wrap;
+	}
+}
+
+/* settings panel element */
+.page__settings-panel {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+
+@media screen and (max-width: 650px) {
+  .page__settings-panel_adaptive {
+  	display: none;
+	}
+}
+
+/* settings window element */
+.page__settings-window {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+}
+
+.page__settings-window_hidden {
+	display: none;
+}
+
+/* menu panel element */
+.page__menu-panel {
+	flex-basis: 250px;
+	overflow: auto;
+}
+
+@media screen and (max-width: 650px) {
+	.page__menu-panel_adaptive {
+		flex-grow: 1;
+		overflow: unset;
+		position: fixed;
+		width: 100%;
+		top: 0;
+	}
+}
+
+

@@ -7,22 +7,22 @@
 }
 
 /* --- layout --- */
-body {
+/*body {
   display: flex;
   height: 100vh;
   margin: 0;
   padding: 0;
 }
-
+*/
 
 .menu-panel,
 .content {
   overflow: auto;
 }
 
-.menu-panel {
+/*.menu-panel {
   flex-basis: 250px;
-}
+}*/
 
 .content {
   flex-basis: 450px;
@@ -31,13 +31,13 @@ body {
 }
 
 @media screen and (max-width: 650px) {
-  body {
+  /*body {
     flex-wrap: wrap;
   }
 
   .menu-panel {
     flex-grow: 1;
-  }
+  }*/
 
   .menu-panel,
   .content {
@@ -85,11 +85,11 @@ body {
 }
 
 @media screen and (max-width: 650px) {
-  .menu-panel {
+  /*.menu-panel {
     position: fixed;
     width: 100%;
     top: 0;
-  }
+  }*/
 
   .menu-opener {
     display: block;
@@ -124,27 +124,27 @@ body {
 }
 
 /* --- settings panel --- */
-.settings-panel {
+/*.settings-panel {
   position: absolute;
   top: 20px;
   right: 20px;
-}
+}*/
 
-@media screen and (max-width: 650px) {
+/*@media screen and (max-width: 650px) {
   .settings-panel {
     display: none;
   }
-}
+}*/
 
 /* --- settings window --- */
 .settings-window {
-  position: absolute;
+  /*position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
-  right: 0;
+  right: 0;*/
   background: rgba(0, 0, 0, 0.4);
-  z-index: 100;
+  /*z-index: 100;*/
 }
 
 /* --- settings menu --- */
