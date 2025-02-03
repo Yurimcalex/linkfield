@@ -103,3 +103,10 @@
 .page__category-menu_visible {
 	display: block;
 }
+
+/* link list controls */
+@media screen and (max-width: 650px) {
+	.page__link-list-controls_adaptive {
+		display: none;
+	}
+}
