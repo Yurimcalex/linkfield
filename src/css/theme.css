@@ -53,3 +53,7 @@
 .theme__settings-window_initial {
 	background: rgba(0, 0, 0, 0.4);
 }
+
+.theme__link-window_initial {
+	background: lightgray;
+}

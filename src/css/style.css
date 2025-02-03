@@ -137,15 +137,15 @@
 }*/
 
 /* --- settings window --- */
-.settings-window {
-  /*position: absolute;
+/*.settings-window {
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
-  right: 0;*/
+  right: 0;
   background: rgba(0, 0, 0, 0.4);
-  /*z-index: 100;*/
-}
+  z-index: 100;
+}*/
 
 /* --- settings menu --- */
 /*.link-creator-opener {
