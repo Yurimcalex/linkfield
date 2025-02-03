@@ -17,6 +17,7 @@ import {
 	LINK_FORM,
 	SETTINGS_WINDOW,
 	THEME_LINK_SELECTED,
+	THEME_CATEGORY_MENU_ITEM_SELECTED,
 	CLOSE_BUTTON } from './classNames.js';
 
 
@@ -61,7 +62,7 @@ export const dom = {
 	categoryMenu: {
 		getMenu: () => document.querySelector(`.${CATEGORY_MENU}`),
 		getItem: (target) => target.closest(`.${CATEGORY_MENU_ITEM}`),
-		getHighlightedItem: (target) => target.querySelector(`.${CATEGORY_MENU_ITEM}.highlight`),
+		getHighlightedItem: (target) => target.querySelector(`.${THEME_CATEGORY_MENU_ITEM_SELECTED}`),
 		getItemByCategory: (target, category) => 
 			target.querySelector(`.${CATEGORY_MENU_ITEM}[data-category="${category}"]`),
 
