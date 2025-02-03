@@ -3,7 +3,7 @@ export const CATEGORY_MENU =             'category-menu';            // category
 export const CATEGORY_MENU_ITEM =        `${CATEGORY_MENU}-item`;
 export const CATEGORY_MENU_HEADER =      `${CATEGORY_MENU}-header`;
 export const CATEGORY_MENU_LINK =        `${CATEGORY_MENU}-content`;
-export const OPEN_CATEGORY_MENU_BUTTON = 'menu-opener';
+export const OPEN_CATEGORY_MENU_BUTTON = 'menu-panel__menu-opener';
 
 
 export const CONTENT =              'content';

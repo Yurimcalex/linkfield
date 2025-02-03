@@ -78,10 +78,10 @@
 
 /* --- category menu opener --- */
 .menu-opener {
-  display: none;
+  /*display: none;
   padding: 15px;
   text-align: center;
-  font-size: 1em;
+  font-size: 1em;*/
 }
 
 @media screen and (max-width: 650px) {
@@ -92,7 +92,7 @@
   }*/
 
   .menu-opener {
-    display: block;
+    /*display: block;*/
     background: white;
   }
 

@@ -46,7 +46,6 @@
 
 @media screen and (max-width: 650px) {
 	.page__menu-panel_adaptive {
-		flex-grow: 1;
 		position: fixed;
 		width: 100%;
 		top: 0;
@@ -66,4 +65,18 @@
 	flex-basis: 300px;
 	margin-top: 30px;
 	overflow: unset;
+}
+
+/* category menu opener */
+@media screen and (max-width: 650px) {
+	.page__menu-opener_adaptive {
+		display: block;
+	}
+}
+
+/* category menu wrapper */
+@media screen and (max-width: 650px) {
+	.page__menu-wrapper_adaptive {
+		overflow: auto;
+	}
 }

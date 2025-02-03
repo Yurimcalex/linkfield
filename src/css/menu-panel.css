@@ -1,0 +1,8 @@
+.menu-panel {}
+
+.menu-panel__menu-opener {
+	display: none;
+	padding: 15px;
+	text-align: center;
+	font-size: 1em;
+}
