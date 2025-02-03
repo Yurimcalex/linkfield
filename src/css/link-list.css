@@ -23,9 +23,14 @@
   padding: 10px 0;
 }
 
+/* controls element */
 .link-list__item-controls {
   display: flex;
   margin-left: auto;
+}
+
+.link-list__item-controls_hidden {
+  visibility: hidden;
 }
 
 .link-list__item-button {

@@ -1,3 +1,4 @@
+import { LINK_CONTROLS_HIDE } from '../../classNames.js';
 import { dom } from '../../elements.js';
 import { createTemplate, createListItemTemplate } from './categoryTemplate.js';
 import { createHoverEffect, isVisible } from '../../utils.js';
@@ -51,10 +52,10 @@ export default class Category {
 		if (link.classList.contains('current')) return;
 		const controls = dom.link.getControls(link);
 		if (prevHoveredItem !== link) { // in
-			controls.classList.remove('visibility');
+			controls.classList.remove(`${LINK_CONTROLS_HIDE}`);
 			prevHoveredItem = link;
 		} else { // out
-			controls.classList.add('visibility');
+			controls.classList.add(`${LINK_CONTROLS_HIDE}`);
 			prevHoveredItem = null;
 		}
 	}

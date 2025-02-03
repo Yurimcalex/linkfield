@@ -23,6 +23,7 @@ export const LINK_LIST_ITEM_CONTENT = 'link-list__item-content';
 export const LINK_TYPE =            'link-list__item-type';
 export const LINK_TOPIC =           'link-list__item-description';
 export const LINK_CONTROLS =        'link-list__item-controls';
+export const LINK_CONTROLS_HIDE =   'link-list__item-controls_hidden';
 export const LINK_BUTTON =          'link-list__item-button';
 export const EDIT_BUTTON =          'link-list__item-button_edit';
 export const REMOVE_BUTTON =        'link-list__item-button_close';

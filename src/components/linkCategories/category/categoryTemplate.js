@@ -6,6 +6,7 @@ import {
 	LINK_TYPE,
 	LINK_TOPIC,
 	LINK_CONTROLS,
+	LINK_CONTROLS_HIDE,
 	LINK_BUTTON,
 	EDIT_BUTTON,
 	REMOVE_BUTTON
@@ -31,7 +32,7 @@ export function createListItemTemplate(id, linkSrc, linkType, linkDescription) {
 		html += `<h3 class=${LINK_LIST_ITEM_CONTENT}>`;
 			html += `<span class="${LINK_TYPE}">${linkType}</span> `;
 			html += `<a class="${LINK_TOPIC}" href=${linkSrc} target="_blank">${linkDescription}</a>`;
-			html += `<div class="${LINK_CONTROLS} visibility sm">`;
+			html += `<div class="${LINK_CONTROLS} ${LINK_CONTROLS_HIDE} sm">`;
 				html += `<span><a class="${LINK_BUTTON} ${EDIT_BUTTON}" data-linkid=${id}>&#128393;</a></span>`;
 				html += `<span><a class="${LINK_BUTTON} ${REMOVE_BUTTON}" data-linkid=${id}>&#128473;</a></span>`;
 			html += '</div>';
