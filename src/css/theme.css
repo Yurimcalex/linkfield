@@ -57,3 +57,7 @@
 .theme__link-window_initial {
 	background: lightgray;
 }
+
+.theme__link-window-close-btn_initial {
+	background: lightgray;
+}
