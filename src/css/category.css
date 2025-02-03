@@ -1,0 +1,19 @@
+.category {
+	padding: 10px 0;
+}
+
+.category__header {
+	padding: 20px;
+	text-align: center;
+	font-weight: normal;
+	font-size: 1.5em;
+}
+
+.category__header-sortname {
+	padding-left: 10px;
+	font-size: 0.6em;
+}
+
+.category__header-select {
+	font-size: 0.9em;
+}

@@ -9,8 +9,10 @@ export const CATEGORY_MENU_LINK_TOTAL =  'category-menu__link-total';
 
 
 export const CONTENT =              'content';
-export const LINK_CATEGORY =        'link-category';
-export const LINK_CATEGORY_HEADER = 'link-category-header';
+export const LINK_CATEGORY =        'category';
+export const LINK_CATEGORY_HEADER = 'category__header';
+export const LINK_CATEGORY_HEADER_SORTNAME = 'category__header-sortname';
+export const LINK_CATEGORY_HEADER_SELECT = 'category__header-select';
 export const LINK_LIST =            'link-list';
 export const LINK_LIST_ITEM =       'link-list-item';
 export const LINK_TYPE =            'link-type';

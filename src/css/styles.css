@@ -1,6 +1,7 @@
 @import './settings-menu.css';
 @import './menu-panel.css';
 @import './category-menu.css';
+@import './category.css';
 @import './page.css';
 
 * {

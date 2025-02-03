@@ -54,27 +54,27 @@
 }
 
 /* --- link category container --- */
-.link-category {
+/*.link-category {
   padding: 10px 0;
-}
+}*/
 
-.link-category h2 {
+/*.link-category h2 {
   padding: 20px;
   text-align: center;
   font-weight: normal;
   font-size: 1.5em;
-}
+}*/
 
 .link-category h2 span:last-child {
-  padding-left: 10px;
-  font-size: 0.6em;
+  /*padding-left: 10px;
+  font-size: 0.6em;*/
   color: gray;
 }
 
-.link-category span select {
+/*.link-category span select {
   font-size: 0.9em;
 }
-
+*/
 
 /* --- category menu opener --- */
 /*.menu-opener {

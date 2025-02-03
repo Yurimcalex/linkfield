@@ -61,10 +61,12 @@
 	overflow: auto;
 }
 
-.page__content_adaptive {
-	flex-basis: 300px;
-	margin-top: 30px;
-	overflow: unset;
+@media screen and (max-width: 650px) {
+	.page__content_adaptive {
+		flex-basis: 300px;
+		margin-top: 30px;
+		overflow: unset;
+	}
 }
 
 /* category menu opener */
