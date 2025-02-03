@@ -49,3 +49,7 @@
 		background: white;
 	}
 }
+
+.theme__settings-window_initial {
+	background: rgba(0, 0, 0, 0.4);
+}
