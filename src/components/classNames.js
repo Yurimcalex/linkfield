@@ -13,13 +13,16 @@ export const LINK_CATEGORY =        'category';
 export const LINK_CATEGORY_HEADER = 'category__header';
 export const LINK_CATEGORY_HEADER_SORTNAME = 'category__header-sortname';
 export const LINK_CATEGORY_HEADER_SELECT = 'category__header-select';
+
 export const LINK_LIST =            'link-list';
-export const LINK_LIST_ITEM =       'link-list-item';
-export const LINK_TYPE =            'link-type';
-export const LINK_TOPIC =           'link-topic';
-export const LINK_CONTROLS =        'link-controls';
-export const EDIT_BUTTON =          'edit-btn';
-export const REMOVE_BUTTON =        'remove-btn';
+export const LINK_LIST_ITEM =       'link-list__item';
+export const LINK_LIST_ITEM_CONTENT = 'link-list__item-content';
+export const LINK_TYPE =            'link-list__item-type';
+export const LINK_TOPIC =           'link-list__item-description';
+export const LINK_CONTROLS =        'link-list__item-controls';
+export const LINK_BUTTON =          'link-list__item-button';
+export const EDIT_BUTTON =          'link-list__item-button_edit';
+export const REMOVE_BUTTON =        'link-list__item-button_close';
 
 
 export const SETTINGS_MENU =   'settings-menu';
