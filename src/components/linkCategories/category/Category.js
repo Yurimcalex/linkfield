@@ -1,4 +1,4 @@
-import { LINK_CONTROLS_HIDE, THEME_LINK_SELECTED } from '../../classNames.js';
+import { LINK_CONTROLS_HIDE, THEME_LINK_SELECTED, THEME_LINK_HIGHLIGHT } from '../../classNames.js';
 import { dom } from '../../elements.js';
 import { createTemplate, createListItemTemplate } from './categoryTemplate.js';
 import { createHoverEffect, isVisible } from '../../utils.js';
@@ -61,9 +61,9 @@ export default class Category {
 	}
 
 	highlightLink(link) {
-		link.classList.add('highlight');
+		link.classList.add(`${THEME_LINK_HIGHLIGHT}`);
 		setTimeout(() => {
-			link.classList.remove('highlight');
+			link.classList.remove(`${THEME_LINK_HIGHLIGHT}`);
 		}, 2000);
 	}
 

@@ -10,10 +10,14 @@
 	color: white;
 }
 
-.theme__link:hover {
+.theme__link_initial:hover {
 	background: #eee;
 }
 
-.theme__link_selected {
+.theme__link_initial-selected {
 	background: #eee;
+}
+
+.theme__link_initial-highlighted {
+	background: #C1E1C1;
 }

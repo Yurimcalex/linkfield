@@ -46,6 +46,7 @@ export const LINK_FORM =            'link-window__form';
 const LOADING_COVER = 'loading-cover';
 
 
-export const THEME_BUTTON =        'theme__button_initial';
-export const THEME_LINK =          'theme__link';
-export const THEME_LINK_SELECTED = 'theme__link_selected';
+export const THEME_BUTTON =         'theme__button_initial';
+export const THEME_LINK =           'theme__link_initial';
+export const THEME_LINK_SELECTED =  'theme__link_initial-selected';
+export const THEME_LINK_HIGHLIGHT = 'theme__link_initial-highlighted';
