@@ -16,6 +16,7 @@ import {
 	OPEN_SETTINGS_BUTTON,
 	LINK_FORM,
 	SETTINGS_WINDOW,
+	THEME_LINK_SELECTED,
 	CLOSE_BUTTON } from './classNames.js';
 
 
@@ -44,7 +45,7 @@ export const dom = {
 		getRemoveButton: (target) => target.closest(`.${REMOVE_BUTTON}`),
 		getEditButton: (target) => target.closest(`.${EDIT_BUTTON}`),
 		getLast: (target) => target.querySelector(`.${LINK_LIST_ITEM}:last-child`),
-		getCurrentSelected: () => document.querySelector(`.${LINK_LIST_ITEM}.current`),
+		getCurrentSelected: () => document.querySelector(`.${THEME_LINK_SELECTED}`),
 		getControls: (target) => target.querySelector(`.${LINK_CONTROLS}`),
 		getType: (target) => target.querySelector(`.${LINK_TYPE}`),
 		getTopic: (target) => target.querySelector(`.${LINK_TOPIC}`),

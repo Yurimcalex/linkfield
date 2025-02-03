@@ -11,7 +11,8 @@ import {
 	LINK_BUTTON,
 	EDIT_BUTTON,
 	REMOVE_BUTTON,
-	THEME_BUTTON
+	THEME_BUTTON,
+	THEME_LINK
 } from '../../classNames.js';
 
 
@@ -30,7 +31,7 @@ export function createTemplate(category, linksData) {
 
 export function createListItemTemplate(id, linkSrc, linkType, linkDescription) {
 	let html = '';
-	html += `<li class="${LINK_LIST_ITEM}" data-linkid=${id}>`;
+	html += `<li class="${LINK_LIST_ITEM} ${THEME_LINK}" data-linkid=${id}>`;
 		html += `<h3 class=${LINK_LIST_ITEM_CONTENT}>`;
 			html += `<span class="${LINK_TYPE}">${linkType}</span> `;
 			html += `<a class="${LINK_TOPIC}" href=${linkSrc} target="_blank">${linkDescription}</a>`;

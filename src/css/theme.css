@@ -9,3 +9,11 @@
 	background: gray;
 	color: white;
 }
+
+.theme__link:hover {
+	background: #eee;
+}
+
+.theme__link_selected {
+	background: #eee;
+}
