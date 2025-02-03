@@ -1,5 +1,5 @@
 import { LINK_CATEGORY_HEADER,
-	LINK_CATEGORY_HEADER_SORTNAME, LINK_CATEGORY_HEADER_SELECT } from '../../../classNames.js';
+	LINK_CATEGORY_HEADER_SORTNAME, LINK_CATEGORY_HEADER_SELECT, LINK_CATEGORY_HEADER_HIDE } from '../../../classNames.js';
 import { replaceSpace } from '../../../utils.js';
 
 
@@ -7,7 +7,7 @@ export function createTemplate(category, linkTypes) {
 	let html = '';
 	html += `<h2 id=${replaceSpace(category)} class=${LINK_CATEGORY_HEADER}>`;
 		html += `<span>${category}</span>`;
-		html += `<span class="visibility ${LINK_CATEGORY_HEADER_SORTNAME}">Arrange by ${createSelect(linkTypes)}</span>`;
+		html += `<span class="${LINK_CATEGORY_HEADER_HIDE} ${LINK_CATEGORY_HEADER_SORTNAME}">Arrange by ${createSelect(linkTypes)}</span>`;
 	html += '</h2>';
 	return html;
 }

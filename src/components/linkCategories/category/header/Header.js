@@ -1,3 +1,4 @@
+import { LINK_CATEGORY_HEADER_HIDE } from '../../../classNames.js';
 import { createTemplate, createOption } from './HeaderTemplate.js';
 import { createHoverEffect, replaceHyphen } from '../../../utils.js';
 import { dom } from '../../../elements.js';
@@ -17,7 +18,7 @@ export default class Header {
 	}
 
 	toggleSelect() {
-		dom.categoryHeader.getSelect(this.node).parentNode.classList.toggle('visibility');
+		dom.categoryHeader.getSelect(this.node).parentNode.classList.toggle(`${LINK_CATEGORY_HEADER_HIDE}`);
 	}
 
 	removeSelectOption(type) {

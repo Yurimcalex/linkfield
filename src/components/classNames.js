@@ -14,6 +14,7 @@ export const CONTENT =              'content';
 export const CONTENT_HIDE =         'page__content_hidden';
 export const LINK_CATEGORY =        'category';
 export const LINK_CATEGORY_HEADER = 'category__header';
+export const LINK_CATEGORY_HEADER_HIDE = 'category__header_hidden';
 export const LINK_CATEGORY_HEADER_SORTNAME = 'category__header-sortname';
 export const LINK_CATEGORY_HEADER_SELECT = 'category__header-select';
 

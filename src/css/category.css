@@ -9,6 +9,10 @@
 	font-size: 1.5em;
 }
 
+.category__header_hidden {
+	visibility: hidden;
+}
+
 .category__header-sortname {
 	padding-left: 10px;
 	font-size: 0.6em;
