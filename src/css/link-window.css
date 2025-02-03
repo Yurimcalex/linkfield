@@ -1,0 +1,42 @@
+.link-window {
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.link-window__close-btn {
+	position: absolute;
+	top: -30px;
+	right: -20px;
+	padding: 3px;
+	border-radius: 3px;
+	font-size: 0.8em;
+	cursor: pointer;
+}
+
+.link-window__form {
+	display: flex;
+	flex-direction: column;
+}
+
+.link-window__form-item {
+	display: flex;
+	align-items: center;
+	margin: 5px;
+}
+
+.link-window__form-item_last {
+	margin-top: 10px;
+	margin-left: auto;
+}
+
+.link-window__form-input {
+	flex: 1;
+	padding: 2px;
+}
+
+.link-window__form-item-name {
+	display: inline-block;
+	width: 90px;
+	padding-right: 5px;
+	font-size: 0.9em;
+}

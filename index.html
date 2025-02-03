@@ -13,22 +13,41 @@
 
     <section class="page__settings-panel page__settings-panel_adaptive">
       <ul class="settings-menu">
-        <li><a class="settings-menu__link-form-opener">&#x002B;</a></li>
+        <li>
+          <a class="settings-menu__link-form-opener">&#x002B;</a>
+        </li>
       </ul>
     </section>
 
+
     <section class="settings-window page__settings-window page__settings-window_hidden">
-      <div class="link-creator">
-        <div class="close-btn"><a>Close</a></div>
-        <form class="link-form">
-          <div class="link-form-item"><span>Link</span><input type="text" name="src"></div>
-          <div class="link-form-item"><span>Description</span><input type="text" name="description"></div>
-          <div class="link-form-item"><span>Category</span><select name="category"></select></div>
-          <div class="link-form-item"><span>Type</span><select name="type"></select></div>
-          <div class="link-form-item"><button name="add">Add</button><button name="edit">Edit</button></div>
+      <div class="link-window settings-window__link-window">
+        <div class="link-window__close-btn"><a>Close</a></div>
+        <form class="link-window__form">
+          <div class="link-window__form-item">
+            <span class="link-window__form-item-name">Link</span>
+            <input class="link-window__form-input" type="text" name="src">
+          </div>
+          <div class="link-window__form-item">
+            <span class="link-window__form-item-name">Description</span>
+            <input class="link-window__form-input" type="text" name="description">
+          </div>
+          <div class="link-window__form-item">
+            <span class="link-window__form-item-name">Category</span>
+            <select name="category"></select>
+          </div>
+          <div class="link-window__form-item">
+            <span class="link-window__form-item-name">Type</span>
+            <select name="type"></select>
+          </div>
+          <div class="link-window__form-item link-window__form-item_last">
+            <button name="add">Add</button>
+            <button name="edit">Edit</button>
+          </div>
         </form>
       </div>
     </section>
+
 
     <section class="menu-panel page__menu-panel page__menu-panel_adaptive">
       <div class="menu-panel__menu-opener page__menu-opener_adaptive">Open menu</div>
@@ -36,6 +55,7 @@
         <ul class="category-menu page__category-menu_adaptive"></ul>
       </div>
     </section>
+    
     
     <section class="content page__content page__content_adaptive"></section>
     

@@ -1,23 +1,23 @@
 .link-creator {
-  position: absolute;
+  /*position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 50%;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 5px;*/
   background: lightgray;
 }
 
 .link-creator .close-btn {
-  position: absolute;
+  /*position: absolute;
   top: -30px;
   right: -20px;
   padding: 3px;
   border-radius: 3px;
-  font-size: 0.8em;
+  font-size: 0.8em;*/
   background: lightgray;
-  cursor: pointer;
+  /*cursor: pointer;*/
 }
 
 .link-creator span {
@@ -28,22 +28,22 @@
 }
 
 .link-form {
-  display: flex;
-  flex-direction: column;
+  /*display: flex;
+  flex-direction: column;*/
 }
 
 .link-form-item {
-  display: flex;
+  /*display: flex;
   align-items: center;
-  margin: 5px;
+  margin: 5px;*/
 }
 
 .link-form-item:last-child {
-  margin-top: 10px;
-  margin-left: auto;
+ /* margin-top: 10px;
+  margin-left: auto;*/
 }
 
 .link-form-item input {
-  flex: 1;
-  padding: 2px;
+  /*flex: 1;
+  padding: 2px;*/
 }

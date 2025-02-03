@@ -3,6 +3,8 @@
 @import './category-menu.css';
 @import './category.css';
 @import './link-list.css';
+@import './settings-window.css';
+@import './link-window.css';
 @import './page.css';
 
 * {
