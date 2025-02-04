@@ -1,5 +1,13 @@
 .theme {}
 
+.theme__menu-panel {
+	background: white;
+}
+
+.theme__content {
+	background: white;
+}
+
 /* initial theme */
 .theme__button_initial {
 	background: lightgray;
