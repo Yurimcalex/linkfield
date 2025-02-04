@@ -42,17 +42,17 @@ const db = {
 	}
 };
 
-db.init();
 
+//initiateDB();
 
-initiateDB();
-
-async function initiateDB() {
-	const text = await readText('initialLinkList.txt');
+export async function initiateDB() {
+	const text = await readText('initialList.txt');
 	const links = parseText(text).getLinks();
 	if (!localStorage.length) {
 		links.forEach(link => db.setLink(link));
 	}
+	db.init();
+	//localStorage.clear();
 }
 
 
