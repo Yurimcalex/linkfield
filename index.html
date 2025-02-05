@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Links App</title>
+    <script type="module" crossorigin src="/assets/index-BKLj0jlb.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-B_DKuepk.css">
+  </head>
+  <body class="page page_adaptive">
+    <!-- <section class="loading-cover">Loading ...</section> -->
+
+    <section class="page__settings-panel page__settings-panel_adaptive">
+      <ul class="settings-menu">
+        <li>
+          <a class="settings-menu__link-form-opener theme__button_initial">&#x002B;</a>
+        </li>
+      </ul>
+    </section>
+
+
+    <section class="settings-window page__settings-window page__settings-window_hidden theme__settings-window_initial">
+      <div class="link-window settings-window__link-window theme__link-window_initial">
+        <div class="link-window__close-btn theme__link-window-close-btn_initial"><a>Close</a></div>
+        <form class="link-window__form">
+          <div class="link-window__form-item">
+            <span class="link-window__form-item-name">Link</span>
+            <input class="link-window__form-input" type="text" name="src">
+          </div>
+          <div class="link-window__form-item">
+            <span class="link-window__form-item-name">Description</span>
+            <input class="link-window__form-input" type="text" name="description">
+          </div>
+          <div class="link-window__form-item">
+            <span class="link-window__form-item-name">Category</span>
+            <select class="link-window__form-select" name="category"></select>
+          </div>
+          <div class="link-window__form-item">
+            <span class="link-window__form-item-name">Type</span>
+            <select class="link-window__form-select" name="type"></select>
+          </div>
+          <div class="link-window__form-item link-window__form-item_last">
+            <button name="add">Add</button>
+            <button name="edit">Edit</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+
+    <section class="menu-panel page__menu-panel page__menu-panel_adaptive theme__menu-panel">
+      <div class="menu-panel__menu-opener page__menu-opener_adaptive theme__menu-opener_initial-adaptive">Open menu</div>
+      <div class="page__menu-wrapper_adaptive">
+        <ul class="category-menu page__category-menu_adaptive"></ul>
+      </div>
+    </section>
+    
+    
+    <section class="content page__content page__content_adaptive theme__content"></section>
+    
+  </body>
+</html>

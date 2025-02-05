@@ -1,0 +1,130 @@
+---------------------------------------------------------
+
+# HTML
+
+HTML Living Standard
+https://html.spec.whatwg.org/multipage/
+-- spec
+
+HTML: HyperText Markup Language
+https://developer.mozilla.org/en-US/docs/Web/HTML
+-- tutorial
+
+Markup Validation Service
+https://validator.w3.org/
+-- tool
+
+HTML Color Codes
+https://htmlcolorcodes.com/
+-- tool
+
+---------------------------------------------------------
+
+# CSS
+
+Descriptions of all CSS specifications
+https://www.w3.org/Style/CSS/specs.en.html
+-- spec
+
+CSS: Cascading Style Sheets
+https://developer.mozilla.org/en-US/docs/Web/CSS
+-- tutorial
+
+CSS Tricks
+https://css-tricks.com/
+-- info
+
+CSS Gradient
+https://cssgradient.io/
+-- tool
+
+The ultimate CSS tools for web designers. box-shadow
+https://www.cssmatic.com/box-shadow
+-- tool
+
+Animate.css | A cross-browser library of CSS animations
+https://animate.style/
+-- library
+
+Josh W. Comeau
+https://www.joshwcomeau.com/css/
+-- articles
+
+---------------------------------------------------------
+
+# JavaScript
+
+ECMA-262
+https://ecma-international.org/publications-and-standards/standards/ecma-262/
+-- spec
+
+The Modern JavaScript Tutorial
+https://javascript.info/
+-- tutorial
+
+You-Dont-Know-JS
+https://kbpsystem777.github.io/You-Dont-Know-JS/
+-- book
+
+---------------------------------------------------------
+
+# Tools
+
+Can I use
+https://caniuse.com/
+-- tool
+
+The best place to build, test, and discover front-end code
+https://codepen.io/
+-- editor
+
+Plunker - Helping you build the web
+https://plnkr.co/
+-- editor
+
+The Build Tool for the Web
+https://vite.dev/
+-- bundler
+
+Webpack module bundler
+https://webpack.js.org/
+-- bundler
+
+Git is a free and open source distributed version control system
+https://git-scm.com/
+-- document
+
+GitHub - Build and ship software on a single, collaborative platform
+https://github.com/
+-- tool
+
+
+---------------------------------------------------------
+
+# Algorithms and data structures
+
+JavaScript Algorithms and Data Structures
+https://github.com/trekhleb/javascript-algorithms
+-- guide
+
+---------------------------------------------------------
+
+# Forums
+
+Stack Overflow - Where Developers Learn, Share, & Build Careers
+https://stackoverflow.com/
+-- how to
+
+---------------------------------------------------------
+
+# Patterns & principles
+
+JavaScript Patterns
+https://www.patterns.dev/
+-- guide
+
+Clean-code-javascript
+https://github.com/ryanmcdermott/clean-code-javascript
+-- guide
+
+---------------------------------------------------------
