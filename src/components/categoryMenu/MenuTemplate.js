@@ -4,7 +4,8 @@ import {
 	CATEGORY_MENU_LINK,
 	CATEGORY_MENU_LINK_TOTAL,
 	THEME_CATEGORY_MENU_ITEM,
-	THEME_CATEGORY_MENU_ITEM_ADAPTIVE
+	THEME_CATEGORY_MENU_ITEM_ADAPTIVE,
+	THEME_COLOR_MUTE
 } from '../classNames.js';
 
 
@@ -14,7 +15,7 @@ export function createItemTemplate(category, itemId, total) {
 		html += `<h2 class="${CATEGORY_MENU_HEADER}">`;
 			html += `<a class="${CATEGORY_MENU_LINK}" href=#${itemId}>`;
 				html += `${category} `;
-				html += `<span class=${CATEGORY_MENU_LINK_TOTAL}>${total}</span>`;
+				html += `<span class="${CATEGORY_MENU_LINK_TOTAL} ${THEME_COLOR_MUTE}">${total}</span>`;
 			html += '</a>';
 		html += '</h2>';
 	html += '</li>';
