@@ -42,6 +42,7 @@ export const SETTINGS_WINDOW_HIDE =  'page__settings-window_hidden';
 export const CLOSE_BUTTON =          'link-window__close-btn';
 export const LINK_FORM =             'link-window__form';
 export const LINK_FORM_BUTTON_HIDE = 'link-window__btn_hide';
+export const LINK_WINDOW_INPUT =     'link-window__form-input';
 
 
 const LOADING_COVER = 'loading-cover';

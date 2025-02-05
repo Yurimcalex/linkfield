@@ -1,4 +1,4 @@
-import { LINK_FORM_BUTTON_HIDE } from '../../classNames.js';
+import { LINK_FORM_BUTTON_HIDE, LINK_WINDOW_INPUT } from '../../classNames.js';
 import { createOptionsTemplate } from './LinkFormTemplate.js';
 import { dom } from '../../elements.js';
 
@@ -31,6 +31,7 @@ export default class LinkFrom {
 				const input = document.createElement('input');
 				input.type = 'text';
 				input.name = target.name;
+				input.className = `${LINK_WINDOW_INPUT}`;
 				input.oninput = input.onblur = (e) => {
 					if (!e.target.value) {
 						input.replaceWith(target);

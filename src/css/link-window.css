@@ -32,6 +32,12 @@
 .link-window__form-input {
 	flex: 1;
 	padding: 2px;
+	font-family: inherit;
+}
+
+.link-window__form-select {
+	padding: 2px;
+	font-family: inherit;
 }
 
 .link-window__form-item-name {
