@@ -3,8 +3,8 @@
 /* link form opener element */
 .settings-menu__link-form-opener {
 	display: block;
-	padding: 5px;
+	padding: 4px 7px;
 	border-radius: 3px;
-	font-size: 1.3em;
+	font-size: 1.5em;
   cursor: pointer;
 }
