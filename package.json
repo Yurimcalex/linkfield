@@ -2,6 +2,7 @@
   "name": "linkfield",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://yurimcalex.github.io/linkfield/",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,8 +12,7 @@
     "start": "nodemon --exec npm run serve",
     "serve": "node server/server.js",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
-    "homepage": "https://yurimcalex.github.io/linkfield"
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "gh-pages": "^6.3.0",
