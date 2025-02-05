@@ -21,6 +21,12 @@
 
 .link-list__item-description {
   padding: 10px 0;
+  color: black;
+  text-decoration: none;
+}
+
+.link-list__item-description:hover {
+  text-decoration: underline;
 }
 
 /* controls element */
