@@ -9,9 +9,12 @@
     "preview": "vite preview",
     "build:server": "vite build --outDir=dist_server --emptyOutDir --ssr server/server.js",
     "start": "nodemon --exec npm run serve",
-    "serve": "node server/server.js"
+    "serve": "node server/server.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "nodemon": "^3.1.9",
     "vite": "^6.0.5"
   },
