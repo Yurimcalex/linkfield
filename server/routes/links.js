@@ -1,9 +1,12 @@
 import { ObjectId } from 'mongodb';
 import db from '../db/connection.js';
 import { Router } from 'express';
+import { verifyToken } from '../middleware/auth.js';  
 
 
 const router = Router();
+router.use(verifyToken);
+
 
 router.get('/', async (req, res) => {
 	const collection = await db.collection('links');
