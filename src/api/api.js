@@ -1,8 +1,13 @@
 const baseUrl = 'http://localhost:5050';
 
 const api = {
-	loadLinks: async () => {
-		let result = await fetch(`${baseUrl}/links`);
+	loadLinks: async (token) => {
+		let result = await fetch(`${baseUrl}/links`, {
+			method: 'GET',
+			headers: {
+				"x-access-token": token
+			}
+		});
 		return await result.json();
 	},
 
@@ -36,7 +41,19 @@ const api = {
 		});
 		const result = await response.json();
 		return id;
-	}
+	},
+
+	login: async (email, password) => {
+		const response = await fetch(`${baseUrl}/login`, {
+			method: 'POST',
+			headers: {
+			  "content-type": "application/json"
+			},
+			body: JSON.stringify({ email, password })
+		});
+		const result = await response.json();
+		return result.token;
+	};
 };
 
 export default api;
