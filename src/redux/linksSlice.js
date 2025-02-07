@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import fakeApi from '../fakeApi/api.js';
+import api from '../api/api.js';
+
 
 const linksSlice = createSlice({
 	name: 'links',
@@ -23,6 +25,9 @@ const linksSlice = createSlice({
 
 	extraReducers: builder => {
 		builder
+			.addCase(linksLoaded.fulfilled, (state, action) => {
+				state.data = action.payload;
+			})
 			.addCase(linkRemoved.pending, (state, action) => {
 				state.status = 'loading';
 			})	
@@ -60,8 +65,12 @@ const linksSlice = createSlice({
 
 export default linksSlice.reducer;
 
-
 // async actions
+export const linksLoaded = createAsyncThunk('links/linksLoaded', async (token) => {
+	const response = await.api.loadLinks(token);
+	return response;
+});
+
 export const linkRemoved = createAsyncThunk('links/linkRemoved', async (id) => {
 	const response = await fakeApi.deleteLink(id);
 	return response;
