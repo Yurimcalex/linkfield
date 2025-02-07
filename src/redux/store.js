@@ -3,6 +3,7 @@ import linksReducer from './linksSlice.js';
 import uiReducer from './uiSlice.js';
 import filtersSlice from './filtersSlice.js';
 import actionSlice, { actionHappened } from './actionSlice.js';
+import userSlice from './userSlice.js';
 
 
 export function initStore(data) {
@@ -11,7 +12,8 @@ export function initStore(data) {
 			links: linksReducer,
 			ui: uiReducer,
 			filters: filtersSlice,
-			action: actionSlice
+			action: actionSlice,
+      user: userSlice
 		},
 
 		middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logActionType),
