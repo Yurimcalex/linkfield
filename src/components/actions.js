@@ -3,6 +3,11 @@ import { menuCategorySelected, categoryMenuToggled, screenSizeChanged, settingsW
 
 import { linkTypeSelected } from '../redux/filtersSlice.js';
 import { linkRemoved, linkCreated, editedLinkIdSelected, linkEdited } from '../redux/linksSlice.js';
+import { userLogged } from '../redux/userSlice.js';
+
+
+export const loginUser = (dispatch) => 
+	(email, password) => dispatch(userLogged(email, password));
 
 
 export const pickMenuCategory = (dispatch) =>
