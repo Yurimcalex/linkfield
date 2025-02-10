@@ -1,4 +1,4 @@
-import { LINK_CONTROLS_HIDE, THEME_LINK_SELECTED, THEME_LINK_HIGHLIGHT } from '../../classNames.js';
+import { LINK_CONTROLS_HIDE, theme } from '../../classNames.js';
 import { dom } from '../../elements.js';
 import { createTemplate, createListItemTemplate } from './categoryTemplate.js';
 import { createHoverEffect, isVisible } from '../../utils.js';
@@ -41,15 +41,15 @@ export default class Category {
 	// pure ui without the store affecting on the component visual state
 	selectLink(link, prevLink) {
 		if (prevLink) {
-			prevLink.classList.remove(`${THEME_LINK_SELECTED}`);
+			prevLink.classList.remove(`${theme.LINK_SELECTED}`);
 			dom.link.getControls(prevLink).classList.add(`${LINK_CONTROLS_HIDE}`);
 		}
-		link.classList.add(`${THEME_LINK_SELECTED}`);
+		link.classList.add(`${theme.LINK_SELECTED}`);
 		dom.link.getControls(link).classList.remove(`${LINK_CONTROLS_HIDE}`);
 	}
 
 	hoverLink(link) {
-		if (link.classList.contains(`${THEME_LINK_SELECTED}`)) return;
+		if (link.classList.contains(`${theme.LINK_SELECTED}`)) return;
 		const controls = dom.link.getControls(link);
 		if (prevHoveredItem !== link) { // in
 			controls.classList.remove(`${LINK_CONTROLS_HIDE}`);
@@ -61,9 +61,9 @@ export default class Category {
 	}
 
 	highlightLink(link) {
-		link.classList.add(`${THEME_LINK_HIGHLIGHT}`);
+		link.classList.add(`${theme.LINK_HIGHLIGHT}`);
 		setTimeout(() => {
-			link.classList.remove(`${THEME_LINK_HIGHLIGHT}`);
+			link.classList.remove(`${theme.LINK_HIGHLIGHT}`);
 		}, 2000);
 	}
 

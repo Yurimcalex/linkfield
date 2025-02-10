@@ -11,9 +11,7 @@ import {
 	LINK_BUTTON,
 	EDIT_BUTTON,
 	REMOVE_BUTTON,
-	THEME_BUTTON,
-	THEME_LINK,
-	THEME_COLOR_MUTE
+	theme
 } from '../../classNames.js';
 
 
@@ -32,13 +30,13 @@ export function createTemplate(category, linksData) {
 
 export function createListItemTemplate(id, linkSrc, linkType, linkDescription) {
 	let html = '';
-	html += `<li class="${LINK_LIST_ITEM} ${THEME_LINK}" data-linkid=${id}>`;
+	html += `<li class="${LINK_LIST_ITEM} ${theme.LINK}" data-linkid=${id}>`;
 		html += `<h3 class=${LINK_LIST_ITEM_CONTENT}>`;
-			html += `<span class="${LINK_TYPE} ${THEME_COLOR_MUTE}">${linkType}</span> `;
+			html += `<span class="${LINK_TYPE} ${theme.COLOR_MUTE}">${linkType}</span> `;
 			html += `<a class="${LINK_TOPIC}" href=${linkSrc} target="_blank">${linkDescription}</a>`;
 			html += `<div class="${LINK_CONTROLS} ${LINK_CONTROLS_HIDE} ${LINK_CONTROLS_SM_SC}">`;
-				html += `<span><a class="${LINK_BUTTON} ${EDIT_BUTTON} ${THEME_BUTTON}" data-linkid=${id}>&#128393;</a></span>`;
-				html += `<span><a class="${LINK_BUTTON} ${REMOVE_BUTTON} ${THEME_BUTTON}" data-linkid=${id}>&#128473;</a></span>`;
+				html += `<span><a class="${LINK_BUTTON} ${EDIT_BUTTON} ${theme.BUTTON}" data-linkid=${id}>&#128393;</a></span>`;
+				html += `<span><a class="${LINK_BUTTON} ${REMOVE_BUTTON} ${theme.BUTTON}" data-linkid=${id}>&#128473;</a></span>`;
 			html += '</div>';
 		html += '</h3>';
 	html += '</li>';

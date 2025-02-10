@@ -16,8 +16,7 @@ import {
 	OPEN_SETTINGS_BUTTON,
 	LINK_FORM,
 	SETTINGS_WINDOW,
-	THEME_LINK_SELECTED,
-	THEME_CATEGORY_MENU_ITEM_SELECTED,
+	theme,
 	CLOSE_BUTTON } from './classNames.js';
 
 
@@ -46,7 +45,7 @@ export const dom = {
 		getRemoveButton: (target) => target.closest(`.${REMOVE_BUTTON}`),
 		getEditButton: (target) => target.closest(`.${EDIT_BUTTON}`),
 		getLast: (target) => target.querySelector(`.${LINK_LIST_ITEM}:last-child`),
-		getCurrentSelected: () => document.querySelector(`.${THEME_LINK_SELECTED}`),
+		getCurrentSelected: () => document.querySelector(`.${theme.LINK_SELECTED}`),
 		getControls: (target) => target.querySelector(`.${LINK_CONTROLS}`),
 		getType: (target) => target.querySelector(`.${LINK_TYPE}`),
 		getTopic: (target) => target.querySelector(`.${LINK_TOPIC}`),
@@ -62,7 +61,7 @@ export const dom = {
 	categoryMenu: {
 		getMenu: () => document.querySelector(`.${CATEGORY_MENU}`),
 		getItem: (target) => target.closest(`.${CATEGORY_MENU_ITEM}`),
-		getHighlightedItem: (target) => target.querySelector(`.${THEME_CATEGORY_MENU_ITEM_SELECTED}`),
+		getHighlightedItem: (target) => target.querySelector(`.${theme.CATEGORY_MENU_ITEM_SELECTED}`),
 		getItemByCategory: (target, category) => 
 			target.querySelector(`.${CATEGORY_MENU_ITEM}[data-category="${category}"]`),
 

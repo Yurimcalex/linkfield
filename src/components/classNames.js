@@ -48,11 +48,13 @@ export const LINK_WINDOW_INPUT =     'link-window__form-input';
 const LOADING_COVER = 'loading-cover';
 
 
-export const THEME_BUTTON =                      'theme__button_initial';
-export const THEME_LINK =                        'theme__link_initial';
-export const THEME_LINK_SELECTED =               'theme__link_selected-initial';
-export const THEME_LINK_HIGHLIGHT =              'theme__link_highlighted-initial';
-export const THEME_COLOR_MUTE =                  'theme__color_mute-initial';
-export const THEME_CATEGORY_MENU_ITEM =          'theme__category-menu-item_initial';
-export const THEME_CATEGORY_MENU_ITEM_SELECTED = 'theme__category-menu-item_selected-initial';
-export const THEME_CATEGORY_MENU_ITEM_ADAPTIVE = 'theme__category-menu-item_adaptive-initial';
+export const theme = {
+	BUTTON:                      'theme__button_initial',
+	LINK:                        'theme__link_initial',
+	LINK_SELECTED:               'theme__link_selected-initial',
+	LINK_HIGHLIGHT:              'theme__link_highlighted-initial',
+	COLOR_MUTE:                  'theme__color_mute-initial',
+	CATEGORY_MENU_ITEM:          'theme__category-menu-item_initial',
+	CATEGORY_MENU_ITEM_SELECTED: 'theme__category-menu-item_selected-initial',
+	CATEGORY_MENU_ITEM_ADAPTIVE: 'theme__category-menu-item_adaptive-initial'
+};

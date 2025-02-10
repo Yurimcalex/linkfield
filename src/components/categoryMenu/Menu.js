@@ -1,4 +1,4 @@
-import { THEME_CATEGORY_MENU_ITEM_SELECTED } from '../classNames.js';
+import { theme } from '../classNames.js';
 import { createItemTemplate } from './MenuTemplate.js';
 import { dom } from '../elements.js';
 import { replaceSpace, updateHash } from '../utils.js';
@@ -25,9 +25,9 @@ export default class Menu {
 	highlightItem(category) {
 		if (!category) return;
 		const highlightedItem = dom.categoryMenu.getHighlightedItem(this.node);
-		if (highlightedItem) highlightedItem.classList.remove(`${THEME_CATEGORY_MENU_ITEM_SELECTED}`);
+		if (highlightedItem) highlightedItem.classList.remove(`${theme.CATEGORY_MENU_ITEM_SELECTED}`);
 		const currentItem = dom.categoryMenu.getItemByCategory(this.node, category);
-		if (currentItem) currentItem.classList.add(`${THEME_CATEGORY_MENU_ITEM_SELECTED}`);
+		if (currentItem) currentItem.classList.add(`${theme.CATEGORY_MENU_ITEM_SELECTED}`);
 	}
 
 	changeLinkCount(categoryData) {
