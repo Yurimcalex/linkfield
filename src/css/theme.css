@@ -1,14 +1,18 @@
-.theme {}
+/* ----------------- initial theme ------------------ */
+.theme_initial {}
 
-.theme__menu-panel {
+.theme__menu-panel_initial {
 	background: #eee;
 }
 
-.theme__content {
+.theme__content_initial {
 	background: white;
 }
 
-/* initial theme */
+.theme__color_mute-initial {
+	color: gray;
+}
+
 .theme__button_initial {
 	background: lightgray;
 }
@@ -22,38 +26,36 @@
 	background: #eee;
 }
 
-.theme__link_initial-selected {
+.theme__link_selected-initial {
 	background: #eee;
 }
 
-.theme__link_initial-highlighted {
+.theme__link_highlighted-initial {
 	background: #C1E1C1;
 }
 
-.theme__color-initial_mute {
-	color: gray;
-}
+
 
 .theme__category-menu-item_initial:hover {
 	background: lightgray;
 }
 
-.theme__category-menu-item_initial-selected {
+.theme__category-menu-item_selected-initial {
 	background: lightgray;
 }
 
 @media screen and (max-width: 650px) {
-	.theme__category-menu-item_initial-adaptive:nth-child(even) {
+	.theme__category-menu-item_adaptive-initial:nth-child(even) {
 		background: #eee;
 	}
 
-	.theme__category-menu-item_initial-adaptive:nth-child(odd) {
+	.theme__category-menu-item_adaptive-initial:nth-child(odd) {
 		background: lightgray;
 	}
 }
 
 @media screen and (max-width: 650px) {
-	.theme__menu-opener_initial-adaptive {
+	.theme__menu-opener_adaptive-initial {
 		background: white;
 	}
 }

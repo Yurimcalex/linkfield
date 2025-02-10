@@ -50,9 +50,9 @@ const LOADING_COVER = 'loading-cover';
 
 export const THEME_BUTTON =                      'theme__button_initial';
 export const THEME_LINK =                        'theme__link_initial';
-export const THEME_LINK_SELECTED =               'theme__link_initial-selected';
-export const THEME_LINK_HIGHLIGHT =              'theme__link_initial-highlighted';
-export const THEME_COLOR_MUTE =                  'theme__color-initial_mute';
+export const THEME_LINK_SELECTED =               'theme__link_selected-initial';
+export const THEME_LINK_HIGHLIGHT =              'theme__link_highlighted-initial';
+export const THEME_COLOR_MUTE =                  'theme__color_mute-initial';
 export const THEME_CATEGORY_MENU_ITEM =          'theme__category-menu-item_initial';
-export const THEME_CATEGORY_MENU_ITEM_SELECTED = 'theme__category-menu-item_initial-selected';
-export const THEME_CATEGORY_MENU_ITEM_ADAPTIVE = 'theme__category-menu-item_initial-adaptive';
+export const THEME_CATEGORY_MENU_ITEM_SELECTED = 'theme__category-menu-item_selected-initial';
+export const THEME_CATEGORY_MENU_ITEM_ADAPTIVE = 'theme__category-menu-item_adaptive-initial';
