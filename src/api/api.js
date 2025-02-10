@@ -53,7 +53,7 @@ const api = {
 		});
 		const result = await response.json();
 		return result.token;
-	};
+	}
 };
 
 export default api;

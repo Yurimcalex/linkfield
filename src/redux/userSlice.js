@@ -12,6 +12,7 @@ const userSlice = createSlice({
 	reducers: {},
 
 	extraReducers: builder => {
+		builder
 		.addCase(userLogged.pending, (state, action) => {
 			state.status = 'loading';
 		})
@@ -25,7 +26,7 @@ const userSlice = createSlice({
 export default userSlice.reducer;
 
 
-export const userLogged = createAsyncThunk('user/userLogged', (email, password) => {
+export const userLogged = createAsyncThunk('user/userLogged', async (email, password) => {
 	const response = await api.login(email, password);
 	return response;
 });

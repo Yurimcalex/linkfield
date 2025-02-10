@@ -67,7 +67,7 @@ export default linksSlice.reducer;
 
 // async actions
 export const linksLoaded = createAsyncThunk('links/linksLoaded', async (token) => {
-	const response = await.api.loadLinks(token);
+	const response = await api.loadLinks(token);
 	return response;
 });
 
