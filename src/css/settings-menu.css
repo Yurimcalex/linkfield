@@ -1,4 +1,7 @@
-.settings-menu {}
+.settings-menu {
+	display: flex;
+	gap: 7px;
+}
 
 /* link form opener element */
 .settings-menu__link-form-opener {
@@ -7,4 +10,12 @@
 	border-radius: 3px;
 	font-size: 1.5em;
   cursor: pointer;
+}
+
+.settings-menu__theme-changer {
+	display: block;
+	padding: 4px 2px;
+	border-radius: 3px;
+	font-size: 1.5em;
+	cursor: pointer;
 }
