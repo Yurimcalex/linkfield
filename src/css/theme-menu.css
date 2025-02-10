@@ -1,0 +1,12 @@
+.theme-menu {
+	position: absolute;
+	top: 35px;
+	right: 34px;
+	padding: 5px 0;
+	font-size: 0.8em;
+	cursor: pointer;
+}
+
+.theme-menu__item {
+	padding: 5px 5px;
+}

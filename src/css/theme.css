@@ -71,3 +71,11 @@
 .theme__link-window-close-btn_initial {
 	background: lightgray;
 }
+
+.theme__theme-menu_initial {
+	background: #eee;
+}
+
+.theme__theme-menu-item_initial:hover {
+	background: lightgray;
+}
