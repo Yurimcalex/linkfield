@@ -44,6 +44,10 @@
 	background: var(--highlighted-bg);
 }
 
+.theme__link-topic_initial {
+	color: var(--primary-color);
+}
+
 .theme__category-menu-item_initial:hover {
 	background: var(--hovered-bg);
 }

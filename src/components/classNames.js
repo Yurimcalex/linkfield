@@ -56,6 +56,7 @@ export const theme = {
 	LINK:                        'theme__link_initial',
 	LINK_SELECTED:               'theme__link_selected-initial',
 	LINK_HIGHLIGHT:              'theme__link_highlighted-initial',
+	LINK_TOPIC:                  'theme__link-topic_initial',
 	COLOR_MUTE:                  'theme__color_mute-initial',
 	CATEGORY_MENU_ITEM:          'theme__category-menu-item_initial',
 	CATEGORY_MENU_ITEM_SELECTED: 'theme__category-menu-item_selected-initial',
