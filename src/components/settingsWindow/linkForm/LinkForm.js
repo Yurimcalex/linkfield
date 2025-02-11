@@ -81,8 +81,8 @@ export default class LinkFrom {
 	}
 
 	create(categories, types) {
-		this.categorySelect.innerHTML = createOptionsTemplate(categories);
-		this.typeSelect.innerHTML = createOptionsTemplate(types);
+		this.categorySelect.innerHTML = createOptionsTemplate(categories, 'category');
+		this.typeSelect.innerHTML = createOptionsTemplate(types, 'type');
 	}
 
 	updateOptions(options) {
