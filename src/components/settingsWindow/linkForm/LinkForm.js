@@ -37,10 +37,15 @@ export default class LinkFrom {
 					if (!e.target.value) {
 						input.replaceWith(target);
 						target.options[0].selected = true;
+						target.parentNode.style.flex = 'unset';
+						target.nextElementSibling.style.display = 'block';
+						
 					}
 				};
 				target.replaceWith(input);
 				input.focus();
+				input.parentNode.style.flex = '1';
+				input.nextElementSibling.style.display = 'none';
 			}
 		});
 	}
