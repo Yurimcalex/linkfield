@@ -4,6 +4,7 @@ import CommonComponent from './common/ComponentWrapper.js';
 import Content from './linkCategories/ContentWrapper.js';
 import SettingsMenu from './settingsMenu/SettingsMenuWrapper.js';
 import SettingsWindow from './settingsWindow/SettingsWindowWrapper.js';
+import ThemeMenu from './themeMenu/ThemeMenuWrapper.js';
 
 
 export default class UI {
@@ -14,6 +15,7 @@ export default class UI {
 		this.content = new Content(store);
 		this.settingsMenu = new SettingsMenu(store);
 		this.settingsWindow = new SettingsWindow(store);
+		this.themeMenu = new ThemeMenu(store);
 	}
 
 	mount() {
@@ -23,6 +25,7 @@ export default class UI {
 		this.content.mount();
 		this.settingsMenu.mount();
 		this.settingsWindow.mount();
+		this.themeMenu.mount();
 	}
 
 	update() {
@@ -32,5 +35,6 @@ export default class UI {
 		this.commonComponent.update();
 		this.settingsMenu.update();
 		this.settingsWindow.update();
+		this.themeMenu.update();
 	}
 }
