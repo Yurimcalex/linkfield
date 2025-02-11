@@ -1,0 +1,89 @@
+.theme_initial {
+	--primary-color: black;
+	--secondary-color: gray;
+	--hovered-btn-color: white;
+	--primary-bg: white;
+	--secondary-bg: #eee;
+	--hovered-bg: lightgray;
+	--hovered-btn-bg: gray;
+	--highlighted-bg: #C1E1C1;
+	--settings-win-bg: rgba(0, 0, 0, 0.4);
+	color: var(--primary-color);
+}
+
+.theme__menu-panel_initial {
+	background: var(--secondary-bg);
+}
+
+.theme__content_initial {
+	background: var(--primary-bg);
+}
+
+.theme__color_mute-initial {
+	color: var(--secondary-color);
+}
+
+.theme__button_initial {
+	background: var(--hovered-bg);
+}
+
+.theme__button_initial:hover {
+	background: var(--hovered-btn-bg);
+	color: var(--hovered-btn-color);
+}
+
+.theme__link_initial:hover {
+	background: var(--secondary-bg);
+}
+
+.theme__link_selected-initial {
+	background: var(--secondary-bg);
+}
+
+.theme__link_highlighted-initial {
+	background: var(--highlighted-bg);
+}
+
+.theme__category-menu-item_initial:hover {
+	background: var(--hovered-bg);
+}
+
+.theme__category-menu-item_selected-initial {
+	background: var(--hovered-bg);
+}
+
+@media screen and (max-width: 650px) {
+	.theme__category-menu-item_adaptive-initial:nth-child(even) {
+		background: var(--secondary-bg);
+	}
+
+	.theme__category-menu-item_adaptive-initial:nth-child(odd) {
+		background: var(--hovered-bg);
+	}
+}
+
+@media screen and (max-width: 650px) {
+	.theme__menu-opener_adaptive-initial {
+		background: var(--primary-bg);
+	}
+}
+
+.theme__settings-window_initial {
+	background: var(--settings-win-bg);
+}
+
+.theme__link-window_initial {
+	background: var(--hovered-bg);
+}
+
+.theme__link-window-close-btn_initial {
+	background: var(--hovered-bg);
+}
+
+.theme__theme-menu_initial {
+	background: var(--secondary-bg);
+}
+
+.theme__theme-menu-item_initial:hover {
+	background: var(--hovered-bg);
+}
