@@ -8,6 +8,7 @@
 @import './page.css';
 @import './theme-menu.css';
 @import './theme/initial.css';
+@import './theme/carbon.css';
 
 
 * {
