@@ -32,13 +32,15 @@ export default class LinkFrom {
 				input.type = 'text';
 				input.name = target.name;
 				input.className = `${LINK_WINDOW_INPUT}`;
-				input.oninput = input.onblur = (e) => {
+				input.placeholder = 'Click outside the field to return';
+				input.onblur = (e) => {
 					if (!e.target.value) {
 						input.replaceWith(target);
-						target.value = '';
+						target.options[0].selected = true;
 					}
 				};
 				target.replaceWith(input);
+				input.focus();
 			}
 		});
 	}
