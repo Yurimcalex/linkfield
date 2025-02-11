@@ -34,6 +34,8 @@ export const REMOVE_BUTTON =          'link-list__item-button_close';
 
 export const SETTINGS_MENU =        'settings-menu';
 export const OPEN_SETTINGS_BUTTON = 'settings-menu__link-form-opener';
+export const THEME_MENU =           'theme-menu';
+export const THEME_MENU_HIDE =      'theme-menu_hidden';
 export const CHANGE_THEME_BUTTON =  'settings-menu__theme-changer';
 
 

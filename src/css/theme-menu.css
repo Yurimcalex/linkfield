@@ -7,6 +7,10 @@
 	cursor: pointer;
 }
 
+.theme-menu_hidden {
+	display: none;
+}
+
 .theme-menu__item {
 	padding: 5px 5px;
 }

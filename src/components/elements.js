@@ -17,7 +17,9 @@ import {
 	LINK_FORM,
 	SETTINGS_WINDOW,
 	theme,
-	CLOSE_BUTTON } from './classNames.js';
+	CLOSE_BUTTON,
+	CHANGE_THEME_BUTTON,
+	THEME_MENU } from './classNames.js';
 
 
 export const dom = {
@@ -37,6 +39,7 @@ export const dom = {
 	settingsMenu: {
 		get: () => document.querySelector(`.${SETTINGS_MENU}`),
 		getOpenButton: (target) => target.closest(`.${OPEN_SETTINGS_BUTTON}`),
+		getOpenThemeMenuBtn: (target) => target.closest(`.${CHANGE_THEME_BUTTON}`)
 	},
 
 	link: {
@@ -71,4 +74,8 @@ export const dom = {
 		getOpener: () => document.querySelector(`.${OPEN_CATEGORY_MENU_BUTTON}`),
 		getLastItem: (target) => target.querySelector(`.${CATEGORY_MENU_ITEM}:last-child`)
 	},
+
+	themeMenu: {
+		get: () => document.querySelector(`.${THEME_MENU}`)
+	}
 };
