@@ -1,0 +1,9 @@
+.content {}
+
+.content__placeholder {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+}
