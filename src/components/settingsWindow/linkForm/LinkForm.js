@@ -71,6 +71,11 @@ export default class LinkFrom {
 		this.node.type.options[0].selected = true;
 		this.node.description.value = '';
 		this.node.src.value = '';
+
+		this.node.category.parentNode.style.flex = 'unset';
+		this.node.type.parentNode.style.flex = 'unset';
+		this.node.category.nextElementSibling.style.display = 'block';
+		this.node.type.nextElementSibling.style.display = 'block';
 	}
 
 	setCreateionMode() {
