@@ -19,11 +19,13 @@ import {
 	theme,
 	CLOSE_BUTTON,
 	CHANGE_THEME_BUTTON,
+	CONTENT_PLACEHOLDER,
 	THEME_MENU } from './classNames.js';
 
 
 export const dom = {
 	getContent: () => document.querySelector(`.${CONTENT}`),
+	getContentPlaceholder: () => document.querySelector(`.${CONTENT_PLACEHOLDER}`),
 	getCategory: (category) => document.querySelector(`.${LINK_CATEGORY}[data-category="${category}"]`),
 	getCategoryByElem: (target) => target.closest(`.${LINK_CATEGORY}`),
 	getLinkList: (category) => document.querySelector(`.${LINK_LIST}[data-category="${category}"]`),

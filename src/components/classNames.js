@@ -11,6 +11,7 @@ export const CATEGORY_MENU_OPENER_HIDE = 'page__menu-opener_hidden';
 
 
 export const CONTENT =                       'content';
+export const CONTENT_PLACEHOLDER =           'content__placeholder';
 export const CONTENT_HIDE =                  'page__content_hidden';
 export const LINK_CATEGORY =                 'category';
 export const LINK_CATEGORY_HEADER =          'category__header';
