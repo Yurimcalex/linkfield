@@ -1,5 +1,6 @@
 import Content from './Content.js';
 import Category from './category/CategoryWrapper.js';
+import Placeholder from './placeholder/PlaceholderWrapper.js';
 import { useSelector } from '../../redux/redux.js';
 import { 
 	selectLinkCategories, selectRemovedLinkId,
@@ -29,6 +30,9 @@ export default class ContentWrapper {
 		this.component = new Content();
 		this.mountChildren(this.store, this.selectLinkCategories().sort());
 		this.categories = categories;
+
+		this.child = new Placeholder(this.store, categories.length);
+		this.child.mount(categories.length);
 	}
 
 	update() {
@@ -36,6 +40,7 @@ export default class ContentWrapper {
 		if (!(action in this.updateActions)) return;
 		this.component.update();
 		this.updateChildren(action);
+		this.child.update(this.selectLinkCategories().length);
 	}
 
 	mountChildren(store, categoryNames) {
