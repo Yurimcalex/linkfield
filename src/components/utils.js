@@ -60,6 +60,7 @@ export function updateHash(id) {
 
 
 export function scrollElementIntoView(element) {
+	if (!element) return;
 	const coords = element.getBoundingClientRect();
 	if (coords.top < 0) {
 		element.scrollIntoView();
