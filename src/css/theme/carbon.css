@@ -52,6 +52,11 @@
 	color: var(--primary-color);
 }
 
+.theme__category-menu-item-topic_carbon {
+	color: var(--primary-color);
+}
+
+
 .theme__category-menu-item_carbon:hover {
 	background: var(--hovered-bg);
 }

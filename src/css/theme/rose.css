@@ -1,0 +1,98 @@
+.theme_rose {
+	--common-color: white;
+	--link-description-color: #231020;
+	--common-bg: #e087cb;
+	--menu-panel-bg: #cd58ca;
+
+	background: var(--common-bg);
+	color: var(--common-color);
+}
+
+.theme__menu-panel_rose {
+	background: var(--menu-panel-bg);
+}
+
+.theme__content_rose {
+	background: var(--common-bg);
+}
+
+.theme__color_mute-rose {
+	color: var(--common-color);
+}
+
+.theme__button_rose {
+	background: var(--common-bg);
+}
+
+.theme__button_rose:hover {
+	background: var(--menu-panel-bg);
+}
+
+.theme__settings-menu-item_rose {
+	background: var(--menu-panel-bg);
+}
+
+.theme__link_rose:hover {
+	background: #e493cf;
+}
+
+.theme__link_selected-rose {
+	background: #e493cf;
+}
+
+.theme__link_highlighted-rose {
+	
+}
+
+.theme__link-topic_rose {
+	color: var(--link-description-color);
+}
+
+.theme__category-menu-item-topic_rose {
+	color: var(--link-description-color);
+}
+
+
+.theme__category-menu-item_rose:hover {
+	background: var(--common-bg);
+}
+
+.theme__category-menu-item_selected-rose {
+	background: var(--common-bg);
+}
+
+@media screen and (max-width: 650px) {
+	.theme__category-menu-item_adaptive-rose:nth-child(even) {
+		background: var(--menu-panel-bg);
+	}
+
+	.theme__category-menu-item_adaptive-rose:nth-child(odd) {
+		background: var(--common-bg);
+	}
+}
+
+@media screen and (max-width: 650px) {
+	.theme__menu-opener_adaptive-rose {
+		
+	}
+}
+
+.theme__settings-window_rose {
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.theme__link-window_rose {
+	background: var(--menu-panel-bg);
+}
+
+.theme__link-window-close-btn_rose {
+	background: var(--common-bg);
+}
+
+.theme__theme-menu_rose {
+	background: var(--menu-panel-bg);
+}
+
+.theme__theme-menu-item_rose:hover {
+	background: var(--common-bg);
+}

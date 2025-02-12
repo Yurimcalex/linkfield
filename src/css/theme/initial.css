@@ -52,6 +52,8 @@
 	color: var(--primary-color);
 }
 
+.theme__category-menu-item-topic_initial {}
+
 .theme__category-menu-item_initial:hover {
 	background: var(--hovered-bg);
 }
