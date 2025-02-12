@@ -4,17 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Links App</title>
-    <script type="module" crossorigin src="/linkfield/assets/index-DtjXQ_I9.js"></script>
-    <link rel="stylesheet" crossorigin href="/linkfield/assets/index-DnI18OHN.css">
+    <script type="module" crossorigin src="/linkfield/assets/index-b79jmLMz.js"></script>
+    <link rel="stylesheet" crossorigin href="/linkfield/assets/index-JqmFdiIX.css">
   </head>
-  <body class="page page_adaptive">
+  <body class="page page_adaptive theme_initial">
     <!-- <section class="loading-cover">Loading ...</section> -->
 
     <section class="page__settings-panel page__settings-panel_adaptive">
       <ul class="settings-menu">
-        <li>
-          <a class="settings-menu__link-form-opener theme__button_initial">&#x002B;</a>
+        <li class="settings-menu__item theme__settings-menu-item_initial">
+          <a class="settings-menu__theme-changer theme__button_initial">&#128396;</a>
         </li>
+        <li class="settings-menu__item theme__settings-menu-item_initial">
+          <a class="settings-menu__link-form-opener theme__button_initial">&#65291;</a>
+        </li>
+      </ul>
+      <ul class="theme-menu theme-menu_hidden theme__theme-menu_initial">
+        <li class="theme-menu__item theme__theme-menu-item_initial" data-theme="initial"><span>Initial</span></li>
+        <li class="theme-menu__item theme__theme-menu-item_initial" data-theme="carbon"><span>Carbon</span></li>
+        <li class="theme-menu__item theme__theme-menu-item_initial" data-theme="rose"><span>Rose</span></li>
+        <li class="theme-menu__item theme__theme-menu-item_initial" data-theme="emerald"><span>Emerald</span></li>
       </ul>
     </section>
 
@@ -25,19 +34,25 @@
         <form class="link-window__form">
           <div class="link-window__form-item">
             <span class="link-window__form-item-name">Link</span>
-            <input class="link-window__form-input" type="text" name="src">
+            <input class="link-window__form-input" type="text" name="src" placeholder="https://somewhere.com">
           </div>
           <div class="link-window__form-item">
             <span class="link-window__form-item-name">Description</span>
-            <input class="link-window__form-input" type="text" name="description">
+            <input class="link-window__form-input" type="text" name="description" placeholder="Description of the resource">
           </div>
           <div class="link-window__form-item">
             <span class="link-window__form-item-name">Category</span>
-            <select class="link-window__form-select" name="category"></select>
+            <div class="link-window__select-arrow">
+              <select class="link-window__form-select" name="category"></select>
+              <span>&#8964;</span>
+            </div>
           </div>
           <div class="link-window__form-item">
             <span class="link-window__form-item-name">Type</span>
-            <select class="link-window__form-select" name="type"></select>
+            <div class="link-window__select-arrow">
+              <select class="link-window__form-select" name="type"></select>
+              <span>&#8964;</span>
+            </div>
           </div>
           <div class="link-window__form-item link-window__form-item_last">
             <button name="add">Add</button>
@@ -48,15 +63,17 @@
     </section>
 
 
-    <section class="menu-panel page__menu-panel page__menu-panel_adaptive theme__menu-panel">
-      <div class="menu-panel__menu-opener page__menu-opener_adaptive theme__menu-opener_initial-adaptive">Open menu</div>
+    <section class="menu-panel page__menu-panel page__menu-panel_adaptive theme__menu-panel_initial">
+      <div class="menu-panel__menu-opener page__menu-opener_adaptive theme__menu-opener_adaptive-initial">Open menu</div>
       <div class="page__menu-wrapper_adaptive">
         <ul class="category-menu page__category-menu_adaptive"></ul>
       </div>
     </section>
     
     
-    <section class="content page__content page__content_adaptive theme__content"></section>
+    <section class="content page__content page__content_adaptive theme__content_initial">
+      <div class="content__placeholder theme__color_mute-initial">There are no links yet. To add a link click on the plus button.</div>
+    </section>
     
   </body>
 </html>

@@ -1749,7 +1749,7 @@ async function readText(file) {
   const text = await response.text();
   return text;
 }
-const api = {
+const api$1 = {
   loadLinks: () => new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(db.getLinks());
@@ -1771,6 +1771,58 @@ const api = {
     }, 1e3);
   })
 };
+const baseUrl = "http://localhost:5050";
+const api = {
+  loadLinks: async (token) => {
+    let result = await fetch(`${baseUrl}/links`, {
+      method: "GET",
+      headers: {
+        "x-access-token": token
+      }
+    });
+    return await result.json();
+  },
+  createLink: async (linkData) => {
+    const response = await fetch(`${baseUrl}/links`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(linkData)
+    });
+    const result = await response.json();
+    return { ...linkData, _id: result.insertedId };
+  },
+  updateLink: async (id, updatedData) => {
+    const response = await fetch(`${baseUrl}/links/${id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(updatedData)
+    });
+    await response.json();
+    return { ...updatedData, _id: id };
+  },
+  deleteLink: async (id) => {
+    const response = await fetch(`${baseUrl}/links/${id}`, {
+      method: "DELETE"
+    });
+    await response.json();
+    return id;
+  },
+  login: async (email, password) => {
+    const response = await fetch(`${baseUrl}/login`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({ email, password })
+    });
+    const result = await response.json();
+    return result.token;
+  }
+};
 const linksSlice = createSlice({
   name: "links",
   initialState: {
@@ -1789,7 +1841,9 @@ const linksSlice = createSlice({
     }
   },
   extraReducers: (builder) => {
-    builder.addCase(linkRemoved.pending, (state, action) => {
+    builder.addCase(linksLoaded.fulfilled, (state, action) => {
+      state.data = action.payload;
+    }).addCase(linkRemoved.pending, (state, action) => {
       state.status = "loading";
     }).addCase(linkRemoved.fulfilled, (state, action) => {
       const id = action.payload;
@@ -1819,16 +1873,20 @@ const linksSlice = createSlice({
   }
 });
 const linksReducer = linksSlice.reducer;
+const linksLoaded = createAsyncThunk("links/linksLoaded", async (token) => {
+  const response = await api.loadLinks(token);
+  return response;
+});
 const linkRemoved = createAsyncThunk("links/linkRemoved", async (id) => {
-  const response = await api.deleteLink(id);
+  const response = await api$1.deleteLink(id);
   return response;
 });
 const linkCreated = createAsyncThunk("links/linkCreated", async (linkData) => {
-  const response = await api.createLink(linkData);
+  const response = await api$1.createLink(linkData);
   return response;
 });
 const linkEdited = createAsyncThunk("links/linkEdited", async (linkData) => {
-  const response = await api.updateLink(linkData._id, linkData);
+  const response = await api$1.updateLink(linkData._id, linkData);
   return response;
 });
 const { editedLinkIdSelected } = linksSlice.actions;
@@ -1945,13 +2003,33 @@ const actionSlice = createSlice({
 const actionSlice$1 = actionSlice.reducer;
 const { actionHappened } = actionSlice.actions;
 const selectAction = (state) => state.action.action;
+const userSlice = createSlice({
+  name: "user",
+  initialState: {
+    token: ""
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(userLogged.pending, (state, action) => {
+      state.status = "loading";
+    }).addCase(userLogged.fulfilled, (state, action) => {
+      state.token = action.payload;
+    });
+  }
+});
+const userSlice$1 = userSlice.reducer;
+const userLogged = createAsyncThunk("user/userLogged", async (email, password) => {
+  const response = await api.login(email, password);
+  return response;
+});
 function initStore(data) {
   return configureStore({
     reducer: {
       links: linksReducer,
       ui: uiReducer,
       filters: filtersSlice$1,
-      action: actionSlice$1
+      action: actionSlice$1,
+      user: userSlice$1
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logActionType),
     enhancers: (getDefaultEnhancers) => getDefaultEnhancers().concat(actionEnhancer),
@@ -2005,6 +2083,7 @@ const CATEGORY_MENU_LINK = "category-menu__link";
 const CATEGORY_MENU_LINK_TOTAL = "category-menu__link-total";
 const CATEGORY_MENU_OPENER_HIDE = "page__menu-opener_hidden";
 const CONTENT = "content";
+const CONTENT_PLACEHOLDER = "content__placeholder";
 const CONTENT_HIDE = "page__content_hidden";
 const LINK_CATEGORY = "category";
 const LINK_CATEGORY_HEADER = "category__header";
@@ -2024,27 +2103,35 @@ const EDIT_BUTTON = "link-list__item-button_edit";
 const REMOVE_BUTTON = "link-list__item-button_close";
 const SETTINGS_MENU = "settings-menu";
 const OPEN_SETTINGS_BUTTON = "settings-menu__link-form-opener";
+const THEME_MENU = "theme-menu";
+const THEME_MENU_HIDE = "theme-menu_hidden";
+const CHANGE_THEME_BUTTON = "settings-menu__theme-changer";
 const SETTINGS_WINDOW = "settings-window";
 const SETTINGS_WINDOW_HIDE = "page__settings-window_hidden";
 const CLOSE_BUTTON = "link-window__close-btn";
 const LINK_FORM = "link-window__form";
 const LINK_FORM_BUTTON_HIDE = "link-window__btn_hide";
 const LINK_WINDOW_INPUT = "link-window__form-input";
-const THEME_BUTTON = "theme__button_initial";
-const THEME_LINK = "theme__link_initial";
-const THEME_LINK_SELECTED = "theme__link_initial-selected";
-const THEME_LINK_HIGHLIGHT = "theme__link_initial-highlighted";
-const THEME_COLOR_MUTE = "theme__color-initial_mute";
-const THEME_CATEGORY_MENU_ITEM = "theme__category-menu-item_initial";
-const THEME_CATEGORY_MENU_ITEM_SELECTED = "theme__category-menu-item_initial-selected";
-const THEME_CATEGORY_MENU_ITEM_ADAPTIVE = "theme__category-menu-item_initial-adaptive";
+const theme = {
+  BUTTON: "theme__button_initial",
+  SETTINGS_MENU_ITEM: "theme__settings-menu-item_initial",
+  LINK: "theme__link_initial",
+  LINK_SELECTED: "theme__link_selected-initial",
+  LINK_HIGHLIGHT: "theme__link_highlighted-initial",
+  LINK_TOPIC: "theme__link-topic_initial",
+  CATEGORY_MENU_ITEM_TOPIC: "theme__category-menu-item-topic_initial",
+  COLOR_MUTE: "theme__color_mute-initial",
+  CATEGORY_MENU_ITEM: "theme__category-menu-item_initial",
+  CATEGORY_MENU_ITEM_SELECTED: "theme__category-menu-item_selected-initial",
+  CATEGORY_MENU_ITEM_ADAPTIVE: "theme__category-menu-item_adaptive-initial"
+};
 function createItemTemplate(category, itemId, total) {
   let html = "";
-  html += `<li class="${CATEGORY_MENU_ITEM} ${THEME_CATEGORY_MENU_ITEM} ${THEME_CATEGORY_MENU_ITEM_ADAPTIVE}" data-category="${category}">`;
+  html += `<li class="${CATEGORY_MENU_ITEM} ${theme.CATEGORY_MENU_ITEM} ${theme.CATEGORY_MENU_ITEM_ADAPTIVE}" data-category="${category}">`;
   html += `<h2 class="${CATEGORY_MENU_HEADER}">`;
-  html += `<a class="${CATEGORY_MENU_LINK}" href=#${itemId}>`;
+  html += `<a class="${CATEGORY_MENU_LINK} ${theme.CATEGORY_MENU_ITEM_TOPIC}" href=#${itemId}>`;
   html += `${category} `;
-  html += `<span class="${CATEGORY_MENU_LINK_TOTAL} ${THEME_COLOR_MUTE}">${total}</span>`;
+  html += `<span class="${CATEGORY_MENU_LINK_TOTAL} ${theme.COLOR_MUTE}">${total}</span>`;
   html += "</a>";
   html += "</h2>";
   html += "</li>";
@@ -2052,6 +2139,7 @@ function createItemTemplate(category, itemId, total) {
 }
 const dom = {
   getContent: () => document.querySelector(`.${CONTENT}`),
+  getContentPlaceholder: () => document.querySelector(`.${CONTENT_PLACEHOLDER}`),
   getCategory: (category) => document.querySelector(`.${LINK_CATEGORY}[data-category="${category}"]`),
   getCategoryByElem: (target) => target.closest(`.${LINK_CATEGORY}`),
   getLinkList: (category) => document.querySelector(`.${LINK_LIST}[data-category="${category}"]`),
@@ -2064,7 +2152,8 @@ const dom = {
   },
   settingsMenu: {
     get: () => document.querySelector(`.${SETTINGS_MENU}`),
-    getOpenButton: (target) => target.closest(`.${OPEN_SETTINGS_BUTTON}`)
+    getOpenButton: (target) => target.closest(`.${OPEN_SETTINGS_BUTTON}`),
+    getOpenThemeMenuBtn: (target) => target.closest(`.${CHANGE_THEME_BUTTON}`)
   },
   link: {
     get: (target) => target.closest(`.${LINK_LIST_ITEM}`),
@@ -2072,7 +2161,7 @@ const dom = {
     getRemoveButton: (target) => target.closest(`.${REMOVE_BUTTON}`),
     getEditButton: (target) => target.closest(`.${EDIT_BUTTON}`),
     getLast: (target) => target.querySelector(`.${LINK_LIST_ITEM}:last-child`),
-    getCurrentSelected: () => document.querySelector(`.${THEME_LINK_SELECTED}`),
+    getCurrentSelected: () => document.querySelector(`.${theme.LINK_SELECTED}`),
     getControls: (target) => target.querySelector(`.${LINK_CONTROLS}`),
     getType: (target) => target.querySelector(`.${LINK_TYPE}`),
     getTopic: (target) => target.querySelector(`.${LINK_TOPIC}`)
@@ -2086,11 +2175,14 @@ const dom = {
   categoryMenu: {
     getMenu: () => document.querySelector(`.${CATEGORY_MENU}`),
     getItem: (target) => target.closest(`.${CATEGORY_MENU_ITEM}`),
-    getHighlightedItem: (target) => target.querySelector(`.${THEME_CATEGORY_MENU_ITEM_SELECTED}`),
+    getHighlightedItem: (target) => target.querySelector(`.${theme.CATEGORY_MENU_ITEM_SELECTED}`),
     getItemByCategory: (target, category) => target.querySelector(`.${CATEGORY_MENU_ITEM}[data-category="${category}"]`),
     getItemTotal: (target, category) => target.querySelector(`.${CATEGORY_MENU_ITEM}[data-category="${category}"] a > span`),
     getOpener: () => document.querySelector(`.${OPEN_CATEGORY_MENU_BUTTON}`),
     getLastItem: (target) => target.querySelector(`.${CATEGORY_MENU_ITEM}:last-child`)
+  },
+  themeMenu: {
+    get: () => document.querySelector(`.${THEME_MENU}`)
   }
 };
 function createHoverEffect() {
@@ -2137,6 +2229,7 @@ function updateHash(id) {
   history.pushState(null, null, `#${id}`);
 }
 function scrollElementIntoView(element) {
+  if (!element) return;
   const coords = element.getBoundingClientRect();
   if (coords.top < 0) {
     element.scrollIntoView();
@@ -2159,9 +2252,9 @@ class Menu {
   highlightItem(category) {
     if (!category) return;
     const highlightedItem = dom.categoryMenu.getHighlightedItem(this.node);
-    if (highlightedItem) highlightedItem.classList.remove(`${THEME_CATEGORY_MENU_ITEM_SELECTED}`);
+    if (highlightedItem) highlightedItem.classList.remove(`${theme.CATEGORY_MENU_ITEM_SELECTED}`);
     const currentItem = dom.categoryMenu.getItemByCategory(this.node, category);
-    if (currentItem) currentItem.classList.add(`${THEME_CATEGORY_MENU_ITEM_SELECTED}`);
+    if (currentItem) currentItem.classList.add(`${theme.CATEGORY_MENU_ITEM_SELECTED}`);
   }
   changeLinkCount(categoryData) {
     const { category, total } = categoryData;
@@ -2452,13 +2545,13 @@ function createTemplate$1(category, linksData) {
 }
 function createListItemTemplate(id, linkSrc, linkType, linkDescription) {
   let html = "";
-  html += `<li class="${LINK_LIST_ITEM} ${THEME_LINK}" data-linkid=${id}>`;
+  html += `<li class="${LINK_LIST_ITEM} ${theme.LINK}" data-linkid=${id}>`;
   html += `<h3 class=${LINK_LIST_ITEM_CONTENT}>`;
-  html += `<span class="${LINK_TYPE} ${THEME_COLOR_MUTE}">${linkType}</span> `;
-  html += `<a class="${LINK_TOPIC}" href=${linkSrc} target="_blank">${linkDescription}</a>`;
+  html += `<span class="${LINK_TYPE} ${theme.COLOR_MUTE}">${linkType}</span> `;
+  html += `<a class="${LINK_TOPIC} ${theme.LINK_TOPIC}" href=${linkSrc} target="_blank">${linkDescription}</a>`;
   html += `<div class="${LINK_CONTROLS} ${LINK_CONTROLS_HIDE} ${LINK_CONTROLS_SM_SC}">`;
-  html += `<span><a class="${LINK_BUTTON} ${EDIT_BUTTON} ${THEME_BUTTON}" data-linkid=${id}>&#128393;</a></span>`;
-  html += `<span><a class="${LINK_BUTTON} ${REMOVE_BUTTON} ${THEME_BUTTON}" data-linkid=${id}>&#128473;</a></span>`;
+  html += `<span><a class="${LINK_BUTTON} ${EDIT_BUTTON} ${theme.BUTTON}" data-linkid=${id}>&#128393;</a></span>`;
+  html += `<span><a class="${LINK_BUTTON} ${REMOVE_BUTTON} ${theme.BUTTON}" data-linkid=${id}>&#128473;</a></span>`;
   html += "</div>";
   html += "</h3>";
   html += "</li>";
@@ -2494,14 +2587,14 @@ class Category {
   // pure ui without the store affecting on the component visual state
   selectLink(link, prevLink) {
     if (prevLink) {
-      prevLink.classList.remove(`${THEME_LINK_SELECTED}`);
+      prevLink.classList.remove(`${theme.LINK_SELECTED}`);
       dom.link.getControls(prevLink).classList.add(`${LINK_CONTROLS_HIDE}`);
     }
-    link.classList.add(`${THEME_LINK_SELECTED}`);
+    link.classList.add(`${theme.LINK_SELECTED}`);
     dom.link.getControls(link).classList.remove(`${LINK_CONTROLS_HIDE}`);
   }
   hoverLink(link) {
-    if (link.classList.contains(`${THEME_LINK_SELECTED}`)) return;
+    if (link.classList.contains(`${theme.LINK_SELECTED}`)) return;
     const controls = dom.link.getControls(link);
     if (prevHoveredItem !== link) {
       controls.classList.remove(`${LINK_CONTROLS_HIDE}`);
@@ -2512,9 +2605,9 @@ class Category {
     }
   }
   highlightLink(link) {
-    link.classList.add(`${THEME_LINK_HIGHLIGHT}`);
+    link.classList.add(`${theme.LINK_HIGHLIGHT}`);
     setTimeout(() => {
-      link.classList.remove(`${THEME_LINK_HIGHLIGHT}`);
+      link.classList.remove(`${theme.LINK_HIGHLIGHT}`);
     }, 2e3);
   }
   focusLink(link) {
@@ -2545,6 +2638,7 @@ class Category {
       if (!this.list.children.length) {
         this.node.remove();
         history.pushState(null, null, "");
+        location.hash = "";
       }
     }
   }
@@ -2585,7 +2679,7 @@ function createTemplate(category, linkTypes) {
   let html = "";
   html += `<h2 id=${replaceSpace(category)} class=${LINK_CATEGORY_HEADER}>`;
   html += `<span>${category}</span>`;
-  html += `<span class="${LINK_CATEGORY_HEADER_HIDE} ${LINK_CATEGORY_HEADER_SORTNAME} ${THEME_COLOR_MUTE}">`;
+  html += `<span class="${LINK_CATEGORY_HEADER_HIDE} ${LINK_CATEGORY_HEADER_SORTNAME} ${theme.COLOR_MUTE}">`;
   html += `Arrange by ${createSelect(linkTypes)}`;
   html += "</span>";
   html += "</h2>";
@@ -2694,6 +2788,33 @@ class CategoryWrapper {
     this.child.update();
   }
 }
+class Placeholder {
+  constructor(categoriesCount) {
+    this.node = dom.getContentPlaceholder();
+    if (categoriesCount) this.node.style.display = "none";
+  }
+  update(categoriesCount) {
+    if (categoriesCount) {
+      this.node.style.display = "none";
+    } else {
+      this.node.style.display = "";
+    }
+  }
+  create() {
+  }
+}
+class PlaceholderWrapper {
+  constructor(store, categoriesCount) {
+    this.store = store;
+    this.component = null;
+  }
+  mount(categoriesCount) {
+    this.component = new Placeholder(categoriesCount);
+  }
+  update(categoriesCount) {
+    this.component.update(categoriesCount);
+  }
+}
 class ContentWrapper {
   constructor(store) {
     this.store = store;
@@ -2721,12 +2842,15 @@ class ContentWrapper {
     this.component = new Content();
     this.mountChildren(this.store, this.selectLinkCategories().sort());
     this.categories = categories;
+    this.child = new PlaceholderWrapper(this.store, categories.length);
+    this.child.mount(categories.length);
   }
   update() {
     const action = this.selectAction();
     if (!(action in this.updateActions)) return;
     this.component.update();
     this.updateChildren(action);
+    this.child.update(this.selectLinkCategories().length);
   }
   mountChildren(store, categoryNames) {
     this.children = categoryNames.map((category) => {
@@ -2780,6 +2904,8 @@ class SettingsMenu {
       const target = e.target;
       if (dom.settingsMenu.getOpenButton(target)) {
         openSettingsWindowAction();
+      } else if (dom.settingsMenu.getOpenThemeMenuBtn(target)) {
+        dom.themeMenu.get().classList.toggle(`${THEME_MENU_HIDE}`);
       }
     });
   }
@@ -2819,8 +2945,9 @@ class SettingsWindow {
     this.toggleWindow();
   }
 }
-function createOptionsTemplate(items) {
+function createOptionsTemplate(items, type) {
   let html = "";
+  html += `<option value="default">Select ${type}</option>`;
   for (let item of items) {
     html += `<option value="${item}">${item}</option>`;
   }
@@ -2852,13 +2979,19 @@ class LinkFrom {
         input.type = "text";
         input.name = target.name;
         input.className = `${LINK_WINDOW_INPUT}`;
-        input.oninput = input.onblur = (e2) => {
+        input.placeholder = "Click outside the field to return";
+        input.onblur = (e2) => {
           if (!e2.target.value) {
             input.replaceWith(target);
-            target.value = "";
+            target.options[0].selected = true;
+            target.parentNode.style.flex = "unset";
+            target.nextElementSibling.style.display = "block";
           }
         };
         target.replaceWith(input);
+        input.focus();
+        input.parentNode.style.flex = "1";
+        input.nextElementSibling.style.display = "none";
       }
     });
   }
@@ -2877,9 +3010,14 @@ class LinkFrom {
   reset() {
     if (this.node.category.tagName === "INPUT") this.node.category.replaceWith(this.categorySelect);
     if (this.node.type.tagName === "INPUT") this.node.type.replaceWith(this.typeSelect);
-    for (let prop in this.dataTemplate) {
-      this.node[prop].value = "";
-    }
+    this.node.category.options[0].selected = true;
+    this.node.type.options[0].selected = true;
+    this.node.description.value = "";
+    this.node.src.value = "";
+    this.node.category.parentNode.style.flex = "unset";
+    this.node.type.parentNode.style.flex = "unset";
+    this.node.category.nextElementSibling.style.display = "block";
+    this.node.type.nextElementSibling.style.display = "block";
   }
   setCreateionMode() {
     this.reset();
@@ -2894,8 +3032,8 @@ class LinkFrom {
     this.node.add.classList.add(`${LINK_FORM_BUTTON_HIDE}`);
   }
   create(categories, types) {
-    this.categorySelect.innerHTML = createOptionsTemplate(categories);
-    this.typeSelect.innerHTML = createOptionsTemplate(types);
+    this.categorySelect.innerHTML = createOptionsTemplate(categories, "category");
+    this.typeSelect.innerHTML = createOptionsTemplate(types, "type");
   }
   updateOptions(options) {
     const { categories, types } = options;
@@ -2983,6 +3121,47 @@ class SettingsWindowWrapper {
     this.child.update();
   }
 }
+class ThemeMenu {
+  constructor() {
+    this.node = dom.themeMenu.get();
+    this.node.addEventListener("click", (e) => {
+      const target = e.target.closest("[data-theme]");
+      if (target) {
+        const theme2 = target.dataset.theme;
+        dom.themeMenu.get().classList.toggle(`${THEME_MENU_HIDE}`);
+        this.setTheme(theme2);
+      }
+    });
+  }
+  setTheme(newTheme) {
+    const elements = document.querySelectorAll(`[class*="theme_"]`);
+    for (let element of elements) {
+      const classes = Array.from(element.classList).filter((c) => c.startsWith("theme_"));
+      classes.forEach((oldClass) => {
+        const newClass = oldClass.replace(/[a-zA-Z0-9]+$/, newTheme);
+        element.classList.replace(oldClass, newClass);
+      });
+    }
+    for (let prop in theme) {
+      theme[prop] = theme[prop].replace(/[a-zA-Z0-9]+$/, newTheme);
+    }
+  }
+  create() {
+  }
+  update() {
+  }
+}
+class ThemeMenuWrapper {
+  constructor(store) {
+    this.component = null;
+  }
+  mount() {
+    this.component = new ThemeMenu();
+  }
+  update() {
+    this.component.update();
+  }
+}
 class UI {
   constructor(store) {
     this.categoryMenu = new Wrapper$2(store);
@@ -2991,6 +3170,7 @@ class UI {
     this.content = new ContentWrapper(store);
     this.settingsMenu = new SettingsMenuWrapper(store);
     this.settingsWindow = new SettingsWindowWrapper(store);
+    this.themeMenu = new ThemeMenuWrapper(store);
   }
   mount() {
     this.categoryMenu.mount();
@@ -2999,6 +3179,7 @@ class UI {
     this.content.mount();
     this.settingsMenu.mount();
     this.settingsWindow.mount();
+    this.themeMenu.mount();
   }
   update() {
     this.categoryMenu.update();
@@ -3007,22 +3188,34 @@ class UI {
     this.commonComponent.update();
     this.settingsMenu.update();
     this.settingsWindow.update();
+    this.themeMenu.update();
   }
 }
 async function render() {
   await initiateDB();
-  const links = await api.loadLinks();
+  const links = await api$1.loadLinks() || [];
   const initialData = {
     links: { data: links },
     ui: {
-      menuCategory: getCategoryFromHash(),
+      menuCategory: links.length ? getCategoryFromHash() : "",
       isMenuOpened: false,
       isSmallScreen: getIsSmallScreen()
     }
   };
   const store = createStore(initialData);
-  const ui = new UI(store);
+  let ui = new UI(store);
   ui.mount();
-  store.store.subscribe(() => ui.update());
+  let isLogged = false;
+  store.store.subscribe(() => {
+    const state = store.store.getState();
+    if (state.user.token && !isLogged) {
+      isLogged = true;
+      console.log("User logged!");
+    }
+    if (state.action.action === "links/linksLoaded") {
+      console.log("Links from db loaded!");
+    }
+    ui.update();
+  });
 }
 render();
