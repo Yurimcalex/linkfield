@@ -12,12 +12,12 @@ import { userLogged } from './redux/userSlice.js';
 
 async function render() {
   await initiateDB();
-  const links = await fakeApi.loadLinks();
+  const links = await fakeApi.loadLinks() || [];
 
   const initialData = {
   	links: { data: links },
   	ui: { 
-      menuCategory: getCategoryFromHash(location),
+      menuCategory: links.length ? getCategoryFromHash(location) : '',
       isMenuOpened: false,
       isSmallScreen: getIsSmallScreen(),
     }
