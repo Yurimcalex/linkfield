@@ -1,0 +1,98 @@
+.theme_emerald {
+	--common-color: #f3f9ef;
+	--link-description-color: #24131a;
+	--common-bg: #0db03e;
+	--menu-panel-bg: #20680d;
+
+	background: var(--common-bg);
+	color: var(--common-color);
+}
+
+.theme__menu-panel_emerald {
+	background: var(--menu-panel-bg);
+}
+
+.theme__content_emerald {
+	background: var(--common-bg);
+}
+
+.theme__color_mute-emerald {
+	color: var(--common-color);
+}
+
+.theme__button_emerald {
+	background: var(--common-bg);
+}
+
+.theme__button_emerald:hover {
+	background: var(--menu-panel-bg);
+}
+
+.theme__settings-menu-item_emerald {
+	background: var(--menu-panel-bg);
+}
+
+.theme__link_emerald:hover {
+	background: #16b849;
+}
+
+.theme__link_selected-emerald {
+	background: #16b849;
+}
+
+.theme__link_highlighted-emerald {
+	background: #8ebd1d;
+}
+
+.theme__link-topic_emerald {
+	color: var(--link-description-color);
+}
+
+.theme__category-menu-item-topic_emerald {
+	color: var(--common-color);
+}
+
+
+.theme__category-menu-item_emerald:hover {
+	background: var(--common-bg);
+}
+
+.theme__category-menu-item_selected-emerald {
+	background: var(--common-bg);
+}
+
+@media screen and (max-width: 650px) {
+	.theme__category-menu-item_adaptive-emerald:nth-child(even) {
+		background: var(--menu-panel-bg);
+	}
+
+	.theme__category-menu-item_adaptive-emerald:nth-child(odd) {
+		background: var(--common-bg);
+	}
+}
+
+@media screen and (max-width: 650px) {
+	.theme__menu-opener_adaptive-emerald {
+		
+	}
+}
+
+.theme__settings-window_emerald {
+	background: rgba(0, 0, 0, 0.7);
+}
+
+.theme__link-window_emerald {
+	background: var(--common-bg);
+}
+
+.theme__link-window-close-btn_emerald {
+	background: var(--common-bg);
+}
+
+.theme__theme-menu_emerald {
+	background: var(--menu-panel-bg);
+}
+
+.theme__theme-menu-item_emerald:hover {
+	background: var(--common-bg);
+}
