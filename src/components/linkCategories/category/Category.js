@@ -102,6 +102,7 @@ export default class Category {
 			if (!this.list.children.length) {
 				this.node.remove();
 				history.pushState(null, null, '');
+				location.hash = '';
 			}
 		}
 	}
