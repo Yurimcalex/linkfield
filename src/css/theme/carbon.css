@@ -32,6 +32,10 @@
 	color: var(--hovered-btn-color);
 }
 
+.theme__settings-menu-item_carbon {
+	background: var(--hovered-btn-bg);
+}
+
 .theme__link_carbon:hover {
 	background: #484966;
 }

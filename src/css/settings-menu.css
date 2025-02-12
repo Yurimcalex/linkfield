@@ -1,21 +1,29 @@
 .settings-menu {
 	display: flex;
-	gap: 7px;
+	gap: 10px;
+	padding: 5px 5px 0 0;
+}
+
+.settings-menu__item {
+	border-radius: 50%;
+	padding: 3px;
+	overflow: hidden;
+	cursor: pointer;
 }
 
 /* link form opener element */
 .settings-menu__link-form-opener {
 	display: block;
-	padding: 4px 7px;
-	border-radius: 3px;
-	font-size: 1.5em;
-  cursor: pointer;
+	padding: 7px;
+	border-radius: 50%;
+	font-size: 1.2em;
+	font-weight: bold;
+  
 }
 
 .settings-menu__theme-changer {
 	display: block;
-	padding: 4px 2px;
-	border-radius: 3px;
-	font-size: 1.5em;
-	cursor: pointer;
+	padding: 7px;
+	border-radius: 50%;
+	font-size: 1.2em;
 }

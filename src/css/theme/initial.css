@@ -32,6 +32,10 @@
 	color: var(--hovered-btn-color);
 }
 
+.theme__settings-menu-item_initial {
+	background: var(--hovered-btn-bg);
+}
+
 .theme__link_initial:hover {
 	background: var(--secondary-bg);
 }

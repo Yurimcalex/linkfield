@@ -53,6 +53,7 @@ const LOADING_COVER = 'loading-cover';
 
 export const theme = {
 	BUTTON:                      'theme__button_initial',
+	SETTINGS_MENU_ITEM:          'theme__settings-menu-item_initial',
 	LINK:                        'theme__link_initial',
 	LINK_SELECTED:               'theme__link_selected-initial',
 	LINK_HIGHLIGHT:              'theme__link_highlighted-initial',
