@@ -7,5 +7,9 @@ export default class Content {
 		this.node = dom.getContent();
 	}
 
+	remove() {
+		Array.from(this.node.children).slice(1).forEach(n => n.remove());
+	}
+
 	update() {}
 }

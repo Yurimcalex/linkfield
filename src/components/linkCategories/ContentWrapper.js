@@ -21,7 +21,8 @@ export default class ContentWrapper {
 			'filters/linkTypeSelected': true,
 			'links/linkRemoved/fulfilled': true,
 			'links/linkCreated/fulfilled': true,
-			'links/linkEdited/fulfilled': true
+			'links/linkEdited/fulfilled': true,
+			'links/linksLoaded/fulfilled': true
 		};
 	}
 
@@ -38,6 +39,12 @@ export default class ContentWrapper {
 	update() {
 		const action = this.selectAction();
 		if (!(action in this.updateActions)) return;
+		if (action === 'links/linksLoaded/fulfilled') {
+			this.component.remove();
+			this.mount();
+			return;
+		}
+
 		this.component.update();
 		this.updateChildren(action);
 		this.child.update(this.selectLinkCategories().length);
