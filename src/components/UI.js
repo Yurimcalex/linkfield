@@ -10,6 +10,7 @@ import LoadingCover from './loadingCover/LoadingCoverWrapper.js';
 
 export default class UI {
 	constructor(store) {
+		this.loadingCover = new LoadingCover(store);
 		this.categoryMenu = new CategoryMenu(store);
 		this.menuOpener = new MenuOpener(store);
 		this.commonComponent = new CommonComponent(store);
@@ -17,21 +18,22 @@ export default class UI {
 		this.settingsMenu = new SettingsMenu(store);
 		this.settingsWindow = new SettingsWindow(store);
 		this.themeMenu = new ThemeMenu(store);
-		this.loadingCover = new LoadingCover(store);
+		
 	}
 
 	mount() {
+		this.loadingCover.mount();
 		this.categoryMenu.mount();
 		this.menuOpener.mount();
 		this.commonComponent.mount();
 		this.content.mount();
 		this.settingsMenu.mount();
 		this.settingsWindow.mount();
-		this.themeMenu.mount();
-		this.loadingCover.mount();
+		this.themeMenu.mount();	
 	}
 
 	update() {
+		this.loadingCover.update();
 		this.categoryMenu.update();
 		this.content.update();
 		this.menuOpener.update();
@@ -39,6 +41,5 @@ export default class UI {
 		this.settingsMenu.update();
 		this.settingsWindow.update();
 		this.themeMenu.update();
-		this.loadingCover.update();
 	}
 }

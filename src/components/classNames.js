@@ -50,6 +50,7 @@ export const LINK_WINDOW_INPUT =     'link-window__form-input';
 
 
 export const LOADING_COVER = 'loading-cover';
+export const LOADING_COVER_ELEMENT_FOCUS = 'loading-cover__element_focused';
 
 
 export const theme = {
