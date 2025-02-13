@@ -5,6 +5,7 @@ import Content from './linkCategories/ContentWrapper.js';
 import SettingsMenu from './settingsMenu/SettingsMenuWrapper.js';
 import SettingsWindow from './settingsWindow/SettingsWindowWrapper.js';
 import ThemeMenu from './themeMenu/ThemeMenuWrapper.js';
+import LoadingCover from './loadingCover/LoadingCoverWrapper.js';
 
 
 export default class UI {
@@ -16,6 +17,7 @@ export default class UI {
 		this.settingsMenu = new SettingsMenu(store);
 		this.settingsWindow = new SettingsWindow(store);
 		this.themeMenu = new ThemeMenu(store);
+		this.loadingCover = new LoadingCover(store);
 	}
 
 	mount() {
@@ -26,6 +28,7 @@ export default class UI {
 		this.settingsMenu.mount();
 		this.settingsWindow.mount();
 		this.themeMenu.mount();
+		this.loadingCover.mount();
 	}
 
 	update() {
@@ -36,5 +39,6 @@ export default class UI {
 		this.settingsMenu.update();
 		this.settingsWindow.update();
 		this.themeMenu.update();
+		this.loadingCover.update();
 	}
 }
