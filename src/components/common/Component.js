@@ -12,6 +12,7 @@ export default class Component {
 		this.storeAction2 = storeAction2;
 		this.handleResize = this.handleResize.bind(this);
 		this.handleScroll = this.handleScroll.bind(this);
+		this.currentId = null;
 
 		window.addEventListener('resize', this.handleResize);
 		this.content.addEventListener('scroll', this.handleScroll);
@@ -77,6 +78,8 @@ export default class Component {
 		if (!item) return;
 		if (item.classList.contains('highlight')) return;
 		const id = replaceSpace(item.dataset.category);
+		if (id === this.currentId) return;
+		this.currentId = id;
 		updateHash(id);
 		fn(item.dataset.category);
 		scrollElementIntoView(item);
