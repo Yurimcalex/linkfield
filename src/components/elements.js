@@ -20,7 +20,8 @@ import {
 	CLOSE_BUTTON,
 	CHANGE_THEME_BUTTON,
 	CONTENT_PLACEHOLDER,
-	THEME_MENU } from './classNames.js';
+	THEME_MENU,
+	LOADING_COVER } from './classNames.js';
 
 
 export const dom = {
@@ -31,6 +32,7 @@ export const dom = {
 	getLinkList: (category) => document.querySelector(`.${LINK_LIST}[data-category="${category}"]`),
 	getSettingsWindow: () => document.querySelector(`.${SETTINGS_WINDOW}`),
 	getCloseButton: (target) => target.closest(`.${CLOSE_BUTTON}`),
+	getLoadingCover: () => document.querySelector(`.${LOADING_COVER}`),
 
 	linkForm: {
 		get: () => document.querySelector(`.${LINK_FORM}`),

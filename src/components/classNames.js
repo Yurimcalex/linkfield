@@ -49,7 +49,7 @@ export const LINK_FORM_BUTTON_HIDE = 'link-window__btn_hide';
 export const LINK_WINDOW_INPUT =     'link-window__form-input';
 
 
-const LOADING_COVER = 'loading-cover';
+export const LOADING_COVER = 'loading-cover';
 
 
 export const theme = {
