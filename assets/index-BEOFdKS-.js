@@ -189,14 +189,14 @@ function createStore$1(reducer, preloadedState, enhancer) {
   dispatch({
     type: actionTypes_default.INIT
   });
-  const store = {
+  const store2 = {
     dispatch,
     subscribe,
     getState,
     replaceReducer,
     [symbol_observable_default]: observable
   };
-  return store;
+  return store2;
 }
 function assertReducerShape(reducers) {
   Object.keys(reducers).forEach((key) => {
@@ -263,18 +263,18 @@ function compose(...funcs) {
 }
 function applyMiddleware(...middlewares) {
   return (createStore2) => (reducer, preloadedState) => {
-    const store = createStore2(reducer, preloadedState);
+    const store2 = createStore2(reducer, preloadedState);
     let dispatch = () => {
       throw new Error(formatProdErrorMessage$1(15));
     };
     const middlewareAPI = {
-      getState: store.getState,
+      getState: store2.getState,
       dispatch: (action, ...args) => dispatch(action, ...args)
     };
     const chain = middlewares.map((middleware) => middleware(middlewareAPI));
-    dispatch = compose(...chain)(store.dispatch);
+    dispatch = compose(...chain)(store2.dispatch);
     return {
-      ...store,
+      ...store2,
       dispatch
     };
   };
@@ -1011,7 +1011,7 @@ var createQueueWithTimer = (timeout) => {
 var autoBatchEnhancer = (options = {
   type: "raf"
 }) => (next) => (...args) => {
-  const store = next(...args);
+  const store2 = next(...args);
   let notifying = true;
   let shouldNotifyAtEndOfTick = false;
   let notificationQueued = false;
@@ -1027,12 +1027,12 @@ var autoBatchEnhancer = (options = {
       listeners.forEach((l) => l());
     }
   };
-  return Object.assign({}, store, {
+  return Object.assign({}, store2, {
     // Override the base `store.subscribe` method to keep original listeners
     // from running if we're delaying notifications
     subscribe(listener2) {
       const wrappedListener = () => notifying && listener2();
-      const unsubscribe = store.subscribe(wrappedListener);
+      const unsubscribe = store2.subscribe(wrappedListener);
       listeners.add(listener2);
       return () => {
         unsubscribe();
@@ -1052,7 +1052,7 @@ var autoBatchEnhancer = (options = {
             queueCallback(notifyListeners);
           }
         }
-        return store.dispatch(action);
+        return store2.dispatch(action);
       } finally {
         notifying = true;
       }
@@ -1873,20 +1873,21 @@ const linksSlice = createSlice({
   }
 });
 const linksReducer = linksSlice.reducer;
-const linksLoaded = createAsyncThunk("links/linksLoaded", async (token) => {
-  const response = await api.loadLinks(token);
+const getApi = (thunkApi) => thunkApi.getState().user.token ? api : api$1;
+const linksLoaded = createAsyncThunk("links/linksLoaded", async (token, thunkApi) => {
+  const response = await getApi(thunkApi).loadLinks(token);
   return response;
 });
-const linkRemoved = createAsyncThunk("links/linkRemoved", async (id) => {
-  const response = await api$1.deleteLink(id);
+const linkRemoved = createAsyncThunk("links/linkRemoved", async (id, thunkApi) => {
+  const response = await getApi(thunkApi).deleteLink(id);
   return response;
 });
-const linkCreated = createAsyncThunk("links/linkCreated", async (linkData) => {
-  const response = await api$1.createLink(linkData);
+const linkCreated = createAsyncThunk("links/linkCreated", async (linkData, thunkApi) => {
+  const response = await getApi(thunkApi).createLink(linkData);
   return response;
 });
-const linkEdited = createAsyncThunk("links/linkEdited", async (linkData) => {
-  const response = await api$1.updateLink(linkData._id, linkData);
+const linkEdited = createAsyncThunk("links/linkEdited", async (linkData, thunkApi) => {
+  const response = await getApi(thunkApi).updateLink(linkData._id, linkData);
   return response;
 });
 const { editedLinkIdSelected } = linksSlice.actions;
@@ -2038,41 +2039,41 @@ function initStore(data) {
 }
 const actionEnhancer = (createStore2) => {
   return (reducer, state, enhancer) => {
-    const store = createStore2(reducer, state, enhancer);
+    const store2 = createStore2(reducer, state, enhancer);
     const newDispatch = (action) => {
-      const result = store.dispatch(action);
-      store.dispatch(actionHappened(action.type));
-      store.dispatch(actionHappened(""));
+      const result = store2.dispatch(action);
+      store2.dispatch(actionHappened(action.type));
+      store2.dispatch(actionHappened(""));
       return result;
     };
-    return { ...store, dispatch: newDispatch };
+    return { ...store2, dispatch: newDispatch };
   };
 };
-function logActionType(store) {
+function logActionType(store2) {
   return (next) => (action) => {
     console.log(action.type);
     return next(action);
   };
 }
 function createStore(data) {
-  const store = initStore(data);
+  const store2 = initStore(data);
   return {
-    store,
+    store: store2,
     useSelector(fn) {
       return (...args) => {
-        return fn(store.getState(), ...args);
+        return fn(store2.getState(), ...args);
       };
     },
     useDispatch() {
-      return store.dispatch;
+      return store2.dispatch;
     }
   };
 }
-function useSelector(owner, store, selectors) {
-  selectors.forEach((selector) => owner[selector.name] = store.useSelector(selector));
+function useSelector(owner, store2, selectors) {
+  selectors.forEach((selector) => owner[selector.name] = store2.useSelector(selector));
 }
-function useDispatch(owner, store, actions) {
-  actions.forEach((action) => owner[action.name] = action(store.useDispatch()));
+function useDispatch(owner, store2, actions) {
+  actions.forEach((action) => owner[action.name] = action(store2.useDispatch()));
 }
 const OPEN_CATEGORY_MENU_BUTTON = "menu-panel__menu-opener";
 const CATEGORY_MENU = "category-menu";
@@ -2112,6 +2113,8 @@ const CLOSE_BUTTON = "link-window__close-btn";
 const LINK_FORM = "link-window__form";
 const LINK_FORM_BUTTON_HIDE = "link-window__btn_hide";
 const LINK_WINDOW_INPUT = "link-window__form-input";
+const LOADING_COVER = "loading-cover";
+const LOADING_COVER_ELEMENT_FOCUS = "loading-cover__element_focused";
 const theme = {
   BUTTON: "theme__button_initial",
   SETTINGS_MENU_ITEM: "theme__settings-menu-item_initial",
@@ -2145,6 +2148,7 @@ const dom = {
   getLinkList: (category) => document.querySelector(`.${LINK_LIST}[data-category="${category}"]`),
   getSettingsWindow: () => document.querySelector(`.${SETTINGS_WINDOW}`),
   getCloseButton: (target) => target.closest(`.${CLOSE_BUTTON}`),
+  getLoadingCover: () => document.querySelector(`.${LOADING_COVER}`),
   linkForm: {
     get: () => document.querySelector(`.${LINK_FORM}`),
     getCategorySelect: (target) => target.querySelector(`select[name="category"]`),
@@ -2239,15 +2243,22 @@ function scrollElementIntoView(element) {
 }
 class Menu {
   constructor(categories, selectedCategory, storeAction) {
+    this.storeAction = storeAction;
     this.node = dom.categoryMenu.getMenu();
     this.create(categories);
     this.highlightItem(selectedCategory);
-    this.node.addEventListener("click", (e) => {
-      const menuItem = dom.categoryMenu.getItem(e.target);
-      if (menuItem) {
-        storeAction(menuItem.dataset.category, e);
-      }
-    });
+    this.handleClick = this.handleClick.bind(this);
+    this.node.addEventListener("click", this.handleClick);
+  }
+  handleClick(e) {
+    const menuItem = dom.categoryMenu.getItem(e.target);
+    if (menuItem) {
+      this.storeAction(menuItem.dataset.category, e);
+    }
+  }
+  remove() {
+    this.node.removeEventListener("click", this.handleClick);
+    this.node.innerHTML = "";
   }
   highlightItem(category) {
     if (!category) return;
@@ -2315,12 +2326,12 @@ const editPickedLink = (dispatch) => (linkData) => {
   dispatch(linkEdited(linkData));
 };
 let Wrapper$2 = class Wrapper {
-  constructor(store) {
+  constructor(store2) {
     this.component = null;
     this.categories = null;
     this.category = null;
-    useSelector(this, store, [selectCountLinksByCategory, selectMenuCategory, selectIsSmallScreen, selectAction]);
-    useDispatch(this, store, [clickOnCategoryMenu]);
+    useSelector(this, store2, [selectCountLinksByCategory, selectMenuCategory, selectIsSmallScreen, selectAction]);
+    useDispatch(this, store2, [clickOnCategoryMenu]);
     this.clickMenu = (category, event2) => {
       const isSmallScreen = this.selectIsSmallScreen();
       this.clickOnCategoryMenu(category, isSmallScreen, event2);
@@ -2329,7 +2340,8 @@ let Wrapper$2 = class Wrapper {
       "ui/menuCategorySelected": true,
       "links/linkRemoved/fulfilled": true,
       "links/linkCreated/fulfilled": true,
-      "links/linkEdited/fulfilled": true
+      "links/linkEdited/fulfilled": true,
+      "links/linksLoaded/fulfilled": true
     };
   }
   mount() {
@@ -2343,6 +2355,12 @@ let Wrapper$2 = class Wrapper {
     switch (action) {
       case "ui/menuCategorySelected": {
         this.component.update(this.selectMenuCategory());
+        return;
+      }
+      case "links/linksLoaded/fulfilled": {
+        this.selectCountLinksByCategory();
+        this.component.remove();
+        this.mount();
         return;
       }
       case "links/linkRemoved/fulfilled":
@@ -2379,12 +2397,18 @@ function sortCategories(categories) {
 }
 class Opener {
   constructor(storeAction) {
+    this.storeAction = storeAction;
     this.node = dom.categoryMenu.getOpener();
     this.content = dom.getContent();
     this.menu = dom.categoryMenu.getMenu();
-    this.node.addEventListener("click", (e) => {
-      storeAction();
-    });
+    this.handleClick = this.handleClick.bind(this);
+    this.node.addEventListener("click", this.handleClick);
+  }
+  remove() {
+    this.node.removeEventListener("click", this.handleClick);
+  }
+  handleClick(e) {
+    this.storeAction();
   }
   open() {
     this.content.classList.add(`${CONTENT_HIDE}`);
@@ -2401,12 +2425,13 @@ class Opener {
   }
 }
 let Wrapper$1 = class Wrapper2 {
-  constructor(store) {
+  constructor(store2) {
     this.component = null;
-    useSelector(this, store, [selectMenuVisibility, selectAction]);
-    useDispatch(this, store, [toggleMenuOpener]);
+    useSelector(this, store2, [selectMenuVisibility, selectAction]);
+    useDispatch(this, store2, [toggleMenuOpener]);
     this.updateActions = {
-      "ui/categoryMenuToggled": true
+      "ui/categoryMenuToggled": true,
+      "links/linksLoaded/fulfilled": true
     };
   }
   mount() {
@@ -2415,6 +2440,11 @@ let Wrapper$1 = class Wrapper2 {
   update() {
     const action = this.selectAction();
     if (!(action in this.updateActions)) return;
+    if (action === "links/linksLoaded/fulfilled") {
+      this.component.remove();
+      this.mount();
+      return;
+    }
     this.component.update(this.selectMenuVisibility());
   }
 };
@@ -2423,33 +2453,48 @@ class Component {
     this.content = dom.getContent();
     this.menu = dom.categoryMenu.getMenu();
     this.DY = 50;
-    window.addEventListener("resize", () => {
-      const isSmallScreen = getIsSmallScreen();
-      storeAction1(isSmallScreen);
-      if (!isSmallScreen) {
-        const category2 = getCategoryFromHash();
-        if (category2) {
-          this.scrollToCategory(category2, isSmallScreen);
-          scrollElementIntoView(this.getMenuItemByCategory(category2));
-        }
-      }
-      if (!isSmallScreen) {
-        this.content.classList.remove(`${CONTENT_HIDE}`);
-        this.menu.classList.remove(`${CATEGORY_MENU_SHOW}`);
-        dom.categoryMenu.getOpener().classList.remove(`${CATEGORY_MENU_OPENER_HIDE}`);
-      }
-    });
-    this.content.addEventListener("scroll", () => {
-      this.focusOnCategoryMenuItem(storeAction2, this.content);
-    });
+    this.storeAction1 = storeAction1;
+    this.storeAction2 = storeAction2;
+    this.handleResize = this.handleResize.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
+    this.currentId = null;
+    window.addEventListener("resize", this.handleResize);
+    this.content.addEventListener("scroll", this.handleScroll);
     const category = getCategoryFromHash();
-    if (category) scrollElementIntoView(this.getMenuItemByCategory(category));
+    if (category) {
+      scrollElementIntoView(this.getMenuItemByCategory(category));
+      this.scrollToCategory(category, getIsSmallScreen());
+    }
+  }
+  remove() {
+    window.removeEventListener("resize", this.handleResize);
+    this.content.removeEventListener("scroll", this.handleScroll);
+  }
+  handleResize() {
+    const isSmallScreen = getIsSmallScreen();
+    this.storeAction1(isSmallScreen);
+    if (!isSmallScreen) {
+      const category = getCategoryFromHash();
+      if (category) {
+        this.scrollToCategory(category, isSmallScreen);
+        scrollElementIntoView(this.getMenuItemByCategory(category));
+      }
+    }
+    if (!isSmallScreen) {
+      this.content.classList.remove(`${CONTENT_HIDE}`);
+      this.menu.classList.remove(`${CATEGORY_MENU_SHOW}`);
+      dom.categoryMenu.getOpener().classList.remove(`${CATEGORY_MENU_OPENER_HIDE}`);
+    }
+  }
+  handleScroll() {
+    this.focusOnCategoryMenuItem(this.storeAction2, this.content);
   }
   // scroll the window for large screen, scroll the content for small screen
   scrollToCategory(category, isSmallScreen) {
     if (!category) return;
     const id = replaceSpace(category);
     const categoryHeader = dom.categoryHeader.getById(id);
+    if (!categoryHeader) return;
     const container = isSmallScreen ? window : this.content;
     container.scrollTo(0, categoryHeader.offsetTop - (isSmallScreen ? this.DY : 0));
     updateHash(id);
@@ -2466,6 +2511,8 @@ class Component {
     if (!item) return;
     if (item.classList.contains("highlight")) return;
     const id = replaceSpace(item.dataset.category);
+    if (id === this.currentId) return;
+    this.currentId = id;
     updateHash(id);
     fn(item.dataset.category);
     scrollElementIntoView(item);
@@ -2494,14 +2541,15 @@ class Component {
   }
 }
 class Wrapper3 {
-  constructor(store) {
+  constructor(store2) {
     this.component = null;
-    useSelector(this, store, [selectMenuCategory, selectIsSmallScreen, selectAction, selectLinkCategories]);
-    useDispatch(this, store, [changeScreenSize, pickMenuCategory]);
+    useSelector(this, store2, [selectMenuCategory, selectIsSmallScreen, selectAction, selectLinkCategories]);
+    useDispatch(this, store2, [changeScreenSize, pickMenuCategory]);
     this.updateActions = {
       "ui/categoryMenuToggled": true,
       "ui/screenSizeChanged": true,
-      "links/linkCreated/fulfilled": true
+      "links/linkCreated/fulfilled": true,
+      "links/linksLoaded/fulfilled": true
     };
   }
   mount() {
@@ -2511,6 +2559,11 @@ class Wrapper3 {
   update() {
     const action = this.selectAction();
     if (!(action in this.updateActions)) return;
+    if (action === "links/linksLoaded/fulfilled") {
+      this.component.remove();
+      this.mount();
+      return;
+    }
     if (action === "links/linkCreated/fulfilled") {
       const categories = this.selectLinkCategories();
       for (let category of categories) {
@@ -2528,6 +2581,9 @@ class Wrapper3 {
 class Content {
   constructor() {
     this.node = dom.getContent();
+  }
+  remove() {
+    Array.from(this.node.children).slice(1).forEach((n) => n.remove());
   }
   update() {
   }
@@ -2728,12 +2784,12 @@ class Header {
   }
 }
 class HeaderWrapper {
-  constructor(store, category) {
+  constructor(store2, category) {
     this.category = category;
     this.component = null;
     this.linkTypes = null;
-    useSelector(this, store, [selectLinkTypesByCategory]);
-    useDispatch(this, store, [pickCategoryLinkType]);
+    useSelector(this, store2, [selectLinkTypesByCategory]);
+    useDispatch(this, store2, [pickCategoryLinkType]);
   }
   mount() {
     const linkTypes = this.selectLinkTypesByCategory(this.category);
@@ -2763,13 +2819,13 @@ class HeaderWrapper {
   }
 }
 class CategoryWrapper {
-  constructor(store, category) {
-    this.store = store;
+  constructor(store2, category) {
+    this.store = store2;
     this.category = category;
     this.component = null;
     this.child = null;
-    useSelector(this, store, [selectLinksByCategory]);
-    useDispatch(this, store, [openLinkFormForEditing, removeLink]);
+    useSelector(this, store2, [selectLinksByCategory]);
+    useDispatch(this, store2, [openLinkFormForEditing, removeLink]);
   }
   mount() {
     const links = this.selectLinksByCategory(this.category);
@@ -2780,8 +2836,8 @@ class CategoryWrapper {
     this.component.update(data);
     this.updateChild();
   }
-  mountChild(store, category) {
-    this.child = new HeaderWrapper(store, category);
+  mountChild(store2, category) {
+    this.child = new HeaderWrapper(store2, category);
     this.child.mount();
   }
   updateChild() {
@@ -2804,8 +2860,8 @@ class Placeholder {
   }
 }
 class PlaceholderWrapper {
-  constructor(store, categoriesCount) {
-    this.store = store;
+  constructor(store2, categoriesCount) {
+    this.store = store2;
     this.component = null;
   }
   mount(categoriesCount) {
@@ -2816,11 +2872,11 @@ class PlaceholderWrapper {
   }
 }
 class ContentWrapper {
-  constructor(store) {
-    this.store = store;
+  constructor(store2) {
+    this.store = store2;
     this.component = null;
     this.children = [];
-    useSelector(this, store, [
+    useSelector(this, store2, [
       selectLinkCategories,
       selectAction,
       selectLinkType,
@@ -2834,7 +2890,8 @@ class ContentWrapper {
       "filters/linkTypeSelected": true,
       "links/linkRemoved/fulfilled": true,
       "links/linkCreated/fulfilled": true,
-      "links/linkEdited/fulfilled": true
+      "links/linkEdited/fulfilled": true,
+      "links/linksLoaded/fulfilled": true
     };
   }
   mount() {
@@ -2848,13 +2905,18 @@ class ContentWrapper {
   update() {
     const action = this.selectAction();
     if (!(action in this.updateActions)) return;
+    if (action === "links/linksLoaded/fulfilled") {
+      this.component.remove();
+      this.mount();
+      return;
+    }
     this.component.update();
     this.updateChildren(action);
     this.child.update(this.selectLinkCategories().length);
   }
-  mountChildren(store, categoryNames) {
+  mountChildren(store2, categoryNames) {
     this.children = categoryNames.map((category) => {
-      return new CategoryWrapper(store, category);
+      return new CategoryWrapper(store2, category);
     });
     this.children.forEach((elm) => elm.mount());
   }
@@ -2915,9 +2977,9 @@ class SettingsMenu {
   }
 }
 class SettingsMenuWrapper {
-  constructor(store) {
+  constructor(store2) {
     this.component = null;
-    useDispatch(this, store, [openLinkFormForCreation]);
+    useDispatch(this, store2, [openLinkFormForCreation]);
   }
   mount() {
     this.component = new SettingsMenu(this.openLinkFormForCreation);
@@ -2961,39 +3023,51 @@ class LinkFrom {
     this.typeSelect = dom.linkForm.getTypesSelect(this.node);
     this.create(categories, types);
     this.dataTemplate = { src: "", description: "", type: "", category: "" };
-    this.node.addEventListener("click", (e) => {
-      e.preventDefault();
-      const target = e.target;
-      if (target === this.node.add) {
-        createLinkAction({ ...this.getFormData() });
-      } else if (target === this.node.edit) {
-        const linkElement = dom.link.getById(document, this.editingLinkId);
-        linkElement.style.visibility = "hidden";
-        editLinkAction({ ...this.getFormData(), _id: this.editingLinkId });
-      }
-    });
-    this.node.addEventListener("change", (e) => {
-      const target = e.target;
-      if (target.tagName === "SELECT" && target.value === "own") {
-        const input = document.createElement("input");
-        input.type = "text";
-        input.name = target.name;
-        input.className = `${LINK_WINDOW_INPUT}`;
-        input.placeholder = "Click outside the field to return";
-        input.onblur = (e2) => {
-          if (!e2.target.value) {
-            input.replaceWith(target);
-            target.options[0].selected = true;
-            target.parentNode.style.flex = "unset";
-            target.nextElementSibling.style.display = "block";
-          }
-        };
-        target.replaceWith(input);
-        input.focus();
-        input.parentNode.style.flex = "1";
-        input.nextElementSibling.style.display = "none";
-      }
-    });
+    this.createLinkAction = createLinkAction;
+    this.editLinkAction = editLinkAction;
+    this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.node.addEventListener("click", this.handleClick);
+    this.node.addEventListener("change", this.handleChange);
+  }
+  remove() {
+    this.node.removeEventListener("click", this.handleClick);
+    this.node.removeEventListener("change", this.handleChange);
+    this.categorySelect.innerHTML = "";
+    this.typeSelect.innerHTML = "";
+  }
+  handleChange(e) {
+    const target = e.target;
+    if (target.tagName === "SELECT" && target.value === "own") {
+      const input = document.createElement("input");
+      input.type = "text";
+      input.name = target.name;
+      input.className = `${LINK_WINDOW_INPUT}`;
+      input.placeholder = "Click outside the field to return";
+      input.onblur = (e2) => {
+        if (!e2.target.value) {
+          input.replaceWith(target);
+          target.options[0].selected = true;
+          target.parentNode.style.flex = "unset";
+          target.nextElementSibling.style.display = "block";
+        }
+      };
+      target.replaceWith(input);
+      input.focus();
+      input.parentNode.style.flex = "1";
+      input.nextElementSibling.style.display = "none";
+    }
+  }
+  handleClick(e) {
+    e.preventDefault();
+    const target = e.target;
+    if (target === this.node.add) {
+      this.createLinkAction({ ...this.getFormData() });
+    } else if (target === this.node.edit) {
+      const linkElement = dom.link.getById(document, this.editingLinkId);
+      linkElement.style.visibility = "hidden";
+      this.editLinkAction({ ...this.getFormData(), _id: this.editingLinkId });
+    }
   }
   getFormData() {
     const data = { ...this.dataTemplate };
@@ -3048,22 +3122,23 @@ class LinkFrom {
   }
 }
 class LinkFromWrapper {
-  constructor(store) {
+  constructor(store2) {
     this.component = null;
     this.mode = null;
-    useSelector(this, store, [
+    useSelector(this, store2, [
       selectLinkCategories,
       selectLinkTypes,
       selectLinkFormMode,
       selectLinkForEdit,
       selectAction
     ]);
-    useDispatch(this, store, [createNewLink, editPickedLink]);
+    useDispatch(this, store2, [createNewLink, editPickedLink]);
     this.updateActions = {
       "ui/linkFormModeChanged": true,
       "links/linkRemoved/fulfilled": true,
       "links/linkCreated/fulfilled": true,
-      "links/linkEdited/fulfilled": true
+      "links/linkEdited/fulfilled": true,
+      "links/linksLoaded/fulfilled": true
     };
   }
   mount() {
@@ -3076,6 +3151,11 @@ class LinkFromWrapper {
   update() {
     const action = this.selectAction();
     switch (action) {
+      case "links/linksLoaded/fulfilled": {
+        this.component.remove();
+        this.mount();
+        return;
+      }
       case "ui/linkFormModeChanged": {
         this.component.update(this.selectLinkFormMode(), this.selectLinkForEdit());
         return;
@@ -3092,12 +3172,12 @@ class LinkFromWrapper {
   }
 }
 class SettingsWindowWrapper {
-  constructor(store) {
-    this.store = store;
+  constructor(store2) {
+    this.store = store2;
     this.component = null;
     this.child = null;
-    useSelector(this, store, [selectAction]);
-    useDispatch(this, store, [closeSettingsWindow]);
+    useSelector(this, store2, [selectAction]);
+    useDispatch(this, store2, [closeSettingsWindow]);
     this.updateActions = {
       "ui/settingsWindowToggled": true
     };
@@ -3152,7 +3232,7 @@ class ThemeMenu {
   }
 }
 class ThemeMenuWrapper {
-  constructor(store) {
+  constructor(store2) {
     this.component = null;
   }
   mount() {
@@ -3162,17 +3242,61 @@ class ThemeMenuWrapper {
     this.component.update();
   }
 }
-class UI {
-  constructor(store) {
-    this.categoryMenu = new Wrapper$2(store);
-    this.menuOpener = new Wrapper$1(store);
-    this.commonComponent = new Wrapper3(store);
-    this.content = new ContentWrapper(store);
-    this.settingsMenu = new SettingsMenuWrapper(store);
-    this.settingsWindow = new SettingsWindowWrapper(store);
-    this.themeMenu = new ThemeMenuWrapper(store);
+class LoadingCover {
+  constructor() {
+    this.node = dom.getLoadingCover();
+    this.create();
+    this.timer;
+  }
+  create() {
+    const elements = this.node.children[0].children;
+    const len = elements.length;
+    let counter = 0;
+    let prev;
+    this.timer = setInterval(() => {
+      const ind = counter % len;
+      const curr = elements[ind];
+      curr.classList.add(`${LOADING_COVER_ELEMENT_FOCUS}`);
+      if (prev) prev.classList.remove(`${LOADING_COVER_ELEMENT_FOCUS}`);
+      prev = curr;
+      counter += 1;
+    }, 120);
+  }
+  update() {
+    this.node.style.display = "none";
+    clearInterval(this.timer);
+  }
+}
+class LoadingCoverWrapper {
+  constructor(store2) {
+    this.component = null;
+    useSelector(this, store2, [selectAction]);
+    this.updateActions = {
+      "links/linksLoaded/fulfilled": true
+    };
   }
   mount() {
+    this.component = new LoadingCover();
+  }
+  update() {
+    const action = this.selectAction();
+    if (!(action in this.updateActions)) return;
+    this.component.update();
+  }
+}
+class UI {
+  constructor(store2) {
+    this.loadingCover = new LoadingCoverWrapper(store2);
+    this.categoryMenu = new Wrapper$2(store2);
+    this.menuOpener = new Wrapper$1(store2);
+    this.commonComponent = new Wrapper3(store2);
+    this.content = new ContentWrapper(store2);
+    this.settingsMenu = new SettingsMenuWrapper(store2);
+    this.settingsWindow = new SettingsWindowWrapper(store2);
+    this.themeMenu = new ThemeMenuWrapper(store2);
+  }
+  mount() {
+    this.loadingCover.mount();
     this.categoryMenu.mount();
     this.menuOpener.mount();
     this.commonComponent.mount();
@@ -3182,6 +3306,7 @@ class UI {
     this.themeMenu.mount();
   }
   update() {
+    this.loadingCover.update();
     this.categoryMenu.update();
     this.content.update();
     this.menuOpener.update();
@@ -3191,31 +3316,21 @@ class UI {
     this.themeMenu.update();
   }
 }
+const initialData = {
+  links: { data: [] },
+  ui: {
+    menuCategory: "",
+    isMenuOpened: false,
+    isSmallScreen: getIsSmallScreen()
+  }
+};
+const store = createStore(initialData);
+let ui = new UI(store);
+ui.mount();
+store.store.subscribe(() => ui.update());
 async function render() {
   await initiateDB();
-  const links = await api$1.loadLinks() || [];
-  const initialData = {
-    links: { data: links },
-    ui: {
-      menuCategory: links.length ? getCategoryFromHash() : "",
-      isMenuOpened: false,
-      isSmallScreen: getIsSmallScreen()
-    }
-  };
-  const store = createStore(initialData);
-  let ui = new UI(store);
-  ui.mount();
-  let isLogged = false;
-  store.store.subscribe(() => {
-    const state = store.store.getState();
-    if (state.user.token && !isLogged) {
-      isLogged = true;
-      console.log("User logged!");
-    }
-    if (state.action.action === "links/linksLoaded") {
-      console.log("Links from db loaded!");
-    }
-    ui.update();
-  });
+  await store.store.dispatch(linksLoaded());
+  store.store.dispatch(menuCategorySelected(getCategoryFromHash()));
 }
 render();

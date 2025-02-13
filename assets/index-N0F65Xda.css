@@ -346,6 +346,15 @@ table {
 		display: none;
 	}
 }
+/* loading cover */
+.page__loading-cover {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+}
 .theme-menu {
 	position: absolute;
 	top: 50px;
@@ -673,6 +682,25 @@ table {
 }
 .theme__theme-menu-item_emerald:hover {
 	background: var(--common-bg);
+}
+.loading-cover {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: lightgray;
+	font-size: 1.5em;
+}
+.loading-cover__container {
+	padding: 10px;
+	border-radius: 5px;
+	background: gray;
+	color: white;
+}
+.loading-cover__element {}
+.loading-cover__element_focused {
+	position: relative;
+	top: -3px;
+	color: #5bb872;
 }
 * {
   box-sizing: border-box;
