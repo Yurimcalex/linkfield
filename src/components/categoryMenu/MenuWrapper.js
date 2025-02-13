@@ -23,7 +23,8 @@ export default class Wrapper {
 			'ui/menuCategorySelected': true,
 			'links/linkRemoved/fulfilled': true,
 			'links/linkCreated/fulfilled': true,
-			'links/linkEdited/fulfilled': true
+			'links/linkEdited/fulfilled': true,
+			'links/linksLoaded/fulfilled': true
 		};
 	}
 
@@ -43,6 +44,13 @@ export default class Wrapper {
 				return;
 			}
 				
+			case 'links/linksLoaded/fulfilled': {
+				const categories = this.selectCountLinksByCategory();
+				this.component.remove();
+				this.mount();
+				return;
+			}
+
 			case 'links/linkRemoved/fulfilled':
 			case 'links/linkCreated/fulfilled':
 			case 'links/linkEdited/fulfilled': {

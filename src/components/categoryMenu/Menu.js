@@ -10,16 +10,24 @@ import { replaceSpace, updateHash } from '../utils.js';
 */
 export default class Menu {
 	constructor(categories, selectedCategory, storeAction) {
+		this.storeAction = storeAction;
 		this.node = dom.categoryMenu.getMenu();
 		this.create(categories);
 		this.highlightItem(selectedCategory);
-		
-		this.node.addEventListener('click', (e) => {
-			const menuItem = dom.categoryMenu.getItem(e.target);
-			if (menuItem) {
-				storeAction(menuItem.dataset.category, e);	
-			}
-		});
+		this.handleClick = this.handleClick.bind(this);
+		this.node.addEventListener('click', this.handleClick);
+	}
+
+	handleClick(e) {
+		const menuItem = dom.categoryMenu.getItem(e.target);
+		if (menuItem) {
+			this.storeAction(menuItem.dataset.category, e);	
+		}
+	}
+
+	remove() {
+		this.node.removeEventListener('click', this.handleClick);
+		this.node.innerHTML = '';
 	}
 	
 	highlightItem(category) {
