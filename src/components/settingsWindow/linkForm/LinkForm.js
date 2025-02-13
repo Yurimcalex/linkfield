@@ -10,44 +10,58 @@ export default class LinkFrom {
 		this.typeSelect = dom.linkForm.getTypesSelect(this.node);
 		this.create(categories, types);
 		this.dataTemplate = { src: '', description: '', type: '', category: '' };
+		this.createLinkAction = createLinkAction;
+		this.editLinkAction = editLinkAction;
+		this.handleClick = this.handleClick.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 
-		this.node.addEventListener('click', (e) => {
-			e.preventDefault();
-			const target = e.target;
-			
-			if (target === this.node.add) {
-				createLinkAction({ ...this.getFormData() });
-			
-			} else if (target === this.node.edit) {
-				const linkElement = dom.link.getById(document, this.editingLinkId);
-				linkElement.style.visibility = 'hidden';
-				editLinkAction({ ...this.getFormData(), _id: this.editingLinkId });
-			}
-		});
+		this.node.addEventListener('click', this.handleClick);
+		this.node.addEventListener('change', this.handleChange);
+	}
 
-		this.node.addEventListener('change', (e) => {
-			const target = e.target;
-			if (target.tagName === 'SELECT' && target.value === 'own') {
-				const input = document.createElement('input');
-				input.type = 'text';
-				input.name = target.name;
-				input.className = `${LINK_WINDOW_INPUT}`;
-				input.placeholder = 'Click outside the field to return';
-				input.onblur = (e) => {
-					if (!e.target.value) {
-						input.replaceWith(target);
-						target.options[0].selected = true;
-						target.parentNode.style.flex = 'unset';
-						target.nextElementSibling.style.display = 'block';
-						
-					}
-				};
-				target.replaceWith(input);
-				input.focus();
-				input.parentNode.style.flex = '1';
-				input.nextElementSibling.style.display = 'none';
-			}
-		});
+	remove() {
+		this.node.removeEventListener('click', this.handleClick);
+		this.node.removeEventListener('change', this.handleChange);
+		this.categorySelect.innerHTML = '';
+		this.typeSelect.innerHTML = '';
+	}
+
+	handleChange(e) {
+		const target = e.target;
+		if (target.tagName === 'SELECT' && target.value === 'own') {
+			const input = document.createElement('input');
+			input.type = 'text';
+			input.name = target.name;
+			input.className = `${LINK_WINDOW_INPUT}`;
+			input.placeholder = 'Click outside the field to return';
+			input.onblur = (e) => {
+				if (!e.target.value) {
+					input.replaceWith(target);
+					target.options[0].selected = true;
+					target.parentNode.style.flex = 'unset';
+					target.nextElementSibling.style.display = 'block';
+					
+				}
+			};
+			target.replaceWith(input);
+			input.focus();
+			input.parentNode.style.flex = '1';
+			input.nextElementSibling.style.display = 'none';
+		}
+	}
+
+	handleClick(e) {
+		e.preventDefault();
+		const target = e.target;
+		
+		if (target === this.node.add) {
+			this.createLinkAction({ ...this.getFormData() });
+		
+		} else if (target === this.node.edit) {
+			const linkElement = dom.link.getById(document, this.editingLinkId);
+			linkElement.style.visibility = 'hidden';
+			this.editLinkAction({ ...this.getFormData(), _id: this.editingLinkId });
+		}
 	}
 
 	getFormData() {

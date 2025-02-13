@@ -19,6 +19,7 @@ export default class LinkFromWrapper {
 			'links/linkRemoved/fulfilled': true,
 			'links/linkCreated/fulfilled': true,
 			'links/linkEdited/fulfilled': true,
+			'links/linksLoaded/fulfilled': true
 		};
 	}
 
@@ -33,6 +34,12 @@ export default class LinkFromWrapper {
 	update() {
 		const action = this.selectAction();
 		switch (action) {
+			case 'links/linksLoaded/fulfilled': {
+				this.component.remove();
+				this.mount();
+				return;
+			}
+
 			case 'ui/linkFormModeChanged': {
 				this.component.update(this.selectLinkFormMode(), this.selectLinkForEdit());
 				return;
