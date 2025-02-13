@@ -4,13 +4,21 @@ import { dom } from '../elements.js';
 
 export default class Opener {
 	constructor(storeAction) {
+		this.storeAction = storeAction;
 		this.node = dom.categoryMenu.getOpener();
 		this.content = dom.getContent();
 		this.menu = dom.categoryMenu.getMenu();
+		this.handleClick = this.handleClick.bind(this);
 
-		this.node.addEventListener('click', (e) => {
-			storeAction();
-		});
+		this.node.addEventListener('click', this.handleClick);
+	}
+
+	remove() {
+		this.node.removeEventListener('click', this.handleClick);
+	}
+
+	handleClick(e) {
+		this.storeAction();
 	}
 
 	open() {
