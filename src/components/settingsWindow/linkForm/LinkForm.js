@@ -39,7 +39,7 @@ export default class LinkFrom {
 					input.replaceWith(target);
 					target.options[0].selected = true;
 					target.parentNode.style.flex = 'unset';
-					target.nextElementSibling.style.display = 'block';
+					target.nextElementSibling.style.display = 'flex';
 					
 				}
 			};
@@ -88,8 +88,8 @@ export default class LinkFrom {
 
 		this.node.category.parentNode.style.flex = 'unset';
 		this.node.type.parentNode.style.flex = 'unset';
-		this.node.category.nextElementSibling.style.display = 'block';
-		this.node.type.nextElementSibling.style.display = 'block';
+		this.node.category.nextElementSibling.style.display = 'flex';
+		this.node.type.nextElementSibling.style.display = 'flex';
 	}
 
 	setCreateionMode() {
