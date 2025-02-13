@@ -1,0 +1,22 @@
+.loading-cover {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: lightgray;
+	font-size: 1.5em;
+}
+
+.loading-cover__container {
+	padding: 10px;
+	border-radius: 5px;
+	background: gray;
+	color: white;
+}
+
+.loading-cover__element {}
+
+.loading-cover__element_focused {
+	position: relative;
+	top: -3px;
+	color: #5bb872;
+}
