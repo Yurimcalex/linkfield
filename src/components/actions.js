@@ -2,12 +2,15 @@ import { menuCategorySelected, categoryMenuToggled, screenSizeChanged, settingsW
 	linkFormModeChanged } from '../redux/uiSlice.js';
 
 import { linkTypeSelected } from '../redux/filtersSlice.js';
-import { linkRemoved, linkCreated, editedLinkIdSelected, linkEdited } from '../redux/linksSlice.js';
+import { linksLoaded, linkRemoved, linkCreated, editedLinkIdSelected, linkEdited } from '../redux/linksSlice.js';
 import { userLogged } from '../redux/userSlice.js';
 
 
 export const loginUser = (dispatch) => 
 	(email, password) => dispatch(userLogged(email, password));
+
+export const loadLinks = (dispatch) => 
+	(token) => dispatch(linksLoaded(token));
 
 
 export const pickMenuCategory = (dispatch) =>
