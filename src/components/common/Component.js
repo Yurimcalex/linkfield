@@ -17,7 +17,11 @@ export default class Component {
 		this.content.addEventListener('scroll', this.handleScroll);
 
 		const category = getCategoryFromHash();
-		if (category) scrollElementIntoView(this.getMenuItemByCategory(category));
+
+		if (category) {
+			scrollElementIntoView(this.getMenuItemByCategory(category));
+			this.scrollToCategory(category, getIsSmallScreen());
+		}
 	}
 
 
@@ -55,6 +59,7 @@ export default class Component {
 		if (!category) return;
 		const id = replaceSpace(category);
 		const categoryHeader = dom.categoryHeader.getById(id);
+		if (!categoryHeader) return;
 		const container = isSmallScreen ? window : this.content;
 		container.scrollTo(0, categoryHeader.offsetTop - (isSmallScreen ? this.DY : 0));
 		updateHash(id);
