@@ -8,32 +8,46 @@ export default class Component {
 		this.content = dom.getContent();
 		this.menu = dom.categoryMenu.getMenu();
 		this.DY = 50; // takes into account the height of the menu bar
+		this.storeAction1 = storeAction1;
+		this.storeAction2 = storeAction2;
+		this.handleResize = this.handleResize.bind(this);
+		this.handleScroll = this.handleScroll.bind(this);
 
-		window.addEventListener('resize', () => {
-			const isSmallScreen = getIsSmallScreen();
-			storeAction1(isSmallScreen);
-			
-			if (!isSmallScreen) {
-				const category = getCategoryFromHash();
-				if (category) {
-					this.scrollToCategory(category, isSmallScreen);
-					scrollElementIntoView(this.getMenuItemByCategory(category));
-				}
-			}
-
-			if (!isSmallScreen) {
-				this.content.classList.remove(`${CONTENT_HIDE}`);
-				this.menu.classList.remove(`${CATEGORY_MENU_SHOW}`);
-				dom.categoryMenu.getOpener().classList.remove(`${CATEGORY_MENU_OPENER_HIDE}`)
-			}
-		});
-
-		this.content.addEventListener('scroll', () => {
-			this.focusOnCategoryMenuItem(storeAction2, this.content);
-		});
+		window.addEventListener('resize', this.handleResize);
+		this.content.addEventListener('scroll', this.handleScroll);
 
 		const category = getCategoryFromHash();
 		if (category) scrollElementIntoView(this.getMenuItemByCategory(category));
+	}
+
+
+	remove() {
+		window.removeEventListener('resize', this.handleResize);
+		this.content.removeEventListener('scroll', this.handleScroll);
+	}
+
+
+	handleResize() {
+		const isSmallScreen = getIsSmallScreen();
+		this.storeAction1(isSmallScreen);
+		
+		if (!isSmallScreen) {
+			const category = getCategoryFromHash();
+			if (category) {
+				this.scrollToCategory(category, isSmallScreen);
+				scrollElementIntoView(this.getMenuItemByCategory(category));
+			}
+		}
+
+		if (!isSmallScreen) {
+			this.content.classList.remove(`${CONTENT_HIDE}`);
+			this.menu.classList.remove(`${CATEGORY_MENU_SHOW}`);
+			dom.categoryMenu.getOpener().classList.remove(`${CATEGORY_MENU_OPENER_HIDE}`)
+		}
+	}
+
+	handleScroll() {
+		this.focusOnCategoryMenuItem(this.storeAction2, this.content);
 	}
 
 	// scroll the window for large screen, scroll the content for small screen

@@ -16,6 +16,7 @@ export default class Wrapper {
 			'ui/categoryMenuToggled': true,
 			'ui/screenSizeChanged': true,
 			'links/linkCreated/fulfilled': true,
+			'links/linksLoaded/fulfilled': true,
 		};
 	}
 
@@ -27,6 +28,12 @@ export default class Wrapper {
 	update() {
 		const action = this.selectAction();
 		if (!(action in this.updateActions)) return;
+
+		if (action === 'links/linksLoaded/fulfilled') {
+			this.component.remove();
+			this.mount();
+			return;
+		}
 
 		if (action === 'links/linkCreated/fulfilled') {
 			const categories = this.selectLinkCategories();
