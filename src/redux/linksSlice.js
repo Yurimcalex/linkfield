@@ -66,23 +66,25 @@ const linksSlice = createSlice({
 export default linksSlice.reducer;
 
 // async actions
-export const linksLoaded = createAsyncThunk('links/linksLoaded', async (token) => {
-	const response = await api.loadLinks(token);
+const getApi = (thunkApi) => thunkApi.getState().user.token ? api : fakeApi;
+
+export const linksLoaded = createAsyncThunk('links/linksLoaded', async (token, thunkApi) => {
+	const response = await getApi(thunkApi).loadLinks(token);
 	return response;
 });
 
-export const linkRemoved = createAsyncThunk('links/linkRemoved', async (id) => {
-	const response = await fakeApi.deleteLink(id);
+export const linkRemoved = createAsyncThunk('links/linkRemoved', async (id, thunkApi) => {
+	const response = await getApi(thunkApi).deleteLink(id);
 	return response;
 });
 
-export const linkCreated = createAsyncThunk('links/linkCreated', async (linkData) => {
-	const response = await fakeApi.createLink(linkData);
+export const linkCreated = createAsyncThunk('links/linkCreated', async (linkData, thunkApi) => {
+	const response = await getApi(thunkApi).createLink(linkData);
 	return response;
 });
 
-export const linkEdited = createAsyncThunk('links/linkEdited', async (linkData) => {
-	const response = await fakeApi.updateLink(linkData._id, linkData);
+export const linkEdited = createAsyncThunk('links/linkEdited', async (linkData, thunkApi) => {
+	const response = await getApi(thunkApi).updateLink(linkData._id, linkData);
 	return response;
 });
 
