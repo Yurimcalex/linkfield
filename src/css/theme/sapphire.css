@@ -1,0 +1,98 @@
+.theme_sapphire {
+	--common-color: #e3f5ef;
+	--link-description-color: #96ebe1;
+	--common-bg: #3139a6;
+	--menu-panel-bg: #2f2361;
+
+	background: var(--common-bg);
+	color: var(--common-color);
+}
+
+.theme__menu-panel_sapphire {
+	background: var(--menu-panel-bg);
+}
+
+.theme__content_sapphire {
+	background: var(--common-bg);
+}
+
+.theme__color_mute-sapphire {
+	color: #84e1fd;
+}
+
+.theme__button_sapphire {
+	background: var(--common-bg);
+}
+
+.theme__button_sapphire:hover {
+	background: var(--menu-panel-bg);
+}
+
+.theme__settings-menu-item_sapphire {
+	background: var(--menu-panel-bg);
+}
+
+.theme__link_sapphire:hover {
+	background: #3543a9;
+}
+
+.theme__link_selected-sapphire {
+	background: #3543a9;
+}
+
+.theme__link_highlighted-sapphire {
+	background: #3ba044;
+}
+
+.theme__link-topic_sapphire {
+	color: var(--link-description-color);
+}
+
+.theme__category-menu-item-topic_sapphire {
+	color: var(--common-color);
+}
+
+
+.theme__category-menu-item_sapphire:hover {
+	background: var(--common-bg);
+}
+
+.theme__category-menu-item_selected-sapphire {
+	background: var(--common-bg);
+}
+
+@media screen and (max-width: 650px) {
+	.theme__category-menu-item_adaptive-sapphire:nth-child(even) {
+		background: var(--menu-panel-bg);
+	}
+
+	.theme__category-menu-item_adaptive-sapphire:nth-child(odd) {
+		background: var(--common-bg);
+	}
+}
+
+@media screen and (max-width: 650px) {
+	.theme__menu-opener_adaptive-sapphire {
+		
+	}
+}
+
+.theme__settings-window_sapphire {
+	background: rgba(0, 0, 0, 0.7);
+}
+
+.theme__link-window_sapphire {
+	background: var(--common-bg);
+}
+
+.theme__link-window-close-btn_sapphire {
+	background: var(--common-bg);
+}
+
+.theme__theme-menu_sapphire {
+	background: var(--menu-panel-bg);
+}
+
+.theme__theme-menu-item_sapphire:hover {
+	background: var(--common-bg);
+}
